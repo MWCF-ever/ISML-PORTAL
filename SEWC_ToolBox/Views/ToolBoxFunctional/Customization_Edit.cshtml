@@ -1,0 +1,137 @@
+﻿@using SEWC_ToolBox.Languages;
+@using SEWC_ToolBox.DAL.EFs;
+@using System.Text;
+
+@{
+    Layout = "~/Views/Shared/_Layout_Function.cshtml";
+    ViewBag.Title = "Edit Customization";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+    var preURL = AppConfig.PreURL;
+}
+
+@Scripts.Render("~/Scripts/CustomScripts/ToolBoxFunctional/Customization?v=" + ViewBag.VersionNo)
+
+<div class="container">
+
+    @{
+        StringBuilder HtmlBuilder = new StringBuilder();
+
+        if (ViewBag.TargetCustomization != null)
+        {
+            t_Customization TargetCustomization = ViewBag.TargetCustomization;
+
+            HtmlBuilder.Append("<form class='layui-form  layui-form-pane' action=''>");
+
+            // 隐藏域
+            HtmlBuilder.Append("<div class='hidden'>");
+            HtmlBuilder.Append("<input type='text' id='input_customizationID' name='input_customizationID' readonly='readonly' value='" + TargetCustomization.c_ID + "' />");
+            HtmlBuilder.Append("<input type='text' id='input_customizationGUID' name='input_customizationGUID' readonly='readonly' value='" + TargetCustomization.c_GUID + "' />");
+            HtmlBuilder.Append("<input type='text' id='input_deptID' name='input_deptID' readonly='readonly' value='" + TargetCustomization.c_m_DeptID + "' />");
+            HtmlBuilder.Append("</div>");
+
+            // 快速链接属性
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_CustomizationName") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<input type='text' id='input_customizationName' name='input_customizationName' required lay-verify='required' placeholder='" + Html.Lang("txt_CustomizationName_plus") + "' autocomplete='off' class='layui-input' value='" + TargetCustomization.c_Name + "' />");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Linkage") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<input type='text' id='input_linkage' name='input_linkage' required lay-verify='required' placeholder='" + Html.Lang("txt_Linkage_plus") + "' autocomplete='off' class='layui-input' value='" + TargetCustomization.c_Linkage + "' />");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item' pane>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_CustomizationCategory") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+
+            if (ViewBag.CustomizationCategory_List != null)
+            {
+                List<string> CustomizationCategory_List = ViewBag.CustomizationCategory_List as List<string>;
+
+                HtmlBuilder.Append("<input type='radio' name='input_Category_IsSelect' value='true' lay-filter='input_Category_IsSelect' title='" + Html.Lang("txt_Select") + "' checked />");
+                HtmlBuilder.Append("<input type='radio' name='input_Category_IsSelect' value='false' lay-filter='input_Category_IsSelect' title='" + Html.Lang("txt_Input") + "' />");
+
+                HtmlBuilder.Append("<div id='div_categorySelection'>");
+
+                for (int i = 0; i < CustomizationCategory_List.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        HtmlBuilder.Append("<select name='select_Category' lay-verify='required'>");
+                    }
+
+                    if (CustomizationCategory_List[i].Equals(TargetCustomization.c_Category))
+                    {
+                        HtmlBuilder.Append("<option value='" + CustomizationCategory_List[i] + "' selected='selected'>" + CustomizationCategory_List[i] + "</option>");
+                    }
+                    else
+                    {
+                        HtmlBuilder.Append("<option value='" + CustomizationCategory_List[i] + "'>" + CustomizationCategory_List[i] + "</option>");
+                    }
+
+                    if (i == CustomizationCategory_List.Count - 1)
+                    {
+                        HtmlBuilder.Append("</select>");
+                    }
+                }
+
+                HtmlBuilder.Append("</div>");
+
+                HtmlBuilder.Append("<div class='hidden' id='div_categoryInput'>");
+                HtmlBuilder.Append("<input type='text' id='input_Category' name='input_Category' required placeholder='" + Html.Lang("txt_CustomizationCategory_plus") + "' autocomplete='off' class='layui-input' />");
+                HtmlBuilder.Append("</div>");
+            }
+
+            HtmlBuilder.Append("</div></div>");
+            
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Sort") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<input type='text' id='input_sort' name='input_sort' required lay-verify='required|number' placeholder='" + Html.Lang("txt_Sort_plus") + "' autocomplete='off' class='layui-input' value='" + TargetCustomization.c_Sort + "' />");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item layui-form-text'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Description") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<textarea id='input_description' name='input_description' placeholder='" + Html.Lang("txt_Description_plus") + "' class='layui-textarea'>" + TargetCustomization.c_Description + "</textarea>");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item' pane>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Photo") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<button type='button' class='layui-btn' id='btn_upload' style='margin: 10px;'><i class='layui-icon'>&#xe67c;</i>" + Html.Lang("txt_Upload") + "</button>");
+
+            if (TargetCustomization.c_PicPath.Equals("N/A"))
+            {
+                HtmlBuilder.Append("<img id='img_customizationPic' style='display:none; width: 300px; height: 180px; border: 2px solid rgb(230, 230, 230); margin:10px;' />");
+                HtmlBuilder.Append("<input class='hidden' type='text' id='input_picPath' name='input_picPath' readonly='readonly' />");
+                HtmlBuilder.Append("<input class='hidden' type='text' id='input_picPath_original' name='input_picPath_original' readonly='readonly' />");
+            }
+            else
+            {
+                HtmlBuilder.Append("<img id='img_customizationPic' style='display:block; width: 300px; height: 180px; border: 2px solid rgb(230, 230, 230); margin:10px;' src='" + TargetCustomization.c_PicPath + "' />");
+                HtmlBuilder.Append("<input class='hidden' type='text' id='input_picPath' name='input_picPath' readonly='readonly' value='" + TargetCustomization.c_PicPath + "' />");
+                HtmlBuilder.Append("<input class='hidden' type='text' id='input_picPath_original' name='input_picPath_original' readonly='readonly' value='" + TargetCustomization.c_PicPath + "' />");
+            }
+
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-footer' style='text-align:center;'>");
+            HtmlBuilder.Append("<button class='layui-btn' lay-submit lay-filter='formUpdate'>" + Html.Lang("txt_Submit") + "</button>");
+            HtmlBuilder.Append("<button type='reset' class='layui-btn layui-btn-primary' id='btn_reset'>" + Html.Lang("txt_Reset") + "</button>");
+            HtmlBuilder.Append("<button class='layui-btn layui-btn-primary' id='btn_close' type='button'>" + Html.Lang("txt_Close") + "</button>");
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("</form>");
+        }
+        else
+        {
+
+        }
+
+        @(new HtmlString(HtmlBuilder.ToString()))
+    }
+
+</div>

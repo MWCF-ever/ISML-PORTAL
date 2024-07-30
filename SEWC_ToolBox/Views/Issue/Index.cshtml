@@ -1,0 +1,289 @@
+﻿@using SEWC_ToolBox.DAL.EFs
+@using SEWC_ToolBox.DAL.Extions
+@using SEWC_ToolBox.Languages
+@model IPagerList<t_ReportIssue>
+@{
+    ViewBag.Title = "Issue";
+    Layout = "~/Views/Shared/_Layout_ToolBox.cshtml";
+    v_User CurrentUser = HttpContext.Current.Session["CurrentUser"] as v_User;
+    var handles = AppConfig.IssueHandleUsers;
+}
+
+<div class="layui-form">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">@LanguageHelper.InnerLang(HttpContext.Current, "txt_ReportName")：</label>
+            <div class="layui-input-inline">
+                <input type="tel" name="reportTitle" id="reportTitle" autocomplete="off" class="layui-input input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">@LanguageHelper.InnerLang(HttpContext.Current, "txt_CreateUser")：</label>
+            <div class="layui-input-inline">
+                <input type="hidden" id="questionGid" />
+                <input type="text" name="questionName" id="questionName" autocomplete="off" class="layui-input input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">@LanguageHelper.InnerLang(HttpContext.Current, "txt_Status")：</label>
+            <div class="layui-input-inline">
+                <select name="state" id="state" class="layui-input input">
+                    <option value="">@LanguageHelper.InnerLang(HttpContext.Current, "txt_PlsSelect")</option>
+                    <option value="1">@LanguageHelper.InnerLang(HttpContext.Current, "txt_IssuePending")</option>
+                    <option value="2">@LanguageHelper.InnerLang(HttpContext.Current, "txt_IssueSolved")</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-inline">
+            <button type="button" class="layui-btn" id="btn-Search">@LanguageHelper.InnerLang(HttpContext.Current, "txt_Search")</button>
+        </div>
+        <div class="layui-inline">
+            <a href="@Url.Action("Export")" class="layui-btn" target="_blank" rel="noopener">@LanguageHelper.InnerLang(HttpContext.Current, "txt_Export")</a>
+        </div>
+    </div>
+
+    <table class="layui-table" id="t-dataList" lay-filter="table">
+    </table>
+    <script type="text/html" id="tableColumnBar">
+        <div class="layui-btn-group">
+            <span>
+                <a class="layui-btn layui-btn-xs" lay-event="view" target="_blank" href="@Url.Action("view")?id={{d.id}}">@LanguageHelper.InnerLang(HttpContext.Current, "txt_View")</a>
+                {{# if(d.State==1 && (d.AdminOwner == currUser || isHandleUser==true||currUser == d.CreateUser)){ }}
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="handle">@LanguageHelper.InnerLang(HttpContext.Current, "txt_IssueBtnHandle")</a>
+                {{# } }}
+            </span>
+        </div>
+    </script>
+</div>
+
+<script type="text/javascript">
+    var currUser = "@CurrentUser.User_GID"
+    var table = undefined;
+
+    var reloadTable = function () {
+        if (table) {
+            table.reload('t-dataList', {
+                page: {
+                    curr: 1
+                },
+                where: {
+                    reportTitle: $("#reportTitle").val(),
+                    createUser: getGid(),
+                    state: $("#state").val()
+                }
+            });
+        }
+    }
+    var getGid = function () {
+        var name = $("#questionName").val();
+        var res = name
+        var reg = /\((.*)\)/;
+        var matchs = name.match(reg);
+        if (matchs != null && matchs != undefined && matchs.length > 0) {
+            res = matchs[1];
+        }
+        return res;
+    }
+    var language = {
+        loading: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_Loading")',
+        reovkeConfirm: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_IssueRevokeConfirm")',
+        busy: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_BusyNetwork")',
+        handleIssue: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_HandleIssue")',
+        activeConfirm: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_IssueActiveConfirm")',
+        reportName: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_ReportName")',
+        adminOwner:'@LanguageHelper.InnerLang(HttpContext.Current, "txt_Admin")',
+        createUser: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_CreateUser")',
+        createTime: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_CreateTime")',
+        issue: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_Issue")',
+        reason: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_Reason")',
+        solution: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_Solution")',
+        handleUser: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_HandleUser")',
+        handleTime: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_HandleTime")',
+        operation: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_Operation")',
+        state: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_Status")',
+        pending:'@LanguageHelper.InnerLang(HttpContext.Current, "txt_IssuePending")',
+        processed: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_IssueProcessed")',
+        solved: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_IssueSolved")',
+        ok: '@LanguageHelper.InnerLang(HttpContext.Current, "txt_Ok")',
+        cancel:'@LanguageHelper.InnerLang(HttpContext.Current, "txt_Cancel")'
+    }
+
+    var isHandleUser = @(handles.Contains(CurrentUser.User_GID)?"true":"false")
+        $(function () {
+            layui.use(['table', 'autocomplete'], function () {
+                table = layui.table
+                var layer = layui.layer;
+                var autocomplete = layui.autocomplete;
+                $("#btn-Search").click(function () {
+                    reloadTable();
+                })
+
+                $(".input").keydown(function (e) {
+                    if (e.keyCode == 13) {
+                        reloadTable();
+                    }
+                    //console.log(e)
+                })
+
+                autocomplete.render({
+                    elem: $('#questionName'),
+                    url: '/api/ToolBox_Api/GetUserByName/',
+                    template_txt: '<span > {{d.name}}({{d.gid}}) </span>',
+                    template_val: '{{d.name}}({{d.gid}})',
+                    onselect: function (resp) {
+                        console.log(resp)
+                        $("#questionGid").val(resp.gid)
+                    }
+                });
+
+                table.render({
+                    elem: '#t-dataList',
+                    url: '@Url.Action("Index")',
+                    page: true,
+                    limit: 12,
+                    limits: [12, 24, 48, 60],
+                    method: 'get',
+                    loading: true,
+                    cellMinWidth: 100,
+                    cols: [[
+                        //{ field: 'id', width: 100, title: 'ID', sort: false },
+                        { field: 'ReportTitle', width: '10%', title: language.reportName, sort: false },
+                        {
+                            field: 'AdminOwnerName', width: '7%', title: language.adminOwner, templet: function (d) {
+                                return d.AdminOwnerName + '（' + d.AdminOwner + '）'
+                            }
+                        },
+                        {
+                            field: 'CreateUserName', width: '7%', title: language.createUser, templet: function (d) {
+                                return d.CreateUserName + '（' + d.CreateUser + '）'
+                            }
+                        },
+                        { field: 'Issues', width: '13%', title: language.issue, sort: false, edit: false },
+                        {
+                            field: 'Createtime', width: '9%', title: language.createTime, sort: false, templet: function (d) {
+                                var dt = new Date(parseInt(d.Createtime.replace(/[\/date\(\)]/ig, '')));
+                                return dt.Format('yyyy-MM-dd hh:mm:ss')
+                            }
+                        },
+                        { field: 'AnswerReason',  width: '13%', title:language.reason, sort: false },
+                        { field: 'AnswerDetail', width: '13%', title: language.solution, sort: false },
+                        {
+                            field: 'State', width: '5%', title: language.state, templet: function (d) {
+                                var msg = language.solved
+                                if (d.State == 1) {
+                                    msg = language.pending
+                                } else if (d.State == 2) {
+                                    msg = language.solved
+                                }
+                                return msg
+                            }
+                        },
+                        {
+                            field: 'HandleUserName', width: '7%', title: language.handleUser, templet: function (d) {
+                                if (d.HandleUserName == null || d.HandleUser == null) {
+                                    return '';
+                                }
+                                return d.HandleUserName + '（' + d.HandleUser + '）';
+                            }
+                        },
+                        {
+                            field: 'HandleTime', width: '9%', title: language.handleTime, templet: function (d) {
+                                var reg = /[\/date\(\)]/ig
+                                if (!reg.test(d.HandleTime)) {
+                                    return '';
+                                } else {
+                                    var dt = new Date(parseInt(d.HandleTime.replace(reg, '')));
+                                    return dt.Format('yyyy-MM-dd hh:mm:ss')
+                                }
+                            }
+                        },
+                        { field: '', fixed: 'right',width:130, title: language.operation, toolbar: '#tableColumnBar', align: 'left', templet: function (d) { return d.State } },
+                    ]]
+                })
+                table.on('tool(table)', function (obj) {
+                    var data = obj.data;
+                    if (obj.event === 'revoke') {
+                        layer.confirm(language.reovkeConfirm, { btn: [language.ok, language.cancel] }, function (index) {
+                            var id = data.id;
+                            var closeIdx = layer.msg(language.loading, {
+                                icon: 16
+                                , shade: 0.01
+                            });
+                            $.ajax({
+                                url: '@Url.Action("Revoke")',
+                                type: 'post',
+                                data: { id: id },
+                                success: function (res) {
+                                    layer.close(closeIdx)
+                                    if (res.OpResult) {
+                                        //撤销成功
+                                        reloadTable();
+                                        layer.msg(res.OpMsg)
+                                    } else {
+                                        customAlert(2, res.OpMsg);
+                                    }
+                                },
+                                error: function (e) {
+                                    layer.close(closeIdx)
+                                    customAlert(2, language.busy);
+                                }
+                            })
+                            layer.close(index);
+                        });
+                    }
+                    else if (obj.event === 'handle') {
+                        layer.open({
+                            type: 2,
+                            title: language.handleIssue,
+                            shadeClose: true,
+                            shade: 0.8,
+                            area: ['900px', '75%'],
+                            content: '@Url.Action("Handle")' + '?id=' + data.id
+                        });
+                    }
+                    else if (obj.event == 'active') {
+                        layer.confirm(language.activeConfirm, function (index) {
+                            var id = data.id;
+                            var closeIdx = layer.msg(language.loading, {
+                                icon: 16
+                                , shade: 0.01
+                            });
+                            $.ajax({
+                                url: '@Url.Action("Activation")',
+                                type: 'post',
+                                data: { id: id },
+                                success: function (res) {
+                                    layer.close(closeIdx)
+                                    if (res.OpResult) {
+                                        //撤销成功
+                                        reloadTable();
+                                        layer.msg(res.OpMsg)
+                                    } else {
+                                        customAlert(2, res.OpMsg);
+                                    }
+                                },
+                                error: function (e) {
+                                    layer.close(closeIdx)
+                                    customAlert(2, language.busy);
+                                }
+                            })
+                            layer.close(index);
+                        });
+    }
+                });
+            })
+        });
+</script>
+<style type="text/css">
+    .layui-form-item .layui-input-inline {
+        width: 190px
+    }
+
+    .layui-form-label {
+        width: auto;
+    }
+
+    .layui-table-cell {
+        padding: 0 1px;
+    }
+</style>

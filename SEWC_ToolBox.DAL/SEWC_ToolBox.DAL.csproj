@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{70CB5D90-9AA2-47C1-BA88-884D79A4B7CC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SEWC_ToolBox.DAL</RootNamespace>
+    <AssemblyName>SEWC_ToolBox.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SEWC_NetDevLib">
+      <HintPath>..\SEWC_ToolBox.Utilities\RefDll\SEWC_NetDevLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBHelpers\DBHelper_MailTemplate.cs" />
+    <Compile Include="EFs\BI_LU_SCM_REPORT_ACCESS_REMOVED.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\EnumCollect\EnumCollections.cs" />
+    <Compile Include="EFs\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\sp_helpdiagrams_Result.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_Access.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_Attachment.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_Customization.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_LanguageProfile.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_MailTemplate.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_Menu.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_Menu_New.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_OprationLog.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_ProcessConnection.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_ProcessLinkage.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_ProcessNode.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_QuickLink.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_Report.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_ReportIssue.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_ReportRole.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_Report_ClickStatistics.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_sys_TypeDescription.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_UserRole.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\v_MenuList.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\v_ProcessNode.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\v_Report.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\V_Report_ClickStatistics.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\v_SideMenuList.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\v_sys_FieldDescription.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\v_User.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\v_UserRole.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extions\PagerList.cs" />
+    <Compile Include="SecondModels\MailAccessContent.cs" />
+    <Compile Include="SecondModels\OperationMessage.cs" />
+    <Compile Include="SecondModels\ProcessLinkageModel.cs" />
+    <Compile Include="SecondModels\QuickLinkModel.cs" />
+    <Compile Include="SecondModels\ReportModel.cs" />
+    <Compile Include="DBHelpers\DBHelper_Content.cs" />
+    <Compile Include="DBHelpers\DBHelper_User.cs" />
+    <Compile Include="DBHelpers\DBHelper_EntryMenu.cs" />
+    <Compile Include="EFs\SEWC_ToolBox_EF.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SEWC_ToolBox_EF.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\SEWC_ToolBox_EF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\SEWC_ToolBox_EF.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SEWC_ToolBox_EF.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_Entry.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EFs\t_Favorite.cs">
+      <DependentUpon>SEWC_ToolBox_EF.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecondModels\SearchModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="EFs\SEWC_ToolBox_EF.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SEWC_ToolBox_EF.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EFs\SEWC_ToolBox_EF.edmx.diagram">
+      <DependentUpon>SEWC_ToolBox_EF.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EFs\SEWC_ToolBox_EF.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SEWC_ToolBox_EF.edmx</DependentUpon>
+      <LastGenOutput>SEWC_ToolBox_EF.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EFs\SEWC_ToolBox_EF.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SEWC_ToolBox_EF.edmx</DependentUpon>
+      <LastGenOutput>SEWC_ToolBox_EF.cs</LastGenOutput>
+    </Content>
+    <Content Include="Update\20201123.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

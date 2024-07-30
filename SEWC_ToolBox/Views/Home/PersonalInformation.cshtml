@@ -1,0 +1,144 @@
+﻿@using SEWC_ToolBox.DAL.EFs;
+@using SEWC_ToolBox.Languages;
+@using System.Text;
+@model v_User
+
+@{
+    ViewBag.Title = "Personal Information";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+
+
+<div class="container body-content">
+
+    <div class="list-header clearfix" style="margin-top:60px;">
+        <blockquote class='layui-elem-quote layui-quote-nm' style='height: auto;'>
+            <div style='vertical-align: central'>
+                <h3 style='margin-top:0px; margin-bottom:15px;'>@Html.Lang("txt_PersonalInformation")</h3>
+                <h4 style='margin-bottom:0px;'>@Html.Lang("txt_PersonalInformation_plus")</h4>
+            </div>
+        </blockquote>
+    </div>
+
+    <div class="list-sfs-holder" style="padding-bottom: 30px;">
+
+        @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+        {
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>@Html.Lang("txt_EnglishName")</strong>
+                        </td>
+                        <td>
+                            @Model.User_Name_EN
+                        </td>
+                        <td>
+                            <strong>@Html.Lang("txt_ChineseName")</strong>
+                        </td>
+                        <td>
+                            @Model.User_Name_CH
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>GID</strong>
+                        </td>
+                        <td>
+                            @Model.User_GID
+                        </td>
+                        <td>
+                            <strong>@Html.Lang("txt_EmployeeNumber")</strong>
+                        </td>
+                        <td>
+                            @Model.User_EmployeeNumber
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>@Html.Lang("txt_Department")</strong>
+                        </td>
+                        <td>
+                            @Model.Dept_FullName
+                        </td>
+                        <td>
+                            <strong>@Html.Lang("txt_JobTitle")</strong>
+                        </td>
+                        <td>
+                            @Model.Job_Function
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>E-mail</strong>
+                        </td>
+                        <td>
+                            @Model.User_Email
+                        </td>
+                        <td>
+                            <strong>@Html.Lang("txt_LineManager")</strong>
+                        </td>
+                        <td>
+                            @Model.LineManager_DisplayText
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+
+    </div>
+
+    <div class="list-header clearfix" style="margin-top:30px;">
+        <blockquote class='layui-elem-quote layui-quote-nm' style='height: auto;'>
+            <div style='vertical-align: central'>
+                <h3 style='margin-top:0px; margin-bottom:15px;'>@Html.Lang("txt_PersonalRole")</h3>
+                <h4 style='margin-bottom:0px;'>@Html.Lang("txt_PersonalRole_plus")</h4>
+            </div>
+        </blockquote>
+    </div>
+
+    <div class="list-sfs-holder">
+
+        @{
+            StringBuilder HtmlBuilder = new StringBuilder();
+
+            if (ViewBag.UserRole_List != null)
+            {
+                List<v_UserRole> UserRole_List = ViewBag.UserRole_List;
+
+                if (UserRole_List.Count > 0)
+                {
+                    HtmlBuilder.Append("<table class='layui-table' lay-skin='line'>");
+
+                    HtmlBuilder.Append("<thead><tr>");
+
+                    HtmlBuilder.Append("<th>" + Html.Lang("txt_RN") + "</th>");
+                    HtmlBuilder.Append("<th>" + Html.Lang("txt_Dept") + "</th>");
+                    HtmlBuilder.Append("<th>" + Html.Lang("txt_UserRole") + "</th>");
+
+                    HtmlBuilder.Append("</tr></thead>");
+
+                    for (int i = 0; i < UserRole_List.Count; i++)
+                    {
+                        v_UserRole CurUserRole = UserRole_List[i];
+
+                        HtmlBuilder.Append("<tr>");
+
+                        HtmlBuilder.Append("<td>" + (i + 1).ToString() + "</td>");
+                        HtmlBuilder.Append("<td>" + CurUserRole.e_Dept_AbbreviatedName + "</td>");
+                        HtmlBuilder.Append("<td>" + Html.Lang("txt_UserRole_" + CurUserRole.a_Name) + "</td>");
+
+                        HtmlBuilder.Append("</tr>");
+                    }
+
+                    HtmlBuilder.Append("</table>");
+                    HtmlBuilder.Append("</div>");
+                }
+
+                @(new HtmlString(HtmlBuilder.ToString()))
+            }
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,1431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="txt_404NotFound_plus" xml:space="preserve">
+    <value>请求的资源无法找到，请联系系统管理员。</value>
+  </data>
+  <data name="txt_ActionName" xml:space="preserve">
+    <value>方法名称</value>
+  </data>
+  <data name="txt_BackToHome" xml:space="preserve">
+    <value>回到主页</value>
+  </data>
+  <data name="txt_Chinese" xml:space="preserve">
+    <value>中文</value>
+  </data>
+  <data name="txt_ChineseName" xml:space="preserve">
+    <value>中文名</value>
+  </data>
+  <data name="txt_CompanyName" xml:space="preserve">
+    <value>西门子工业自动化产品（成都）有限公司</value>
+  </data>
+  <data name="txt_ControllerName" xml:space="preserve">
+    <value>控制器名称</value>
+  </data>
+  <data name="txt_Department" xml:space="preserve">
+    <value>部门</value>
+  </data>
+  <data name="txt_Document" xml:space="preserve">
+    <value>文档</value>
+  </data>
+  <data name="txt_EmployeeNumber" xml:space="preserve">
+    <value>员工号</value>
+  </data>
+  <data name="txt_English" xml:space="preserve">
+    <value>英文</value>
+  </data>
+  <data name="txt_EnglishName" xml:space="preserve">
+    <value>英文名</value>
+  </data>
+  <data name="txt_Enter" xml:space="preserve">
+    <value>进入</value>
+  </data>
+  <data name="txt_ExceptionMessage" xml:space="preserve">
+    <value>异常信息</value>
+  </data>
+  <data name="txt_Expand_SideBar" xml:space="preserve">
+    <value>展开侧边栏 (快捷键 Ctrl + 右箭头)</value>
+  </data>
+  <data name="txt_HomePage" xml:space="preserve">
+    <value>主页</value>
+  </data>
+  <data name="txt_Information" xml:space="preserve">
+    <value>信息通知</value>
+  </data>
+  <data name="txt_Information_plus" xml:space="preserve">
+    <value>每个部门内部均有可定制化的信息通知</value>
+  </data>
+  <data name="txt_JobTitle" xml:space="preserve">
+    <value>职位</value>
+  </data>
+  <data name="txt_LearnMore" xml:space="preserve">
+    <value>更多介绍</value>
+  </data>
+  <data name="txt_LineManager" xml:space="preserve">
+    <value>直线经理</value>
+  </data>
+  <data name="txt_Link" xml:space="preserve">
+    <value>快速链接</value>
+  </data>
+  <data name="txt_Link_plus" xml:space="preserve">
+    <value>提供标准化和可定制化的快速链接，快速访问其他数据文件、网页系统</value>
+  </data>
+  <data name="txt_PersonalInformation" xml:space="preserve">
+    <value>个人信息</value>
+  </data>
+  <data name="txt_PersonalInformation_plus" xml:space="preserve">
+    <value>您可以在此浏览您的个人信息</value>
+  </data>
+  <data name="txt_Report" xml:space="preserve">
+    <value>报表访问</value>
+  </data>
+  <data name="txt_SCM_Reporting_PerformanceMeasurement_Delivery" xml:space="preserve">
+    <value>出货</value>
+  </data>
+  <data name="txt_SCM_Reporting_PerformanceMeasurement_OrderIntake_TurnOver" xml:space="preserve">
+    <value>订单/销售</value>
+  </data>
+  <data name="txt_SCM_Reporting_UpdateFrequency_Daily" xml:space="preserve">
+    <value>每天</value>
+  </data>
+  <data name="txt_SCM_Reporting_UpdateFrequency_Monthly" xml:space="preserve">
+    <value>每月</value>
+  </data>
+  <data name="txt_SCM_Reporting_UpdateFrequency_Quarterly" xml:space="preserve">
+    <value>每季度</value>
+  </data>
+  <data name="txt_SCM_Reporting_UpdateFrequency_Weekly" xml:space="preserve">
+    <value>每周</value>
+  </data>
+  <data name="txt_SCM_Reporting_UpdateFrequency_Yearly" xml:space="preserve">
+    <value>每年</value>
+  </data>
+  <data name="txt_Report_plus" xml:space="preserve">
+    <value>为各部门的核心数字化报表提供再分类及访问</value>
+  </data>
+  <data name="txt_SCM_Home" xml:space="preserve">
+    <value>主页</value>
+  </data>
+  <data name="txt_SCM_Home_MyToolBox" xml:space="preserve">
+    <value>我的工具箱</value>
+  </data>
+  <data name="txt_SCM_Home_SCMToolBox" xml:space="preserve">
+    <value>SCM工具箱</value>
+  </data>
+  <data name="txt_Organization" xml:space="preserve">
+    <value>组织架构</value>
+  </data>
+  <data name="txt_SCM_Process" xml:space="preserve">
+    <value>流程</value>
+  </data>
+  <data name="txt_SCM_Process_Delivery" xml:space="preserve">
+    <value>交付</value>
+  </data>
+  <data name="txt_SCM_Process_Make" xml:space="preserve">
+    <value>制造</value>
+  </data>
+  <data name="txt_SCM_Process_Plan" xml:space="preserve">
+    <value>计划</value>
+  </data>
+  <data name="txt_SCM_Process_Source" xml:space="preserve">
+    <value>采购</value>
+  </data>
+  <data name="txt_SCM_QuickLink" xml:space="preserve">
+    <value>快速链接</value>
+  </data>
+  <data name="txt_SCM_Reporting" xml:space="preserve">
+    <value>报表</value>
+  </data>
+  <data name="txt_SCM_Reporting_PerformanceMeasurement" xml:space="preserve">
+    <value>绩效管理</value>
+  </data>
+  <data name="txt_SCM_Reporting_UpdateFrequency" xml:space="preserve">
+    <value>更新频率</value>
+  </data>
+  <data name="txt_Collapse_SideBar" xml:space="preserve">
+    <value>收起侧边栏 (快捷键 Ctrl + 左箭头)</value>
+  </data>
+  <data name="txt_SupportDial" xml:space="preserve">
+    <value>+86 (28) 86197289</value>
+  </data>
+  <data name="txt_SupportedBy" xml:space="preserve">
+    <value>由 GS IT DF FA SEWC PLM - Li Li 提供技术支持</value>
+  </data>
+  <data name="txt_ToChinese" xml:space="preserve">
+    <value>中文</value>
+  </data>
+  <data name="txt_ToEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="txt_Tool" xml:space="preserve">
+    <value>工具下载</value>
+  </data>
+  <data name="txt_Tool_plus" xml:space="preserve">
+    <value>利用高效实用的工具来辅助与提高您的日常工作</value>
+  </data>
+  <data name="txt_UnexpectedError" xml:space="preserve">
+    <value>非预期的错误</value>
+  </data>
+  <data name="txt_UnexpectedError_plus" xml:space="preserve">
+    <value>发生了一个非预期的错误，请联系系统管理员。</value>
+  </data>
+  <data name="txt_UserNotFound_Prefix" xml:space="preserve">
+    <value>未找到GID为 </value>
+  </data>
+  <data name="txt_UserNotFound_Suffix" xml:space="preserve">
+    <value>的用户</value>
+  </data>
+  <data name="txt_Welcome" xml:space="preserve">
+    <value>欢迎使用 SEWC ToolBox</value>
+  </data>
+  <data name="txt_Welcome_plus" xml:space="preserve">
+    <value>本服务站点将用于集中提供日常工作所需的报表、工具、链接及相关信息</value>
+  </data>
+  <data name="txt_SCM_Reporting_PerformanceMeasurement_BackOrders" xml:space="preserve">
+    <value>缺货</value>
+  </data>
+  <data name="txt_SCM_Reporting_PerformanceMeasurement_Capacity" xml:space="preserve">
+    <value>产能</value>
+  </data>
+  <data name="txt_SCM_Reporting_PerformanceMeasurement_FinancialKPIs" xml:space="preserve">
+    <value>财务绩效</value>
+  </data>
+  <data name="txt_SCM_Reporting_PerformanceMeasurement_Inventory" xml:space="preserve">
+    <value>库存</value>
+  </data>
+  <data name="txt_SCM_Reporting_PerformanceMeasurement_MaterialFlow" xml:space="preserve">
+    <value>物料流</value>
+  </data>
+  <data name="txt_SCM_Reporting_PerformanceMeasurement_ProductionControl" xml:space="preserve">
+    <value>生产控制</value>
+  </data>
+  <data name="txt_SCM_Reporting_PerformanceMeasurement_POManagement" xml:space="preserve">
+    <value>订单管理</value>
+  </data>
+  <data name="txt_SCM_Reporting_PerformanceMeasurement_SupplierManagement" xml:space="preserve">
+    <value>供应商管理</value>
+  </data>
+  <data name="txt_Owner" xml:space="preserve">
+    <value>所有者</value>
+  </data>
+  <data name="txt_Description" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="txt_SendEmailToOwner" xml:space="preserve">
+    <value>发送邮件至所有者</value>
+  </data>
+  <data name="txt_CollapseAll" xml:space="preserve">
+    <value>全部收起 (快捷键 Ctrl + 上箭头)</value>
+  </data>
+  <data name="txt_ExpandAll" xml:space="preserve">
+    <value>全部展开 (快捷键 Ctrl + 下箭头)</value>
+  </data>
+  <data name="txt_ClickStatistics" xml:space="preserve">
+    <value>当月点击统计</value>
+  </data>
+  <data name="txt_AddToFavorites" xml:space="preserve">
+    <value>添加收藏</value>
+  </data>
+  <data name="txt_RemoveFromFavorites" xml:space="preserve">
+    <value>取消收藏</value>
+  </data>
+  <data name="txt_AddFavorite_Successed" xml:space="preserve">
+    <value>已添加至收藏</value>
+  </data>
+  <data name="txt_RemoveFavorite_Successed" xml:space="preserve">
+    <value>已从收藏移除</value>
+  </data>
+  <data name="txt_AddToFavorites_Failed" xml:space="preserve">
+    <value>添加至收藏失败，请联系管理员</value>
+  </data>
+  <data name="txt_RemoveFavorites_Failed" xml:space="preserve">
+    <value>从收藏移除失败，请联系管理员</value>
+  </data>
+  <data name="txt_Visit" xml:space="preserve">
+    <value>访问</value>
+  </data>
+  <data name="txt_AddReport" xml:space="preserve">
+    <value>添加新报表</value>
+  </data>
+  <data name="txt_Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="txt_Description_plus" xml:space="preserve">
+    <value>请输入报表简要描述</value>
+  </data>
+  <data name="txt_ReportName" xml:space="preserve">
+    <value>报表名称</value>
+  </data>
+  <data name="txt_ReportName_Plus" xml:space="preserve">
+    <value>请输入新的报表名称</value>
+  </data>
+  <data name="txt_Owner_Desc" xml:space="preserve">
+    <value>用户名、员工号、GID、职称或邮件地址</value>
+  </data>
+  <data name="txt_Owner_Plus" xml:space="preserve">
+    <value>请输入关键字进行检索</value>
+  </data>
+  <data name="txt_Photo" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="txt_Status" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="txt_Status_Disabled" xml:space="preserve">
+    <value>禁用</value>
+  </data>
+  <data name="txt_Status_Enabled" xml:space="preserve">
+    <value>启用</value>
+  </data>
+  <data name="txt_Upload" xml:space="preserve">
+    <value>上传</value>
+  </data>
+  <data name="txt_Linkage" xml:space="preserve">
+    <value>链接</value>
+  </data>
+  <data name="txt_Linkage_plus" xml:space="preserve">
+    <value>请填写链接地址</value>
+  </data>
+  <data name="txt_Category" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="txt_Frequency" xml:space="preserve">
+    <value>更新频率</value>
+  </data>
+  <data name="txt_Reset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="txt_Submit" xml:space="preserve">
+    <value>提交</value>
+  </data>
+  <data name="txt_Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="txt_UserNotFound" xml:space="preserve">
+    <value>无搜索结果</value>
+  </data>
+  <data name="txt_Uploaded" xml:space="preserve">
+    <value>上传成功</value>
+  </data>
+  <data name="txt_Creation_Failed" xml:space="preserve">
+    <value>创建失败，请联系系统管理员</value>
+  </data>
+  <data name="txt_Creation_Successed" xml:space="preserve">
+    <value>创建成功</value>
+  </data>
+  <data name="txt_Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="txt_Deletion_Failed" xml:space="preserve">
+    <value>删除失败，请联系系统管理员</value>
+  </data>
+  <data name="txt_Deletion_Successed" xml:space="preserve">
+    <value>删除成功</value>
+  </data>
+  <data name="txt_Modification_Failed" xml:space="preserve">
+    <value>修改失败，请联系系统管理员</value>
+  </data>
+  <data name="txt_Modification_Successed" xml:space="preserve">
+    <value>修改成功</value>
+  </data>
+  <data name="txt_LastReloadTime" xml:space="preserve">
+    <value>上次更新时间</value>
+  </data>
+  <data name="txt_SCM_QuickLink_Links" xml:space="preserve">
+    <value>链接</value>
+  </data>
+  <data name="txt_SCM_QuickLink_Projects" xml:space="preserve">
+    <value>项目</value>
+  </data>
+  <data name="txt_SCM_QuickLink_Tools" xml:space="preserve">
+    <value>工具</value>
+  </data>
+  <data name="txt_SCM_QuickLink_Trainings" xml:space="preserve">
+    <value>培训</value>
+  </data>
+  <data name="txt_GetAccess" xml:space="preserve">
+    <value>权限申请</value>
+  </data>
+  <data name="txt_AccessOwner" xml:space="preserve">
+    <value>权限所有者</value>
+  </data>
+  <data name="txt_AddQuickLink_Tools" xml:space="preserve">
+    <value>添加新工具</value>
+  </data>
+  <data name="txt_AddQuickLink_Links" xml:space="preserve">
+    <value>添加新链接</value>
+  </data>
+  <data name="txt_AddQuickLink_Trainings" xml:space="preserve">
+    <value>添加新培训</value>
+  </data>
+  <data name="txt_AddQuickLink_Projects" xml:space="preserve">
+    <value>添加新项目</value>
+  </data>
+  <data name="txt_QuickLinkName" xml:space="preserve">
+    <value>快速链接名称</value>
+  </data>
+  <data name="txt_QuickLinkName_plus" xml:space="preserve">
+    <value>请输入新的快速链接名称</value>
+  </data>
+  <data name="txt_Type" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="txt_EmailSent" xml:space="preserve">
+    <value>邮件已发送</value>
+  </data>
+  <data name="txt_SelectAll" xml:space="preserve">
+    <value>全选</value>
+  </data>
+  <data name="txt_UnselectAll" xml:space="preserve">
+    <value>全不选</value>
+  </data>
+  <data name="txt_AddCustomization" xml:space="preserve">
+    <value>添加自定义内容</value>
+  </data>
+  <data name="txt_SCM_Home_MyToolBox_Customization" xml:space="preserve">
+    <value>自定义内容</value>
+  </data>
+  <data name="txt_SCM_Home_MyToolBox_QuickLink" xml:space="preserve">
+    <value>快速链接</value>
+  </data>
+  <data name="txt_SCM_Home_MyToolBox_Reporting" xml:space="preserve">
+    <value>报表</value>
+  </data>
+  <data name="txt_Customization_Description" xml:space="preserve">
+    <value>您可以在此添加自定义的内容</value>
+  </data>
+  <data name="txt_FavoriteQuickLink_Description" xml:space="preserve">
+    <value>您可以在此对添加至收藏的快速链接进行快速访问</value>
+  </data>
+  <data name="txt_FavoriteReporting_Description" xml:space="preserve">
+    <value>您可以在此对添加至收藏的报表进行快速访问</value>
+  </data>
+  <data name="txt_FavoriteReporting_NoData_Description" xml:space="preserve">
+    <value>您尚未添加任何报表至您的收藏</value>
+  </data>
+  <data name="txt_QuickLink_Description" xml:space="preserve">
+    <value>您可以查看快速链接的基础信息，也可以直接进行访问</value>
+  </data>
+  <data name="txt_QuickLink_NoData_Description" xml:space="preserve">
+    <value>此条件下未查询到任何快速链接</value>
+  </data>
+  <data name="txt_Reporting_Description" xml:space="preserve">
+    <value>您可以查看报表的基础信息，也可以直接进行访问</value>
+  </data>
+  <data name="txt_Reporting_MultipleAccess_Description" xml:space="preserve">
+    <value>请选择您需要申请权限的报表并提交</value>
+  </data>
+  <data name="txt_Reporting_NoData_Description" xml:space="preserve">
+    <value>此条件下未查询到任何报表</value>
+  </data>
+  <data name="txt_Customization_NoData_Description" xml:space="preserve">
+    <value>您尚未创建任何自定义内容，如有需要请点击创建</value>
+  </data>
+  <data name="txt_FavoriteQuickLink_NoData_Description" xml:space="preserve">
+    <value>您尚未添加任何快速链接至您的收藏</value>
+  </data>
+  <data name="txt_ReportCategory_PerformanceMeasurement" xml:space="preserve">
+    <value>以绩效管理分类</value>
+  </data>
+  <data name="txt_ReportCategory_UpdateFrequency" xml:space="preserve">
+    <value>以更新频率分类</value>
+  </data>
+  <data name="txt_CustomizationCategory" xml:space="preserve">
+    <value>自定义类型</value>
+  </data>
+  <data name="txt_CustomizationCategory_plus" xml:space="preserve">
+    <value>请输入一个类别名称</value>
+  </data>
+  <data name="txt_CustomizationName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="txt_CustomizationName_plus" xml:space="preserve">
+    <value>请输入自定义内容的名称</value>
+  </data>
+  <data name="txt_Input" xml:space="preserve">
+    <value>输入</value>
+  </data>
+  <data name="txt_Select" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="txt_CustomizationCategory_NoData" xml:space="preserve">
+    <value>无已存在的自定义类别可供选择，请手动输入</value>
+  </data>
+  <data name="txt_Version" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="txt_SCM_Reporting_PerformanceMeasurement_MaterialControl" xml:space="preserve">
+    <value>原材料控制</value>
+  </data>
+  <data name="txt_SCM_Workflow" xml:space="preserve">
+    <value>SCM 流程示意图</value>
+  </data>
+  <data name="txt_Disabled" xml:space="preserve">
+    <value>已禁用</value>
+  </data>
+  <data name="txt_Disabled_plus" xml:space="preserve">
+    <value>禁用对用户不可见，对您仍然可见是因为您是其所有者或具有更高权限</value>
+  </data>
+  <data name="txt_Sort" xml:space="preserve">
+    <value>排序号</value>
+  </data>
+  <data name="txt_Sort_plus" xml:space="preserve">
+    <value>请输入正整数作为排序号</value>
+  </data>
+  <data name="txt_Management" xml:space="preserve">
+    <value>站内管理</value>
+  </data>
+  <data name="txt_Management_UserRole" xml:space="preserve">
+    <value>人员角色</value>
+  </data>
+  <data name="txt_Management_MenuManagement" xml:space="preserve">
+    <value>菜单管理</value>
+  </data>
+  <data name="txt_CheckChangeSelection" xml:space="preserve">
+    <value>点击选中或取消</value>
+  </data>
+  <data name="txt_Management_UserRole_NoData_Description" xml:space="preserve">
+    <value>暂无站内用户角色</value>
+  </data>
+  <data name="txt_Management_UserRole_Description" xml:space="preserve">
+    <value>您可以浏览站内的用户角色</value>
+  </data>
+  <data name="txt_AddUserRole" xml:space="preserve">
+    <value>添加用户角色</value>
+  </data>
+  <data name="btn_userRole_Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="txt_Operation" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="txt_RN" xml:space="preserve">
+    <value>序号</value>
+  </data>
+  <data name="txt_UserName" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="txt_UserRole" xml:space="preserve">
+    <value>角色</value>
+  </data>
+  <data name="txt_UserRole_Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="txt_UserRole_View" xml:space="preserve">
+    <value>查看权限</value>
+  </data>
+  <data name="txt_Implementing" xml:space="preserve">
+    <value>开发中，敬请期待...</value>
+  </data>
+  <data name="txt_PersonalRole" xml:space="preserve">
+    <value>站内角色</value>
+  </data>
+  <data name="txt_PersonalRole_plus" xml:space="preserve">
+    <value>以下是您所拥有的站内角色</value>
+  </data>
+  <data name="txt_AllDepts" xml:space="preserve">
+    <value>所有部门</value>
+  </data>
+  <data name="txt_RestOfDepts" xml:space="preserve">
+    <value>其余部门</value>
+  </data>
+  <data name="txt_Dept" xml:space="preserve">
+    <value>部门</value>
+  </data>
+  <data name="txt_UserRole_ContentAdmin" xml:space="preserve">
+    <value>内容管理员</value>
+  </data>
+  <data name="txt_UserRole_ContentAdmin_Description" xml:space="preserve">
+    <value>具有所有内容只读权限，并对所有内容具有新增、编辑和删除权限</value>
+  </data>
+  <data name="txt_UserRole_ContentEditor" xml:space="preserve">
+    <value>内容编辑</value>
+  </data>
+  <data name="txt_UserRole_ContentEditor_Description" xml:space="preserve">
+    <value>具有公共内容只读权限，并对所有者为自己的内容有编辑权限</value>
+  </data>
+  <data name="txt_UserRole_ContentOwner" xml:space="preserve">
+    <value>内容所有者</value>
+  </data>
+  <data name="txt_UserRole_ContentOwner_Description" xml:space="preserve">
+    <value>具有公共内容只读权限，并对所有者为自己的内容有编辑和删除权限</value>
+  </data>
+  <data name="txt_UserRole_ElementAdmin" xml:space="preserve">
+    <value>元素管理员</value>
+  </data>
+  <data name="txt_UserRole_ElementAdmin_Description" xml:space="preserve">
+    <value>具有所有内容只读权限，并对所有内容、菜单、权限等元素具有新增、编辑和删除权限</value>
+  </data>
+  <data name="txt_UserRole_ReadOnly_All" xml:space="preserve">
+    <value>所有内容只读</value>
+  </data>
+  <data name="txt_UserRole_ReadOnly_All_Description" xml:space="preserve">
+    <value>对所有的内容只读</value>
+  </data>
+  <data name="txt_UserRole_ReadOnly_Own" xml:space="preserve">
+    <value>个人内容只读</value>
+  </data>
+  <data name="txt_UserRole_ReadOnly_Own_Description" xml:space="preserve">
+    <value>仅对所有者为自己的内容只读</value>
+  </data>
+  <data name="txt_UserRole_ReadOnly_Public" xml:space="preserve">
+    <value>公共内容只读</value>
+  </data>
+  <data name="txt_UserRole_ReadOnly_Public_Description" xml:space="preserve">
+    <value>仅对公共以及所有者为自己的内容只读</value>
+  </data>
+  <data name="txt_UserRole_SuperAdmin" xml:space="preserve">
+    <value>超级管理员</value>
+  </data>
+  <data name="txt_UserRole_SuperAdmin_Description" xml:space="preserve">
+    <value>对所有元素可见，并具有新增、编辑和删除权限</value>
+  </data>
+  <data name="txt_EntryDescription" xml:space="preserve">
+    <value>自定义描述</value>
+  </data>
+  <data name="txt_User" xml:space="preserve">
+    <value>人员</value>
+  </data>
+  <data name="txt_Role" xml:space="preserve">
+    <value>角色</value>
+  </data>
+  <data name="txt_AccessType" xml:space="preserve">
+    <value>权限类型</value>
+  </data>
+  <data name="txt_AccessType_C" xml:space="preserve">
+    <value>创建</value>
+  </data>
+  <data name="txt_AccessType_C0" xml:space="preserve">
+    <value>不能创建任何内容或元素</value>
+  </data>
+  <data name="txt_AccessType_C1" xml:space="preserve">
+    <value>可在指定部门中创建新内容</value>
+  </data>
+  <data name="txt_AccessType_C2" xml:space="preserve">
+    <value>可在指定部门中创建新内容或元素</value>
+  </data>
+  <data name="txt_AccessType_C99" xml:space="preserve">
+    <value>可在所有部门中添加新内容或元素</value>
+  </data>
+  <data name="txt_AccessType_D" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="txt_AccessType_D0" xml:space="preserve">
+    <value>不能删除任何内容或元素</value>
+  </data>
+  <data name="txt_AccessType_D1" xml:space="preserve">
+    <value>只能删除所有者是自己的内容</value>
+  </data>
+  <data name="txt_AccessType_D2" xml:space="preserve">
+    <value>可在指定部门中删除所有内容</value>
+  </data>
+  <data name="txt_AccessType_D3" xml:space="preserve">
+    <value>可在指定部门中删除所有内容或元素</value>
+  </data>
+  <data name="txt_AccessType_D99" xml:space="preserve">
+    <value>可在所有部门中删除所有内容或元素</value>
+  </data>
+  <data name="txt_AccessType_R" xml:space="preserve">
+    <value>读取</value>
+  </data>
+  <data name="txt_AccessType_R0" xml:space="preserve">
+    <value>仅可见公有元素、指定部门中所有者为自己的内容</value>
+  </data>
+  <data name="txt_AccessType_R1" xml:space="preserve">
+    <value>仅可见公有元素、公有内容、指定部门中所有者为自己的内容</value>
+  </data>
+  <data name="txt_AccessType_R2" xml:space="preserve">
+    <value>可见所有元素、指定部门中的所有内容</value>
+  </data>
+  <data name="txt_AccessType_R99" xml:space="preserve">
+    <value>可见对所有元素和内容</value>
+  </data>
+  <data name="txt_AccessType_U" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="txt_AccessType_U0" xml:space="preserve">
+    <value>不能更新任何内容或元素</value>
+  </data>
+  <data name="txt_AccessType_U1" xml:space="preserve">
+    <value>只能更新所有者是自己的内容</value>
+  </data>
+  <data name="txt_AccessType_U2" xml:space="preserve">
+    <value>可在指定部门中更新所有内容</value>
+  </data>
+  <data name="txt_AccessType_U3" xml:space="preserve">
+    <value>可在指定部门中更新所有内容或元素</value>
+  </data>
+  <data name="txt_AccessType_U99" xml:space="preserve">
+    <value>可在所有部门中更新所有内容或元素</value>
+  </data>
+  <data name="txt_UserRole_Existed" xml:space="preserve">
+    <value>该用户在该部门中已存在一个角色配置</value>
+  </data>
+  <data name="txt_UserRole_Authorities" xml:space="preserve">
+    <value>该角色所具有的权限</value>
+  </data>
+  <data name="txt_Process_Description" xml:space="preserve">
+    <value>选中节点可查看相关附属文件</value>
+  </data>
+  <data name="txt_Process_NoData_Description" xml:space="preserve">
+    <value>未找到任何流程数据</value>
+  </data>
+  <data name="txt_FileName" xml:space="preserve">
+    <value>文件名</value>
+  </data>
+  <data name="txt_ProcessLinkage_NoDocument" xml:space="preserve">
+    <value>选中节点无相关文档</value>
+  </data>
+  <data name="txt_ProcessLinkage_RelatedDocument" xml:space="preserve">
+    <value>文档列表</value>
+  </data>
+  <data name="txt_SCM_Process_Overview" xml:space="preserve">
+    <value>总览</value>
+  </data>
+  <data name="txt_Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="txt_InputKeywords" xml:space="preserve">
+    <value>请输入关键词</value>
+  </data>
+  <data name="txt_YourKeywords" xml:space="preserve">
+    <value>您搜索的关键词:</value>
+  </data>
+  <data name="txt_ProcessLinkage_NoReport" xml:space="preserve">
+    <value>选中节点无相关报表</value>
+  </data>
+  <data name="txt_ProcessLinkage_NoTool" xml:space="preserve">
+    <value>选中节点无相关工具</value>
+  </data>
+  <data name="txt_ProcessLinkage_RelatedReport" xml:space="preserve">
+    <value>报表列表</value>
+  </data>
+  <data name="txt_ProcessLinkage_RelatedTool" xml:space="preserve">
+    <value>工具列表</value>
+  </data>
+  <data name="txt_ToolName" xml:space="preserve">
+    <value>工具名称</value>
+  </data>
+  <data name="txt_ProcessLinkage_AddDocument" xml:space="preserve">
+    <value>添加文档链接</value>
+  </data>
+  <data name="txt_ProcessLinkage_AddReport" xml:space="preserve">
+    <value>添加报表链接</value>
+  </data>
+  <data name="txt_ProcessLinkage_AddTool" xml:space="preserve">
+    <value>添加工具链接</value>
+  </data>
+  <data name="txt_Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="txt_Name_plus" xml:space="preserve">
+    <value>请输入新名称</value>
+  </data>
+  <data name="txt_Admin" xml:space="preserve">
+    <value>管理员</value>
+  </data>
+  <data name="txt_Sub_Category" xml:space="preserve">
+    <value>SubCategory</value>
+  </data>
+  <data name="txt_SCM_RePorting_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="txt_SCM_RePorting_Finance" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+  <data name="txt_SCM_RePorting_Make" xml:space="preserve">
+    <value>Make</value>
+  </data>
+  <data name="txt_SCM_RePorting_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="txt_SCM_RePorting_Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+  <data name="txt_SCM_RePorting_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="txt_SCM_Reporting_FGPlanning" xml:space="preserve">
+    <value>FGPlanning</value>
+  </data>
+  <data name="txt_SCM_RePorting_ProductionControl" xml:space="preserve">
+    <value>ProductionControl</value>
+  </data>
+  <data name="txt_BusinessProcessManagement" xml:space="preserve">
+    <value>Business Process Management</value>
+  </data>
+  <data name="txt_SCM_MyToolBox" xml:space="preserve">
+    <value>我的工具箱</value>
+  </data>
+  <data name="txt_SCM_BusinessOverView" xml:space="preserve">
+    <value>Business OverView</value>
+  </data>
+  <data name="txt_CrOwner" xml:space="preserve">
+    <value>Cr Owner</value>
+  </data>
+  <data name="txt_Status_Maintaining" xml:space="preserve">
+    <value>维护中...</value>
+  </data>
+  <data name="txt_QM_Home" xml:space="preserve">
+    <value>主页</value>
+  </data>
+  <data name="txt_QM_Home_MyToolBox" xml:space="preserve">
+    <value>我的工具箱</value>
+  </data>
+  <data name="txt_QM_Home_MyToolBox_Customization" xml:space="preserve">
+    <value>自定义内容</value>
+  </data>
+  <data name="txt_QM_Home_MyToolBox_QuickLink" xml:space="preserve">
+    <value>快速链接</value>
+  </data>
+  <data name="txt_QM_Home_MyToolBox_Reporting" xml:space="preserve">
+    <value>报表</value>
+  </data>
+  <data name="txt_QM_Home_SCMToolBox" xml:space="preserve">
+    <value>SCM工具箱</value>
+  </data>
+  <data name="txt_QM_MyToolBox" xml:space="preserve">
+    <value>我的工具箱</value>
+  </data>
+  <data name="txt_QM_Process" xml:space="preserve">
+    <value>流程</value>
+  </data>
+  <data name="txt_QM_Process_Delivery" xml:space="preserve">
+    <value>交付</value>
+  </data>
+  <data name="txt_QM_Process_Make" xml:space="preserve">
+    <value>制造</value>
+  </data>
+  <data name="txt_QM_Process_Overview" xml:space="preserve">
+    <value>总览</value>
+  </data>
+  <data name="txt_QM_Process_Plan" xml:space="preserve">
+    <value>计划</value>
+  </data>
+  <data name="txt_QM_Process_Source" xml:space="preserve">
+    <value>采购</value>
+  </data>
+  <data name="txt_QM_QuickLink" xml:space="preserve">
+    <value>快速链接</value>
+  </data>
+  <data name="txt_QM_QuickLink_Links" xml:space="preserve">
+    <value>链接</value>
+  </data>
+  <data name="txt_QM_QuickLink_Projects" xml:space="preserve">
+    <value>项目</value>
+  </data>
+  <data name="txt_QM_QuickLink_Tools" xml:space="preserve">
+    <value>工具</value>
+  </data>
+  <data name="txt_QM_QuickLink_Trainings" xml:space="preserve">
+    <value>培训</value>
+  </data>
+  <data name="txt_QM_Reporting" xml:space="preserve">
+    <value>报表</value>
+  </data>
+  <data name="txt_QM_RePorting_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="txt_QM_Reporting_FGPlanning" xml:space="preserve">
+    <value>FGPlanning</value>
+  </data>
+  <data name="txt_QM_RePorting_Finance" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+  <data name="txt_QM_RePorting_Make" xml:space="preserve">
+    <value>Make</value>
+  </data>
+  <data name="txt_QM_Reporting_PerformanceMeasurement" xml:space="preserve">
+    <value>绩效管理</value>
+  </data>
+  <data name="txt_QM_Reporting_PerformanceMeasurement_BackOrders" xml:space="preserve">
+    <value>缺货</value>
+  </data>
+  <data name="txt_QM_Reporting_PerformanceMeasurement_Capacity" xml:space="preserve">
+    <value>产能</value>
+  </data>
+  <data name="txt_QM_Reporting_PerformanceMeasurement_Delivery" xml:space="preserve">
+    <value>出货</value>
+  </data>
+  <data name="txt_QM_Reporting_PerformanceMeasurement_FinancialKPIs" xml:space="preserve">
+    <value>财务绩效</value>
+  </data>
+  <data name="txt_QM_Reporting_PerformanceMeasurement_Inventory" xml:space="preserve">
+    <value>库存</value>
+  </data>
+  <data name="txt_QM_Reporting_PerformanceMeasurement_MaterialControl" xml:space="preserve">
+    <value>原材料控制</value>
+  </data>
+  <data name="txt_QM_Reporting_PerformanceMeasurement_MaterialFlow" xml:space="preserve">
+    <value>物料流</value>
+  </data>
+  <data name="txt_QM_Reporting_PerformanceMeasurement_OrderIntake_TurnOver" xml:space="preserve">
+    <value>订单/销售</value>
+  </data>
+  <data name="txt_QM_Reporting_PerformanceMeasurement_POManagement" xml:space="preserve">
+    <value>订单管理</value>
+  </data>
+  <data name="txt_QM_Reporting_PerformanceMeasurement_ProductionControl" xml:space="preserve">
+    <value>生产控制</value>
+  </data>
+  <data name="txt_QM_Reporting_PerformanceMeasurement_SupplierManagement" xml:space="preserve">
+    <value>供应商管理</value>
+  </data>
+  <data name="txt_QM_RePorting_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="txt_QM_RePorting_ProductionControl" xml:space="preserve">
+    <value>ProductionControl</value>
+  </data>
+  <data name="txt_QM_RePorting_Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+  <data name="txt_QM_RePorting_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="txt_QM_Reporting_UpdateFrequency" xml:space="preserve">
+    <value>更新频率</value>
+  </data>
+  <data name="txt_QM_Reporting_UpdateFrequency_Daily" xml:space="preserve">
+    <value>每天</value>
+  </data>
+  <data name="txt_QM_Reporting_UpdateFrequency_Monthly" xml:space="preserve">
+    <value>每月</value>
+  </data>
+  <data name="txt_QM_Reporting_UpdateFrequency_Quarterly" xml:space="preserve">
+    <value>每季度</value>
+  </data>
+  <data name="txt_QM_Reporting_UpdateFrequency_Weekly" xml:space="preserve">
+    <value>每周</value>
+  </data>
+  <data name="txt_QM_Reporting_UpdateFrequency_Yearly" xml:space="preserve">
+    <value>每年</value>
+  </data>
+  <data name="txt_QM_Workflow" xml:space="preserve">
+    <value>SCM 流程示意图</value>
+  </data>
+  <data name="txt_SEWC_BusinessOverView" xml:space="preserve">
+    <value>Business OverView</value>
+  </data>
+  <data name="txt_SEWC_Home" xml:space="preserve">
+    <value>主页</value>
+  </data>
+  <data name="txt_SEWC_Home_MyToolBox" xml:space="preserve">
+    <value>我的工具箱</value>
+  </data>
+  <data name="txt_SEWC_Home_MyToolBox_Customization" xml:space="preserve">
+    <value>自定义内容</value>
+  </data>
+  <data name="txt_SEWC_Home_MyToolBox_QuickLink" xml:space="preserve">
+    <value>快速链接</value>
+  </data>
+  <data name="txt_SEWC_Home_MyToolBox_Reporting" xml:space="preserve">
+    <value>报表</value>
+  </data>
+  <data name="txt_SEWC_Home_SCMToolBox" xml:space="preserve">
+    <value>SCM工具箱</value>
+  </data>
+  <data name="txt_SEWC_MyToolBox" xml:space="preserve">
+    <value>我的工具箱</value>
+  </data>
+  <data name="txt_SEWC_Process" xml:space="preserve">
+    <value>流程</value>
+  </data>
+  <data name="txt_SEWC_Process_Delivery" xml:space="preserve">
+    <value>交付</value>
+  </data>
+  <data name="txt_SEWC_Process_Make" xml:space="preserve">
+    <value>制造</value>
+  </data>
+  <data name="txt_SEWC_Process_Overview" xml:space="preserve">
+    <value>总览</value>
+  </data>
+  <data name="txt_SEWC_Process_Plan" xml:space="preserve">
+    <value>计划</value>
+  </data>
+  <data name="txt_SEWC_Process_Source" xml:space="preserve">
+    <value>采购</value>
+  </data>
+  <data name="txt_SEWC_QuickLink" xml:space="preserve">
+    <value>快速链接</value>
+  </data>
+  <data name="txt_SEWC_QuickLink_Links" xml:space="preserve">
+    <value>链接</value>
+  </data>
+  <data name="txt_SEWC_QuickLink_Projects" xml:space="preserve">
+    <value>项目</value>
+  </data>
+  <data name="txt_SEWC_QuickLink_Tools" xml:space="preserve">
+    <value>工具</value>
+  </data>
+  <data name="txt_SEWC_QuickLink_Trainings" xml:space="preserve">
+    <value>培训</value>
+  </data>
+  <data name="txt_SEWC_Reporting" xml:space="preserve">
+    <value>报表</value>
+  </data>
+  <data name="txt_SEWC_RePorting_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="txt_SEWC_Reporting_FGPlanning" xml:space="preserve">
+    <value>FGPlanning</value>
+  </data>
+  <data name="txt_SEWC_RePorting_Finance" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+  <data name="txt_SEWC_RePorting_Make" xml:space="preserve">
+    <value>Make</value>
+  </data>
+  <data name="txt_SEWC_Reporting_PerformanceMeasurement" xml:space="preserve">
+    <value>绩效管理</value>
+  </data>
+  <data name="txt_SEWC_Reporting_PerformanceMeasurement_BackOrders" xml:space="preserve">
+    <value>缺货</value>
+  </data>
+  <data name="txt_SEWC_Reporting_PerformanceMeasurement_Capacity" xml:space="preserve">
+    <value>产能</value>
+  </data>
+  <data name="txt_SEWC_Reporting_PerformanceMeasurement_Delivery" xml:space="preserve">
+    <value>出货</value>
+  </data>
+  <data name="txt_SEWC_Reporting_PerformanceMeasurement_FinancialKPIs" xml:space="preserve">
+    <value>财务绩效</value>
+  </data>
+  <data name="txt_SEWC_Reporting_PerformanceMeasurement_Inventory" xml:space="preserve">
+    <value>库存</value>
+  </data>
+  <data name="txt_SEWC_Reporting_PerformanceMeasurement_MaterialControl" xml:space="preserve">
+    <value>原材料控制</value>
+  </data>
+  <data name="txt_SEWC_Reporting_PerformanceMeasurement_MaterialFlow" xml:space="preserve">
+    <value>物料流</value>
+  </data>
+  <data name="txt_SEWC_Reporting_PerformanceMeasurement_OrderIntake_TurnOver" xml:space="preserve">
+    <value>订单/销售</value>
+  </data>
+  <data name="txt_SEWC_Reporting_PerformanceMeasurement_POManagement" xml:space="preserve">
+    <value>订单管理</value>
+  </data>
+  <data name="txt_SEWC_Reporting_PerformanceMeasurement_ProductionControl" xml:space="preserve">
+    <value>生产控制</value>
+  </data>
+  <data name="txt_SEWC_Reporting_PerformanceMeasurement_SupplierManagement" xml:space="preserve">
+    <value>供应商管理</value>
+  </data>
+  <data name="txt_SEWC_RePorting_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="txt_SEWC_RePorting_ProductionControl" xml:space="preserve">
+    <value>ProductionControl</value>
+  </data>
+  <data name="txt_SEWC_RePorting_Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+  <data name="txt_SEWC_RePorting_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="txt_SEWC_Reporting_UpdateFrequency" xml:space="preserve">
+    <value>更新频率</value>
+  </data>
+  <data name="txt_SEWC_Reporting_UpdateFrequency_Daily" xml:space="preserve">
+    <value>每天</value>
+  </data>
+  <data name="txt_SEWC_Reporting_UpdateFrequency_Monthly" xml:space="preserve">
+    <value>每月</value>
+  </data>
+  <data name="txt_SEWC_Reporting_UpdateFrequency_Quarterly" xml:space="preserve">
+    <value>每季度</value>
+  </data>
+  <data name="txt_SEWC_Reporting_UpdateFrequency_Weekly" xml:space="preserve">
+    <value>每周</value>
+  </data>
+  <data name="txt_SEWC_Reporting_UpdateFrequency_Yearly" xml:space="preserve">
+    <value>每年</value>
+  </data>
+  <data name="txt_SEWC_Workflow" xml:space="preserve">
+    <value>SCM 流程示意图</value>
+  </data>
+  <data name="txt_FavoriteFiles_Description" xml:space="preserve">
+    <value>您可以在此对添加至收藏的文档链接进行快速访问</value>
+  </data>
+  <data name="txt_appIds" xml:space="preserve">
+    <value>旧报表Id</value>
+  </data>
+  <data name="txt_BusyNetwork" xml:space="preserve">
+    <value>网络繁忙</value>
+  </data>
+  <data name="txt_Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="txt_CreateUser" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="txt_Exception" xml:space="preserve">
+    <value>操作异常</value>
+  </data>
+  <data name="txt_Failed" xml:space="preserve">
+    <value>操作失败</value>
+  </data>
+  <data name="txt_HandleIssue" xml:space="preserve">
+    <value>处理问题</value>
+  </data>
+  <data name="txt_HandleTime" xml:space="preserve">
+    <value>处理时间</value>
+  </data>
+  <data name="txt_HandleUser" xml:space="preserve">
+    <value>处理人</value>
+  </data>
+  <data name="txt_Issue" xml:space="preserve">
+    <value>问题</value>
+  </data>
+  <data name="txt_IssueActionFaild" xml:space="preserve">
+    <value>激活失败</value>
+  </data>
+  <data name="txt_IssueActionFaild_C1" xml:space="preserve">
+    <value>问题已经处撤销，不能从新激活</value>
+  </data>
+  <data name="txt_IssueActionSuccess" xml:space="preserve">
+    <value>激活成功</value>
+  </data>
+  <data name="txt_IssueActiveConfirm" xml:space="preserve">
+    <value>你确定要激活？</value>
+  </data>
+  <data name="txt_IssueBtnAction" xml:space="preserve">
+    <value>激活</value>
+  </data>
+  <data name="txt_IssueBtnHandle" xml:space="preserve">
+    <value>处理</value>
+  </data>
+  <data name="txt_IssueBtnRevoke" xml:space="preserve">
+    <value>撤销</value>
+  </data>
+  <data name="txt_IssuePending" xml:space="preserve">
+    <value>待处理</value>
+  </data>
+  <data name="txt_IssueProcessed" xml:space="preserve">
+    <value>已处理</value>
+  </data>
+  <data name="txt_IssueRevokeConfirm" xml:space="preserve">
+    <value>你确定要撤回吗？</value>
+  </data>
+  <data name="txt_IssueRevokeFaild" xml:space="preserve">
+    <value>撤销失败</value>
+  </data>
+  <data name="txt_IssueRevokeFaild_C1" xml:space="preserve">
+    <value>问题已经处理，不能进行撤销</value>
+  </data>
+  <data name="txt_IssueRevokeSuccess" xml:space="preserve">
+    <value>撤销成功</value>
+  </data>
+  <data name="txt_ISSUE_Index" xml:space="preserve">
+    <value>问题反馈</value>
+  </data>
+  <data name="txt_Loading" xml:space="preserve">
+    <value>加载中</value>
+  </data>
+  <data name="txt_NoPermission" xml:space="preserve">
+    <value>无权限</value>
+  </data>
+  <data name="txt_PlsSelect" xml:space="preserve">
+    <value>请选择</value>
+  </data>
+  <data name="txt_Reason" xml:space="preserve">
+    <value>原因</value>
+  </data>
+  <data name="txt_Solution" xml:space="preserve">
+    <value>解决方案</value>
+  </data>
+  <data name="txt_Success" xml:space="preserve">
+    <value>操作成功</value>
+  </data>
+  <data name="txt_Ok" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="txt_CreateTime" xml:space="preserve">
+    <value>创建时间</value>
+  </data>
+  <data name="txt_Detail" xml:space="preserve">
+    <value>详情</value>
+  </data>
+  <data name="txt_View" xml:space="preserve">
+    <value>浏览</value>
+  </data>
+  <data name="txt_IssueSolved" xml:space="preserve">
+    <value>已解决</value>
+  </data>
+  <data name="txt_Export" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="txt_CopyReporkLinkFailed" xml:space="preserve">
+    <value>复制文件路径失败。</value>
+  </data>
+  <data name="txt_CopyReporkLinkSucess" xml:space="preserve">
+    <value>共享文件路径已复制，请新开浏览器窗口打开！</value>
+  </data>
+  <data name="txt_Error" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="txt_Info" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="txt_Uploaded_Fail" xml:space="preserve">
+    <value>上传失败</value>
+  </data>
+	<data name="txt_SSML_BusinessOverView" xml:space="preserve">
+    <value>Business OverView</value>
+  </data>
+	<data name="txt_SSML_Home" xml:space="preserve">
+    <value>主页</value>
+  </data>
+	<data name="txt_SSML_Home_MyToolBox" xml:space="preserve">
+    <value>我的工具箱</value>
+  </data>
+	<data name="txt_SSML_Home_MyToolBox_Customization" xml:space="preserve">
+    <value>自定义内容</value>
+  </data>
+	<data name="txt_SSML_Home_MyToolBox_QuickLink" xml:space="preserve">
+    <value>快速链接</value>
+  </data>
+	<data name="txt_SSML_Home_MyToolBox_Reporting" xml:space="preserve">
+    <value>报表</value>
+  </data>
+	<data name="txt_SSML_Home_SCMToolBox" xml:space="preserve">
+    <value>SCM工具箱</value>
+  </data>
+	<data name="txt_SSML_MyToolBox" xml:space="preserve">
+    <value>我的工具箱</value>
+  </data>
+	<data name="txt_SSML_Process" xml:space="preserve">
+    <value>流程</value>
+  </data>
+	<data name="txt_SSML_Process_Delivery" xml:space="preserve">
+    <value>交付</value>
+  </data>
+	<data name="txt_SSML_Process_Make" xml:space="preserve">
+    <value>制造</value>
+  </data>
+	<data name="txt_SSML_Process_Overview" xml:space="preserve">
+    <value>总览</value>
+  </data>
+	<data name="txt_SSML_Process_Plan" xml:space="preserve">
+    <value>计划</value>
+  </data>
+	<data name="txt_SSML_Process_Source" xml:space="preserve">
+    <value>采购</value>
+  </data>
+	<data name="txt_SSML_QuickLink" xml:space="preserve">
+    <value>快速链接</value>
+  </data>
+	<data name="txt_SSML_QuickLink_Links" xml:space="preserve">
+    <value>链接</value>
+  </data>
+	<data name="txt_SSML_QuickLink_Projects" xml:space="preserve">
+    <value>项目</value>
+  </data>
+	<data name="txt_SSML_QuickLink_Tools" xml:space="preserve">
+    <value>工具</value>
+  </data>
+	<data name="txt_SSML_QuickLink_Trainings" xml:space="preserve">
+    <value>培训</value>
+  </data>
+	<data name="txt_SSML_Reporting" xml:space="preserve">
+    <value>报表</value>
+  </data>
+	<data name="txt_SSML_RePorting_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+	<data name="txt_SSML_Reporting_FGPlanning" xml:space="preserve">
+    <value>FGPlanning</value>
+  </data>
+	<data name="txt_SSML_RePorting_Finance" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+	<data name="txt_SSML_RePorting_Make" xml:space="preserve">
+    <value>Make</value>
+  </data>
+	<data name="txt_SSML_Reporting_PerformanceMeasurement" xml:space="preserve">
+    <value>绩效管理</value>
+  </data>
+	<data name="txt_SSML_Reporting_PerformanceMeasurement_BackOrders" xml:space="preserve">
+    <value>缺货</value>
+  </data>
+	<data name="txt_SSML_Reporting_PerformanceMeasurement_Capacity" xml:space="preserve">
+    <value>产能</value>
+  </data>
+	<data name="txt_SSML_Reporting_PerformanceMeasurement_Delivery" xml:space="preserve">
+    <value>出货</value>
+  </data>
+	<data name="txt_SSML_Reporting_PerformanceMeasurement_FinancialKPIs" xml:space="preserve">
+    <value>财务绩效</value>
+  </data>
+	<data name="txt_SSML_Reporting_PerformanceMeasurement_Inventory" xml:space="preserve">
+    <value>库存</value>
+  </data>
+	<data name="txt_SSML_Reporting_PerformanceMeasurement_MaterialControl" xml:space="preserve">
+    <value>原材料控制</value>
+  </data>
+	<data name="txt_SSML_Reporting_PerformanceMeasurement_MaterialFlow" xml:space="preserve">
+    <value>物料流</value>
+  </data>
+	<data name="txt_SSML_Reporting_PerformanceMeasurement_OrderIntake_TurnOver" xml:space="preserve">
+    <value>订单/销售</value>
+  </data>
+	<data name="txt_SSML_Reporting_PerformanceMeasurement_POManagement" xml:space="preserve">
+    <value>订单管理</value>
+  </data>
+	<data name="txt_SSML_Reporting_PerformanceMeasurement_ProductionControl" xml:space="preserve">
+    <value>生产控制</value>
+  </data>
+	<data name="txt_SSML_Reporting_PerformanceMeasurement_SupplierManagement" xml:space="preserve">
+    <value>供应商管理</value>
+  </data>
+	<data name="txt_SSML_RePorting_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+	<data name="txt_SSML_RePorting_ProductionControl" xml:space="preserve">
+    <value>ProductionControl</value>
+  </data>
+	<data name="txt_SSML_RePorting_Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+	<data name="txt_SSML_RePorting_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+	<data name="txt_SSML_Reporting_UpdateFrequency" xml:space="preserve">
+    <value>更新频率</value>
+  </data>
+	<data name="txt_SSML_Reporting_UpdateFrequency_Daily" xml:space="preserve">
+    <value>每天</value>
+  </data>
+	<data name="txt_SSML_Reporting_UpdateFrequency_Monthly" xml:space="preserve">
+    <value>每月</value>
+  </data>
+	<data name="txt_SSML_Reporting_UpdateFrequency_Quarterly" xml:space="preserve">
+    <value>每季度</value>
+  </data>
+	<data name="txt_SSML_Reporting_UpdateFrequency_Weekly" xml:space="preserve">
+    <value>每周</value>
+  </data>
+	<data name="txt_SSML_Reporting_UpdateFrequency_Yearly" xml:space="preserve">
+    <value>每年</value>
+  </data>
+	<data name="txt_SSML_Workflow" xml:space="preserve">
+    <value>SCM 流程示意图</value>
+  </data>
+</root>

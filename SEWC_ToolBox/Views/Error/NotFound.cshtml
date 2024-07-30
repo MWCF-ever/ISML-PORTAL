@@ -1,0 +1,29 @@
+﻿@using SEWC_ToolBox.Languages;
+@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "404 Not Found";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+
+<link rel="Shortcut Icon" href="~/Img/favicon.png" type="image/x-icon"> 
+
+<div class="container body-content">
+
+    <div class="list-header clearfix">
+        <h2>@ViewBag.Title</h2>
+    </div>
+
+    <div class="list-sfs-holder">
+
+        <div class="alert alert-error">
+            <h4>@Html.Lang("txt_404NotFound_plus")</h4>
+        </div>
+
+        <div>
+            <img  class="img_contentMsg" src="~/Img/404.jpg" />
+        </div>
+
+    </div>
+
+</div>

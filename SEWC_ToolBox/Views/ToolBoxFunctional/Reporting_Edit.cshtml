@@ -1,0 +1,386 @@
+﻿@using SEWC_ToolBox.Languages;
+@using SEWC_ToolBox.DAL.EFs;
+@using System.Text;
+
+@{
+    Layout = "~/Views/Shared/_Layout_Function.cshtml";
+    ViewBag.Title = "Edit Report";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+    var preURL = AppConfig.PreURL;
+}
+
+@Scripts.Render("~/Scripts/CustomScripts/ToolBoxFunctional/Reporting?v=" + ViewBag.VersionNo)
+
+<div class="container">
+
+    @{
+        StringBuilder HtmlBuilder = new StringBuilder();
+
+        if (ViewBag.TargetReport != null)
+        {
+            t_Report TargetReport = ViewBag.TargetReport as t_Report;
+
+            HtmlBuilder.Append("<form class='layui-form  layui-form-pane' action=''>");
+
+            // 隐藏域
+            HtmlBuilder.Append("<div class='hidden'>");
+            HtmlBuilder.Append("<input type='text' id='input_reportID' name='input_reportID' readonly='readonly' value='" + TargetReport.r_ID + "' />");
+            HtmlBuilder.Append("<input type='text' id='input_CreatUser' name='input_CreatUser' readonly='readonly' value='" + TargetReport.CreateUser + "' />");
+            HtmlBuilder.Append("<input type='text' id='input_reportGUID' name='input_reportGUID' readonly='readonly' value='" + TargetReport.r_GUID + "' />");
+            HtmlBuilder.Append("<input type='text' id='input_deptID' name='input_deptID' readonly='readonly' value='" + TargetReport.r_m_DeptID + "' />");
+            HtmlBuilder.Append("</div>");
+
+            // 报表属性
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_ReportName") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<input type='text' id='input_reportName' name='input_reportName' required lay-verify='required' placeholder='" + Html.Lang("txt_ReportName_Plus") + "' autocomplete='off' class='layui-input' value='" + TargetReport.r_Name + "' />");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Linkage") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<input type='text' id='input_linkage' name='input_linkage' required lay-verify='required' placeholder='" + Html.Lang("txt_Linkage_plus") + "' autocomplete='off' class='layui-input' value='" + TargetReport.r_Linkage + "' />");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item' pane>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Status") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+
+            if (TargetReport.r_Status.Value == 1)
+            {
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='1' title='" + Html.Lang("txt_Status_Enabled") + "' checked />");
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='0' title='" + Html.Lang("txt_Status_Disabled") + "' />");
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='2' title='" + Html.Lang("txt_Status_Maintaining") + "' />");
+            }
+            else if (TargetReport.r_Status.Value == 2)
+            {
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='1' title='" + Html.Lang("txt_Status_Enabled") + "' />");
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='0' title='" + Html.Lang("txt_Status_Disabled") + "' />");
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='2' title='" + Html.Lang("txt_Status_Maintaining") + "' checked />");
+            }
+            else
+            {
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='1' title='" + Html.Lang("txt_Status_Enabled") + "' />");
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='0' title='" + Html.Lang("txt_Status_Disabled") + "' checked />");
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='2' title='" + Html.Lang("txt_Status_Maintaining") + "' />");
+            }
+
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Owner") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+
+            if (ViewBag.OwnerList != null)
+            {
+                List<v_User> OwnerList = ViewBag.OwnerList as List<v_User>;
+
+                for (int i = 0; i < OwnerList.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        HtmlBuilder.Append("<select name='select_Owner' lay-verify='required' lay-search>");
+                    }
+
+                    // 与报表的Owner相同时选中
+                    if (OwnerList[i].User_GID.ToUpper().Equals(TargetReport.r_Owner))
+                    {
+                        HtmlBuilder.Append("<option value='" + OwnerList[i].User_GID.ToUpper() + "' selected='selected'>" + OwnerList[i].User_Name_EN + "(" + OwnerList[i].User_GID.ToUpper() + ") - " + OwnerList[i].Job_Function + "</option>");
+                    }
+                    else
+                    {
+                        HtmlBuilder.Append("<option value='" + OwnerList[i].User_GID.ToUpper() + "'>" + OwnerList[i].User_Name_EN + "(" + OwnerList[i].User_GID.ToUpper() + ") - " + OwnerList[i].Job_Function + "</option>");
+                    }
+
+
+                    if (i == OwnerList.Count - 1)
+                    {
+                        HtmlBuilder.Append("</select>");
+                    }
+                }
+            }
+
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_CrOwner") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+
+            if (ViewBag.OwnerList != null)
+            {
+                List<v_User> CROwnerList = ViewBag.OwnerList as List<v_User>;
+
+                for (int i = 0; i < CROwnerList.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        HtmlBuilder.Append("<select name='select_CROwner' lay-verify='required' lay-search>");
+                    }
+
+                    // 与报表的Owner相同时选中
+                    if (CROwnerList[i].User_GID.ToUpper().Equals(TargetReport.r_CROwner))
+                    {
+                        HtmlBuilder.Append("<option value='" + CROwnerList[i].User_GID.ToUpper() + "' selected='selected'>" + CROwnerList[i].User_Name_EN + "(" + CROwnerList[i].User_GID.ToUpper() + ") - " + CROwnerList[i].Job_Function + "</option>");
+                    }
+                    else
+                    {
+                        HtmlBuilder.Append("<option value='" + CROwnerList[i].User_GID.ToUpper() + "'>" + CROwnerList[i].User_Name_EN + "(" + CROwnerList[i].User_GID.ToUpper() + ") - " + CROwnerList[i].Job_Function + "</option>");
+                    }
+
+
+                    if (i == CROwnerList.Count - 1)
+                    {
+                        HtmlBuilder.Append("</select>");
+                    }
+                }
+            }
+
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_AccessOwner") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+
+            if (ViewBag.OwnerList != null)
+            {
+                List<v_User> OwnerList = ViewBag.OwnerList as List<v_User>;
+
+                for (int i = 0; i < OwnerList.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        HtmlBuilder.Append("<select name='select_AccessOwner' lay-verify='required' lay-search>");
+                    }
+
+                    // 与报表的Owner相同时选中
+                    if (OwnerList[i].User_GID.ToUpper().Equals(TargetReport.r_AccessOwner))
+                    {
+                        HtmlBuilder.Append("<option value='" + OwnerList[i].User_GID.ToUpper() + "' selected='selected'>" + OwnerList[i].User_Name_EN + "(" + OwnerList[i].User_GID.ToUpper() + ") - " + OwnerList[i].Job_Function + "</option>");
+                    }
+                    else
+                    {
+                        HtmlBuilder.Append("<option value='" + OwnerList[i].User_GID.ToUpper() + "'>" + OwnerList[i].User_Name_EN + "(" + OwnerList[i].User_GID.ToUpper() + ") - " + OwnerList[i].Job_Function + "</option>");
+                    }
+
+
+                    if (i == OwnerList.Count - 1)
+                    {
+                        HtmlBuilder.Append("</select>");
+                    }
+                }
+            }
+
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Admin") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+
+            if (ViewBag.OwnerList != null)
+            {
+                //List<v_UserRole> AdminList = ViewBag.AdminList as List<v_UserRole>;
+                List<v_User> AdminList = ViewBag.OwnerList as List<v_User>;
+
+                for (int i = 0; i < AdminList.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        HtmlBuilder.Append("<select name='select_Admin' lay-verify='required' lay-search>");
+                    }
+
+                    // 与报表的Access Owner相同时选中
+                    if (AdminList[i].User_GID.ToUpper().Equals(TargetReport.r_Admin))
+                    {
+                        HtmlBuilder.Append("<option value='" + AdminList[i].User_GID.ToUpper() + "' selected='selected'>" + AdminList[i].User_DisplayText + "</option>");
+                    }
+                    else
+                    {
+                        HtmlBuilder.Append("<option value='" + AdminList[i].User_GID.ToUpper() + "'>" + AdminList[i].User_DisplayText + "</option>");
+                    }
+
+                    if (i == AdminList.Count - 1)
+                    {
+                        HtmlBuilder.Append("</select>");
+                    }
+                }
+            }
+
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + @Html.Lang("txt_Category") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+
+            StringBuilder SubCategoryBuilder = new StringBuilder();
+
+            if (ViewBag.CategoryList != null)
+            {
+                List<v_MenuList> SubCategoryList = ViewBag.SubCategoryList as List<v_MenuList>;
+                int? LastSubMenuID = null;
+
+                for (int i = 0; i < SubCategoryList.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        SubCategoryBuilder.Append("<select id='select_SubCategory' name='select_SubCategory' lay-filter='select_SubCategory'  lay-verify='required' lay-search>");
+                    }
+
+
+                    if (SubCategoryList[i].ml_Sub_ID != LastSubMenuID && SubCategoryList[i].ml_Sub_ActionName != "Disabled")
+                    {
+                        if (SubCategoryList[i].ml_Sub_ID == null)
+                        {
+                            SubCategoryBuilder.Append("<option value='' selected='selected'>Please selected the subCategory</option>");
+                        }
+                        else
+                        {
+
+                            if (SubCategoryList[i].ml_Sub_ID == TargetReport.r_m_ID_SubCategory)
+                            {
+                                //SubCategoryBuilder.Append("<option value='" + SubCategoryList[i].ml_Sub_ID + "' selected='selected'>" + Html.Lang("txt_SCM_Reporting_" + SubCategoryList[i].ml_Sub_ActionName) + "</option>");
+                                SubCategoryBuilder.Append("<option value='" + SubCategoryList[i].ml_Sub_ID + "' selected='selected'>" + Html.Lang(SubCategoryList[i].ml_Sub_ActionName) + "</option>");
+                            }
+                            else
+                            {
+                                //SubCategoryBuilder.Append("<option value='" + SubCategoryList[i].ml_Sub_ID + "'>" + Html.Lang("txt_SCM_Reporting_" + SubCategoryList[i].ml_Sub_ActionName) + "</option>");
+                                SubCategoryBuilder.Append("<option value='" + SubCategoryList[i].ml_Sub_ID + "'>" + Html.Lang(SubCategoryList[i].ml_Sub_ActionName) + "</option>");
+                            }
+
+                        }
+
+                    }
+                    if (i == SubCategoryList.Count - 1)
+                    {
+                        SubCategoryBuilder.Append("</select>");
+                    }
+                    LastSubMenuID = SubCategoryList[i].ml_Sub_ID;
+                }
+            }
+            HtmlBuilder.Append(SubCategoryBuilder.ToString());
+
+            @*@(new HtmlString(SubCategoryBuilder.ToString()))*@
+
+            HtmlBuilder.Append("</div></div>");
+
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Sub_Category") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+
+            if (ViewBag.CategoryList != null)
+            {
+                List<v_MenuList> CategoryList = ViewBag.CategoryList as List<v_MenuList>;
+
+                for (int i = 0; i < CategoryList.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        HtmlBuilder.Append("<select id='select_Category' name='select_Category' lay-verify='required'>");
+                    }
+
+                    if (CategoryList[i].ml_Fourth_ID == TargetReport.r_m_ID_Category)
+                    {
+                        HtmlBuilder.Append("<option value='" + CategoryList[i].ml_Fourth_ID + "' selected='selected'>" + Html.Lang(CategoryList[i].ml_Fourth_ActionName) + "</option>");
+                    }
+                    else
+                    {
+                        HtmlBuilder.Append("<option value='" + CategoryList[i].ml_Fourth_ID + "'>" + CategoryList[i].ml_Fourth_ActionName + "</option>");
+                    }
+
+                    if (i == CategoryList.Count - 1)
+                    {
+                        HtmlBuilder.Append("</select>");
+                    }
+                }
+            }
+
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Frequency") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+
+            if (ViewBag.UpdateFrequencyList != null)
+            {
+                List<v_MenuList> UpdateFrequencyList = ViewBag.UpdateFrequencyList as List<v_MenuList>;
+
+                for (int i = 0; i < UpdateFrequencyList.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        HtmlBuilder.Append("<select name='select_UpdateFrequency' id='select_UpdateFrequency' lay-verify='required'>");
+                    }
+
+                    if (UpdateFrequencyList[i].ml_Fourth_ID == TargetReport.r_m_ID_Frequency)
+                    {
+                        //HtmlBuilder.Append("<option value='" + UpdateFrequencyList[i].ml_Fourth_ID + "' selected='selected'>" + Html.Lang("txt_SCM_Reporting_UpdateFrequency_" + UpdateFrequencyList[i].ml_Fourth_ActionName) + "</option>");
+                        HtmlBuilder.Append("<option value='" + UpdateFrequencyList[i].ml_Fourth_ID + "' selected='selected'>" + Html.Lang(UpdateFrequencyList[i].ml_Fourth_ActionName) + "</option>");
+                    }
+                    else
+                    {
+                        HtmlBuilder.Append("<option value='" + UpdateFrequencyList[i].ml_Fourth_ID + "'>" + UpdateFrequencyList[i].ml_Fourth_ActionName + "</option>");
+                    }
+
+                    if (i == UpdateFrequencyList.Count - 1)
+                    {
+                        HtmlBuilder.Append("</select>");
+                    }
+                }
+            }
+
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Sort") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<input type='text' id='input_sort' name='input_sort' required lay-verify='required|number' placeholder='" + Html.Lang("txt_Sort_plus") + "' autocomplete='off' class='layui-input' value='" + TargetReport.r_Sort + "' />");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_appIds") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<input type='text' id='input_AppIds' name='input_AppIds'  placeholder='old report id' autocomplete='off' class='layui-input' value='" + TargetReport.r_APPIDS + "' />");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item layui-form-text'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Description") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<textarea id='input_description' name='input_description' placeholder='" + Html.Lang("txt_Description_plus") + "' class='layui-textarea'>" + TargetReport.r_Description + "</textarea>");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item' pane>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Photo") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<button type='button' class='layui-btn' id='btn_upload' style='margin-left: 10px;'><i class='layui-icon'>&#xe67c;</i>" + Html.Lang("txt_Upload") + "</button>");
+
+            if (TargetReport.r_PicPath.Equals("N/A") || string.IsNullOrEmpty(TargetReport.r_PicPath))
+            {
+                HtmlBuilder.Append("<img id='img_reportPic' style='display:none; width: 300px; height: 180px; border: 2px solid rgb(230, 230, 230); margin:10px;' />");
+                HtmlBuilder.Append("<input class='hidden' type='text' id='input_picPath' name='input_picPath' readonly='readonly' />");
+                HtmlBuilder.Append("<input class='hidden' type='text' id='input_picPath_original' name='input_picPath_original' readonly='readonly' />");
+            }
+            else
+            {
+                HtmlBuilder.Append("<img id='img_reportPic' style='display:block; width: 300px; height: 180px; border: 2px solid rgb(230, 230, 230); margin:10px;' src='" + (preURL + TargetReport.r_PicPath) + "' />");
+                HtmlBuilder.Append("<input class='hidden' type='text' id='input_picPath' name='input_picPath' readonly='readonly' value='" + TargetReport.r_PicPath + "' />");
+                HtmlBuilder.Append("<input class='hidden' type='text' id='input_picPath_original' name='input_picPath_original' readonly='readonly' value='" + TargetReport.r_PicPath + "' />");
+            }
+
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item '><label></label ></div> < div class='layui-form-item '> <label></label><div>");
+
+            HtmlBuilder.Append("<div class='layui-footer' style='text-align:center;'>");
+            HtmlBuilder.Append("<button class='layui-btn' lay-submit lay-filter='formUpdate'>" + Html.Lang("txt_Submit") + "</button>");
+            HtmlBuilder.Append("<button type='reset' class='layui-btn layui-btn-primary' id='btn_reset'>" + Html.Lang("txt_Reset") + "</button>");
+            HtmlBuilder.Append("<button class='layui-btn layui-btn-primary' id='btn_close' type='button'>" + Html.Lang("txt_Close") + "</button>");
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("</form>");
+        }
+
+        @(new HtmlString(HtmlBuilder.ToString()))
+    }
+
+</div>

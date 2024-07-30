@@ -1,0 +1,167 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_ToolBox.cshtml";
+    ViewBag.Title = "Help";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+<style type="text/css">
+    .title_help {
+        font-size: 14px;
+        font-weight: bold;
+    }
+</style>
+<fieldset class="layui-elem-field layui-field-title">
+    <legend>Help Page</legend>
+</fieldset>
+<div class="layui-collapse" lay-accordion="">
+
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title layui-colla-title2">Home 主页</h2>
+        <div class="layui-colla-content layui-show">
+            <div class="layui-collapse" lay-accordion="">
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title layui-colla-title2">Reporting 报表收藏夹</h2>
+                    <div class="layui-colla-content layui-show">
+
+                        <div class="layui-collapse" lay-accordion="">
+                            <div class="layui-colla-item">
+                                <div class="layui-colla-content layui-show">
+                                    <p>展示您收藏的报表，在这里您可对报表进行快速访问、编辑、取消收藏、权限申请等操作</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title layui-colla-title2">QuickLink 快速连接收藏夹</h2>
+                    <div class="layui-colla-content">
+                        <p>展示您收藏的Quicklink，在这里您可以对您收藏的链接进行快速访问、编辑、取消收藏等操作</p>
+                    </div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title layui-colla-title2">Files 文件收藏夹</h2>
+                    <div class="layui-colla-content">
+                        <p>展示您收藏的所有的文件列表，在这里您可以对已收藏的文件进行快速访问、取消收藏等操作</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-colla-item">
+        @*<h2 class="layui-colla-title layui-colla-title2">Business Transparency </h2>*@
+        <h2 class="layui-colla-title layui-colla-title2">Reporting</h2>
+        <div class="layui-colla-content">
+            <div class="layui-collapse" lay-accordion="">
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title layui-colla-title2">
+                        <button class='btn btn-primary layui-btn btn_tool' id='btn_addReport'><i class='layui-icon'>&#xe61f;</i></button>
+                        报表添加
+                    </h2>
+                    <div class="layui-colla-content layui-show">
+                        <div class="layui-collapse" lay-accordion="">
+                            <div class="layui-colla-item">
+                                <div class="layui-colla-content layui-show">
+                                    <p><label class='title_help'> Report Name </label>: 报表名称</p>
+                                    <p><label class='title_help'>Linkage </label>：报表的链接地址</p>
+                                    <p><label class='title_help'>Status </label>: Yes - 报表可用,No - 报表不可用,页面以"Disabled"状态呈现，Maintaining - 报表维护中</p>
+                                    <p><label class='title_help'>Data Owner </label>: 报表Owner </p>
+                                    <p><label class='title_help'>Cr Owner </label>: 报表Cr Owner </p>
+                                    <p><label class='title_help'>Access Owner </label>: 报表Access Owner </p>
+                                    <p><label class='title_help'>Admin </label>: 报表Admin </p>
+                                    <p><label class='title_help'>Category </label>: 选择报表分类(Plan、Source、Make、Delivery、Quanlity、Finance) </p>
+                                    <p><label class='title_help'>Frequency </label>: 选择报表频次(Daily、Weekly、Monthly、Quarterly、Yearly) </p>
+                                    <p><label class='title_help'>Sort Number </label>: 报表排序 </p>
+                                    <p><label class='title_help'>Description </label>: 报表描述 </p>
+                                    <p><label class='title_help'>Upload </label>: 报表更新图片上传 </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title layui-colla-title2"><button class='btn btn-primary layui-btn btn_tool' id='btn_report_getAccessModule'><i class='layui-icon'>&#xe857;</i></button>  报表权限申请</h2>
+                    <div class="layui-colla-content">
+                        <p>当您无法访问要查看的报表时，可点击权限申请按钮，填写申请原因，系统会给报表Owner发送申请邮件，待Owner 给您添加完访问权限后您可正常访问该报表</p>
+                        <p>如果您是非SEWC员工，您在申请访问权限时，还需填写您的GID和Email信息</p>
+                    </div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title layui-colla-title2"><a class='a_report_Btn' name='a_report_issue' title='Report Errors' style='margin-right:5px'>&nbsp; <i class='layui-icon layui-icon-survey' style="font-size:36px !important"></i></a>  报表问题反馈</h2>
+                    <div class="layui-colla-content">
+                        <p>通过报表问题反馈，您可以将您对报表的任何意见与建议提交给我们</p>
+                        <p>如果您需要使用截图、粘贴图片功能时，请您使用除IE以外的浏览器</p>
+                    </div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title layui-colla-title2"><a class='a_report_Btn' name=''>&nbsp; <i class='layui-icon' style='font-size: 25px; color: #428bca;'>&#xe600;</i></a> 报表添加收藏</h2>
+                    <div class="layui-colla-content">
+                        <p>当您对某些报表需要特别关注时，您可以点击收藏按钮。</p>
+                        <p>收藏后的报表将会在Home -> MyToolBox -> Reporting中看到</p>
+                    </div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title layui-colla-title2"><a class='a_report_Btn' name='' title='" + Html.Lang("txt_Visit") + "'>&nbsp; <i class='layui-icon' style='font-size: 23px;'>&#xe64c;</i></a>  报表快速访问</h2>
+                    <div class="layui-colla-content">
+                        <p>当您点击快速访问按钮时，您可以快速访问到该报表的链接地址</p>
+                    </div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title layui-colla-title2"><a class='a_report_Btn' name='' style='margin-right:5px;'>&nbsp; <i class='layui-icon' style='font-size: 29px; color: #428bca;'>&#xe642;</i></a>  编辑报表</h2>
+                    <div class="layui-colla-content">
+                        <p>在编辑报表模块，您可以对当前报表信息，进行编辑修改</p>
+                    </div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title layui-colla-title2">
+                        <a class='a_report_Btn' name=''>&nbsp; <i class='layui-icon' style='font-size: 29px; color: #428bca;'>&#xe640;</i></a>  删除报表
+                    </h2>
+                    <div class="layui-colla-content">
+                        <p>您可以对自己的报表或者有删除权限的报表进行删除操作</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title layui-colla-title2">Business OverView</h2>
+        <div class="layui-colla-content">
+            <p>您可以查看所有的业务节点</p>
+            <p>当您点击某个节点时，可在页面下方添加该节点的DocumentList、ReportList、ToolList 相关内容</p>
+            <p>当然，您也可以对这些内容进行添加收藏、快速访问、编辑、删除等操作</p>
+        </div>
+    </div>
+
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title layui-colla-title2">Business Process Management</h2>
+        <div class="layui-colla-content">
+            <p>在进入该模块之前，请先进行<a href="https://entitlement.siemens.com/SSO/Login?GAREASONCODE=-1&GARESOURCEID=gaglobalresourceid&GAURI=https://entitlement.siemens.com:443/GetAccess/Pmda%3FMDURI%3DaHR0cHM6Ly9icG0tc2V3Yy5zaWVtZW5zLmNvbS5jbi9Mb2dpbi5hc3B4%26SD%3D.siemens.com.cn%26GARESOURCEID%3Dbpmsewcsiemenscomcn%26APPID%3Dbpmsewcsiemenscomcn">SIEMENS Entitlement Login</a>登录</p>
+            <p>在进行Entitlement Login 登录之后，您可直接访问到WorkFlow系统</p>
+        </div>
+    </div>
+
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title layui-colla-title2">Quick Link</h2>
+        <div class="layui-colla-content">
+            <p>您可以在Quick Link模块添加自己的快速访问链接</p>
+            <p>同时您也可以对自己的快速链接或有权限的链接进行收藏、编辑、删除等操作</p>
+            <p>对已收藏的QuickLink，在Home -> MyToolBox -> QuickLink 中可以对已收藏的Quick Link直接访问和操作</p>
+        </div>
+    </div>
+
+    <div class="layui-colla-item">
+        <h2 class="layui-colla-title layui-colla-title2">Search</h2>
+        <div class="layui-colla-content">
+            <p>Search功能主要功能点：</p>
+            <p>1、支持模糊快捷查询</p>
+            <p>2、查询系统内所有的报表</p>
+            <p>3、查询系统内所有的Quick Link</p>
+            <p>4、查询系统内所有的Document List</p>
+        </div>
+    </div>
+
+
+
+</div>

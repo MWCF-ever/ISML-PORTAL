@@ -1,0 +1,1540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D4CEBE0A-732B-4D7C-98C2-A236ACD0A319}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SEWC_ToolBox</RootNamespace>
+    <AssemblyName>SEWC_ToolBox</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <IncludeIisSettings>false</IncludeIisSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Azure.Core, Version=1.38.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Core.1.38.0\lib\net472\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Identity, Version=1.11.1.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Identity.1.11.1\lib\netstandard2.0\Azure.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Security.KeyVault.Certificates, Version=4.6.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Security.KeyVault.Certificates.4.6.0\lib\netstandard2.0\Azure.Security.KeyVault.Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Security.KeyVault.Secrets, Version=4.6.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Security.KeyVault.Secrets.4.6.0\lib\netstandard2.0\Azure.Security.KeyVault.Secrets.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SEWC_ToolBox.Utilities\RefDll\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.Internal, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.Internal.2.1.0\lib\netstandard2.0\Microsoft.AspNetCore.Cryptography.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.DataProtection, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.DataProtection.2.1.0\lib\netstandard2.0\Microsoft.AspNetCore.DataProtection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.DataProtection.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.DataProtection.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.AspNetCore.DataProtection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Hosting.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Server.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Hosting.Server.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Http.Features.2.1.0\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.24.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.24\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.24.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.3.1.24\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.1.3\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.EnvironmentVariables, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.EnvironmentVariables.2.2.4\lib\netstandard2.0\Microsoft.Extensions.Configuration.EnvironmentVariables.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions, Version=3.1.24.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.FileExtensions.3.1.24\lib\netstandard2.0\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Json, Version=3.1.24.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Json.3.1.24\lib\netstandard2.0\Microsoft.Extensions.Configuration.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection">
+      <HintPath>C:\Users\z00421wy\Downloads\AppModelv2-WebApp-OpenIDConnect-DotNet-master\AppModelv2-WebApp-OpenIDConnect-DotNet\bin\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\z00421wy\Downloads\AppModelv2-WebApp-OpenIDConnect-DotNet-master\AppModelv2-WebApp-OpenIDConnect-DotNet\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=3.1.24.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.3.1.24\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=3.1.24.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Physical.3.1.24\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=3.1.24.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileSystemGlobbing.3.1.24\lib\netstandard2.0\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Hosting.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Hosting.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Http, Version=3.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Http.3.1.3\lib\netstandard2.0\Microsoft.Extensions.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.3.1.3\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.3\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.3\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options.ConfigurationExtensions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.ConfigurationExtensions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.24.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.24\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Graph, Version=5.31.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Graph.5.31.0\lib\netstandard2.0\Microsoft.Graph.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Graph.Core, Version=3.0.11.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Graph.Core.3.0.11\lib\net462\Microsoft.Graph.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Abstractions, Version=5.3.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Abstractions.5.3.0\lib\net462\Microsoft.Identity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=4.60.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.60.3\lib\net462\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=4.60.3.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.Extensions.Msal.4.60.3\lib\netstandard2.0\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Web.Certificate, Version=2.18.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Web.Certificate.2.18.1\lib\net472\Microsoft.Identity.Web.Certificate.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Web.Certificateless, Version=2.18.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Web.Certificateless.2.18.1\lib\netstandard2.0\Microsoft.Identity.Web.Certificateless.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Web.Diagnostics, Version=2.18.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Web.Diagnostics.2.18.1\lib\net472\Microsoft.Identity.Web.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Web.GraphServiceClient, Version=2.18.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Web.GraphServiceClient.2.18.1\lib\net472\Microsoft.Identity.Web.GraphServiceClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Web.OWIN, Version=2.18.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Web.OWIN.2.18.1\lib\net472\Microsoft.Identity.Web.OWIN.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Web.TokenAcquisition, Version=2.18.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Web.TokenAcquisition.2.18.1\lib\net472\Microsoft.Identity.Web.TokenAcquisition.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Web.TokenCache, Version=2.18.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Web.TokenCache.2.18.1\lib\net472\Microsoft.Identity.Web.TokenCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.6.35.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.35.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.35.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.LoggingExtensions, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.LoggingExtensions.6.35.0\lib\netstandard2.0\Microsoft.IdentityModel.LoggingExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.6.35.0\lib\net472\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.6.35.0\lib\net472\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.WsFederation, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.WsFederation.5.5.0\lib\net461\Microsoft.IdentityModel.Protocols.WsFederation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.35.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens.Saml, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.Saml.5.5.0\lib\net461\Microsoft.IdentityModel.Tokens.Saml.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Validators, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Validators.6.35.0\lib\net472\Microsoft.IdentityModel.Validators.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Xml, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Xml.5.5.0\lib\net461\Microsoft.IdentityModel.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Kiota.Abstractions, Version=1.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Kiota.Abstractions.1.3.1\lib\netstandard2.0\Microsoft.Kiota.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Kiota.Authentication.Azure, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Kiota.Authentication.Azure.1.0.3\lib\netstandard2.0\Microsoft.Kiota.Authentication.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Kiota.Http.HttpClientLibrary, Version=1.1.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Kiota.Http.HttpClientLibrary.1.1.1\lib\netstandard2.0\Microsoft.Kiota.Http.HttpClientLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Kiota.Serialization.Form, Version=1.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Kiota.Serialization.Form.1.0.1\lib\netstandard2.0\Microsoft.Kiota.Serialization.Form.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Kiota.Serialization.Json, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Kiota.Serialization.Json.1.0.8\lib\netstandard2.0\Microsoft.Kiota.Serialization.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Kiota.Serialization.Multipart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Kiota.Serialization.Multipart.1.0.0\lib\netstandard2.0\Microsoft.Kiota.Serialization.Multipart.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Kiota.Serialization.Text, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Kiota.Serialization.Text.1.0.3\lib\netstandard2.0\Microsoft.Kiota.Serialization.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.2.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.ActiveDirectory, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.ActiveDirectory.4.2.2\lib\net45\Microsoft.Owin.Security.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.2.2\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Jwt, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Jwt.4.2.2\lib\net45\Microsoft.Owin.Security.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.2.2\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OpenIdConnect, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OpenIdConnect.4.2.2\lib\net45\Microsoft.Owin.Security.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Registry.4.5.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="SEWC_NetDevLib">
+      <HintPath>..\SEWC_ToolBox.Utilities\RefDll\SEWC_NetDevLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ClientModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ClientModel.1.0.0\lib\netstandard2.0\System.ClientModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.1\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.6.35.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory.Data, Version=1.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.Data.1.0.2\lib\net461\System.Memory.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WinHttpHandler, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.WinHttpHandler.7.0.0\lib\net462\System.Net.Http.WinHttpHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Claims, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Claims.4.3.0\lib\net46\System.Security.Claims.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Pkcs, Version=7.0.0.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Pkcs.7.0.2\lib\net462\System.Security.Cryptography.Pkcs.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.4.7.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Xml, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Xml.4.7.1\lib\net461\System.Security.Cryptography.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.4.7.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=6.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.6.0.5\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Tavis.UriTemplates, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5be2d48fa8a60581, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tavis.UriTemplates.2.0.0\lib\netstandard2.0\Tavis.UriTemplates.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiParameterModels\ItemDelete_Model.cs" />
+    <Compile Include="App_Start\AppConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CacheConfig.cs" />
+    <Compile Include="App_Start\CustomPrincipal.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Content\ueditor\net\App_Code\Config.cs" />
+    <Compile Include="Content\ueditor\net\App_Code\ConfigHandler.cs" />
+    <Compile Include="Content\ueditor\net\App_Code\CrawlerHandler.cs" />
+    <Compile Include="Content\ueditor\net\App_Code\Handler.cs" />
+    <Compile Include="Content\ueditor\net\App_Code\ListFileHandler.cs" />
+    <Compile Include="Content\ueditor\net\App_Code\NotSupportedHandler.cs" />
+    <Compile Include="Content\ueditor\net\App_Code\PathFormater.cs" />
+    <Compile Include="Content\ueditor\net\App_Code\UploadHandler.cs" />
+    <Compile Include="Content\ueditor\net\App_Code\UploadImageHandler.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IssueController.cs" />
+    <Compile Include="Controllers\ITController.cs" />
+    <Compile Include="Controllers\QMController.cs" />
+    <Compile Include="Controllers\SEWCController.cs" />
+    <Compile Include="Controllers\SSMLController.cs" />
+    <Compile Include="Controllers\ToolBoxBaseController.cs" />
+    <Compile Include="Controllers\SCMController.cs" />
+    <Compile Include="Controllers\ToolBoxFunctionalController.cs" />
+    <Compile Include="Controllers\WebAPI\General_ApiController.cs" />
+    <Compile Include="Controllers\WebAPI\ToolBox_ApiController.cs" />
+    <Compile Include="Filters\CustomHandleErrorAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Languages\LanguageHelper.cs" />
+    <Compile Include="Languages\Resource\lang.en-US.Designer.cs">
+      <DependentUpon>lang.en-US.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Languages\Resource\lang.zh-CN.Designer.cs">
+      <DependentUpon>lang.zh-CN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ApiParameterModels\Update_Favorite_Model.cs" />
+    <Compile Include="Service References\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="Views\ViewModels\base_DisplayItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ueditor\dialogs\anchor\anchor.html" />
+    <Content Include="Content\ueditor\dialogs\attachment\attachment.css" />
+    <Content Include="Content\ueditor\dialogs\attachment\attachment.html" />
+    <Content Include="Content\ueditor\dialogs\attachment\attachment.js" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_chm.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_default.png" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_doc.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_exe.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_jpg.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_mp3.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_mv.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_pdf.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_ppt.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_psd.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_rar.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_txt.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\fileTypeImages\icon_xls.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\images\alignicon.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\images\alignicon.png" />
+    <Content Include="Content\ueditor\dialogs\attachment\images\bg.png" />
+    <Content Include="Content\ueditor\dialogs\attachment\images\file-icons.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\images\file-icons.png" />
+    <Content Include="Content\ueditor\dialogs\attachment\images\icons.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\images\icons.png" />
+    <Content Include="Content\ueditor\dialogs\attachment\images\image.png" />
+    <Content Include="Content\ueditor\dialogs\attachment\images\progress.png" />
+    <Content Include="Content\ueditor\dialogs\attachment\images\success.gif" />
+    <Content Include="Content\ueditor\dialogs\attachment\images\success.png" />
+    <Content Include="Content\ueditor\dialogs\background\background.css" />
+    <Content Include="Content\ueditor\dialogs\background\background.html" />
+    <Content Include="Content\ueditor\dialogs\background\background.js" />
+    <Content Include="Content\ueditor\dialogs\background\images\bg.png" />
+    <Content Include="Content\ueditor\dialogs\background\images\success.png" />
+    <Content Include="Content\ueditor\dialogs\charts\chart.config.js" />
+    <Content Include="Content\ueditor\dialogs\charts\charts.css" />
+    <Content Include="Content\ueditor\dialogs\charts\charts.html" />
+    <Content Include="Content\ueditor\dialogs\charts\charts.js" />
+    <Content Include="Content\ueditor\dialogs\charts\images\charts0.png" />
+    <Content Include="Content\ueditor\dialogs\charts\images\charts1.png" />
+    <Content Include="Content\ueditor\dialogs\charts\images\charts2.png" />
+    <Content Include="Content\ueditor\dialogs\charts\images\charts3.png" />
+    <Content Include="Content\ueditor\dialogs\charts\images\charts4.png" />
+    <Content Include="Content\ueditor\dialogs\charts\images\charts5.png" />
+    <Content Include="Content\ueditor\dialogs\emotion\emotion.css" />
+    <Content Include="Content\ueditor\dialogs\emotion\emotion.html" />
+    <Content Include="Content\ueditor\dialogs\emotion\emotion.js" />
+    <Content Include="Content\ueditor\dialogs\emotion\images\0.gif" />
+    <Content Include="Content\ueditor\dialogs\emotion\images\bface.gif" />
+    <Content Include="Content\ueditor\dialogs\emotion\images\cface.gif" />
+    <Content Include="Content\ueditor\dialogs\emotion\images\fface.gif" />
+    <Content Include="Content\ueditor\dialogs\emotion\images\jxface2.gif" />
+    <Content Include="Content\ueditor\dialogs\emotion\images\neweditor-tab-bg.png" />
+    <Content Include="Content\ueditor\dialogs\emotion\images\tface.gif" />
+    <Content Include="Content\ueditor\dialogs\emotion\images\wface.gif" />
+    <Content Include="Content\ueditor\dialogs\emotion\images\yface.gif" />
+    <Content Include="Content\ueditor\dialogs\gmap\gmap.html" />
+    <Content Include="Content\ueditor\dialogs\help\help.css" />
+    <Content Include="Content\ueditor\dialogs\help\help.html" />
+    <Content Include="Content\ueditor\dialogs\help\help.js" />
+    <Content Include="Content\ueditor\dialogs\image\image.css" />
+    <Content Include="Content\ueditor\dialogs\image\image.html" />
+    <Content Include="Content\ueditor\dialogs\image\image.js" />
+    <Content Include="Content\ueditor\dialogs\image\images\alignicon.jpg" />
+    <Content Include="Content\ueditor\dialogs\image\images\bg.png" />
+    <Content Include="Content\ueditor\dialogs\image\images\icons.gif" />
+    <Content Include="Content\ueditor\dialogs\image\images\icons.png" />
+    <Content Include="Content\ueditor\dialogs\image\images\image.png" />
+    <Content Include="Content\ueditor\dialogs\image\images\progress.png" />
+    <Content Include="Content\ueditor\dialogs\image\images\success.gif" />
+    <Content Include="Content\ueditor\dialogs\image\images\success.png" />
+    <Content Include="Content\ueditor\dialogs\insertframe\insertframe.html" />
+    <Content Include="Content\ueditor\dialogs\internal.js" />
+    <Content Include="Content\ueditor\dialogs\link\link.html" />
+    <Content Include="Content\ueditor\dialogs\map\map.html" />
+    <Content Include="Content\ueditor\dialogs\map\show.html" />
+    <Content Include="Content\ueditor\dialogs\music\music.css" />
+    <Content Include="Content\ueditor\dialogs\music\music.html" />
+    <Content Include="Content\ueditor\dialogs\music\music.js" />
+    <Content Include="Content\ueditor\dialogs\preview\preview.html" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\addimg.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\brush.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\delimg.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\delimgH.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\empty.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\emptyH.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\eraser.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\redo.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\redoH.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\scale.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\scaleH.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\size.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\undo.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\images\undoH.png" />
+    <Content Include="Content\ueditor\dialogs\scrawl\scrawl.css" />
+    <Content Include="Content\ueditor\dialogs\scrawl\scrawl.html" />
+    <Content Include="Content\ueditor\dialogs\scrawl\scrawl.js" />
+    <Content Include="Content\ueditor\dialogs\searchreplace\searchreplace.html" />
+    <Content Include="Content\ueditor\dialogs\searchreplace\searchreplace.js" />
+    <Content Include="Content\ueditor\dialogs\snapscreen\snapscreen.html" />
+    <Content Include="Content\ueditor\dialogs\spechars\spechars.html" />
+    <Content Include="Content\ueditor\dialogs\spechars\spechars.js" />
+    <Content Include="Content\ueditor\dialogs\table\dragicon.png" />
+    <Content Include="Content\ueditor\dialogs\table\edittable.css" />
+    <Content Include="Content\ueditor\dialogs\table\edittable.html" />
+    <Content Include="Content\ueditor\dialogs\table\edittable.js" />
+    <Content Include="Content\ueditor\dialogs\table\edittd.html" />
+    <Content Include="Content\ueditor\dialogs\table\edittip.html" />
+    <Content Include="Content\ueditor\dialogs\template\config.js" />
+    <Content Include="Content\ueditor\dialogs\template\images\bg.gif" />
+    <Content Include="Content\ueditor\dialogs\template\images\pre0.png" />
+    <Content Include="Content\ueditor\dialogs\template\images\pre1.png" />
+    <Content Include="Content\ueditor\dialogs\template\images\pre2.png" />
+    <Content Include="Content\ueditor\dialogs\template\images\pre3.png" />
+    <Content Include="Content\ueditor\dialogs\template\images\pre4.png" />
+    <Content Include="Content\ueditor\dialogs\template\template.css" />
+    <Content Include="Content\ueditor\dialogs\template\template.html" />
+    <Content Include="Content\ueditor\dialogs\template\template.js" />
+    <Content Include="Content\ueditor\dialogs\video\images\bg.png" />
+    <Content Include="Content\ueditor\dialogs\video\images\center_focus.jpg" />
+    <Content Include="Content\ueditor\dialogs\video\images\file-icons.gif" />
+    <Content Include="Content\ueditor\dialogs\video\images\file-icons.png" />
+    <Content Include="Content\ueditor\dialogs\video\images\icons.gif" />
+    <Content Include="Content\ueditor\dialogs\video\images\icons.png" />
+    <Content Include="Content\ueditor\dialogs\video\images\image.png" />
+    <Content Include="Content\ueditor\dialogs\video\images\left_focus.jpg" />
+    <Content Include="Content\ueditor\dialogs\video\images\none_focus.jpg" />
+    <Content Include="Content\ueditor\dialogs\video\images\progress.png" />
+    <Content Include="Content\ueditor\dialogs\video\images\right_focus.jpg" />
+    <Content Include="Content\ueditor\dialogs\video\images\success.gif" />
+    <Content Include="Content\ueditor\dialogs\video\images\success.png" />
+    <Content Include="Content\ueditor\dialogs\video\video.css" />
+    <Content Include="Content\ueditor\dialogs\video\video.html" />
+    <Content Include="Content\ueditor\dialogs\video\video.js" />
+    <Content Include="Content\ueditor\dialogs\webapp\webapp.html" />
+    <Content Include="Content\ueditor\dialogs\wordimage\fClipboard_ueditor.swf" />
+    <Content Include="Content\ueditor\dialogs\wordimage\imageUploader.swf" />
+    <Content Include="Content\ueditor\dialogs\wordimage\tangram.js" />
+    <Content Include="Content\ueditor\dialogs\wordimage\wordimage.html" />
+    <Content Include="Content\ueditor\dialogs\wordimage\wordimage.js" />
+    <Content Include="Content\ueditor\editor_api.js" />
+    <Content Include="Content\ueditor\Gruntfile.js" />
+    <Content Include="Content\ueditor\lang\en\en.js" />
+    <Content Include="Content\ueditor\lang\en\images\addimage.png" />
+    <Content Include="Content\ueditor\lang\en\images\alldeletebtnhoverskin.png" />
+    <Content Include="Content\ueditor\lang\en\images\alldeletebtnupskin.png" />
+    <Content Include="Content\ueditor\lang\en\images\background.png" />
+    <Content Include="Content\ueditor\lang\en\images\button.png" />
+    <Content Include="Content\ueditor\lang\en\images\copy.png" />
+    <Content Include="Content\ueditor\lang\en\images\deletedisable.png" />
+    <Content Include="Content\ueditor\lang\en\images\deleteenable.png" />
+    <Content Include="Content\ueditor\lang\en\images\listbackground.png" />
+    <Content Include="Content\ueditor\lang\en\images\localimage.png" />
+    <Content Include="Content\ueditor\lang\en\images\music.png" />
+    <Content Include="Content\ueditor\lang\en\images\rotateleftdisable.png" />
+    <Content Include="Content\ueditor\lang\en\images\rotateleftenable.png" />
+    <Content Include="Content\ueditor\lang\en\images\rotaterightdisable.png" />
+    <Content Include="Content\ueditor\lang\en\images\rotaterightenable.png" />
+    <Content Include="Content\ueditor\lang\en\images\upload.png" />
+    <Content Include="Content\ueditor\lang\zh-cn\images\copy.png" />
+    <Content Include="Content\ueditor\lang\zh-cn\images\localimage.png" />
+    <Content Include="Content\ueditor\lang\zh-cn\images\music.png" />
+    <Content Include="Content\ueditor\lang\zh-cn\images\upload.png" />
+    <Content Include="Content\ueditor\lang\zh-cn\zh-cn.js" />
+    <Content Include="Content\ueditor\themes\default\dialogbase.css" />
+    <Content Include="Content\ueditor\themes\default\images\anchor.gif" />
+    <Content Include="Content\ueditor\themes\default\images\arrow.png" />
+    <Content Include="Content\ueditor\themes\default\images\arrow_down.png" />
+    <Content Include="Content\ueditor\themes\default\images\arrow_up.png" />
+    <Content Include="Content\ueditor\themes\default\images\button-bg.gif" />
+    <Content Include="Content\ueditor\themes\default\images\cancelbutton.gif" />
+    <Content Include="Content\ueditor\themes\default\images\charts.png" />
+    <Content Include="Content\ueditor\themes\default\images\cursor_h.gif" />
+    <Content Include="Content\ueditor\themes\default\images\cursor_h.png" />
+    <Content Include="Content\ueditor\themes\default\images\cursor_v.gif" />
+    <Content Include="Content\ueditor\themes\default\images\cursor_v.png" />
+    <Content Include="Content\ueditor\themes\default\images\dialog-title-bg.png" />
+    <Content Include="Content\ueditor\themes\default\images\filescan.png" />
+    <Content Include="Content\ueditor\themes\default\images\highlighted.gif" />
+    <Content Include="Content\ueditor\themes\default\images\icons-all.gif" />
+    <Content Include="Content\ueditor\themes\default\images\icons.gif" />
+    <Content Include="Content\ueditor\themes\default\images\icons.png" />
+    <Content Include="Content\ueditor\themes\default\images\loaderror.png" />
+    <Content Include="Content\ueditor\themes\default\images\loading.gif" />
+    <Content Include="Content\ueditor\themes\default\images\lock.gif" />
+    <Content Include="Content\ueditor\themes\default\images\neweditor-tab-bg.png" />
+    <Content Include="Content\ueditor\themes\default\images\pagebreak.gif" />
+    <Content Include="Content\ueditor\themes\default\images\scale.png" />
+    <Content Include="Content\ueditor\themes\default\images\sortable.png" />
+    <Content Include="Content\ueditor\themes\default\images\spacer.gif" />
+    <Content Include="Content\ueditor\themes\default\images\sparator_v.png" />
+    <Content Include="Content\ueditor\themes\default\images\table-cell-align.png" />
+    <Content Include="Content\ueditor\themes\default\images\tangram-colorpicker.png" />
+    <Content Include="Content\ueditor\themes\default\images\toolbar_bg.png" />
+    <Content Include="Content\ueditor\themes\default\images\unhighlighted.gif" />
+    <Content Include="Content\ueditor\themes\default\images\upload.png" />
+    <Content Include="Content\ueditor\themes\default\images\videologo.gif" />
+    <Content Include="Content\ueditor\themes\default\images\word.gif" />
+    <Content Include="Content\ueditor\themes\default\images\wordpaste.png" />
+    <Content Include="Content\ueditor\themes\default\_css\autotypesetpicker.css" />
+    <Content Include="Content\ueditor\themes\default\_css\button.css" />
+    <Content Include="Content\ueditor\themes\default\_css\buttonicon.css" />
+    <Content Include="Content\ueditor\themes\default\_css\cellalignpicker.css" />
+    <Content Include="Content\ueditor\themes\default\_css\colorbutton.css" />
+    <Content Include="Content\ueditor\themes\default\_css\colorpicker.css" />
+    <Content Include="Content\ueditor\themes\default\_css\combox.css" />
+    <Content Include="Content\ueditor\themes\default\_css\contextmenu.css" />
+    <Content Include="Content\ueditor\themes\default\_css\dialog.css" />
+    <Content Include="Content\ueditor\themes\default\_css\editor.css" />
+    <Content Include="Content\ueditor\themes\default\_css\menu.css" />
+    <Content Include="Content\ueditor\themes\default\_css\menubutton.css" />
+    <Content Include="Content\ueditor\themes\default\_css\message.css" />
+    <Content Include="Content\ueditor\themes\default\_css\multiMenu.css" />
+    <Content Include="Content\ueditor\themes\default\_css\paragraphpicker.css" />
+    <Content Include="Content\ueditor\themes\default\_css\pastepicker.css" />
+    <Content Include="Content\ueditor\themes\default\_css\popup.css" />
+    <Content Include="Content\ueditor\themes\default\_css\separtor.css" />
+    <Content Include="Content\ueditor\themes\default\_css\shortcutmenu.css" />
+    <Content Include="Content\ueditor\themes\default\_css\splitbutton.css" />
+    <Content Include="Content\ueditor\themes\default\_css\tablepicker.css" />
+    <Content Include="Content\ueditor\themes\default\_css\toolbar.css" />
+    <Content Include="Content\ueditor\themes\default\_css\ueditor.css" />
+    <Content Include="Content\ueditor\themes\default\_css\uibase.css" />
+    <Content Include="Content\ueditor\themes\iframe.css" />
+    <Content Include="Content\ueditor\third-party\codemirror\codemirror.css" />
+    <Content Include="Content\ueditor\third-party\codemirror\codemirror.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\adapters\mootools-adapter.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\adapters\mootools-adapter.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\adapters\prototype-adapter.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\adapters\prototype-adapter.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\adapters\standalone-framework.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\highcharts-more.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\highcharts-more.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\highcharts.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\highcharts.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\annotations.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\annotations.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\canvas-tools.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\data.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\data.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\drilldown.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\drilldown.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\exporting.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\exporting.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\funnel.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\funnel.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\heatmap.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\heatmap.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\map.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\map.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\no-data-to-display.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\themes\dark-blue.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\themes\dark-green.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\themes\gray.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\themes\grid.js" />
+    <Content Include="Content\ueditor\third-party\highcharts\themes\skies.js" />
+    <Content Include="Content\ueditor\third-party\jquery-1.10.2.js" />
+    <Content Include="Content\ueditor\third-party\jquery-1.10.2.min.js" />
+    <Content Include="Content\ueditor\third-party\snapscreen\UEditorSnapscreen.exe" />
+    <Content Include="Content\ueditor\third-party\SyntaxHighlighter\shCore.js" />
+    <Content Include="Content\ueditor\third-party\SyntaxHighlighter\shCoreDefault.css" />
+    <Content Include="Content\ueditor\third-party\video-js\font\vjs.svg" />
+    <Content Include="Content\ueditor\third-party\video-js\video-js.css" />
+    <Content Include="Content\ueditor\third-party\video-js\video-js.min.css" />
+    <Content Include="Content\ueditor\third-party\video-js\video-js.swf" />
+    <Content Include="Content\ueditor\third-party\video-js\video.dev.js" />
+    <Content Include="Content\ueditor\third-party\video-js\video.js" />
+    <Content Include="Content\ueditor\third-party\webuploader\Uploader.swf" />
+    <Content Include="Content\ueditor\third-party\webuploader\webuploader.css" />
+    <Content Include="Content\ueditor\third-party\webuploader\webuploader.custom.js" />
+    <Content Include="Content\ueditor\third-party\webuploader\webuploader.custom.min.js" />
+    <Content Include="Content\ueditor\third-party\webuploader\webuploader.flashonly.js" />
+    <Content Include="Content\ueditor\third-party\webuploader\webuploader.flashonly.min.js" />
+    <Content Include="Content\ueditor\third-party\webuploader\webuploader.html5only.js" />
+    <Content Include="Content\ueditor\third-party\webuploader\webuploader.html5only.min.js" />
+    <Content Include="Content\ueditor\third-party\webuploader\webuploader.js" />
+    <Content Include="Content\ueditor\third-party\webuploader\webuploader.min.js" />
+    <Content Include="Content\ueditor\third-party\webuploader\webuploader.withoutimage.js" />
+    <Content Include="Content\ueditor\third-party\webuploader\webuploader.withoutimage.min.js" />
+    <Content Include="Content\ueditor\third-party\xss.min.js" />
+    <Content Include="Content\ueditor\third-party\zeroclipboard\ZeroClipboard.js" />
+    <Content Include="Content\ueditor\third-party\zeroclipboard\ZeroClipboard.min.js" />
+    <Content Include="Content\ueditor\third-party\zeroclipboard\ZeroClipboard.swf" />
+    <Content Include="Content\ueditor\ueditor.config.js" />
+    <Content Include="Content\ueditor\ueditor.parse.js" />
+    <Content Include="Content\ueditor\_src\adapter\autosave.js" />
+    <Content Include="Content\ueditor\_src\adapter\editor.js" />
+    <Content Include="Content\ueditor\_src\adapter\editorui.js" />
+    <Content Include="Content\ueditor\_src\adapter\message.js" />
+    <Content Include="Content\ueditor\_src\api.js" />
+    <Content Include="Content\ueditor\_src\core\ajax.js" />
+    <Content Include="Content\ueditor\_src\core\browser.js" />
+    <Content Include="Content\ueditor\_src\core\domUtils.js" />
+    <Content Include="Content\ueditor\_src\core\dtd.js" />
+    <Content Include="Content\ueditor\_src\core\Editor.defaultoptions.js" />
+    <Content Include="Content\ueditor\_src\core\Editor.js" />
+    <Content Include="Content\ueditor\_src\core\EventBase.js" />
+    <Content Include="Content\ueditor\_src\core\filternode.js" />
+    <Content Include="Content\ueditor\_src\core\filterword.js" />
+    <Content Include="Content\ueditor\_src\core\htmlparser.js" />
+    <Content Include="Content\ueditor\_src\core\keymap.js" />
+    <Content Include="Content\ueditor\_src\core\loadconfig.js" />
+    <Content Include="Content\ueditor\_src\core\localstorage.js" />
+    <Content Include="Content\ueditor\_src\core\node.js" />
+    <Content Include="Content\ueditor\_src\core\plugin.js" />
+    <Content Include="Content\ueditor\_src\core\Range.js" />
+    <Content Include="Content\ueditor\_src\core\Selection.js" />
+    <Content Include="Content\ueditor\_src\core\utils.js" />
+    <Content Include="Content\ueditor\_src\editor.js" />
+    <Content Include="Content\ueditor\_src\plugins\anchor.js" />
+    <Content Include="Content\ueditor\_src\plugins\autofloat.js" />
+    <Content Include="Content\ueditor\_src\plugins\autoheight.js" />
+    <Content Include="Content\ueditor\_src\plugins\autolink.js" />
+    <Content Include="Content\ueditor\_src\plugins\autosave.js" />
+    <Content Include="Content\ueditor\_src\plugins\autosubmit.js" />
+    <Content Include="Content\ueditor\_src\plugins\autotypeset.js" />
+    <Content Include="Content\ueditor\_src\plugins\autoupload.js" />
+    <Content Include="Content\ueditor\_src\plugins\background.js" />
+    <Content Include="Content\ueditor\_src\plugins\basestyle.js" />
+    <Content Include="Content\ueditor\_src\plugins\blockquote.js" />
+    <Content Include="Content\ueditor\_src\plugins\catchremoteimage.js" />
+    <Content Include="Content\ueditor\_src\plugins\charts.js" />
+    <Content Include="Content\ueditor\_src\plugins\cleardoc.js" />
+    <Content Include="Content\ueditor\_src\plugins\contextmenu.js" />
+    <Content Include="Content\ueditor\_src\plugins\convertcase.js" />
+    <Content Include="Content\ueditor\_src\plugins\copy.js" />
+    <Content Include="Content\ueditor\_src\plugins\customstyle.js" />
+    <Content Include="Content\ueditor\_src\plugins\defaultfilter.js" />
+    <Content Include="Content\ueditor\_src\plugins\directionality.js" />
+    <Content Include="Content\ueditor\_src\plugins\dragdrop.js" />
+    <Content Include="Content\ueditor\_src\plugins\elementpath.js" />
+    <Content Include="Content\ueditor\_src\plugins\enterkey.js" />
+    <Content Include="Content\ueditor\_src\plugins\fiximgclick.js" />
+    <Content Include="Content\ueditor\_src\plugins\font.js" />
+    <Content Include="Content\ueditor\_src\plugins\formatmatch.js" />
+    <Content Include="Content\ueditor\_src\plugins\horizontal.js" />
+    <Content Include="Content\ueditor\_src\plugins\iframe.js" />
+    <Content Include="Content\ueditor\_src\plugins\image.js" />
+    <Content Include="Content\ueditor\_src\plugins\indent.js" />
+    <Content Include="Content\ueditor\_src\plugins\insertcode.js" />
+    <Content Include="Content\ueditor\_src\plugins\insertfile.js" />
+    <Content Include="Content\ueditor\_src\plugins\inserthtml.js" />
+    <Content Include="Content\ueditor\_src\plugins\insertparagraph.js" />
+    <Content Include="Content\ueditor\_src\plugins\justify.js" />
+    <Content Include="Content\ueditor\_src\plugins\keystrokes.js" />
+    <Content Include="Content\ueditor\_src\plugins\lineheight.js" />
+    <Content Include="Content\ueditor\_src\plugins\link.js" />
+    <Content Include="Content\ueditor\_src\plugins\list.js" />
+    <Content Include="Content\ueditor\_src\plugins\music.js" />
+    <Content Include="Content\ueditor\_src\plugins\pagebreak.js" />
+    <Content Include="Content\ueditor\_src\plugins\paragraph.js" />
+    <Content Include="Content\ueditor\_src\plugins\paste.js" />
+    <Content Include="Content\ueditor\_src\plugins\preview.js" />
+    <Content Include="Content\ueditor\_src\plugins\print.js" />
+    <Content Include="Content\ueditor\_src\plugins\puretxtpaste.js" />
+    <Content Include="Content\ueditor\_src\plugins\removeformat.js" />
+    <Content Include="Content\ueditor\_src\plugins\rowspacing.js" />
+    <Content Include="Content\ueditor\_src\plugins\scrawl.js" />
+    <Content Include="Content\ueditor\_src\plugins\searchreplace.js" />
+    <Content Include="Content\ueditor\_src\plugins\section.js" />
+    <Content Include="Content\ueditor\_src\plugins\selectall.js" />
+    <Content Include="Content\ueditor\_src\plugins\serverparam.js" />
+    <Content Include="Content\ueditor\_src\plugins\shortcutmenu.js" />
+    <Content Include="Content\ueditor\_src\plugins\simpleupload.js" />
+    <Content Include="Content\ueditor\_src\plugins\snapscreen.js" />
+    <Content Include="Content\ueditor\_src\plugins\source.js" />
+    <Content Include="Content\ueditor\_src\plugins\table.action.js" />
+    <Content Include="Content\ueditor\_src\plugins\table.cmds.js" />
+    <Content Include="Content\ueditor\_src\plugins\table.core.js" />
+    <Content Include="Content\ueditor\_src\plugins\table.sort.js" />
+    <Content Include="Content\ueditor\_src\plugins\template.js" />
+    <Content Include="Content\ueditor\_src\plugins\time.js" />
+    <Content Include="Content\ueditor\_src\plugins\undo.js" />
+    <Content Include="Content\ueditor\_src\plugins\video.js" />
+    <Content Include="Content\ueditor\_src\plugins\webapp.js" />
+    <Content Include="Content\ueditor\_src\plugins\wordcount.js" />
+    <Content Include="Content\ueditor\_src\plugins\wordimage.js" />
+    <Content Include="Content\ueditor\_src\plugins\xssFilter.js" />
+    <Content Include="Content\ueditor\_src\ui\autotypesetbutton.js" />
+    <Content Include="Content\ueditor\_src\ui\autotypesetpicker.js" />
+    <Content Include="Content\ueditor\_src\ui\breakline.js" />
+    <Content Include="Content\ueditor\_src\ui\button.js" />
+    <Content Include="Content\ueditor\_src\ui\cellalignpicker.js" />
+    <Content Include="Content\ueditor\_src\ui\colorbutton.js" />
+    <Content Include="Content\ueditor\_src\ui\colorpicker.js" />
+    <Content Include="Content\ueditor\_src\ui\combox.js" />
+    <Content Include="Content\ueditor\_src\ui\dialog.js" />
+    <Content Include="Content\ueditor\_src\ui\mask.js" />
+    <Content Include="Content\ueditor\_src\ui\menu.js" />
+    <Content Include="Content\ueditor\_src\ui\menubutton.js" />
+    <Content Include="Content\ueditor\_src\ui\message.js" />
+    <Content Include="Content\ueditor\_src\ui\multiMenu.js" />
+    <Content Include="Content\ueditor\_src\ui\pastepicker.js" />
+    <Content Include="Content\ueditor\_src\ui\popup.js" />
+    <Content Include="Content\ueditor\_src\ui\separator.js" />
+    <Content Include="Content\ueditor\_src\ui\shortcutmenu.js" />
+    <Content Include="Content\ueditor\_src\ui\splitbutton.js" />
+    <Content Include="Content\ueditor\_src\ui\stateful.js" />
+    <Content Include="Content\ueditor\_src\ui\tablebutton.js" />
+    <Content Include="Content\ueditor\_src\ui\tablepicker.js" />
+    <Content Include="Content\ueditor\_src\ui\toolbar.js" />
+    <Content Include="Content\ueditor\_src\ui\ui.js" />
+    <Content Include="Content\ueditor\_src\ui\uibase.js" />
+    <Content Include="Content\ueditor\_src\ui\uiutils.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\ueditor\net\config.json" />
+    <Content Include="Content\ueditor\net\controller.ashx" />
+    <Content Include="Content\ueditor\third-party\jquery-1.10.2.min.map" />
+    <Content Include="Content\ueditor\third-party\video-js\font\vjs.eot" />
+    <Content Include="Content\ueditor\third-party\video-js\font\vjs.ttf" />
+    <Content Include="Content\ueditor\third-party\video-js\font\vjs.woff" />
+    <Content Include="appsettings.json" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\toolbox.pubxml" />
+    <None Include="Properties\PublishProfiles\ToolBox_DeploymentConfig.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\clipboard\clipboard.js" />
+    <Content Include="Scripts\clipboard\clipboard.min.js" />
+    <Content Include="Scripts\CustomScripts\General.js" />
+    <Content Include="Scripts\CustomScripts\Home\Index.js" />
+    <Content Include="Scripts\CustomScripts\SCM\SCM.js" />
+    <Content Include="Scripts\CustomScripts\ToolBoxBase\Orginization.js" />
+    <Content Include="Scripts\CustomScripts\ToolBoxBase\ToolBoxBase.js" />
+    <Content Include="Scripts\CustomScripts\ToolBoxFunctional\Customization_Function.js" />
+    <Content Include="Scripts\CustomScripts\ToolBoxFunctional\ProcessLinkage_Function.js" />
+    <Content Include="Scripts\CustomScripts\ToolBoxFunctional\QuickLink_Function.js" />
+    <Content Include="Scripts\CustomScripts\ToolBoxFunctional\GetAccess_Function.js" />
+    <Content Include="Scripts\CustomScripts\ToolBoxFunctional\Reporting_Function.js" />
+    <Content Include="Scripts\CustomScripts\ToolBoxFunctional\ToolBoxFunctional.js" />
+    <Content Include="Scripts\CustomScripts\ToolBoxFunctional\UserRole_Function.js" />
+    <Content Include="Scripts\CustomScripts\Topology\Topology.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Service References\ServiceReference1\SEWC_ToolBox.ServiceReference1.GetUserTokenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ServiceReference1\SSOService.disco" />
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Styles\ToolBox.css" />
+    <Content Include="Styles\General.css" />
+    <Content Include="ThirdParty\jquery-autocompleter\css\main.css" />
+    <Content Include="ThirdParty\jquery-autocompleter\css\normalize.css" />
+    <Content Include="ThirdParty\jquery-autocompleter\img\bcg.png" />
+    <Content Include="ThirdParty\jquery-autocompleter\img\icon.png" />
+    <Content Include="ThirdParty\jquery-autocompleter\index.html" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\Gruntfile.js" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\jquery.autocompleter.css" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\jquery.autocompleter.js" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\jquery.autocompleter.min.js" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\src\jquery.autocompleter.css" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\src\jquery.autocompleter.js" />
+    <Content Include="ThirdParty\jquery-autocompleter\js\jquery.autocompleter.js" />
+    <Content Include="ThirdParty\jquery-autocompleter\js\jquery.min.js" />
+    <Content Include="ThirdParty\jquery-autocompleter\js\main.js" />
+    <Content Include="ThirdParty\jquery-autocompleter\js\modernizr-2.8.0.min.js" />
+    <Content Include="ThirdParty\Jquery12.1\AUTHORS.txt" />
+    <Content Include="ThirdParty\Jquery12.1\external\jquery\jquery.js" />
+    <Content Include="ThirdParty\Jquery12.1\index.html" />
+    <Content Include="ThirdParty\Jquery12.1\jquery-ui.css" />
+    <Content Include="ThirdParty\Jquery12.1\jquery-ui.js" />
+    <Content Include="ThirdParty\Jquery12.1\jquery-ui.min.css" />
+    <Content Include="ThirdParty\Jquery12.1\jquery-ui.min.js" />
+    <Content Include="ThirdParty\Jquery12.1\jquery-ui.structure.css" />
+    <Content Include="ThirdParty\Jquery12.1\jquery-ui.structure.min.css" />
+    <Content Include="ThirdParty\Jquery12.1\LICENSE.txt" />
+    <Content Include="ThirdParty\layui\css\layui.css" />
+    <Content Include="ThirdParty\layui\css\layui.mobile.css" />
+    <Content Include="ThirdParty\layui\css\modules\code.css" />
+    <Content Include="ThirdParty\layui\css\modules\laydate\default\laydate.css" />
+    <Content Include="ThirdParty\layui\css\modules\layer\default\icon-ext.png" />
+    <Content Include="ThirdParty\layui\css\modules\layer\default\icon.png" />
+    <Content Include="ThirdParty\layui\css\modules\layer\default\layer.css" />
+    <Content Include="ThirdParty\layui\css\modules\layer\default\loading-0.gif" />
+    <Content Include="ThirdParty\layui\css\modules\layer\default\loading-1.gif" />
+    <Content Include="ThirdParty\layui\css\modules\layer\default\loading-2.gif" />
+    <Content Include="ThirdParty\layui\css\modules\layuiAutocomplete.css" />
+    <Content Include="ThirdParty\layui\font\iconfont.svg" />
+    <Content Include="ThirdParty\layui\images\face\0.gif" />
+    <Content Include="ThirdParty\layui\images\face\1.gif" />
+    <Content Include="ThirdParty\layui\images\face\10.gif" />
+    <Content Include="ThirdParty\layui\images\face\11.gif" />
+    <Content Include="ThirdParty\layui\images\face\12.gif" />
+    <Content Include="ThirdParty\layui\images\face\13.gif" />
+    <Content Include="ThirdParty\layui\images\face\14.gif" />
+    <Content Include="ThirdParty\layui\images\face\15.gif" />
+    <Content Include="ThirdParty\layui\images\face\16.gif" />
+    <Content Include="ThirdParty\layui\images\face\17.gif" />
+    <Content Include="ThirdParty\layui\images\face\18.gif" />
+    <Content Include="ThirdParty\layui\images\face\19.gif" />
+    <Content Include="ThirdParty\layui\images\face\2.gif" />
+    <Content Include="ThirdParty\layui\images\face\20.gif" />
+    <Content Include="ThirdParty\layui\images\face\21.gif" />
+    <Content Include="ThirdParty\layui\images\face\22.gif" />
+    <Content Include="ThirdParty\layui\images\face\23.gif" />
+    <Content Include="ThirdParty\layui\images\face\24.gif" />
+    <Content Include="ThirdParty\layui\images\face\25.gif" />
+    <Content Include="ThirdParty\layui\images\face\26.gif" />
+    <Content Include="ThirdParty\layui\images\face\27.gif" />
+    <Content Include="ThirdParty\layui\images\face\28.gif" />
+    <Content Include="ThirdParty\layui\images\face\29.gif" />
+    <Content Include="ThirdParty\layui\images\face\3.gif" />
+    <Content Include="ThirdParty\layui\images\face\30.gif" />
+    <Content Include="ThirdParty\layui\images\face\31.gif" />
+    <Content Include="ThirdParty\layui\images\face\32.gif" />
+    <Content Include="ThirdParty\layui\images\face\33.gif" />
+    <Content Include="ThirdParty\layui\images\face\34.gif" />
+    <Content Include="ThirdParty\layui\images\face\35.gif" />
+    <Content Include="ThirdParty\layui\images\face\36.gif" />
+    <Content Include="ThirdParty\layui\images\face\37.gif" />
+    <Content Include="ThirdParty\layui\images\face\38.gif" />
+    <Content Include="ThirdParty\layui\images\face\39.gif" />
+    <Content Include="ThirdParty\layui\images\face\4.gif" />
+    <Content Include="ThirdParty\layui\images\face\40.gif" />
+    <Content Include="ThirdParty\layui\images\face\41.gif" />
+    <Content Include="ThirdParty\layui\images\face\42.gif" />
+    <Content Include="ThirdParty\layui\images\face\43.gif" />
+    <Content Include="ThirdParty\layui\images\face\44.gif" />
+    <Content Include="ThirdParty\layui\images\face\45.gif" />
+    <Content Include="ThirdParty\layui\images\face\46.gif" />
+    <Content Include="ThirdParty\layui\images\face\47.gif" />
+    <Content Include="ThirdParty\layui\images\face\48.gif" />
+    <Content Include="ThirdParty\layui\images\face\49.gif" />
+    <Content Include="ThirdParty\layui\images\face\5.gif" />
+    <Content Include="ThirdParty\layui\images\face\50.gif" />
+    <Content Include="ThirdParty\layui\images\face\51.gif" />
+    <Content Include="ThirdParty\layui\images\face\52.gif" />
+    <Content Include="ThirdParty\layui\images\face\53.gif" />
+    <Content Include="ThirdParty\layui\images\face\54.gif" />
+    <Content Include="ThirdParty\layui\images\face\55.gif" />
+    <Content Include="ThirdParty\layui\images\face\56.gif" />
+    <Content Include="ThirdParty\layui\images\face\57.gif" />
+    <Content Include="ThirdParty\layui\images\face\58.gif" />
+    <Content Include="ThirdParty\layui\images\face\59.gif" />
+    <Content Include="ThirdParty\layui\images\face\6.gif" />
+    <Content Include="ThirdParty\layui\images\face\60.gif" />
+    <Content Include="ThirdParty\layui\images\face\61.gif" />
+    <Content Include="ThirdParty\layui\images\face\62.gif" />
+    <Content Include="ThirdParty\layui\images\face\63.gif" />
+    <Content Include="ThirdParty\layui\images\face\64.gif" />
+    <Content Include="ThirdParty\layui\images\face\65.gif" />
+    <Content Include="ThirdParty\layui\images\face\66.gif" />
+    <Content Include="ThirdParty\layui\images\face\67.gif" />
+    <Content Include="ThirdParty\layui\images\face\68.gif" />
+    <Content Include="ThirdParty\layui\images\face\69.gif" />
+    <Content Include="ThirdParty\layui\images\face\7.gif" />
+    <Content Include="ThirdParty\layui\images\face\70.gif" />
+    <Content Include="ThirdParty\layui\images\face\71.gif" />
+    <Content Include="ThirdParty\layui\images\face\8.gif" />
+    <Content Include="ThirdParty\layui\images\face\9.gif" />
+    <Content Include="ThirdParty\layui\layui.all.js" />
+    <Content Include="ThirdParty\layui\layui.js" />
+    <Content Include="ThirdParty\layui\lay\modules\carousel.js" />
+    <Content Include="ThirdParty\layui\lay\modules\code.js" />
+    <Content Include="ThirdParty\layui\lay\modules\element.js" />
+    <Content Include="ThirdParty\layui\lay\modules\flow.js" />
+    <Content Include="ThirdParty\layui\lay\modules\form.js" />
+    <Content Include="ThirdParty\layui\lay\modules\jquery.js" />
+    <Content Include="ThirdParty\layui\lay\modules\layAutoComplete.js" />
+    <Content Include="ThirdParty\layui\lay\modules\laydate.js" />
+    <Content Include="ThirdParty\layui\lay\modules\layedit.js" />
+    <Content Include="ThirdParty\layui\lay\modules\layer.js" />
+    <Content Include="ThirdParty\layui\lay\modules\laypage.js" />
+    <Content Include="ThirdParty\layui\lay\modules\laytpl.js" />
+    <Content Include="ThirdParty\layui\lay\modules\mobile.js" />
+    <Content Include="ThirdParty\layui\lay\modules\table.js" />
+    <Content Include="ThirdParty\layui\lay\modules\tree.js" />
+    <Content Include="ThirdParty\layui\lay\modules\upload.js" />
+    <Content Include="ThirdParty\layui\lay\modules\util.js" />
+    <Content Include="ThirdParty\layui\css\modules\autocomplete.css" />
+    <Content Include="ThirdParty\layui\lay\modules\autocomplete.js" />
+    <Content Include="ThirdParty\vis\img\network\acceptDeleteIcon.png" />
+    <Content Include="ThirdParty\vis\img\network\addNodeIcon.png" />
+    <Content Include="ThirdParty\vis\img\network\backIcon.png" />
+    <Content Include="ThirdParty\vis\img\network\connectIcon.png" />
+    <Content Include="ThirdParty\vis\img\network\cross.png" />
+    <Content Include="ThirdParty\vis\img\network\cross2.png" />
+    <Content Include="ThirdParty\vis\img\network\deleteIcon.png" />
+    <Content Include="ThirdParty\vis\img\network\downArrow.png" />
+    <Content Include="ThirdParty\vis\img\network\editIcon.png" />
+    <Content Include="ThirdParty\vis\img\network\leftArrow.png" />
+    <Content Include="ThirdParty\vis\img\network\minus.png" />
+    <Content Include="ThirdParty\vis\img\network\plus.png" />
+    <Content Include="ThirdParty\vis\img\network\rightArrow.png" />
+    <Content Include="ThirdParty\vis\img\network\upArrow.png" />
+    <Content Include="ThirdParty\vis\img\network\zoomExtends.png" />
+    <Content Include="ThirdParty\vis\vis-graph3d.min.js" />
+    <Content Include="ThirdParty\vis\vis-network.min.css" />
+    <Content Include="ThirdParty\vis\vis-network.min.js" />
+    <Content Include="ThirdParty\vis\vis-timeline-graph2d.min.css" />
+    <Content Include="ThirdParty\vis\vis-timeline-graph2d.min.js" />
+    <Content Include="ThirdParty\vis\vis.css" />
+    <Content Include="ThirdParty\vis\vis.js" />
+    <Content Include="ThirdParty\vis\vis.min.css" />
+    <Content Include="ThirdParty\vis\vis.min.js" />
+    <Content Include="toolbox\Img\404.jpg" />
+    <Content Include="toolbox\Img\CustomizationImg\054c5df595e041d28d2fc248475130c0.PNG" />
+    <Content Include="toolbox\Img\CustomizationImg\0e96dd19416e4f249f4f59ee05d42148.PNG" />
+    <Content Include="toolbox\Img\CustomizationImg\130767fc55794d5dba1f122d7b8141e1.PNG" />
+    <Content Include="toolbox\Img\CustomizationImg\1f179fd14dd94003a85fafd8fa0396e0.png" />
+    <Content Include="toolbox\Img\CustomizationImg\2ceeb4b2a6a74e7bb373a345bf4495d8.PNG" />
+    <Content Include="toolbox\Img\CustomizationImg\a16d97bd-345f-41b1-bd73-6de6795585e3.png" />
+    <Content Include="toolbox\Img\CustomizationImg\b5494f5424da466e972a7fc994c45530.PNG" />
+    <Content Include="toolbox\Img\Email\EmailHead.jpg" />
+    <Content Include="toolbox\Img\Email\EmailLogo.gif" />
+    <Content Include="toolbox\Img\favicon.png" />
+    <Content Include="toolbox\Img\FooterBackground.jpg" />
+    <Content Include="toolbox\Img\information.jpg" />
+    <Content Include="toolbox\Img\link.jpg" />
+    <Content Include="toolbox\Img\logo-birds-eye-view.jpg" />
+    <Content Include="toolbox\Img\no-data-found.jpg" />
+    <Content Include="toolbox\Img\product-line.jpg" />
+    <Content Include="toolbox\Img\PublicLinkImg\3i_System.png" />
+    <Content Include="toolbox\Img\PublicLinkImg\Kronos.png" />
+    <Content Include="toolbox\Img\PublicLinkImg\QlikSense_Reporting.png" />
+    <Content Include="toolbox\Img\PublicLinkImg\SEWC_Intranet.png" />
+    <Content Include="toolbox\Img\PublicLinkImg\Ticket_System.png" />
+    <Content Include="toolbox\Img\PublicLinkImg\Ultimus_Workflow.png" />
+    <Content Include="toolbox\Img\QuickLinkImg\85b1c274-5c94-4ba6-adcd-162e979725fd.jpg" />
+    <Content Include="toolbox\Img\QuickLinkImg\a32be265-7080-4192-a36b-ff6961c65166.jpg" />
+    <Content Include="toolbox\Img\QuickLinkImg\b9c960ecaf2641f3945a2e207cab21e3.png" />
+    <Content Include="toolbox\Img\report.jpg" />
+    <Content Include="toolbox\Img\ReportImg\025ed009bd114fe7813b2161a8b1cefd.png" />
+    <Content Include="toolbox\Img\ReportImg\044a6e2d-6127-416e-9b14-e539c2e911e5.png" />
+    <Content Include="toolbox\Img\ReportImg\0c566770221a4145958cfe0d0bbf6942.PNG" />
+    <Content Include="toolbox\Img\ReportImg\131b7c650b494353b3cb5f4b51cfa533.png" />
+    <Content Include="toolbox\Img\ReportImg\20bde75ed644438b984a889d4673aba3.PNG" />
+    <Content Include="toolbox\Img\ReportImg\20caeeb2ddbd49358c96521c79e70da6.png" />
+    <Content Include="toolbox\Img\ReportImg\227a7bec-9171-4219-8aa3-9ec6bab61d2a.PNG" />
+    <Content Include="toolbox\Img\ReportImg\237ef7ee-4d63-4320-9bbd-18830d1170d7.JPG" />
+    <Content Include="toolbox\Img\ReportImg\26598860-0cbc-47ad-9b63-7f85ab7a618e.PNG" />
+    <Content Include="toolbox\Img\ReportImg\26c0880d-4d2a-4a82-92e5-ac14d2189ed3.PNG" />
+    <Content Include="toolbox\Img\ReportImg\287789be-d87a-49cc-950a-1007cc875ec4.PNG" />
+    <Content Include="toolbox\Img\ReportImg\2adfa4a2-b2e2-4b3e-80c5-1a659cb12ec4.jpg" />
+    <Content Include="toolbox\Img\ReportImg\2dbf867b4b694cb1bed7d8cbb987f53b.png" />
+    <Content Include="toolbox\Img\ReportImg\31f589d2-6f35-451e-bf8e-7088c37a6a40.jpg" />
+    <Content Include="toolbox\Img\ReportImg\36a97b68-d485-4589-9997-01333c07c3f4.PNG" />
+    <Content Include="toolbox\Img\ReportImg\38c50ec2-7e10-4132-aee9-d5ff8061dff4.PNG" />
+    <Content Include="toolbox\Img\ReportImg\3e65e061-f9d2-4b01-9893-dd90b29127f7.gif" />
+    <Content Include="toolbox\Img\ReportImg\419059a0-0098-49b5-8fc1-844773f4e9a3.PNG" />
+    <Content Include="toolbox\Img\ReportImg\42d69cf5-f4d3-42a3-a66b-7170eb6bb69e.JPG" />
+    <Content Include="toolbox\Img\ReportImg\47b6ee03-4681-4ffe-b72c-5873092e3203.PNG" />
+    <Content Include="toolbox\Img\ReportImg\51ecb904-0907-4512-8b7f-2a06a2f470c6.PNG" />
+    <Content Include="toolbox\Img\ReportImg\5608bf76-7c86-4f50-986b-f3fa062f3eb0.PNG" />
+    <Content Include="toolbox\Img\ReportImg\5915f1e9-ce41-49b9-8880-2bd85b6593ec.PNG" />
+    <Content Include="toolbox\Img\ReportImg\5d5e3585-b1c2-4911-9649-986136de49de.PNG" />
+    <Content Include="toolbox\Img\ReportImg\679fc4eb-b064-40af-a7e5-062d00605dc5.PNG" />
+    <Content Include="toolbox\Img\ReportImg\6fb3cadd-555e-4092-aeda-02495cc22524.PNG" />
+    <Content Include="toolbox\Img\ReportImg\6fda7048-af35-46c1-9b58-c242e41de4cd.JPG" />
+    <Content Include="toolbox\Img\ReportImg\757a8a73-3d29-4269-bf27-dd98e49e293e.PNG" />
+    <Content Include="toolbox\Img\ReportImg\7e7852d2-28cf-4aa5-93a3-e02359d614b5.JPG" />
+    <Content Include="toolbox\Img\ReportImg\8203d093751c484eb6ceea27608ac03a.png" />
+    <Content Include="toolbox\Img\ReportImg\844491df-fa03-4334-bb87-f6819adc96fd.png" />
+    <Content Include="toolbox\Img\ReportImg\86f68871-175a-47f5-bc38-e853c7fb2cbf.png" />
+    <Content Include="toolbox\Img\ReportImg\90078fb097ed496e930c5b24b403eaae.png" />
+    <Content Include="toolbox\Img\ReportImg\92d42f44-2352-4728-ae44-d35cc80663c7.PNG" />
+    <Content Include="toolbox\Img\ReportImg\9555e067-18a7-4225-a0a6-86702ebf89f8.PNG" />
+    <Content Include="toolbox\Img\ReportImg\95e7dd14-281c-4bcd-809c-8808a73c2820.PNG" />
+    <Content Include="toolbox\Img\ReportImg\98575083-6275-4b28-a618-30a07cfba2a6.PNG" />
+    <Content Include="toolbox\Img\ReportImg\a049e493869e4ff08d2d23a44a1ac691.PNG" />
+    <Content Include="toolbox\Img\ReportImg\a2606eed-afcd-42ea-8422-65e0e180944d.PNG" />
+    <Content Include="toolbox\Img\ReportImg\a4d6afa5-08e1-4559-864d-732d55e16c2e.PNG" />
+    <Content Include="toolbox\Img\ReportImg\a74c5c1c-bd2e-484c-b35a-edf8f59674cd.PNG" />
+    <Content Include="toolbox\Img\ReportImg\AC Sales Revenue.PNG" />
+    <Content Include="toolbox\Img\ReportImg\ad843057074c4685a2a08b8187526885.png" />
+    <Content Include="toolbox\Img\ReportImg\af84dbd9-f79b-493d-b6e4-0a348d95a91b.JPG" />
+    <Content Include="toolbox\Img\ReportImg\b124f1cb-c1c8-48ab-8d2a-95622e0a6762.jpg" />
+    <Content Include="toolbox\Img\ReportImg\b4c540e9-2137-4c03-b6d0-04a823fee6bf.PNG" />
+    <Content Include="toolbox\Img\ReportImg\b6da668a-ffe8-4aef-a02c-5b7f6a9d22e4.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Blocked Stock Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Box Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\c5f562e2-fcf7-4553-b37e-7d127e575947.png" />
+    <Content Include="toolbox\Img\ReportImg\CDD Past-due Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\cddb50ba-ffb6-4c50-99b1-58ec81ef3550.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Consignment Critical Material Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Consignment Material Inventory.PNG" />
+    <Content Include="toolbox\Img\ReportImg\d1b1a912-dc60-4667-bb11-745f8e82c1f0.PNG" />
+    <Content Include="toolbox\Img\ReportImg\d2be9db2-9809-4067-bf57-a233c12f2770.PNG" />
+    <Content Include="toolbox\Img\ReportImg\d7708b4a-7161-423f-b977-ef7915fd34b2.JPG" />
+    <Content Include="toolbox\Img\ReportImg\d89af353-c972-4f06-ac7e-11ff59cbdfb6.jpg" />
+    <Content Include="toolbox\Img\ReportImg\d97936ecf0bb4c3cbe8f5eca4f3f3a61.png" />
+    <Content Include="toolbox\Img\ReportImg\Daily Backlog.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Daily Inventory Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Daily Output Minutes.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Daily Output Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\DC Sales Porting&amp;FG Stock Portion.PNG" />
+    <Content Include="toolbox\Img\ReportImg\DC Stock Fulfil Rate.PNG" />
+    <Content Include="toolbox\Img\ReportImg\DC Turnover.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Delivery Past-due Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Delivery Reliability.PNG" />
+    <Content Include="toolbox\Img\ReportImg\DF Backlog Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\e09a5ed383ff433286d999774b450d3d.png" />
+    <Content Include="toolbox\Img\ReportImg\e672d376-82f2-43ee-bd98-35b7b96b898a.JPG" />
+    <Content Include="toolbox\Img\ReportImg\EBS Monitor.PNG" />
+    <Content Include="toolbox\Img\ReportImg\ESD Box Match Rate.PNG" />
+    <Content Include="toolbox\Img\ReportImg\EW93 Stock Range Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\f46014adb2a447f68b5c1af062aef5bc.png" />
+    <Content Include="toolbox\Img\ReportImg\f608d8c0-7fe3-4e73-8934-f5e790ac5270.JPG" />
+    <Content Include="toolbox\Img\ReportImg\FG Demand Comparison.PNG" />
+    <Content Include="toolbox\Img\ReportImg\GR&amp;Incoming Inspection Cycle Time.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Import&amp;Export Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Inventory Turnover Rate.PNG" />
+    <Content Include="toolbox\Img\ReportImg\LCC Delivery Billing.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Line Stopper.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Liplas Comparison_MtM.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Liplas Comparison_QtQ.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Liplas Result Curr. FY.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Liplas Result Next FY.PNG" />
+    <Content Include="toolbox\Img\ReportImg\LOG System Availability.PNG" />
+    <Content Include="toolbox\Img\ReportImg\LOG3 Productivity.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Logistics status DF FA - Master SEWC.PNG" />
+    <Content Include="toolbox\Img\ReportImg\LT Report.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Material Availability.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Material Demand Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Material&amp;Capacity Overview.PNG" />
+    <Content Include="toolbox\Img\ReportImg\MIT&amp;Pallet Warehouse.PNG" />
+    <Content Include="toolbox\Img\ReportImg\MITPallet Inventory Analysis.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Monthly Inventory Analysis.PNG" />
+    <Content Include="toolbox\Img\ReportImg\MTO Production Order Status.PNG" />
+    <Content Include="toolbox\Img\ReportImg\MTS Production Order Status.PNG" />
+    <Content Include="toolbox\Img\ReportImg\NA.png" />
+    <Content Include="toolbox\Img\ReportImg\Open Customer Order.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Order Income Characteristics.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Overall Production Fore&amp;Actual.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Overview Delivery Logistics.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Percentage of Stock&amp;Turnvoer.PNG" />
+    <Content Include="toolbox\Img\ReportImg\PL DataPool.PNG" />
+    <Content Include="toolbox\Img\ReportImg\PL PVO.PNG" />
+    <Content Include="toolbox\Img\ReportImg\PO Report.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Production Output Leveling.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Production Plan Comparison.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Production Plan Response.PNG" />
+    <Content Include="toolbox\Img\ReportImg\PU Manpower Requirement.PNG" />
+    <Content Include="toolbox\Img\ReportImg\PVO Report.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Quality of PO Date Report.PNG" />
+    <Content Include="toolbox\Img\ReportImg\RM Inventory.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Sales Revenue.PNG" />
+    <Content Include="toolbox\Img\ReportImg\SDR Report.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Ship Pallet Qty Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Shipment Tracking.PNG" />
+    <Content Include="toolbox\Img\ReportImg\SOFA.PNG" />
+    <Content Include="toolbox\Img\ReportImg\SPR Report.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Stor Capacity.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Supplier Flexibility Report.PNG" />
+    <Content Include="toolbox\Img\ReportImg\TMS Tooling Management System.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Turnover&amp;OrderIncome by Pcs.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Turnover&amp;OrderIncome by PK.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Warehouse Capacity&amp;Box Req.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Warehouse Headcount Forecast.PNG" />
+    <Content Include="toolbox\Img\ReportImg\Weekly Backlog.PNG" />
+    <Content Include="toolbox\Img\ReportImg\WIP Station.PNG" />
+    <Content Include="toolbox\Img\SCM-Workflow.png" />
+    <Content Include="toolbox\Img\siemens-logo.gif" />
+    <Content Include="toolbox\Img\tool.jpg" />
+    <Content Include="toolbox\Img\UploadTemp\000a0e9484ad4a1aba1c1c47d0a30a8b.png" />
+    <Content Include="toolbox\Img\UploadTemp\2cb560c920ef449d8501d961d82b26b8.PNG" />
+    <Content Include="toolbox\Img\UploadTemp\43dd7c94662c469b990843729306ed6e.png" />
+    <Content Include="toolbox\Img\UploadTemp\72b63b3a54b64d21a8d2a043a0b3286c.PNG" />
+    <Content Include="toolbox\Img\UploadTemp\9564c3838b184848be9842451ce928d1.png" />
+    <Content Include="toolbox\Img\UploadTemp\a75ecd573b094010969d4f35cd7cb89a.png" />
+    <Content Include="toolbox\Img\UploadTemp\c36b8a30829b4b31b4877fbe7051e952.png" />
+    <Content Include="toolbox\Img\UploadTemp\f74062bde45d42c3b028da041d420eaa.png" />
+    <Content Include="toolbox\Img\welcome.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout_Base.cshtml" />
+    <Content Include="Views\Home\PersonalInformation.cshtml" />
+    <Content Include="Views\Home\HomePage.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\CustomError.cshtml" />
+    <Content Include="ThirdParty\layui\font\iconfont.eot" />
+    <Content Include="ThirdParty\layui\font\iconfont.ttf" />
+    <Content Include="ThirdParty\layui\font\iconfont.woff" />
+    <Content Include="Views\Shared\_Layout_ToolBox.cshtml" />
+    <Content Include="Views\SCM\ReportingBackUp.cshtml" />
+    <Content Include="Views\SCM\Home.cshtml" />
+    <Content Include="Views\SCM\BusinessOverView.cshtml" />
+    <Content Include="Views\SCM\QuickLink.cshtml" />
+    <Content Include="Views\Shared\_Layout_Function.cshtml" />
+    <Content Include="Views\ToolBoxFunctional\Reporting_Add.cshtml" />
+    <Content Include="Views\ToolBoxFunctional\Reporting_Edit.cshtml" />
+    <Content Include="Views\ToolBoxFunctional\QuickLink_Add.cshtml" />
+    <Content Include="Views\ToolBoxFunctional\QuickLink_Edit.cshtml" />
+    <Content Include="Views\ToolBoxFunctional\Report_GetAccess_Multiple.cshtml" />
+    <Content Include="Views\Shared\_Layout_GetAccess_Multiple.cshtml" />
+    <Content Include="Views\ToolBoxFunctional\Customization_Add.cshtml" />
+    <Content Include="Views\ToolBoxFunctional\Customization_Edit.cshtml" />
+    <Content Include="Views\ToolBoxBase\Organization.cshtml" />
+    <Content Include="Views\ToolBoxBase\Management.cshtml" />
+    <Content Include="Views\ToolBoxFunctional\UserRole_Add.cshtml" />
+    <Content Include="Views\ToolBoxFunctional\UserRole_View.cshtml" />
+    <Content Include="Views\ToolBoxFunctional\UserRole_Update.cshtml" />
+    <Content Include="ThirdParty\vis\vis.js.map" />
+    <Content Include="ThirdParty\vis\vis.map" />
+    <Content Include="Views\SCM\Reporting.cshtml" />
+    <Content Include="Views\ToolBoxFunctional\ProcessLinkage_Add.cshtml" />
+    <Content Include="Views\ToolBoxFunctional\ProcessLinkage_Edit.cshtml" />
+    <Content Include="Views\ToolBoxBase\BusinessProcessManagement.cshtml" />
+    <None Include="Service References\ServiceReference1\SSOService.wsdl" />
+    <Content Include="Views\SCM\Search.cshtml" />
+    <Content Include="Views\SCM\layeditor.cshtml" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\.gitignore" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\autocompleter.jquery.json" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\bower.json" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\CONTRIBUTING.md" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\LICENSE" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\package.json" />
+    <Content Include="ThirdParty\jquery-autocompleter\jquery-autocompleter-master\README.md" />
+    <Content Include="ThirdParty\Jquery12.1\package.json" />
+    <Content Include="Views\SCM\Editor.cshtml" />
+    <Content Include="Views\SEWC\BusinessOverView.cshtml" />
+    <Content Include="Views\SEWC\Home.cshtml" />
+    <Content Include="Views\SEWC\layeditor.cshtml" />
+    <Content Include="Views\SEWC\QuickLink.cshtml" />
+    <Content Include="Views\SEWC\Reporting.cshtml" />
+    <Content Include="Views\SEWC\Search.cshtml" />
+    <Content Include="Views\QM\BusinessOverView.cshtml" />
+    <Content Include="Views\QM\Editor.cshtml" />
+    <Content Include="Views\QM\Home.cshtml" />
+    <Content Include="Views\QM\layeditor.cshtml" />
+    <Content Include="Views\QM\QuickLink.cshtml" />
+    <Content Include="Views\QM\Reporting.cshtml" />
+    <Content Include="Views\QM\ReportingBackUp.cshtml" />
+    <Content Include="Views\QM\Search.cshtml" />
+    <Content Include="Views\ToolBoxBase\Help.cshtml" />
+    <Content Include="Views\SEWC\MyToolBox.cshtml" />
+    <Content Include="Views\Issue\Handle.cshtml" />
+    <Content Include="Views\Issue\Index.cshtml" />
+    <Content Include="Views\Issue\View.cshtml" />
+    <Content Include="Views\SSML\BusinessOverView.cshtml" />
+    <Content Include="Views\SSML\Home.cshtml" />
+    <Content Include="Views\SSML\layeditor.cshtml" />
+    <Content Include="Views\SSML\MyToolBox.cshtml" />
+    <Content Include="Views\SSML\QuickLink.cshtml" />
+    <Content Include="Views\SSML\Reporting.cshtml" />
+    <Content Include="Views\SSML\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="ProcessAttachment\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SEWC_ToolBox.DAL\SEWC_ToolBox.DAL.csproj">
+      <Project>{70cb5d90-9aa2-47c1-ba88-884d79a4b7cc}</Project>
+      <Name>SEWC_ToolBox.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SEWC_ToolBox.Utilities\SEWC_ToolBox.Utilities.csproj">
+      <Project>{ecfbb1fe-e717-48bd-960c-936e54ec6455}</Project>
+      <Name>SEWC_ToolBox.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Languages\Resource\lang.en-US.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>lang.en-US.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Languages\Resource\lang.zh-CN.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>lang.zh-CN.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58735</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58735</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets'))" />
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets')" />
+  <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,226 @@
+﻿@using SEWC_ToolBox.DAL.EFs
+@using SEWC_ToolBox.DAL.Extions
+@using SEWC_ToolBox.Languages
+
+@model t_ReportIssue
+@{
+    ViewBag.Title = LanguageHelper.InnerLang(HttpContext.Current, "txt_HandleIssue");
+    Layout = "~/Views/Shared/_Layout_Function.cshtml";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-xs12">
+            @if (Model != null)
+            {
+                <form class="layui-form" lay-filter="issue" action="@Url.Action("Hander")">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">@LanguageHelper.InnerLang(HttpContext.Current, "txt_ReportName")：</label>
+                        <div class="layui-form-text">
+                            @Html.HiddenFor(a => a.id)
+                            @Model.ReportTitle
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">@LanguageHelper.InnerLang(HttpContext.Current, "txt_Admin")：</label>
+                        <div class="layui-form-text">
+                            <span>@Model.AdminOwnerName</span><span>（@Model.AdminOwner）</span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">@LanguageHelper.InnerLang(HttpContext.Current, "txt_CreateUser")：</label>
+                            <div class="layui-form-text">
+                                <span>@Model.CreateUserName</span><span>（@Model.CreateUser）</span>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">@LanguageHelper.InnerLang(HttpContext.Current, "txt_CreateTime")：</label>
+                            <div class="layui-form-text">
+                                <span>@Model.Createtime.ToString("yyyy-MM-dd HH:mm")</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">@LanguageHelper.InnerLang(HttpContext.Current, "txt_Issue")：</label>
+                        <div class="layui-form-inline">
+                            <div class="issue hm120" style="padding-left:15px;">
+                                @Html.Raw(Model.Issues)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">@LanguageHelper.InnerLang(HttpContext.Current, "txt_Status")：</label>
+                        <div class="layui-form-text" style="padding:0px 15px;">
+                            <select name="State" id="state" class="layui-input">
+                                <option value="1">@LanguageHelper.InnerLang(HttpContext.Current, "txt_IssuePending")</option>
+                                <option value="2">@LanguageHelper.InnerLang(HttpContext.Current, "txt_IssueSolved")</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">@LanguageHelper.InnerLang(HttpContext.Current, "txt_Reason")：</label>
+                        <div class="layui-form-text" style="padding:0px 15px;width:70%">
+                            <input type="text" name="AnswerReason" id="AnswerReason" value="@Model.AnswerReason" autocomplete="off" class="layui-input" lay-verify="reason">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">@LanguageHelper.InnerLang(HttpContext.Current, "txt_Solution")：</label>
+                        <div class="layui-form-text" style="padding:0px 15px;width:83%">
+                            <textarea id="AnswerDetail-temp" style="display:none">@Model.AnswerDetail</textarea>
+                            <textarea id="AnswerDetail" name="AnswerDetail" style="height:200px;width:100%" lay-verify="solution"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div style="text-align:center;margin-top:20px">
+                            <button type="submit" lay-submit="" lay-filter="issue" class="layui-btn layui-btn-normal">@LanguageHelper.InnerLang(HttpContext.Current, "txt_Submit")</button>
+                            <button type="reset" class="layui-btn layui-btn-primary" onclick="resetForm()">@LanguageHelper.InnerLang(HttpContext.Current, "txt_Reset")</button>
+                        </div>
+                    </div>
+                </form>
+            }
+            else
+            {
+                <div style="margin-top:50px;text-align:center">Error</div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@Scripts.Render("~/Content/ueditor/config?v=" + ViewBag.VersionNo)
+@Scripts.Render("~/Content/ueditor/api?v=" + ViewBag.VersionNo)
+@Scripts.Render("~/Content/ueditor/lang?v=" + ViewBag.VersionNo)
+
+<script type="text/javascript">
+    layui.use(['form'], function () {      
+        var form = layui.form
+        form.render('select')
+        form.verify({
+            reason: function (value) {
+                if (value <= 0) {
+                    return 'Please enter the reason'
+                }
+            },
+            solution: function (value) {
+                 if (value <= 0) {
+                    return 'Please enter the solution'
+                }
+            }
+        });
+        form.on('submit(issue)', function (data) {
+            /*layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })*/
+
+            var closeIdx = layer.msg('加载中', {
+                icon: 16
+                , shade: 0.01
+            });
+            var fields = data.field;
+            var postData = {
+                id: fields.id,
+                State: fields.State,
+                AnswerReason: fields.AnswerReason,
+                AnswerDetail: htmlEncode(fields.AnswerDetail)
+            }
+            $.ajax({
+                url: '@Url.Action("Handle")',
+                data: postData,
+                type: "POST",
+                ContentType: "application/json",
+                dataType:'json',
+                success: function (res) {
+                    layer.close(closeIdx);
+                    debugger
+                    if (res.OpResult) {
+                        //提交成功  关闭当前页面
+                        var win = parent || window
+                        if (win) {
+                            //win.customAlert(1, 'Hander Success!')
+                            win.layer.closeAll();
+                                (parent || window).customAlert(1, res.OpMsg);
+                            if (win.reloadTable) {
+                                win.reloadTable();
+                            }
+                        }
+                    } else {
+                        customAlert(2, res.OpMsg);
+                    }
+                },
+                error: function (e) {
+                    debugger
+                    layer.close(closeIdx);
+                    (parent || window).customAlert(2, "Busy network!");
+                }
+            })
+
+            return false;
+        });
+    })
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('AnswerDetail');
+    ue.ready(function () {
+        //$(".edui-editor-bottomContainer").remove();
+          ue.setContent($("#AnswerDetail-temp").val())
+    });
+
+    var resetForm = function () {
+        ue.setContent($("#AnswerDetail-temp").val())
+    }
+
+    var htmlEncode = function (html) {
+        //通过元素呈现方式去转意
+        var temp = document.createElement("div");
+        (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+        var output = temp.innerHTML;
+        temp = null;
+        return output;
+    }
+
+</script>
+
+<style type="text/css">
+    .body {
+        min-height: 0px;
+    }
+
+    .layui-form-label {
+        width: 130px;
+        text-align:left;
+    }
+
+    .layui-form-text {
+        width: auto;
+        display: inline-block;
+        padding: 9px 15px;
+    }
+
+    .layui-form-item {
+        margin-bottom: 0px;
+    }
+
+    .layui-flex {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .wl95 {
+        width: 95%
+    }
+
+    .hm120 {
+        max-height: 120px;
+    }
+
+    .issue {
+        overflow-y: auto;
+        word-wrap: break-word;
+    }
+
+    .layui-anim {
+        z-index: 1000 !important
+    }
+</style>
+

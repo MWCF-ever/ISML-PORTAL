@@ -1,0 +1,120 @@
+﻿@using SEWC_ToolBox.Languages;
+@using SEWC_ToolBox.DAL.EFs;
+@using System.Text;
+
+@{
+    Layout = "~/Views/Shared/_Layout_Function.cshtml";
+    ViewBag.Title = "Add Customization";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+
+@Scripts.Render("~/Scripts/CustomScripts/ToolBoxFunctional/UserRole?v=" + ViewBag.VersionNo)
+
+<div class="container">
+
+    <form class="layui-form layui-form-pane" action="">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_Department")</label>
+            <div class="layui-input-block">
+                @{
+                    StringBuilder DeptBuilder = new StringBuilder();
+
+                    if (ViewBag.Entry != null)
+                    {
+                        t_Entry Entry = ViewBag.Entry as t_Entry;
+
+                        DeptBuilder.Append("<input type='text' class='layui-input' readonly='readonly' value='" + Entry.e_Dept_AbbreviatedName + "' />");
+                    }
+
+                    @(new HtmlString(DeptBuilder.ToString()))
+                }
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_User")</label>
+            <div class="layui-input-block">
+                @{
+                    StringBuilder UserBuilder = new StringBuilder();
+
+                    if (ViewBag.User != null)
+                    {
+                        v_User User = ViewBag.User as v_User;
+
+                        UserBuilder.Append("<input type='text' class='layui-input' readonly='readonly' value='" + User.User_DisplayText + "' />");
+                    }
+
+                    @(new HtmlString(UserBuilder.ToString()))
+                }
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_Role")</label>
+            <div class="layui-input-block">
+                @{
+                    StringBuilder RoleBuilder = new StringBuilder();
+
+                    if (ViewBag.Access != null)
+                    {
+                        t_Access Access = ViewBag.Access as t_Access;
+
+                        RoleBuilder.Append("<input type='text' class='layui-input' readonly='readonly' value='" + Html.Lang("txt_UserRole_" + Access.a_Name) + "' />");
+                    }
+
+                    @(new HtmlString(RoleBuilder.ToString()))
+                }
+            </div>
+        </div>
+        <div class="layui-footer" style="text-align:center;">
+            <button type="reset" class="layui-btn layui-btn-primary hidden" id="btn_reset">@Html.Lang("txt_Reset")</button>
+            <button class="layui-btn layui-btn-primary" id="btn_close" type="button">@Html.Lang("txt_Close")</button>
+        </div>
+
+    </form>
+
+    <br />
+    <h4>@Html.Lang("txt_UserRole_Authorities")</h4>
+
+    @{
+        StringBuilder HtmlBuilder = new StringBuilder();
+
+        if (ViewBag.Access != null)
+        {
+            t_Access Access = ViewBag.Access as t_Access;
+
+            HtmlBuilder.Append("<table id='table_access_" + Access.a_ID + "' class='layui-table'>");
+
+            HtmlBuilder.Append("<colgroup>");
+            HtmlBuilder.Append("<col width='150'><col>");
+            HtmlBuilder.Append("</colgroup>");
+
+            HtmlBuilder.Append("<thead><tr>");
+            HtmlBuilder.Append("<th>" + Html.Lang("txt_AccessType") + "</th>");
+            HtmlBuilder.Append("<th>" + Html.Lang("txt_Description") + "</th>");
+            HtmlBuilder.Append("</tr></thead>");
+
+            HtmlBuilder.Append("<tr>");
+            HtmlBuilder.Append("<td>" + Html.Lang("txt_AccessType_R") + "</td>");
+            HtmlBuilder.Append("<td>" + Html.Lang("txt_AccessType_R" + Access.a_Type_R) + "</td>");
+            HtmlBuilder.Append("</tr>");
+
+            HtmlBuilder.Append("<tr>");
+            HtmlBuilder.Append("<td>" + Html.Lang("txt_AccessType_C") + "</td>");
+            HtmlBuilder.Append("<td>" + Html.Lang("txt_AccessType_C" + Access.a_Type_C) + "</td>");
+            HtmlBuilder.Append("</tr>");
+
+            HtmlBuilder.Append("<tr>");
+            HtmlBuilder.Append("<td>" + Html.Lang("txt_AccessType_U") + "</td>");
+            HtmlBuilder.Append("<td>" + Html.Lang("txt_AccessType_U" + Access.a_Type_U) + "</td>");
+            HtmlBuilder.Append("</tr>");
+
+            HtmlBuilder.Append("<tr>");
+            HtmlBuilder.Append("<td>" + Html.Lang("txt_AccessType_D") + "</td>");
+            HtmlBuilder.Append("<td>" + Html.Lang("txt_AccessType_D" + Access.a_Type_D) + "</td>");
+            HtmlBuilder.Append("</tr>");
+        }
+
+        @(new HtmlString(HtmlBuilder.ToString()))
+    }
+
+</div>

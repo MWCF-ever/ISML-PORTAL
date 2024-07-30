@@ -1,0 +1,107 @@
+﻿@using SEWC_ToolBox.Languages;
+@using SEWC_ToolBox.DAL.EFs;
+@using System.Text;
+
+@{
+    Layout = "~/Views/Shared/_Layout_Function.cshtml";
+    ViewBag.Title = "Add QuickLink";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+
+@Scripts.Render("~/Scripts/CustomScripts/ToolBoxFunctional/QuickLink?v=" + ViewBag.VersionNo)
+
+<div class="container">
+
+    <form class="layui-form layui-form-pane" action="">
+
+        <div class="hidden">
+            <input type="text" id="input_deptID" name="input_deptID" readonly="readonly" value="@ViewBag.DeptID" />
+            <input type="text" id="input_quickLinkGUID" name="input_quickLinkGUID" readonly="readonly" value="@ViewBag.QuickLinkGUID" />
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_QuickLinkName")</label>
+            <div class="layui-input-block">
+                <input type="text" id="input_quickLinkName" name="input_quickLinkName" required lay-verify="required" placeholder="@Html.Lang("txt_QuickLinkName_plus")" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">@Html.Lang("txt_Linkage")</label>
+            <div class="layui-input-block">
+                <input type="text" id="input_linkage" name="input_linkage" required lay-verify="required" placeholder="@Html.Lang("txt_Linkage_plus")" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">@Html.Lang("txt_Status")</label>
+            <div class="layui-input-block">
+                <input type="radio" name="input_enabled" value="1" title="@Html.Lang("txt_Status_Enabled")" checked />
+                <input type="radio" name="input_enabled" value="0" title="@Html.Lang("txt_Status_Disabled")" />
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_Type")</label>
+            <div class="layui-input-block">
+                @{
+                    StringBuilder TypeBuilder = new StringBuilder();
+
+                    if (ViewBag.QuickLink_TypeList != null)
+                    {
+                        List<v_MenuList> QuickLink_TypeList = ViewBag.QuickLink_TypeList as List<v_MenuList>;
+
+                        for (int i = 0; i < QuickLink_TypeList.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                TypeBuilder.Append("<select name='select_Type' lay-verify='required'>");
+                            }
+
+                            if (QuickLink_TypeList[i].ml_Sub_ID == ViewBag.SubID)
+                            {
+                                TypeBuilder.Append("<option value='" + QuickLink_TypeList[i].ml_Sub_ID + "' selected='selected'>" + Html.Lang("txt_SEWC_QuickLink_" + QuickLink_TypeList[i].ml_Sub_ActionName) + "</option>");
+                            }
+                            else
+                            {
+                                TypeBuilder.Append("<option value='" + QuickLink_TypeList[i].ml_Sub_ID + "'>" + Html.Lang("txt_SEWC_QuickLink_" + QuickLink_TypeList[i].ml_Sub_ActionName) + "</option>");
+                            }
+
+                            if (i == QuickLink_TypeList.Count - 1)
+                            {
+                                TypeBuilder.Append("</select>");
+                            }
+                        }
+                    }
+
+                    @(new HtmlString(TypeBuilder.ToString()))
+                }
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_Sort")</label>
+            <div class="layui-input-block">
+                <input type="text" id="input_sort" name="input_sort" value="1" required lay-verify="required|number" placeholder="@Html.Lang("txt_Sort_plus")" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">@Html.Lang("txt_Description")</label>
+            <div class="layui-input-block">
+                <textarea id="input_description" name="input_description" placeholder="@Html.Lang("txt_Description_plus")" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">@Html.Lang("txt_Photo")</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn" id="btn_upload" style="margin:10px;">
+                    <i class="layui-icon">&#xe67c;</i>@Html.Lang("txt_Upload")
+                </button>
+                <img id="img_quickLinkPic" style="display:none; width: 300px; height: 180px; border: 2px solid rgb(230, 230, 230); margin:10px;" />
+                <input class="hidden" type="text" id="input_picPath" name="input_picPath" readonly="readonly" />
+            </div>
+        </div>
+        <div class="layui-footer" style="text-align:center;">
+            <button class="layui-btn" lay-submit lay-filter="formCreate">@Html.Lang("txt_Submit")</button>
+            <button type="reset" class="layui-btn layui-btn-primary" id="btn_reset">@Html.Lang("txt_Reset")</button>
+            <button class="layui-btn layui-btn-primary" id="btn_close" type="button">@Html.Lang("txt_Close")</button>
+        </div>
+
+    </form>
+
+</div>

@@ -1,0 +1,199 @@
+﻿@using SEWC_ToolBox.Languages;
+@using SEWC_ToolBox.DAL.EFs;
+@using System.Configuration;
+@{
+    Layout = "~/Views/Shared/_Layout_ToolBox.cshtml";
+    ViewBag.Title = "Business OverView";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+    string PreUrl = ViewBag.PreURL;
+}
+
+@Scripts.Render("~/ThirdParty/vis?v=" + ViewBag.VersionNo)
+@Styles.Render("~/ThirdParty/vis/css?v=" + ViewBag.VersionNo)
+
+@if (ViewBag.OverView != "E2E")
+{
+    @Scripts.Render("~/Scripts/CustomScripts/Topology?v=" + ViewBag.VersionNo)
+}
+
+@{
+    // 获取当前部门权限
+    v_UserRole UserRole_CurrentDept = ViewBag.UserRole_CurrentDept as v_UserRole;
+
+    if (ViewBag.OverView == "E2E")
+    {
+        <div class='body-content'><img class='img_contentMsg' src='@PreUrl/Img/SCM-Workflow.png' /></div>
+    }
+    else
+    {
+        <div class="row" style="padding-left:50px;padding-right:50px;">
+
+            <div style="display:none;">
+                @*<input id="input_menuID" style="display:none;" value="@ViewBag.SubID" />*@
+
+                <input id="input_deptID" style="display:none;" readonly="readonly" value="@ViewBag.DeptID" />
+                <input id="input_menuID" style="display:none;" readonly="readonly" value="@ViewBag.SubID" />
+                <input id="input_currentUserGID" style="display:none;" readonly="readonly" value="@ViewBag.CurrentUserGID" />
+                <input id="input_a_type_U" style="display:none;" readonly="readonly" value="99" />
+                <input id="input_a_Type_D" style="display:none;" readonly="readonly" value="99" />
+                <input id="input_currentNodeID" style="display:none;" value="" readonly="readonly" />
+                <button class='btn btn-primary layui-btn btn_tool' id='btn_category_collapse' title='Collapse All (Hot key Ctrl + Up Arrow)'><i class='layui-icon'>&#xe602;</i></button>
+                <button class='btn btn-primary layui-btn btn_tool' id='btn_category_expand' title='Expand All (Hot key Ctrl + Down Arrow)' style='display:none; margin-left: 0px;'><i class='layui-icon'>&#xe61a;</i></button>
+
+            </div>
+
+            <div class="row" id="div_topology">
+
+                <div class='div_content_op'>
+                    <blockquote class='layui-elem-quote layui-quote-nm' style='height: auto;'>
+                        <div style='vertical-align: central'>
+                            <h4 style='margin-top:0px; margin-bottom:15px;'>@Html.Lang("txt_Process_Description")</h4>
+                        </div>
+                        <div class='layui-btn-container'>
+                        </div>
+                    </blockquote>
+                </div>
+
+                <div class="topologyContent" id="div_network"></div>
+
+                <div class="layui-collapse" style="border-top:0;" id="div_linkage">
+
+                    <div class="layui-colla-item" id="div_document">
+                        <h2 class="layui-colla-title">@Html.Lang("txt_ProcessLinkage_RelatedDocument")</h2>
+                        <div class="layui-colla-content layui-show">
+                            <h4 id="h4_noDocument" style='margin-top:15px;display:none; color:#333333;'>@Html.Lang("txt_ProcessLinkage_NoDocument")</h4>
+
+                            @if (UserRole_CurrentDept.a_Type_C >= 1)
+                            {
+                                <div class='layui-btn-container'>
+                                    <button class='btn btn-primary layui-btn btn_tool' id='btn_addDocument' title='@Html.Lang("txt_ProcessLinkage_AddDocument")' onclick='addLinkage(1);'><i class='layui-icon'>&#xe61f;</i></button>
+                                </div>
+                            }
+
+                            <table class='layui-table' lay-skin='line' id="table_document">
+                                <colgroup>
+                                    <col width="100" />
+                                    <col />
+                                    <col width="250" />
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th> @Html.Lang("txt_RN")</th>
+                                        <th> @Html.Lang("txt_FileName")</th>
+                                        <th> @Html.Lang("txt_Operation")</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="layui-colla-item" id="div_report">
+                        <h2 class="layui-colla-title">@Html.Lang("txt_ProcessLinkage_RelatedReport")</h2>
+                        <div class="layui-colla-content layui-show">
+                            <h4 id="h4_noReport" style='margin-top:15px;display:none; color:#333333;'>@Html.Lang("txt_ProcessLinkage_NoReport")</h4>
+
+                            @if (UserRole_CurrentDept.a_Type_C >= 1)
+                            {
+                                <button class='btn btn-primary layui-btn btn_tool' id='btn_addReport' title='@Html.Lang("txt_ProcessLinkage_AddReport")' onclick='addLinkage(2);'><i class='layui-icon'>&#xe61f;</i></button>
+                            }
+
+                            <table class='layui-table' lay-skin='line' id="table_report">
+                                <colgroup>
+                                    <col width="100" />
+                                    <col />
+                                    <col width="250" />
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th> @Html.Lang("txt_RN")</th>
+                                        <th> @Html.Lang("txt_ReportName")</th>
+                                        <th> @Html.Lang("txt_Operation")</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="layui-colla-item" id="div_tool">
+                        <h2 class="layui-colla-title">@Html.Lang("txt_ProcessLinkage_RelatedTool")</h2>
+                        <div class="layui-colla-content layui-show">
+                            <h4 id="h4_noTool" style='margin-top:15px;display:none; color:#333333;'>@Html.Lang("txt_ProcessLinkage_NoTool")</h4>
+
+                            @if (UserRole_CurrentDept.a_Type_C >= 1)
+                            {
+                                <button class='btn btn-primary layui-btn btn_tool' id='btn_addTool' title='@Html.Lang("txt_ProcessLinkage_AddTool")' onclick='addLinkage(3);'><i class='layui-icon'>&#xe61f;</i></button>
+                            }
+
+                            <table class='layui-table' lay-skin='line' id="table_tool">
+                                <colgroup>
+                                    <col width="100" />
+                                    <col />
+                                    <col width="250" />
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th> @Html.Lang("txt_RN")</th>
+                                        <th> @Html.Lang("txt_ToolName")</th>
+                                        <th> @Html.Lang("txt_Operation")</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+                @*<div class="layui-collapse" style="border-top:0;" id="div_attachment">
+                        <div class="layui-colla-item">
+                            <h2 class="layui-colla-title">@Html.Lang("txt_Process_RelatedAttachment")</h2>
+                            <div class="layui-colla-content layui-show">
+                                <h4 id="h4_noAttachment" style='margin-top:15px;display:none;'>@Html.Lang("txt_Process_NoAttachment")</h4>
+
+                                <table class='layui-table' lay-skin='line' id="table_attachment">
+                                    <colgroup>
+                                        <col width="100" />
+                                        <col />
+                                        <col width="100" />
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th> @Html.Lang("txt_RN")</th>
+                                            <th> @Html.Lang("txt_FileName")</th>
+                                            <th> @Html.Lang("txt_Operation")</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>*@
+
+            </div>
+
+            <div class='body-content' id="div_noData" style="display:none;">
+
+                <div class='div_content_op'>
+                    <blockquote class='layui-elem-quote layui-quote-nm' style='height: auto;'>
+                        <div style='vertical-align: central'>
+                            <h4 style='margin-top:0px; margin-bottom:15px;'>@Html.Lang("txt_Process_NoData_Description")</h4>
+                        </div>
+                        <div class='layui-btn-container'>
+                        </div>
+                    </blockquote>
+                </div>
+
+                <img class='img_contentMsg' src='@string.Format("{0}/Img/no-data-found.jpg",PreUrl)' />
+
+            </div>
+
+        </div>
+
+    }
+
+}

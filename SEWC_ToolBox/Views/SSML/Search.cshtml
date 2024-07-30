@@ -1,0 +1,303 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_ToolBox.cshtml";
+    ViewBag.Title = "Search";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+<div class="body-content layui-collapse" style="height: auto;">
+
+    <input name="title" class="layui-input" style="margin-top:10px" id="searchInput" type="text" placeholder="Please Search.." layui-autocomplete />
+
+    <div class='layui-colla-item'>
+        <h2 class='layui-colla-title'>Document List </h2>
+        <div class='layui-colla-content layui-show'>
+            <table id="tb_documentlist" lay-filter="fileEvent" class="layui-hide"></table>
+        </div>
+    </div>
+
+    <div class='layui-colla-item'>
+        <h2 class='layui-colla-title'>Report List</h2>
+        <div class='layui-colla-content layui-show'>
+            <table id="tb_ReportList" lay-filter="reportEvent" class="layui-hide"></table>
+        </div>
+    </div>
+
+    <div class='layui-colla-item'>
+        <h2 class='layui-colla-title'>QuickLink List</h2>
+        <div class='layui-colla-content layui-show'>
+            <table id="tb_QuickLink" lay-filter="linkEvent" class="layui-hide"></table>
+        </div>
+    </div>
+</div>
+
+<script id="addFavorites" type="text/html">
+
+</script>
+
+<script>
+
+    $(document).ready(function () {
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+        $("#searchInput").val(GetQueryString("searchtxt"));
+
+        layui.config({
+            base: '/ThirdParty/layui/lay/modules/'
+        }).extend({
+            autocomplete: 'autocomplete'
+        });
+        layui.link('/ThirdParty/layui/css/modules/autocomplete.css');
+
+        layui.use(['table', 'laypage', 'laydate', 'jquery', 'autocomplete'], function () {
+            var table = layui.table, laydate = layui.laydate,
+                laypage = layui.laypage, $ = layui.$,
+                router = layui.router(), autocomplete = layui.autocomplete;
+            var searchVal = $("#searchInput").val();
+
+            var dlTable = table.render({
+                elem: '#tb_documentlist',
+                url: '../SSML/GetSearchDocumentList',
+                cols: [[{ type: 'numbers', title: 'NO.', sort: true, width: '5%' },
+                { field: 'pl_Name', title: 'Document Name', sort: true, width: '20%' },
+                { field: 'Location', title: 'Location', sort: true, width: '15%' },
+                {
+                    field: 'pl_Linkage', title: 'Go to the document', sort: true, width: '50%', templet: function (d) {
+                        if (isLocalFile(d.pl_Linkage)) {
+                            return '<a href="javascript:void(0)" class="btn_copy_report" data-id="' + d.r_ID + '" data-clipboard-text="' + d.pl_Linkage+'">' + d.pl_Linkage + '</a>'
+                        } else {
+                            return '<a href="' + d.pl_Linkage + '"  onclick="updateClickStatistics(' + d.r_ID + ')" target="view_window">' + d.pl_Linkage + '</a>'
+                        }
+
+                    }
+                }
+                ,
+                {
+                    field: 'pl_ID', title: 'Favorites', event: 'update_file_favorite', sort: true, width: '10%', templet: function (d) {
+                        //return "<a class='a_report_Btn' name='a_report_addToFavorites' title='AddToFavorites'><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);'>&#xe600;</i></a>";
+                        if (d.Favorite) {
+                            return "<a class='a_report_Btn' style='display: none;' name='a_file_addToFavorites' title='AddToFavorites'><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);'>&#xe600;</i></a><a class='a_report_Btn' name='a_file_removeFromFavorites' title='RemoveFromFavorites' ><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);' >&#xe658;</i></a>";
+                        } else {
+                            return "<a class='a_report_Btn' name='a_file_addToFavorites' title='AddToFavorites'><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);'>&#xe600;</i></a><a class='a_report_Btn'  name='a_file_removeFromFavorites' title='RemoveFromFavorites' style='display: none;'><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);' >&#xe658;</i></a>";
+                        }
+                    }
+                }
+                ]],
+                height: 332,
+                skin: 'line',
+                even: true,
+                page: true,
+                size: 'sm',
+                limit: 10,
+                limits: [5, 10, 15],
+                where: { keywords: searchVal },
+
+            });
+
+            var rlTable = table.render({
+                elem: '#tb_ReportList',
+                url: '../SSML/SearchReportList',
+                cellMinWidth: 80,
+                cols: [[{ type: 'numbers', title: 'NO.', sort: true, width: '5%' },
+                    { field: 'r_Name', title: 'Report Name', sort: true, width: '20%' },
+                    { field: 'Location', title: 'Location', sort: true, width: '15%' },
+                    {
+                        field: 'r_Linkage', title: 'Report Linkage', sort: true, width: '50%', templet: function (d) {
+                            if (isLocalFile(d.r_Linkage)) {
+                                return '<a href="javascript:void(0)" class="btn_copy_report" data-id="' + d.r_ID + '" data-clipboard-text="' + d.r_Linkage + '">' + d.r_Linkage + '</a>'
+                            } else {
+                                return '<a href="' + d.r_Linkage + '" target="view_window"  onclick="updateClickStatistics(' + d.r_ID + ')"    >' + d.r_Linkage + '</a>'
+                            }
+
+                        }
+                    },
+                {
+                    field: 'r_ID', title: 'Favorites', event: 'update_favorite', sort: true, width: '10%', align: 'center', templet: function (d) {
+                        if (d.Favorite_IsAdded == null || d.Favorite_IsAdded == "" || d.Favorite_IsAdded == undefined) {
+                            return "<a class='a_report_Btn' name='a_report_addToFavorites' title='AddToFavorites'><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);'>&#xe600;</i></a><a class='a_report_Btn' name='a_report_removeFromFavorites' title='RemoveFromFavorites' style='display: none;'><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);' >&#xe658;</i></a>";
+                        } else {
+                            return "<a class='a_report_Btn' style='display: none;' name='a_report_addToFavorites' title='AddToFavorites'><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);'>&#xe600;</i></a><a class='a_report_Btn' name='a_report_removeFromFavorites' title='RemoveFromFavorites' ><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);' >&#xe658;</i></a>";
+                        }
+
+
+                    }
+                }
+                ]],
+                height: 332,
+                skin: 'line',
+                even: true,
+                page: true,
+                limits: [5, 10, 15],
+                where: { keywords: searchVal },
+
+            });
+
+            var qlkTable = table.render({
+                elem: '#tb_QuickLink',
+                url: '../SSML/SearchQuickLinkList',
+                cellMinWidth: 80,
+                cols: [[{ type: 'numbers', title: 'NO.', sort: true, width: '5%' },
+                    { field: 'ql_Name', title: 'QuickLink Name', sort: true, width: '20%' },
+                    { field: 'Location', title: 'Location', sort: true, width: '15%' },
+                    {
+                        field: 'ql_Linkage', title: 'QuickLink Linkage', sort: true, width: '50%', templet: function (d) {
+                            if (isLocalFile(d.ql_Linkage)) {
+                                return '<a href="javascript:void(0)" class="btn_copy_report" data-id="' + d.r_ID + '" data-clipboard-text="' + d.ql_Linkage + '">' + d.ql_Linkage + '</a>'
+                            } else {
+                                return '<a href="' + d.ql_Linkage + '" target="view_window"   onclick="updateClickStatistics(' + d.r_ID + ')">' + d.ql_Linkage + '</a>'
+                            }
+                        }
+                    },
+                {
+                    field: 'ql_ID', title: 'Favorites', event: 'update_favorite', sort: true, width: '10%', align: 'center', templet: function (d) {
+                        if (d.Favorite_IsAdded == null || d.Favorite_IsAdded == "" || d.Favorite_IsAdded == undefined) {
+                            return "<a class='a_report_Btn' name='a_quicklink_addToFavorites' title='AddToFavorites'><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);'>&#xe600;</i></a><a class='a_report_Btn' name='a_quicklink_removeFromFavorites' title='RemoveFromFavorites' style='display: none;'><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);' >&#xe658;</i></a>";
+                        } else {
+                            return "<a class='a_report_Btn' style='display: none;' name='a_quicklink_addToFavorites' title='AddToFavorites'><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);'>&#xe600;</i></a><a class='a_report_Btn' name='a_quicklink_removeFromFavorites' title='RemoveFromFavorites' ><i class='layui-icon' style='font-size: 25px; color: rgba(238,162,54,1);' >&#xe658;</i></a>";
+                        }
+
+
+                    }
+                }
+                ]],
+                height: 332,
+                skin: 'line',
+                even: true,
+                page: true,
+                limits: [5, 10, 15],
+                where: { keywords: searchVal },
+
+            });
+
+
+            table.on('tool(reportEvent)', function (obj) {
+                event.preventDefault();
+                var data = obj.data;
+                var layEvent = obj.event;
+                var isAdd = true;
+                var type_ID = 0;
+                var object_ID = data.r_ID;
+                var d = data.Favorite_IsAdded;
+                var control_Hide = $(this).find("[name='a_report_addToFavorites']");
+                var control_Show = $(this).find("[name='a_report_removeFromFavorites']");
+                if (d == null || d == "" || d == undefined) {
+                    update_favorite(true, type_ID, object_ID, control_Hide, control_Show);
+                } else {
+                    update_favorite(false, type_ID, object_ID, control_Show, control_Hide);
+                }
+                rlTable.reload();
+
+            });
+
+            table.on('tool(fileEvent)', function (obj) {
+                event.preventDefault();
+                var data = obj.data;
+                var type_ID = 2;
+                var object_ID = data.pl_ID;
+                var d = data.Favorite;
+                var control_Hide = $(this).find("[name='a_file_addToFavorites']");
+                var control_Show = $(this).find("[name='a_file_removeFromFavorites']");
+                if (d == null || d == "" || d == undefined) {
+                    update_favorite(true, type_ID, object_ID, control_Hide, control_Show);
+                } else {
+                    update_favorite(false, type_ID, object_ID, control_Show, control_Hide);
+                }
+                dlTable.reload();
+
+            });
+
+            table.on('tool(linkEvent)', function (obj) {
+                event.preventDefault();
+                var data = obj.data;
+                var type_ID = 1;
+                var object_ID = data.ql_ID;
+                var d = data.Favorite;
+                var control_Hide = $(this).find("[name='a_quicklink_addToFavorites']");
+                var control_Show = $(this).find("[name='a_quicklink_removeFromFavorites']");
+                if (d == null || d == "" || d == undefined) {
+                    update_favorite(true, type_ID, object_ID, control_Hide, control_Show);
+                } else {
+                    update_favorite(false, type_ID, object_ID, control_Show, control_Hide);
+                }
+                dlTable.reload();
+
+            });
+
+
+
+            autocomplete.render({
+                elem: $('#searchInput')[0],
+                url: '../api/ToolBox_Api/AutoSearchList/',
+                template_txt: '<span > {{d.Name}} </span>',
+                template_val: '{{d.Name}}',
+                onselect: function (resp) {
+                    dlTable.reload({ where: { keywords: resp.Name } });
+                    rlTable.reload({ where: { keywords: resp.Name } });
+                    qlkTable.reload({ where: { keywords: resp.Name } });
+                }
+            });
+
+            $("#searchInput").keypress(function () {
+                if (event.keyCode == 13) {
+                    var svalue = $("#searchInput").val();
+                    if (svalue.length > 0) {
+                        dlTable.reload({ where: { keywords: svalue } });
+                        rlTable.reload({ where: { keywords: svalue } });
+                        qlkTable.reload({ where: { keywords: svalue } });
+                    }
+                }
+            });
+
+
+        });
+
+        // 报表添加到收藏
+        $("[name='a_report_addToFavorites']").click(function () {
+
+            event.preventDefault();
+
+            var isAdd = true;
+            var type_ID = 0;
+
+            var ctl = $(this).parent().parent().parent().find("[name='input_reportID']");
+
+            if (ctl.length == 0)
+                ctl = $(this).parent().parent().parent().parent().find("[name='input_reportID']");
+
+            var object_ID = ctl.val();
+
+            var control_Hide = $(this);
+            var control_Show = $(this).parent().find("[name='a_report_removeFromFavorites']");
+
+            update_favorite(true, type_ID, object_ID, control_Hide, control_Show);
+
+        });
+
+        // 报表移除收藏
+        $("[name='a_report_removeFromFavorites']").click(function () {
+
+            event.preventDefault();
+
+            var isAdd = false;
+            var type_ID = 0;
+
+            var ctl = $(this).parent().parent().parent().find("[name='input_reportID']");
+
+            if (ctl.length == 0)
+                ctl = $(this).parent().parent().parent().parent().find("[name='input_reportID']");
+
+            var object_ID = ctl.val();
+
+            var control_Hide = $(this);
+            var control_Show = $(this).parent().find("[name='a_report_addToFavorites']");
+
+            update_favorite(isAdd, type_ID, object_ID, control_Hide, control_Show);
+
+        });
+
+    });
+
+</script>

@@ -1,0 +1,142 @@
+﻿@using SEWC_ToolBox.Languages;
+@using SEWC_ToolBox.DAL.EFs;
+@using System.Text;
+
+@model List<t_Entry>
+
+@{
+    ViewBag.Title = "Home Page";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/CustomScripts/Home?v=" + ViewBag.VersionNo)
+
+<meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+
+<div class="jumbotron">
+
+    <div class="layui-carousel" id="div_RollingPlay">
+        <div carousel-item>
+
+            <div style="background: url('/Img/welcome.jpg') center center; background-size:cover;">
+
+                <div class="div_Trans_Content">
+                    <div class="container body-content">
+                        <h2>@Html.Lang("txt_Welcome")</h2>
+                        <hr />
+                        <h4>@Html.Lang("txt_Welcome_plus")</h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="background: url('/Img/report.jpg') center center; background-size:cover;">
+
+                <div class="div_Trans_Content">
+                    <div class="container body-content">
+                        <h2>@Html.Lang("txt_Report")</h2>
+                        <hr />
+                        <h4>@Html.Lang("txt_Report_plus")</h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="background: url('/Img/tool.jpg') center center; background-size:cover;">
+
+                <div class="div_Trans_Content">
+                    <div class="container body-content">
+                        <h2>@Html.Lang("txt_Tool")</h2>
+                        <hr />
+                        <h4>@Html.Lang("txt_Tool_plus")</h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="background: url('/Img/link.jpg') center center; background-size:cover;">
+
+                <div class="div_Trans_Content">
+                    <div class="container body-content">
+                        <h2>@Html.Lang("txt_Link")</h2>
+                        <hr />
+                        <h4>@Html.Lang("txt_Link_plus")</h4>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="background: url('/Img/information.jpg') center center; background-size:cover;">
+
+                <div class="div_Trans_Content">
+                    <div class="container body-content">
+                        <h2>@Html.Lang("txt_Information")</h2>
+                        <hr />
+                        <h4>@Html.Lang("txt_Information_plus")</h4>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container body-content">
+
+    <div class="layui-container">
+
+        @{
+            StringBuilder HtmlBuilder = new StringBuilder();
+
+            for (int i = 0; i < Model.Count; i++)
+            {
+                t_Entry CurEntry = Model[i];
+
+                if (i == 0)
+                {
+                    HtmlBuilder.Append("<div class='layui-row'>");
+                }
+
+                HtmlBuilder.Append("<div class='layui-col-md4'>");
+
+                HtmlBuilder.Append("<h2>" + CurEntry.e_Dept_AbbreviatedName + " ToolBox</h2>");
+                HtmlBuilder.Append("<p>" + Html.Lang("txt_EntryDescription") + "</p>");
+                //if (CurEntry.e_ControllerName != "SCM")
+                //{
+                //    HtmlBuilder.Append("<p><a class='btn btn-primary' href='/SEWC/" + CurEntry.e_ControllerName + "'>" + Html.Lang("txt_Enter") + " &raquo;</a></p>");
+                //}
+                //else
+                //{
+                HtmlBuilder.Append("<p><a class='btn btn-primary' href='/" + CurEntry.e_ControllerName + "'>" + Html.Lang("txt_Enter") + " &raquo;</a></p>");
+                //}
+
+                HtmlBuilder.Append("</div>");
+
+                if ((i + 1) % 3 == 0)
+                {
+                    HtmlBuilder.Append("</div>");
+
+                    if (i != Model.Count - 1)
+                    {
+                        HtmlBuilder.Append("<div class='layui-row'>");
+                    }
+                }
+                else
+                {
+                    if (i == Model.Count - 1)
+                    {
+                        HtmlBuilder.Append("</div>");
+                    }
+                }
+        }
+
+            @(new HtmlString(HtmlBuilder.ToString()))
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,37 @@
+﻿@{
+    var versionNo = HttpContext.Current.Application["VersionNo"].ToString();
+    if (!string.IsNullOrEmpty(ViewBag.VersionNo))
+    {
+        versionNo = ViewBag.VersionNo;
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SSML ToolBox</title>
+    <link rel="Shortcut Icon" href="~/Img/favicon.png" type="image/x-icon">
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Scripts.Render("~/Scripts/CustomScripts?v=" + versionNo)
+    @Scripts.Render("~/Scripts/CustomScripts/ToolBoxFunctional?v=" + versionNo)
+    @Scripts.Render("~/ThirdParty/layui?v=" + versionNo)
+
+    @Styles.Render("~/ThirdParty/layui/css?v=" + versionNo)
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Styles/General?v=" +versionNo)
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+
+    <div class="body">
+        @RenderBody()
+    </div>
+
+</body>
+</html>

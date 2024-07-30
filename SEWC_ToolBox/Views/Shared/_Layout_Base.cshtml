@@ -1,0 +1,141 @@
+﻿@using SEWC_ToolBox.DAL.EFs;
+@using SEWC_ToolBox.Languages;
+@using System.Reflection;
+
+@{
+    v_User CurrentUser = null;
+    if (Session["CurrentUser"] != null)
+    {
+        CurrentUser = Session["CurrentUser"] as v_User;
+    }
+
+    string CurrentLanguage = (Session["CurrentLanguage"] == null) ? "1" : Session["CurrentLanguage"].ToString();
+
+    var versionNo = HttpContext.Current.Application["VersionNo"].ToString();
+    if (!string.IsNullOrEmpty(ViewBag.VersionNo))
+    {
+        versionNo = ViewBag.VersionNo;
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SSML ToolBox</title>
+    <link rel="Shortcut Icon" href="~/Img/favicon.png" type="image/x-icon">
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Scripts/Clipboard?v=" + versionNo)
+
+    @Scripts.Render("~/Scripts/CustomScripts?v=" + versionNo)
+    @Scripts.Render("~/ThirdParty/layui?v=" + versionNo)
+
+    @Styles.Render("~/ThirdParty/layui/css?v=" + versionNo)
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Styles/General?v=" + versionNo)
+    @RenderSection("scripts", required: false)
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink(" ", "HomePage", "Home", new { area = "" }, new { @class = "navbar-brand logo-img", @title = Html.Lang("txt_BackToHome") })*@
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav navbar-right glyphicon-align-center">
+
+                    <li><a id="a_Home" href="/Home/HomePage" style="cursor:pointer;"><h5>@Html.Lang("txt_HomePage")</h5></a></li>
+                    <li><a id="a_Document" href="/Error/NotFound" style="cursor:pointer;"><h5>@Html.Lang("txt_Document")</h5></a></li>
+
+                    @if (CurrentLanguage.Equals("0"))
+                    {
+                        if (CurrentUser != null)
+                        {
+                            <li><a href="/Home/PersonalInformation" style="cursor:pointer"><h5>@CurrentUser.User_Name_CH (@CurrentUser.User_GID)</h5></a></li>
+                        }
+                        <li><a id="a_ToEnglish" style="cursor:pointer;"><h5>@Html.Lang("txt_ToEnglish")</h5></a></li>
+                    }
+                    else
+                    {
+                        if (CurrentUser != null)
+                        {
+                            <li><a href="/Home/PersonalInformation" style="cursor:pointer"><h5>@CurrentUser.User_Name_EN (@CurrentUser.User_GID)</h5></a></li>
+                        }
+                        <li><a id="a_ToChinese" style="cursor:pointer"><h5>@Html.Lang("txt_ToChinese")</h5></a></li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="body">
+        @RenderBody()
+    </div>
+
+    <div class="footer">
+
+        <div class="div_Trans_Content">
+            <div class="container body-content">
+
+                <div class="col-md-3 div_publicLink">
+                    <a class="a_Btn" rel="noopener" target="_blank" title="@Html.Lang("txt_Visit")" href="https://intranet.sewc.siemens.com.cn/sitefiles/services/cms/page.aspx?s=1">
+                        <img class='img_publicLink' src="~/Img/PublicLinkImg/SEWC_Intranet.png" />
+                        <span style='color: white;'>SEWC Intranet</span>
+                    </a>
+                </div>
+                <div class="col-md-3 div_publicLink">
+                    <a class="a_Btn" rel="noopener" target="_blank" title="@Html.Lang("txt_Visit")" href="https://intranet.sewc-bireport.siemens.net/hub/">
+                        <img class='img_publicLink' src="~/Img/PublicLinkImg/QlikSense_Reporting.png" />
+                        <span style='color: white;'>QlikSense Reporting</span>
+                    </a>
+                </div>
+                <div class="col-md-3 div_publicLink">
+                    <a class="a_Btn" rel="noopener" target="_blank" title="@Html.Lang("txt_Visit")" href="https://bpm-sewc.siemens.com.cn/Default.aspx">
+                        <img class='img_publicLink' src="~/Img/PublicLinkImg/Ultimus_Workflow.png" />
+                        <span style='color: white;'>Ultimus Workflow</span>
+                    </a>
+                </div>
+                <div class="col-md-3 div_publicLink">
+                    <a class="a_Btn" rel="noopener" target="_blank" title="@Html.Lang("txt_Visit")" href="https://intranet.3i-sewc.siemens.com.cn:4431/">
+                        <img class='img_publicLink' src="~/Img/PublicLinkImg/3i_System.png" />
+                        <span style='color: white;'>3i System</span>
+                    </a>
+                </div>
+                <div class="col-md-3 div_publicLink">
+                    <a class="a_Btn" rel="noopener" target="_blank" title="@Html.Lang("txt_Visit")" href="https://intranet.wfc.siemens.com.cn/wfc/navigator/logon">
+                        <img class='img_publicLink' src="~/Img/PublicLinkImg/Kronos.png" />
+                        <span style='color: white;'>Kronos</span>
+                    </a>
+                </div>
+                <div class="col-md-3 div_publicLink">
+                    <a class="a_Btn" rel="noopener" target="_blank" title="@Html.Lang("txt_Visit")" href="http://bpm-sewc.siemens.com.cn:5002/Views/Publish.aspx">
+                        <img class='img_publicLink' src="~/Img/PublicLinkImg/Ticket_System.png" />
+                        <span style='color: white;'>Ticket System</span>
+                    </a>
+                </div>
+
+                <hr />
+                <h6>&copy;Siemens @DateTime.Now.Year - @Html.Lang("txt_CompanyName")</h6>
+                <h6>@Html.Lang("txt_SupportedBy")</h6>
+                <h6>@Html.Lang("txt_Version") - V @ViewBag.VersionNo</h6>
+                <h6>@Html.Lang("txt_SupportDial")</h6>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

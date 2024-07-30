@@ -1,0 +1,40 @@
+﻿@using SEWC_ToolBox.Languages;
+@model System.Web.Mvc.HandleErrorInfo
+
+@{ 
+    ViewBag.Title = "Unexpected Error";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+
+<link rel="Shortcut Icon" href="~/Img/favicon.png" type="image/x-icon"> 
+
+<div class="container body-content">
+
+    <div class="list-header clearfix">
+        <h2>@Html.Lang("txt_UnexpectedError")</h2>
+    </div>
+
+    <div class="list-sfs-holder">
+
+        <div class="alert alert-error">
+            <h4>@Html.Lang("txt_UnexpectedError_plus")</h4>
+        </div>
+
+        @if (Model != null && HttpContext.Current.IsDebuggingEnabled)
+    {
+        <div>
+            <p>
+                <b>@Html.Lang("txt_ExceptionMessage"):</b> @Model.Exception.Message<br />
+                <b>@Html.Lang("txt_ControllerName"):</b> @Model.ControllerName<br />
+                <b>@Html.Lang("txt_ActionName"):</b> @Model.ActionName
+            </p>
+            <div style="overflow:scroll">
+                <pre>
+                    @Model.Exception.StackTrace
+                </pre>
+            </div>
+        </div>
+    }
+    </div>
+
+</div>

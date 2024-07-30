@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="702abda804834f8caef6167d279d33c5" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_Favorite" PointX="14.75" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_MailTemplate" PointX="12.75" PointY="13.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_Customization" PointX="10.75" PointY="13.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_UserRole" PointX="8.75" PointY="13.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_Entry" PointX="12.75" PointY="10.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_QuickLink" PointX="12.75" PointY="6.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.v_UserRole" PointX="2.75" PointY="14.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_LanguageProfile" PointX="12.75" PointY="3.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_Access" PointX="12.75" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.v_User" PointX="6.75" PointY="11.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_ProcessConnection" PointX="4.75" PointY="11.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_Attachment" PointX="2.75" PointY="11.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_ProcessLinkage" PointX="0.75" PointY="11.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_ProcessNode" PointX="8.75" PointY="8.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.v_ProcessNode" PointX="6.75" PointY="4.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_Report" PointX="2.75" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_sys_TypeDescription" PointX="4.75" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_Menu" PointX="4.75" PointY="3.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.v_sys_FieldDescription" PointX="0.75" PointY="5.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.V_Report_ClickStatistics" PointX="6.75" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_ReportRole" PointX="0.75" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_Menu_New" PointX="2.75" PointY="7.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.v_MenuList" PointX="10.75" PointY="3.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.v_SideMenuList" PointX="4.75" PointY="7.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.v_Report" PointX="8.75" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_OprationLog" PointX="10.75" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_Report_ClickStatistics" PointX="0.75" PointY="14.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.BI_LU_SCM_REPORT_ACCESS_REMOVED" PointX="10.75" PointY="9.75" Width="1.5" />
+        <EntityTypeShape EntityType="SEWC_ToolBoxModel.t_ReportIssue" Width="1.5" PointX="15.375" PointY="3.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,201 @@
+﻿@using SEWC_ToolBox.Languages;
+@using SEWC_ToolBox.DAL.SecondModels;
+@using SEWC_ToolBox.DAL.EFs;
+@using System.Text;
+
+@{
+    Layout = "~/Views/Shared/_Layout_GetAccess_Multiple.cshtml";
+    ViewBag.Title = "Get Multiple Access";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+    var preURL = AppConfig.PreURL;
+}
+
+@Scripts.Render("~/Scripts/CustomScripts/ToolBoxFunctional/GetAccess?v=" + ViewBag.VersionNo)
+
+@{
+    StringBuilder HtmlBuilder = new StringBuilder();
+
+    // 获取当前部门权限
+    v_UserRole UserRole_CurrentDept = ViewBag.UserRole_CurrentDept as v_UserRole;
+
+    if (ViewBag.ReportList != null)
+    {
+        List<ReportModel> ReportList = ViewBag.ReportList as List<ReportModel>;
+
+        if (ReportList.Count > 0)
+        {
+            HtmlBuilder.Append("<div class='div_content_op'>");
+
+            HtmlBuilder.Append("<blockquote class='layui-elem-quote layui-quote-nm' style='height: auto;'>");
+
+            HtmlBuilder.Append("<div style='vertical-align: central'>");
+            HtmlBuilder.Append("<h4 style='margin-top:0px; margin-bottom:15px;'>" + Html.Lang("txt_Reporting_MultipleAccess_Description") + "</h4>");
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("<div class='layui-btn-container'>");
+            HtmlBuilder.Append("<button class='btn btn-primary layui-btn btn_tool' id='btn_category_collapse' title='" + Html.Lang("txt_CollapseAll") + "' ><i class='layui-icon'>&#xe602;</i></button>");
+            HtmlBuilder.Append("<button class='btn btn-primary layui-btn btn_tool' id='btn_category_expand' title='" + Html.Lang("txt_ExpandAll") + "' style='display:none; margin-left: 0px;' ><i class='layui-icon'>&#xe61a;</i></button>");
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("</blockquote>");
+
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("<div class='body-content layui-collapse' style='height: auto;'>");
+
+            // 根据所选分类对report进行重排序
+            if (ViewBag.Sub_ActionName.Equals("PerformanceMeasurement"))
+            {
+                ReportList = ReportList.OrderBy(o => o.r_m_ID_Frequency).ThenBy(o => o.r_m_ID_Category).ThenBy(o => o.r_Sort).ThenBy(o => o.r_Name).ToList();
+            }
+            else if (ViewBag.Sub_ActionName.Equals("UpdateFrequency"))
+            {
+                ReportList = ReportList.OrderBy(o => o.r_m_ID_Category).ThenBy(o => o.r_m_ID_Frequency).ThenBy(o => o.r_Sort).ThenBy(o => o.r_Name).ToList();
+            }
+
+            int lastMenuID = 0;
+
+            string ReportID_List = TempData["ReportID_List"].ToString();
+
+            for (int i = 0; i < ReportList.Count; i++)
+            {
+                ReportModel curReport = ReportList[i];
+                int curMenuID = 0;
+                string GroupTitle = string.Empty;
+
+                bool IsVisiable = false;
+
+                // 只有启用的才能申请权限
+                if (curReport.r_Status == 1)
+                {
+                    // 如果用户只有部分内容可见权限、且不是其Owner
+                    if (UserRole_CurrentDept.a_Type_R < 2 && !curReport.r_Owner.Equals(ViewBag.CurrentUserGID))
+                    {
+                        // 如果是公共元素，则可见
+                        if (curReport.r_AccessLevel == 0)
+                        {
+                            IsVisiable = true;
+                        }
+                    }
+                    // 如果用户拥有所有内容可见权限或是其Owner，则可见
+                    else
+                    {
+                        IsVisiable = true;
+                    }
+                }
+
+                if (IsVisiable)
+                {
+                    // 显示分组Title
+                    if (ViewBag.Sub_ActionName.Equals("PerformanceMeasurement"))
+                    {
+                        curMenuID = curReport.r_m_ID_Frequency.Value;
+                        GroupTitle = "txt_" + ViewBag.ControllerName + "_" + ViewBag.Main_ActionName + "_UpdateFrequency_" + curReport.Menu_FrequencyActionName;
+                    }
+                    else if (ViewBag.Sub_ActionName.Equals("UpdateFrequency"))
+                    {
+                        curMenuID = curReport.r_m_ID_Category.Value;
+                        GroupTitle = "txt_" + ViewBag.ControllerName + "_" + ViewBag.Main_ActionName + "_PerformanceMeasurement_" + curReport.Menu_CategoryActionName;
+                    }
+
+                    if (curMenuID != lastMenuID)
+                    {
+                        if (i != 0 && lastMenuID != 0)
+                        {
+                            HtmlBuilder.Append("</div></div>");
+                        }
+
+                        HtmlBuilder.Append("<div class='layui-colla-item'>");
+                        HtmlBuilder.Append("<h2 class='layui-colla-title'>" + Html.Lang(GroupTitle) + "</h2>");
+                        HtmlBuilder.Append("<div class='layui-colla-content layui-show'>");
+                    }
+
+                    HtmlBuilder.Append("<div class='div_report_item'>");
+
+                    if (curReport.r_PicPath.Equals("N/A"))
+                    {
+                        curReport.r_PicPath = preURL + "/Img/ReportImg/NA.PNG";
+                    }
+                    else
+                    {
+                        curReport.r_PicPath = preURL + curReport.r_PicPath;
+                    }
+
+                    // 隐藏域数据
+                    HtmlBuilder.Append("<input type='text' name='input_reportID' value='" + curReport.r_ID + "' style='display:none;' />");
+                    HtmlBuilder.Append("<input type='text' name='input_reportName' value='" + curReport.r_Name + "' style='display:none;' />");
+
+                    // 报告图片预览
+                    HtmlBuilder.Append("<div class='div_report_ImgView div_report_ImgView_select' title='" + Html.Lang("txt_CheckChangeSelection") + "' style='background: url(\"" + curReport.r_PicPath + "\") no-repeat center center; background-size: 100% 100%;'>");
+
+                    // 是否选中层
+                    if (ReportID_List.Contains("," + curReport.r_ID.ToString() + ","))
+                    {
+                        HtmlBuilder.Append("<div class='div_selectedFrame'>");
+                        HtmlBuilder.Append("<i class='layui-icon' style='font-size: 30px; color: white;'>&#x1005;</i>");
+                        HtmlBuilder.Append("</div>");
+                    }
+                    else
+                    {
+
+                        HtmlBuilder.Append("<div class='div_selectedFrame' style='display:none;'>");
+                        HtmlBuilder.Append("<i class='layui-icon' style='font-size: 30px; color: white;'>&#x1005;</i>");
+                        HtmlBuilder.Append("</div>");
+                    }
+
+                    HtmlBuilder.Append("</div>");
+
+                    // 报告详细信息
+                    if (ReportID_List.Contains("," + curReport.r_ID.ToString() + ","))
+                    {
+                        HtmlBuilder.Append("<input type='checkbox' name='checkBox_selectReport' class='hidden' report_ID='" + curReport.r_ID + "' checked />");
+                    }
+                    else
+                    {
+                        HtmlBuilder.Append("<input type='checkbox' name='checkBox_selectReport' class='hidden' title='" + curReport.r_Name + "' report_ID='" + curReport.r_ID + "' />");
+                    }
+
+                    HtmlBuilder.Append("<h4 class='layui-elip' title='" + curReport.r_Name + "'><b>" + curReport.r_Name + "</b></h4>");
+                    HtmlBuilder.Append("<p>" + Html.Lang("txt_ClickStatistics") + ": &nbsp<span class='layui-badge'>" + curReport.r_cs_ClickTimes + "</span></p>");
+                    HtmlBuilder.Append("<p>" + Html.Lang("txt_AccessOwner") + ": " + curReport.User_AccessOwner + "</p>");
+
+                    if (curReport.r_lr_LastReloadTime != null)
+                    {
+                        HtmlBuilder.Append("<p>" + Html.Lang("txt_LastReloadTime") + ": " + curReport.r_lr_LastReloadTime.Value.ToString("yyyy-MM-dd HH:mm.ss") + "");
+                    }
+                    else
+                    {
+                        HtmlBuilder.Append("<p>" + Html.Lang("txt_LastReloadTime") + ": N/A");
+                    }
+
+                    HtmlBuilder.Append("<p class='layui-elip' style='cursor: help' title='" + ReportList[i].r_Description + "'>" + Html.Lang("txt_Description") + ": " + ReportList[i].r_Description + "</p>");
+                    HtmlBuilder.Append("<br /><br /></div>");
+
+                    if (i == ReportList.Count - 1)
+                    {
+                        HtmlBuilder.Append("</div></div>");
+                    }
+
+                    lastMenuID = curMenuID;
+                }
+            }
+
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("<div class='layui-footer' style='text-align:center;left:230px;'>");
+            HtmlBuilder.Append("<button class='layui-btn' id='btn_Submit'>" + Html.Lang("txt_Submit") + "</button>");
+            HtmlBuilder.Append("<button class='layui-btn layui-btn-primary' id='btn_close' type='button'>" + Html.Lang("txt_Close") + "</button>");
+            HtmlBuilder.Append("</div>");
+        }
+        else
+        {
+            HtmlBuilder.Append("<div class='body-content'><img class='img_contentMsg' src='/Img/no-data-found.jpg'/></div>");
+        }
+    }
+    else
+    {
+        HtmlBuilder.Append("<div class='body-content'><img class='img_contentMsg' src='/Img/no-data-found.jpg'/></div>");
+    }
+
+    @(new HtmlString(HtmlBuilder.ToString()))
+}

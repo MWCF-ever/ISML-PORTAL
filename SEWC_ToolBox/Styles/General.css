@@ -1,0 +1,141 @@
+﻿.logo-img {
+    background: url('../Img/siemens-logo.gif') no-repeat center right;
+    background-size: 100%;
+    display: block;
+    height: 60px;
+    width: 142px;
+}
+
+.body {
+    width: 100%;
+    min-height: 800px;
+}
+
+.footer {
+    background: url('../Img/FooterBackground.jpg') center center;
+    background-size:cover;
+    width: 100%;
+    margin-top: 20px;
+    display:inline-block;
+    position: relative;
+    bottom: 0px;
+}
+
+.footer .div_Trans_Content {
+    position:relative;
+    background-color: rgba(0,0,0,0.6);
+    height: 100%;
+    padding-bottom: 0px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.footer .div_Trans_Content .container body-content{
+    bottom:0px;
+}
+
+.body .container.body-content{
+    margin-bottom:15px;
+}
+
+.footer .container.body-content{
+    margin-top:0px;
+}
+
+    .footer > hr {
+        color: #ffffff;
+    }
+
+    .footer h1,
+    .footer h2,
+    .footer h3,
+    .footer h4,
+    .footer h5,
+    .footer h6 {
+        color: #ffffff;
+    }
+
+.div_Trans_Content {
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    padding-bottom: 40px;
+}
+
+    .div_Trans_Content h2, .div_Trans_Content h4 {
+        color: #ffffff;
+    }
+
+    .div_nav_background{
+        background-color: #555f69;
+    }
+
+    .layui-bg-siemens-gray {
+        background-color: #555f69 !important;
+        margin-bottom : 0px;
+    }
+    
+.img_contentMsg {
+    width:100%; 
+    height:100%;
+    margin-bottom:20px;
+    border:1px solid #fff;  
+    border-width:5px 5px 5px 5px;  
+    box-shadow:1px 1px 5px #333;  
+    -webkit-box-shadow:1px 1px 5px #333;  
+    -moz-box-shadow:1px 1px 5px #333;
+}
+
+.img_publicLink {
+    width: 48px;
+    height: 48px;
+}
+
+.a_Btn {
+    width:15px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.a_Btn:hover {
+    text-decoration:none;
+}
+
+.div_publicLink{
+    padding-bottom: 20px;
+}
+
+.layui-form-pane .layui-form-label {
+    width:150px;
+}
+
+.layui-form-pane .layui-input-block{
+    margin-left: 150px;
+}
+
+.layui-form-pane .layui-form-item[pane] .layui-input-inline{
+    margin-left: 150px;
+}
+
+.layui-form-item .layui-input-inline{
+    width:400px;
+}
+
+input, select, textarea{
+    max-width: none !important;
+}
+
+.layui-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 65px;
+    padding: 15px 15px 15px 15px;
+    background-color: #eee;
+}
+
+.layui-form-radio {
+    font-size: 14px !important;
+}

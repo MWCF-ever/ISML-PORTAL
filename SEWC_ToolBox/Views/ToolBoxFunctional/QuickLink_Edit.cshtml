@@ -1,0 +1,143 @@
+﻿@using SEWC_ToolBox.Languages;
+@using SEWC_ToolBox.DAL.EFs;
+@using System.Text;
+
+@{
+    Layout = "~/Views/Shared/_Layout_Function.cshtml";
+    ViewBag.Title = "Edit QuickLink";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+    var preURL = AppConfig.PreURL;
+}
+
+@Scripts.Render("~/Scripts/CustomScripts/ToolBoxFunctional/QuickLink?v=" + ViewBag.VersionNo)
+
+<div class="container">
+
+    @{
+        StringBuilder HtmlBuilder = new StringBuilder();
+
+        if (ViewBag.TargetQuickLink != null)
+        {
+            t_QuickLink TargetQuickLink = ViewBag.TargetQuickLink as t_QuickLink;
+
+            HtmlBuilder.Append("<form class='layui-form  layui-form-pane' action=''>");
+
+            // 隐藏域
+            HtmlBuilder.Append("<div class='hidden'>");
+            HtmlBuilder.Append("<input type='text' id='input_quickLinkID' name='input_quickLinkID' readonly='readonly' value='" + TargetQuickLink.ql_ID + "' />");
+            HtmlBuilder.Append("<input type='text' id='input_quickLinkGUID' name='input_quickLinkGUID' readonly='readonly' value='" + TargetQuickLink.ql_GUID + "' />");
+            HtmlBuilder.Append("<input type='text' id='input_deptID' name='input_deptID' readonly='readonly' value='" + TargetQuickLink.ql_m_DeptID + "' />");
+            HtmlBuilder.Append("</div>");
+
+            // 快速链接属性
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_QuickLinkName") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<input type='text' id='input_quickLinkName' name='input_quickLinkName' required lay-verify='required' placeholder='" + Html.Lang("txt_QuickLinkName_plus") + "' autocomplete='off' class='layui-input' value='" + TargetQuickLink.ql_Name + "' />");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Linkage") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<input type='text' id='input_linkage' name='input_linkage' required lay-verify='required' placeholder='" + Html.Lang("txt_Linkage_plus") + "' autocomplete='off' class='layui-input' value='" + TargetQuickLink.ql_Linkage + "' />");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item' pane>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Status") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+
+            if (TargetQuickLink.ql_Status.Value == 1)
+            {
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='1' title='" + Html.Lang("txt_Status_Enabled") + "' checked />");
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='0' title='" + Html.Lang("txt_Status_Disabled") + "' />");
+            }
+            else
+            {
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='1' title='" + Html.Lang("txt_Status_Enabled") + "' />");
+                HtmlBuilder.Append("<input type='radio' name='input_enabled' value='0' title='" + Html.Lang("txt_Status_Disabled") + "' checked />");
+            }
+
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Type") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+
+            if (ViewBag.QuickLink_TypeList != null)
+            {
+                List<v_MenuList> QuickLink_TypeList = ViewBag.QuickLink_TypeList as List<v_MenuList>;
+
+                for (int i = 0; i < QuickLink_TypeList.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        HtmlBuilder.Append("<select name='select_Type' lay-verify='required'>");
+                    }
+
+                    if (QuickLink_TypeList[i].ml_Sub_ID == TargetQuickLink.ql_m_ID)
+                    {
+                        HtmlBuilder.Append("<option value='" + QuickLink_TypeList[i].ml_Sub_ID + "' selected='selected'>" + Html.Lang("txt_SEWC_QuickLink_" + QuickLink_TypeList[i].ml_Sub_ActionName) + "</option>");
+                    }
+                    else
+                    {
+                        HtmlBuilder.Append("<option value='" + QuickLink_TypeList[i].ml_Sub_ID + "'>" + Html.Lang("txt_SEWC_QuickLink_" + QuickLink_TypeList[i].ml_Sub_ActionName) + "</option>");
+                    }
+
+                    if (i == QuickLink_TypeList.Count - 1)
+                    {
+                        HtmlBuilder.Append("</select>");
+                    }
+                }
+            }
+
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Sort") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<input type='text' id='input_sort' name='input_sort' required lay-verify='required|number' placeholder='" + Html.Lang("txt_Sort_plus") + "' autocomplete='off' class='layui-input' value='" + TargetQuickLink.ql_Sort + "' />");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item layui-form-text'>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Description") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<textarea id='input_description' name='input_description' placeholder='" + Html.Lang("txt_Description_plus") + "' class='layui-textarea'>" + TargetQuickLink.ql_Description + "</textarea>");
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-form-item' pane>");
+            HtmlBuilder.Append("<label class='layui-form-label'>" + Html.Lang("txt_Photo") + "</label>");
+            HtmlBuilder.Append("<div class='layui-input-block'>");
+            HtmlBuilder.Append("<button type='button' class='layui-btn' id='btn_upload' style='margin: 10px;'><i class='layui-icon'>&#xe67c;</i>" + Html.Lang("txt_Upload") + "</button>");
+
+            if (TargetQuickLink.ql_PicPath.Equals("N/A"))
+            {
+                HtmlBuilder.Append("<img id='img_quickLinkPic' style='display:none; width: 300px; height: 180px; border: 2px solid rgb(230, 230, 230); margin:10px;' />");
+                HtmlBuilder.Append("<input class='hidden' type='text' id='input_picPath' name='input_picPath' readonly='readonly' />");
+                HtmlBuilder.Append("<input class='hidden' type='text' id='input_picPath_original' name='input_picPath_original' readonly='readonly' />");
+            }
+            else
+            {
+                HtmlBuilder.Append("<img id='img_quickLinkPic' style='display:block; width: 300px; height: 180px; border: 2px solid rgb(230, 230, 230); margin:10px;' src='" + preURL + TargetQuickLink.ql_PicPath + "' />");
+                HtmlBuilder.Append("<input class='hidden' type='text' id='input_picPath' name='input_picPath' readonly='readonly' value='" + TargetQuickLink.ql_PicPath + "' />");
+                HtmlBuilder.Append("<input class='hidden' type='text' id='input_picPath_original' name='input_picPath_original' readonly='readonly' value='" + TargetQuickLink.ql_PicPath + "' />");
+            }
+
+            HtmlBuilder.Append("</div></div>");
+
+            HtmlBuilder.Append("<div class='layui-footer' style='text-align:center;'>");
+            HtmlBuilder.Append("<button class='layui-btn' lay-submit lay-filter='formUpdate'>" + Html.Lang("txt_Submit") + "</button>");
+            HtmlBuilder.Append("<button type='reset' class='layui-btn layui-btn-primary' id='btn_reset'>" + Html.Lang("txt_Reset") + "</button>");
+            HtmlBuilder.Append("<button class='layui-btn layui-btn-primary' id='btn_close' type='button'>" + Html.Lang("txt_Close") + "</button>");
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("</form>");
+        }
+        else
+        {
+
+        }
+
+        @(new HtmlString(HtmlBuilder.ToString()))
+    }
+
+</div>

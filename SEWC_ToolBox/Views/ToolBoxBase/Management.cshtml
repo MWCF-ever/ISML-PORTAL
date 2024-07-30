@@ -1,0 +1,154 @@
+﻿@using SEWC_ToolBox.Languages;
+@using SEWC_ToolBox.DAL.EFs;
+@using System.Text;
+
+@{
+    Layout = "~/Views/Shared/_Layout_ToolBox.cshtml";
+    ViewBag.Title = "Management";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+
+@{
+    StringBuilder HtmlBuilder = new StringBuilder();
+
+    // 获取当前部门权限
+    v_UserRole UserRole_CurrentDept = ViewBag.UserRole_CurrentDept as v_UserRole;
+
+    if (ViewBag.Sub_ActionName == "UserRole")
+    {
+        if (ViewBag.UserRole_List != null)
+        {
+            List<v_UserRole> UserRole_List = ViewBag.UserRole_List;
+
+            if (UserRole_List.Count > 0)
+            {
+                HtmlBuilder.Append("<div class='div_content_op'>");
+
+                HtmlBuilder.Append("<blockquote class='layui-elem-quote layui-quote-nm' style='height: auto;'>");
+
+                HtmlBuilder.Append("<div style='vertical-align: central'>");
+                HtmlBuilder.Append("<h4 style='margin-top:0px; margin-bottom:15px;'>" + Html.Lang("txt_Management_UserRole_Description") + "</h4>");
+                HtmlBuilder.Append("</div>");
+
+                HtmlBuilder.Append("<div class='layui-btn-container'>");
+
+                // 如果访问者拥有站内内容创建的权限，则显示添加按钮
+                if (UserRole_CurrentDept.a_Type_C >= 2)
+                {
+                    HtmlBuilder.Append("<button class='btn btn-primary layui-btn btn_tool' id='btn_addReport' title='" + Html.Lang("txt_AddUserRole") + "' onclick='addUserRole(" + ViewBag.DeptID + ");' ><i class='layui-icon'>&#xe61f;</i></button>");
+                }
+
+                HtmlBuilder.Append("</div>");
+
+                HtmlBuilder.Append("</blockquote>");
+
+                HtmlBuilder.Append("</div>");
+
+                HtmlBuilder.Append("<div class='body-content layui-collapse' style='height: auto;'>");
+                HtmlBuilder.Append("<table class='layui-table' lay-skin='line'>");
+
+                HtmlBuilder.Append("<thead><tr>");
+
+                HtmlBuilder.Append("<th>" + Html.Lang("txt_RN") + "</th>");
+                HtmlBuilder.Append("<th>" + Html.Lang("txt_UserName") + "</th>");
+                HtmlBuilder.Append("<th>" + Html.Lang("txt_UserRole") + "</th>");
+                HtmlBuilder.Append("<th>" + Html.Lang("txt_Operation") + "</th>");
+
+                HtmlBuilder.Append("</tr></thead>");
+
+                for (int i = 0; i < UserRole_List.Count; i++)
+                {
+                    v_UserRole CurUserRole = UserRole_List[i];
+
+                    HtmlBuilder.Append("<tr>");
+
+                    HtmlBuilder.Append("<td>" + (i + 1).ToString() + "</td>");
+                    HtmlBuilder.Append("<td>" + CurUserRole.User_DisplayText + "</td>");
+                    HtmlBuilder.Append("<td>" + Html.Lang("txt_UserRole_" + CurUserRole.a_Name) + "</td>");
+
+                    HtmlBuilder.Append("<td>");
+
+                    HtmlBuilder.Append("<div class='layui-btn-container'>");
+                    HtmlBuilder.Append("<button class='btn btn-primary layui-btn btn_rowOperation' name='btn_userRole_view' title='" + Html.Lang("txt_UserRole_View") + "' onclick='userRole_view(" + CurUserRole.ur_ID + ");' ><i class='layui-icon' style='font-size:15px;'>&#xe66e;</i></button>");
+
+                    if (UserRole_CurrentDept.a_Type_U >= 2)
+                    {
+                        HtmlBuilder.Append("<button class='btn btn-primary layui-btn btn_rowOperation' name='btn_userRole_update' title='" + Html.Lang("txt_UserRole_Update") + "' onclick='userRole_update(" + CurUserRole.ur_ID + ");' ><i class='layui-icon' style='font-size:15px;'>&#xe642;</i></button>");
+                    }
+
+                    if (UserRole_CurrentDept.a_Type_D >= 3)
+                    {
+                        HtmlBuilder.Append("<button class='btn btn-primary layui-btn btn_rowOperation' name='btn_userRole_delete' title='" + Html.Lang("btn_userRole_Delete") + "' onclick='userRole_delete(" + CurUserRole.ur_ID + ",\"" + CurUserRole.User_DisplayText + "\",\"" + CurUserRole.a_Name + "\");' ><i class='layui-icon' style='font-size:15px;'>&#xe640;</i></button>");
+                    }
+
+                    HtmlBuilder.Append("</div>");
+
+                    HtmlBuilder.Append("</td>");
+
+                    HtmlBuilder.Append("</tr>");
+                }
+
+                HtmlBuilder.Append("</table>");
+                HtmlBuilder.Append("</div>");
+            }
+            else
+            {
+                HtmlBuilder.Append("<div class='div_content_op'>");
+
+                HtmlBuilder.Append("<blockquote class='layui-elem-quote layui-quote-nm' style='height: auto;'>");
+
+                HtmlBuilder.Append("<div style='vertical-align: central'>");
+                HtmlBuilder.Append("<h4 style='margin-top:0px; margin-bottom:15px;'>" + Html.Lang("txt_Management_UserRole_NoData_Description") + "</h4>");
+                HtmlBuilder.Append("</div>");
+
+                HtmlBuilder.Append("<div class='layui-btn-container'>");
+
+                // 如果访问者拥有站内内容创建的权限，则显示添加按钮
+                if (UserRole_CurrentDept.a_Type_C >= 2)
+                {
+                    HtmlBuilder.Append("<button class='btn btn-primary layui-btn btn_tool' id='btn_addReport' title='" + Html.Lang("txt_AddUserRole") + "' onclick='addUserRole(" + ViewBag.DeptID + ");' ><i class='layui-icon'>&#xe61f;</i></button>");
+                }
+
+                HtmlBuilder.Append("</div>");
+
+                HtmlBuilder.Append("</blockquote>");
+
+                HtmlBuilder.Append("</div>");
+
+                HtmlBuilder.Append("<div class='body-content'><img class='img_contentMsg' src='/Img/no-data-found.jpg'/></div>");
+            }
+        }
+        else
+        {
+            HtmlBuilder.Append("<div class='div_content_op'>");
+
+            HtmlBuilder.Append("<blockquote class='layui-elem-quote layui-quote-nm' style='height: auto;'>");
+
+            HtmlBuilder.Append("<div style='vertical-align: central'>");
+            HtmlBuilder.Append("<h4 style='margin-top:0px; margin-bottom:15px;'>" + Html.Lang("txt_Management_UserRole_NoData_Description") + "</h4>");
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("<div class='layui-btn-container'>");
+
+            // 如果访问者拥有站内内容创建的权限，则显示添加按钮
+            if (UserRole_CurrentDept.a_Type_C >= 2)
+            {
+                HtmlBuilder.Append("<button class='btn btn-primary layui-btn btn_tool' id='btn_addReport' title='" + Html.Lang("txt_AddUserRole") + "' onclick='addUserRole(" + ViewBag.DeptID + ");' ><i class='layui-icon'>&#xe61f;</i></button>");
+            }
+
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("</blockquote>");
+
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("<div class='body-content'><img class='img_contentMsg' src='/Img/no-data-found.jpg'/></div>");
+        }
+    }
+    else if (ViewBag.Sub_ActionName == "MenuManagement")
+    {
+        HtmlBuilder.Append("<h4><b>" + Html.Lang("txt_Implementing") + "</b></h4>");
+    }
+
+    @(new HtmlString(HtmlBuilder.ToString()))
+}

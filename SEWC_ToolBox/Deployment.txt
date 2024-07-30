@@ -1,0 +1,1 @@
+Copy Web.Config to the published folder

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetUserToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserTokenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUserTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserToken" />
+  </wsdl:message>
+  <wsdl:message name="GetUserTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserTokenResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SSOServiceSoap">
+    <wsdl:operation name="GetUserToken">
+      <wsdl:input message="tns:GetUserTokenSoapIn" />
+      <wsdl:output message="tns:GetUserTokenSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SSOServiceSoap" type="tns:SSOServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUserToken">
+      <soap:operation soapAction="http://tempuri.org/GetUserToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SSOServiceSoap12" type="tns:SSOServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUserToken">
+      <soap12:operation soapAction="http://tempuri.org/GetUserToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SSOService">
+    <wsdl:port name="SSOServiceSoap" binding="tns:SSOServiceSoap">
+      <soap:address location="http://intranet.bpm.siemens.net:8088/Services/PortalWebService/SSOService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SSOServiceSoap12" binding="tns:SSOServiceSoap12">
+      <soap12:address location="http://intranet.bpm.siemens.net:8088/Services/PortalWebService/SSOService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,52 @@
+﻿@using SEWC_ToolBox.Languages;
+@using SEWC_ToolBox.DAL.EFs;
+
+@{
+    Layout = "~/Views/Shared/_Layout_Function.cshtml";
+    ViewBag.Title = "Edit Process Linkage";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+
+@Scripts.Render("~/Scripts/CustomScripts/ToolBoxFunctional/ProcessLinkage?v=" + ViewBag.VersionNo)
+
+@{
+    t_ProcessLinkage TargetProcessLinkage = ViewBag.TargetProcessLinkage;
+
+    <div class="container">
+
+        <form class="layui-form layui-form-pane" action="">
+
+            <div class="hidden">
+                <input type="text" id="input_nodeID" name="input_nodeID" readonly="readonly" value="@TargetProcessLinkage.pl_pn_ID" />
+                <input type="text" id="input_processLinkageID" name="input_processLinkageID" readonly="readonly" value="@TargetProcessLinkage.pl_ID" />
+                <input type="text" id="input_processLinkageType" name="input_processLinkageType" readonly="readonly" value="@TargetProcessLinkage.pl_Type" />
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">@Html.Lang("txt_Name")</label>
+                <div class="layui-input-block">
+                    <input type="text" id="input_Name" name="input_Name" required lay-verify="required" placeholder="@Html.Lang("txt_Name_plus")" autocomplete="off" class="layui-input" value="@TargetProcessLinkage.pl_Name" />
+                </div>
+            </div>
+            <div class="layui-form-item" pane>
+                <label class="layui-form-label">@Html.Lang("txt_Linkage")</label>
+                <div class="layui-input-block">
+                    <input type="text" id="input_linkage" name="input_linkage" required lay-verify="required" placeholder="@Html.Lang("txt_Linkage_plus")" autocomplete="off" class="layui-input" value="@TargetProcessLinkage.pl_Linkage" />
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">@Html.Lang("txt_Sort")</label>
+                <div class="layui-input-block">
+                    <input type="text" id="input_sort" name="input_sort" required lay-verify="required|number" placeholder="@Html.Lang("txt_Sort_plus")" autocomplete="off" class="layui-input" value="@TargetProcessLinkage.pl_Sort" />
+                </div>
+            </div>
+            <div class="layui-footer" style="text-align:center;">
+                <button class="layui-btn" lay-submit lay-filter="formUpdate">@Html.Lang("txt_Submit")</button>
+                <button type="reset" class="layui-btn layui-btn-primary" id="btn_reset">@Html.Lang("txt_Reset")</button>
+                <button class="layui-btn layui-btn-primary" id="btn_close" type="button">@Html.Lang("txt_Close")</button>
+            </div>
+
+        </form>
+
+    </div>
+
+}

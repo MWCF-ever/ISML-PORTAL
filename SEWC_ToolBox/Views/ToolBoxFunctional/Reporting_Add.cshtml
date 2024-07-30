@@ -1,0 +1,381 @@
+﻿@using SEWC_ToolBox.Languages;
+@using SEWC_ToolBox.DAL.EFs;
+@using System.Text;
+
+@{
+    Layout = "~/Views/Shared/_Layout_Function.cshtml";
+    ViewBag.Title = "Add Report";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+
+@Scripts.Render("~/Scripts/CustomScripts/ToolBoxFunctional/Reporting?v=" + ViewBag.VersionNo)
+
+<div class="container">
+
+    <form class="layui-form layui-form-pane" action="">
+
+        <div class="hidden">
+            <input type="text" id="input_deptID" name="input_deptID" readonly="readonly" value="@ViewBag.DeptID" />
+            <input type="text" id="input_reportGUID" name="input_reportGUID" readonly="readonly" value="@ViewBag.ReportGUID" />
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_ReportName")</label>
+            <div class="layui-input-block">
+                <input type="text" id="input_reportName" name="input_reportName" required lay-verify="required" placeholder="@Html.Lang("txt_ReportName_Plus")" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">@Html.Lang("txt_Linkage")</label>
+            <div class="layui-input-block">
+                <input type="text" id="input_linkage" name="input_linkage" required lay-verify="required" placeholder="@Html.Lang("txt_Linkage_plus")" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">@Html.Lang("txt_Status")</label>
+            <div class="layui-input-block">
+                <input type="radio" name="input_enabled" value="1" title="@Html.Lang("txt_Status_Enabled")" checked />
+                <input type="radio" name="input_enabled" value="0" title="@Html.Lang("txt_Status_Disabled")" />
+                <input type="radio" name="input_enabled" value="2" title="@Html.Lang("txt_Status_Maintaining")" />
+
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_Owner")</label>
+            <div class="layui-input-block">
+                @{
+                    StringBuilder OwnerBuilder = new StringBuilder();
+
+                    if (ViewBag.OwnerList != null)
+                    {
+                        List<v_User> OwnerList = ViewBag.OwnerList as List<v_User>;
+
+                        for (int i = 0; i < OwnerList.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                OwnerBuilder.Append("<select name='select_Owner' lay-verify='required' lay-search=''>");
+                            }
+
+                            if (string.IsNullOrEmpty(OwnerList[i].User_GID))
+                            {
+                                OwnerBuilder.Append("<option value='' disabled selected>Please select the Owner</option>");
+                            }
+                            else
+                            {
+                                OwnerBuilder.Append("<option value='" + OwnerList[i].User_GID.ToUpper() + "'>" + OwnerList[i].User_Name_EN + "(" + OwnerList[i].User_GID.ToUpper() + ") - " + OwnerList[i].Job_Function + "</option>");
+
+                            }
+
+
+                            if (i == OwnerList.Count - 1)
+                            {
+                                OwnerBuilder.Append("</select>");
+                            }
+                        }
+                    }
+
+                @(new HtmlString(OwnerBuilder.ToString()))
+                }
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_CrOwner")</label>
+            <div class="layui-input-block">
+                @{
+                    StringBuilder CrOwnerBuilder = new StringBuilder();
+
+                    if (ViewBag.OwnerList != null)
+                    {
+                        List<v_User> CrOwnerList = ViewBag.OwnerList as List<v_User>;
+
+                        for (int i = 0; i < CrOwnerList.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                CrOwnerBuilder.Append("<select name='select_CrOwner' lay-verify='required' lay-search>");
+                            }
+
+                            CrOwnerBuilder.Append("<option value='" + CrOwnerList[i].User_GID.ToUpper() + "'>" + CrOwnerList[i].User_Name_EN + "(" + CrOwnerList[i].User_GID.ToUpper() + ") - " + CrOwnerList[i].Job_Function + "</option>");
+
+                            if (i == CrOwnerList.Count - 1)
+                            {
+                                CrOwnerBuilder.Append("</select>");
+                            }
+                        }
+                    }
+
+                    @(new HtmlString(CrOwnerBuilder.ToString()))
+                }
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_AccessOwner")</label>
+            <div class="layui-input-block">
+                @{
+                    StringBuilder AccessOwnerBuilder = new StringBuilder();
+
+                    if (ViewBag.OwnerList != null)
+                    {
+                        List<v_User> OwnerList = ViewBag.OwnerList as List<v_User>;
+
+                        for (int i = 0; i < OwnerList.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                AccessOwnerBuilder.Append("<select name='select_AccessOwner' lay-verify='required'  lay-search=''>");
+                            }
+
+                            if (string.IsNullOrEmpty(OwnerList[i].User_GID))
+                            {
+                                AccessOwnerBuilder.Append("<option value='' disabled selected>Please select the AccessOwner</option>");
+                            }
+                            else
+                            {
+                                AccessOwnerBuilder.Append("<option value='" + OwnerList[i].User_GID.ToUpper() + "'>" + OwnerList[i].User_Name_EN + "(" + OwnerList[i].User_GID.ToUpper() + ") - " + OwnerList[i].Job_Function + "</option>");
+                            }
+                            if (i == OwnerList.Count - 1)
+                            {
+                                AccessOwnerBuilder.Append("</select>");
+                            }
+                        }
+                    }
+
+                @(new HtmlString(AccessOwnerBuilder.ToString()))
+                }
+            </div>
+        </div>
+
+        <!--admin-->
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_Admin")</label>
+            <div class="layui-input-block">
+                @{
+                    StringBuilder adminBuilder = new StringBuilder();
+
+                    if (ViewBag.OwnerList != null)
+                    {
+                        List<v_User> AdminList = ViewBag.OwnerList as List<v_User>;
+
+                        for (int i = 0; i < AdminList.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                adminBuilder.Append("<select name='select_Admin' lay-verify='required' lay-search=''>");
+                            }
+                            if (string.IsNullOrEmpty(AdminList[i].User_GID))
+                            {
+                                adminBuilder.Append("<option value='' disabled selected>Please select the Admin</option>");
+                            }
+                            else
+                            {
+                                adminBuilder.Append("<option value='" + AdminList[i].User_GID.ToUpper() + "'>" + AdminList[i].User_Name_EN + "(" + AdminList[i].User_GID.ToUpper() + ") - " + AdminList[i].Job_Function + "</option>");
+                            }
+
+                            if (i == AdminList.Count - 1)
+                            {
+                                adminBuilder.Append("</select>");
+                            }
+                        }
+                    }
+
+                @(new HtmlString(adminBuilder.ToString()))
+                }
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_Category")</label>
+            <div class="layui-input-block">
+                @{
+                    StringBuilder SubCategoryBuilder = new StringBuilder();
+
+                    if (ViewBag.CategoryList != null)
+                    {
+                        List<v_MenuList> SubCategoryList = ViewBag.SubCategoryList as List<v_MenuList>;
+                        int? LastSubMenuID = null;
+
+                        for (int i = 0; i < SubCategoryList.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                SubCategoryBuilder.Append("<select name='select_SubCategory' lay-filter='select_SubCategory' lay-verify='required' lay-search=''>");
+                            }
+
+
+                            if (SubCategoryList[i].ml_Sub_ID != LastSubMenuID && SubCategoryList[i].ml_Sub_ActionName != "Disabled")
+                            {
+                                if (SubCategoryList[i].ml_Sub_ID == null)
+                                {
+                                    SubCategoryBuilder.Append("<option value='' selected='selected'>Please selected the subCategory</option>");
+                                }
+                                else
+                                {
+
+                                    if (SubCategoryList[i].ml_Sub_ID == ViewBag.SubID)
+                                    {
+                                        //SubCategoryBuilder.Append("<option value='" + SubCategoryList[i].ml_Sub_ID + "' selected='selected'>" + Html.Lang("txt_SCM_Reporting_" + SubCategoryList[i].ml_Sub_ActionName) + "</option>");
+                                        SubCategoryBuilder.Append("<option value='" + SubCategoryList[i].ml_Sub_ID + "' selected='selected'>" + Html.Lang(SubCategoryList[i].ml_Sub_ActionName) + "</option>");
+                                    }
+                                    else
+                                    {
+                                        //SubCategoryBuilder.Append("<option value='" + SubCategoryList[i].ml_Sub_ID + "'>" + Html.Lang("txt_SCM_Reporting_" + SubCategoryList[i].ml_Sub_ActionName) + "</option>");
+                                        SubCategoryBuilder.Append("<option value='" + SubCategoryList[i].ml_Sub_ID + "'>" + Html.Lang(SubCategoryList[i].ml_Sub_ActionName) + "</option>");
+                                    }
+
+                                }
+
+                            }
+                            if (i == SubCategoryList.Count - 1)
+                            {
+                                SubCategoryBuilder.Append("</select>");
+                            }
+                            LastSubMenuID = SubCategoryList[i].ml_Sub_ID;
+                        }
+                    }
+
+                @(new HtmlString(SubCategoryBuilder.ToString()))
+                }
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_Sub_Category")</label>
+            <div class="layui-input-block">
+                @{
+                    StringBuilder CategoryBuilder = new StringBuilder();
+
+                    if (ViewBag.CategoryList != null)
+                    {
+                        List<v_MenuList> CategoryList = ViewBag.CategoryList as List<v_MenuList>;
+
+                        for (int i = 0; i < CategoryList.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                CategoryBuilder.Append("<select name='select_Category' id='select_Category' lay-verify='required'  lay-search=''>");
+                            }
+
+
+                            if (CategoryList[i].ml_Fourth_ID == ViewBag.FourthID)
+                            {
+                                //CategoryBuilder.Append("<option value='" + CategoryList[i].ml_Third_ID + "' selected='selected'>" + Html.Lang("txt_SCM_Reporting_" + CategoryList[i].ml_Third_ActionName) + "</option>");
+                                CategoryBuilder.Append("<option value='" + CategoryList[i].ml_Fourth_ID + "' selected='selected'>" + Html.Lang(CategoryList[i].ml_Fourth_ActionName) + "</option>");
+                            }
+                            else
+                            {
+                                //CategoryBuilder.Append("<option value='" + CategoryList[i].ml_Third_ID + "'>" + Html.Lang("txt_SCM_Reporting_" + CategoryList[i].ml_Third_ActionName) + "</option>");
+                                CategoryBuilder.Append("<option value='" + CategoryList[i].ml_Fourth_ID + "'>" + Html.Lang(CategoryList[i].ml_Fourth_ActionName) + "</option>");
+                            }
+
+
+                            if (i == CategoryList.Count - 1)
+                            {
+                                CategoryBuilder.Append("</select>");
+                            }
+                        }
+                    }
+
+                @(new HtmlString(CategoryBuilder.ToString()))
+                }
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_Frequency")</label>
+            <div class="layui-input-block">
+                @{
+                    StringBuilder UpdateFrequencyBuilder = new StringBuilder();
+
+                    if (ViewBag.UpdateFrequencyList != null)
+                    {
+                        List<v_MenuList> UpdateFrequencyList = ViewBag.UpdateFrequencyList as List<v_MenuList>;
+
+                        for (int i = 0; i < UpdateFrequencyList.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                UpdateFrequencyBuilder.Append("<select name='select_UpdateFrequency' id='select_UpdateFrequency' lay-verify='required'>");
+                            }
+
+
+                            if (UpdateFrequencyList[i].ml_Third_ID == ViewBag.ThirdID)
+                            {
+                                //UpdateFrequencyBuilder.Append("<option value='" + UpdateFrequencyList[i].ml_Third_ID + "' selected='selected'>" + Html.Lang("txt_SCM_Reporting_UpdateFrequency_" + UpdateFrequencyList[i].ml_Third_ActionName) + "</option>");
+                                UpdateFrequencyBuilder.Append("<option value='" + UpdateFrequencyList[i].ml_Fourth_ID + "' selected='selected'>" + Html.Lang(UpdateFrequencyList[i].ml_Fourth_ActionName) + "</option>");
+                            }
+                            else
+                            {
+                                //UpdateFrequencyBuilder.Append("<option value='" + UpdateFrequencyList[i].ml_Third_ID + "'>" + Html.Lang("txt_SCM_Reporting_UpdateFrequency_" + UpdateFrequencyList[i].ml_Third_ActionName) + "</option>");
+                                UpdateFrequencyBuilder.Append("<option value='" + UpdateFrequencyList[i].ml_Fourth_ID + "'>" + Html.Lang(UpdateFrequencyList[i].ml_Fourth_ActionName) + "</option>");
+                            }
+
+
+                            if (i == UpdateFrequencyList.Count - 1)
+                            {
+                                UpdateFrequencyBuilder.Append("</select>");
+                            }
+                        }
+                    }
+
+                @(new HtmlString(UpdateFrequencyBuilder.ToString()))
+                }
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_Sort")</label>
+            <div class="layui-input-block">
+                <input type="text" id="input_sort" name="input_sort" value="1" required lay-verify="required|number" placeholder="@Html.Lang("txt_Sort_plus")" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_appIds")</label>
+            <div class="layui-input-block">
+                <input type="text" id="input_AppIds" name="input_AppIds" placeholder="old report id" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">@Html.Lang("txt_Description")</label>
+            <div class="layui-input-block">
+                <textarea id="input_description" name="input_description" placeholder="@Html.Lang("txt_Description_plus")" class="layui-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_Photo")</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn" id="btn_upload" style="margin-left:10px;">
+                    <i class="layui-icon">&#xe67c;</i>@Html.Lang("txt_Upload")
+                </button>
+                <img id="img_reportPic" style="display:none; width: 300px; height: 180px; border: 2px solid rgb(230, 230, 230); margin:10px;" />
+                <input class="hidden" type="text" id="input_picPath" name="input_picPath" readonly="readonly" />
+            </div>
+        </div> 
+
+        <div class="layui-form-item ">
+            <label></label>
+            <div>
+            </div>
+        </div>
+
+        <div class="layui-form-item ">
+            <label></label>
+            <div>
+            </div>
+        </div>
+
+        <div class="layui-footer" style="text-align:center;">
+            <button class="layui-btn" lay-submit lay-filter="formCreate">@Html.Lang("txt_Submit")</button>
+            <button type="reset" class="layui-btn layui-btn-primary" id="btn_reset">@Html.Lang("txt_Reset")</button>
+            <button class="layui-btn layui-btn-primary" id="btn_close" type="button">@Html.Lang("txt_Close")</button>
+        </div>
+
+    </form>
+
+</div>

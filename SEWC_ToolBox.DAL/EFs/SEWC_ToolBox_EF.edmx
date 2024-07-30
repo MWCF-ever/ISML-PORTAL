@@ -1,0 +1,1737 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SEWC_ToolBoxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BI_LU_SCM_REPORT_ACCESS_REMOVED">
+          <Key>
+            <PropertyRef Name="USER_GID" />
+            <PropertyRef Name="REMOVE_MONTH" />
+            <PropertyRef Name="REPORT_LINK" />
+          </Key>
+          <Property Name="REPORT_NAME_IN_TOOLBOX" Type="varchar" MaxLength="100" />
+          <Property Name="USER_GID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="USER_NAME" Type="varchar" MaxLength="40" />
+          <Property Name="USER_EMAIL" Type="varchar" MaxLength="40" />
+          <Property Name="USER_SOM_ORG_CODE" Type="varchar" MaxLength="40" />
+          <Property Name="USER_DEPT" Type="varchar" MaxLength="10" />
+          <Property Name="USER_PMP_MANAGER" Type="varchar" MaxLength="40" />
+          <Property Name="REMOVE_MONTH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="REPORT_LINK" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="RECORD_STATUS" Type="varchar" MaxLength="10" />
+          <Property Name="APPIDS" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="t_Access">
+          <Key>
+            <PropertyRef Name="a_ID" />
+          </Key>
+          <Property Name="a_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a_Name" Type="varchar" MaxLength="20" />
+          <Property Name="a_Type_R" Type="int" />
+          <Property Name="a_Type_C" Type="int" />
+          <Property Name="a_Type_U" Type="int" />
+          <Property Name="a_Type_D" Type="int" />
+          <Property Name="a_Sort" Type="int" />
+        </EntityType>
+        <EntityType Name="t_Attachment">
+          <Key>
+            <PropertyRef Name="a_ID" />
+          </Key>
+          <Property Name="a_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a_Type" Type="int" />
+          <Property Name="a_FileName" Type="nvarchar" MaxLength="100" />
+          <Property Name="a_DownloadPath" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="t_Customization">
+          <Key>
+            <PropertyRef Name="c_ID" />
+          </Key>
+          <Property Name="c_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_GUID" Type="varchar" MaxLength="36" />
+          <Property Name="c_m_DeptID" Type="int" />
+          <Property Name="c_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="c_Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="c_Description" Type="nvarchar" MaxLength="2000" />
+          <Property Name="c_PicPath" Type="nvarchar(max)" />
+          <Property Name="c_Linkage" Type="nvarchar(max)" />
+          <Property Name="c_Sort" Type="int" />
+          <Property Name="c_Owner" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="t_Entry">
+          <Key>
+            <PropertyRef Name="e_ID" />
+          </Key>
+          <Property Name="e_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="e_Dept_ID" Type="int" />
+          <Property Name="e_Dept_FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="e_Dept_AbbreviatedName" Type="nvarchar" MaxLength="20" />
+          <Property Name="e_ControllerName" Type="varchar" MaxLength="20" />
+          <Property Name="e_Enabled" Type="bit" />
+          <Property Name="e_AccessLevel" Type="int" />
+        </EntityType>
+        <EntityType Name="t_Favorite">
+          <Key>
+            <PropertyRef Name="f_ID" />
+          </Key>
+          <Property Name="f_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_TypeID" Type="int" Nullable="false" />
+          <Property Name="f_ObjectID" Type="int" Nullable="false" />
+          <Property Name="f_GID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="f_AddDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="t_LanguageProfile">
+          <Key>
+            <PropertyRef Name="lp_u_GID" />
+          </Key>
+          <Property Name="lp_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lp_u_GID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="lp_LanguageType" Type="int" />
+        </EntityType>
+        <EntityType Name="t_MailTemplate">
+          <Key>
+            <PropertyRef Name="t_mt_ID" />
+          </Key>
+          <Property Name="t_mt_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="t_mt_Name" Type="varchar" MaxLength="50" />
+          <Property Name="t_mt_Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="t_mt_Content" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="t_Menu">
+          <Key>
+            <PropertyRef Name="m_ID" />
+          </Key>
+          <Property Name="m_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="m_ParentID" Type="int" Nullable="false" />
+          <Property Name="m_e_ID" Type="int" />
+          <Property Name="m_DeptID" Type="int" Nullable="false" />
+          <Property Name="m_MenuName" Type="varchar" MaxLength="50" />
+          <Property Name="m_ActionName" Type="varchar" MaxLength="50" />
+          <Property Name="m_AccessLevel" Type="int" />
+          <Property Name="m_IsGeneral" Type="bit" />
+          <Property Name="m_Sort" Type="int" />
+        </EntityType>
+        <EntityType Name="t_Menu_New">
+          <Key>
+            <PropertyRef Name="m_ID" />
+          </Key>
+          <Property Name="m_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="m_ParentID" Type="int" Nullable="false" />
+          <Property Name="m_e_ID" Type="int" />
+          <Property Name="m_DeptID" Type="int" Nullable="false" />
+          <Property Name="m_MenuName" Type="varchar" MaxLength="50" />
+          <Property Name="m_ActionName" Type="varchar" MaxLength="50" />
+          <Property Name="m_AccessLevel" Type="int" />
+          <Property Name="m_IsGeneral" Type="bit" />
+          <Property Name="m_Sort" Type="int" />
+        </EntityType>
+        <EntityType Name="t_OprationLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="t_ProcessConnection">
+          <Key>
+            <PropertyRef Name="pc_ID" />
+          </Key>
+          <Property Name="pc_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pc_m_DeptID" Type="int" />
+          <Property Name="pc_m_ID" Type="int" />
+          <Property Name="pc_Node_ID" Type="int" />
+          <Property Name="pc_NextNode_ID" Type="int" />
+          <Property Name="pc_ConnectionType" Type="int" />
+          <Property Name="pc_ConnectionLabel" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="t_ProcessLinkage">
+          <Key>
+            <PropertyRef Name="pl_ID" />
+          </Key>
+          <Property Name="pl_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pl_pn_ID" Type="int" />
+          <Property Name="pl_Type" Type="int" />
+          <Property Name="pl_Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="pl_Linkage" Type="nvarchar(max)" />
+          <Property Name="pl_Sort" Type="int" />
+        </EntityType>
+        <EntityType Name="t_ProcessNode">
+          <Key>
+            <PropertyRef Name="pn_ID" />
+          </Key>
+          <Property Name="pn_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pn_m_DeptID" Type="int" />
+          <Property Name="pn_m_ID" Type="int" />
+          <Property Name="pn_NodeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="pn_Owner" Type="varchar" MaxLength="50" />
+          <Property Name="pn_Position_X" Type="int" />
+          <Property Name="pn_Position_Y" Type="int" />
+        </EntityType>
+        <EntityType Name="t_QuickLink">
+          <Key>
+            <PropertyRef Name="ql_ID" />
+          </Key>
+          <Property Name="ql_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ql_GUID" Type="varchar" MaxLength="36" />
+          <Property Name="ql_m_DeptID" Type="int" />
+          <Property Name="ql_m_ID" Type="int" />
+          <Property Name="ql_Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="ql_Description" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ql_PicPath" Type="nvarchar(max)" />
+          <Property Name="ql_Linkage" Type="nvarchar(max)" />
+          <Property Name="ql_Status" Type="int" />
+          <Property Name="ql_AccessLevel" Type="int" />
+          <Property Name="ql_Sort" Type="int" />
+        </EntityType>
+        <EntityType Name="t_Report">
+          <Key>
+            <PropertyRef Name="r_ID" />
+          </Key>
+          <Property Name="r_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="r_GUID" Type="varchar" MaxLength="36" />
+          <Property Name="r_m_DeptID" Type="int" />
+          <Property Name="r_m_ID_Category" Type="int" />
+          <Property Name="r_m_ID_Frequency" Type="int" />
+          <Property Name="r_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="r_Description" Type="nvarchar" MaxLength="2000" />
+          <Property Name="r_Owner" Type="varchar" MaxLength="50" />
+          <Property Name="r_CROwner" Type="nvarchar" MaxLength="50" />
+          <Property Name="r_AccessOwner" Type="varchar" MaxLength="50" />
+          <Property Name="r_Admin" Type="varchar" MaxLength="50" />
+          <Property Name="r_PicPath" Type="nvarchar(max)" />
+          <Property Name="r_Linkage" Type="nvarchar(max)" />
+          <Property Name="r_Status" Type="int" />
+          <Property Name="r_AccessLevel" Type="int" />
+          <Property Name="r_Sort" Type="int" />
+          <Property Name="r_m_ID_SubCategory" Type="int" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="r_APPIDS" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="t_Report_ClickStatistics">
+          <Key>
+            <PropertyRef Name="r_cs_ID" />
+          </Key>
+          <Property Name="r_cs_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="r_cs_r_ID" Type="int" Nullable="false" />
+          <Property Name="r_cs_ClickTimes" Type="int" Nullable="false" />
+          <Property Name="r_cs_ForYear" Type="int" Nullable="false" />
+          <Property Name="r_cs_ForMonth" Type="int" Nullable="false" />
+          <Property Name="r_cs_ForDay" Type="int" />
+          <Property Name="r_cs_User_GID" Type="varchar" MaxLength="50" />
+          <Property Name="r_cs_LastUpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_ReportIssue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="r_Id" Type="int" Nullable="false" />
+          <Property Name="Issues" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="Issusue_title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Issue_image" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Createtime" Type="datetime" Nullable="false" />
+          <Property Name="ReportTitle" Type="varchar" MaxLength="256" />
+          <Property Name="AdminOwner" Type="varchar" MaxLength="32" />
+          <Property Name="AdminOwnerName" Type="varchar" MaxLength="32" />
+          <Property Name="AnswerReason" Type="varchar" MaxLength="2560" />
+          <Property Name="AnswerDetail" Type="text" />
+          <Property Name="HandleUser" Type="varchar" MaxLength="32" />
+          <Property Name="HandleUserName" Type="varchar" MaxLength="32" />
+          <Property Name="HandleTime" Type="datetime" />
+          <Property Name="CreateUserName" Type="varchar" MaxLength="32" />
+          <Property Name="State" Type="smallint" Nullable="false" />
+          <Property Name="Groups" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_ReportRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="GID" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="t_sys_TypeDescription">
+          <Key>
+            <PropertyRef Name="td_ID" />
+          </Key>
+          <Property Name="td_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="td_TableName" Type="varchar" MaxLength="50" />
+          <Property Name="td_ColumnName" Type="varchar" MaxLength="50" />
+          <Property Name="td_TypeID" Type="int" />
+          <Property Name="td_TypeDescription" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="t_UserRole">
+          <Key>
+            <PropertyRef Name="ur_ID" />
+          </Key>
+          <Property Name="ur_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ur_e_Dept_ID" Type="int" />
+          <Property Name="ur_User_GID" Type="varchar" MaxLength="20" />
+          <Property Name="ur_a_ID" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DEV_SEWCToolBox.dbo.v_MenuList”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="v_MenuList">
+          <Key>
+            
+            
+            
+            
+            
+            
+            
+            
+            <PropertyRef Name="ml_RowNum" />
+          </Key>
+          <Property Name="ml_RowNum" Type="bigint" Nullable="false" />
+          <Property Name="ml_Main_ID" Type="int" Nullable="false" />
+          <Property Name="ml_Main_e_ID" Type="int" />
+          <Property Name="ml_Main_DeptID" Type="int" Nullable="false" />
+          <Property Name="ml_e_ControllerName" Type="varchar" MaxLength="20" />
+          <Property Name="ml_Main_MenuName" Type="varchar" MaxLength="50" />
+          <Property Name="ml_Main_ActionName" Type="varchar" MaxLength="50" />
+          <Property Name="ml_Main_AccessLevel" Type="int" />
+          <Property Name="ml_Main_IsGeneral" Type="bit" />
+          <Property Name="ml_Sub_ID" Type="int" />
+          <Property Name="ml_Sub_MenuName" Type="varchar" MaxLength="50" />
+          <Property Name="ml_Sub_ActionName" Type="varchar" MaxLength="50" />
+          <Property Name="ml_Sub_AccessLevel" Type="int" Nullable="false" />
+          <Property Name="ml_Sub_IsGeneral" Type="bit" Nullable="false" />
+          <Property Name="ml_Third_ID" Type="int" />
+          <Property Name="ml_Third_MenuName" Type="varchar" MaxLength="50" />
+          <Property Name="ml_Third_ActionName" Type="varchar" MaxLength="50" />
+          <Property Name="ml_Third_AccessLevel" Type="int" Nullable="false" />
+          <Property Name="ml_Third_IsGeneral" Type="bit" Nullable="false" />
+          <Property Name="ml_Fourth_ID" Type="int" />
+          <Property Name="ml_Fourth_MenuName" Type="varchar" MaxLength="50" />
+          <Property Name="ml_Fourth_ActionName" Type="varchar" MaxLength="50" />
+          <Property Name="ml_Fourth_AccessLevel" Type="int" Nullable="false" />
+          <Property Name="ml_Fourth_IsGeneral" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DEV_SEWCToolBox.dbo.v_ProcessNode”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="v_ProcessNode">
+          <Key>
+            <PropertyRef Name="pn_ID" />
+          </Key>
+          <Property Name="pn_ID" Type="int" Nullable="false" />
+          <Property Name="pn_m_DeptID" Type="int" />
+          <Property Name="pn_m_ID" Type="int" />
+          <Property Name="pn_NodeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="pn_Owner" Type="varchar" MaxLength="50" />
+          <Property Name="User_Owner" Type="nvarchar" MaxLength="102" />
+          <Property Name="pn_Position_X" Type="int" />
+          <Property Name="pn_Position_Y" Type="int" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DEV_SEWCToolBox.dbo.v_Report”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="v_Report">
+          <Key>
+            <PropertyRef Name="r_ID" />
+            
+          </Key>
+          <Property Name="r_ID" Type="int" Nullable="false" />
+          <Property Name="Menu_e_ID" Type="int" />
+          <Property Name="r_m_DeptID" Type="int" />
+          <Property Name="r_m_ID_Category" Type="int" />
+          <Property Name="r_m_ID_SubCategory" Type="int" />
+          <Property Name="Menu_SubCategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="Menu_SubCategoryActionName" Type="varchar" MaxLength="50" />
+          <Property Name="r_m_ID_Frequency" Type="int" />
+          <Property Name="Menu_FrequencyName" Type="varchar" MaxLength="50" />
+          <Property Name="Menu_FrequencyActionName" Type="varchar" MaxLength="50" />
+          <Property Name="Menu_CategoryActionName" Type="varchar" MaxLength="50" />
+          <Property Name="Menu_CategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="r_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="r_Description" Type="nvarchar" MaxLength="2000" />
+          <Property Name="r_Owner" Type="varchar" MaxLength="50" />
+          <Property Name="User_Owner" Type="nvarchar" MaxLength="102" />
+          <Property Name="User_OwnerEmail" Type="nvarchar" MaxLength="500" />
+          <Property Name="r_AccessOwner" Type="varchar" MaxLength="50" />
+          <Property Name="User_AccessOwner" Type="nvarchar" MaxLength="102" />
+          <Property Name="User_AccessOwnerEmail" Type="nvarchar" MaxLength="500" />
+          <Property Name="r_Admin" Type="nvarchar" MaxLength="102" />
+          <Property Name="r_AdminEmail" Type="nvarchar" MaxLength="500" />
+          <Property Name="User_CrOwner" Type="nvarchar" MaxLength="102" />
+          <Property Name="User_CrOwnerEmail" Type="nvarchar" MaxLength="500" />
+          <Property Name="r_PicPath" Type="nvarchar(max)" />
+          <Property Name="r_Linkage" Type="nvarchar(max)" />
+          <Property Name="r_Status" Type="int" />
+          <Property Name="r_AccessLevel" Type="int" />
+          <Property Name="r_Sort" Type="int" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="r_cs_ClickTimes" Type="int" Nullable="false" />
+          <Property Name="r_lr_LastReloadTime" Type="datetime" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DEV_SEWCToolBox.dbo.V_Report_ClickStatistics”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="V_Report_ClickStatistics">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReportId" Type="int" Nullable="false" />
+          <Property Name="ClickTimes" Type="int" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Month" Type="int" />
+          <Property Name="Day" Type="int" />
+          <Property Name="LastUpdateDate" Type="datetime" />
+          <Property Name="YearMonth" Type="varchar" MaxLength="7" />
+          <Property Name="frequencyId" Type="int" />
+          <Property Name="Frequency" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DEV_SEWCToolBox.dbo.v_SideMenuList”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="v_SideMenuList">
+          <Key>
+            
+            
+            
+            
+            <PropertyRef Name="ml_RowNum" />
+          </Key>
+          <Property Name="ml_RowNum" Type="bigint" Nullable="false" />
+          <Property Name="ml_Main_ID" Type="int" Nullable="false" />
+          <Property Name="ml_Main_e_ID" Type="int" />
+          <Property Name="ml_Main_DeptID" Type="int" Nullable="false" />
+          <Property Name="ml_e_ControllerName" Type="varchar" MaxLength="20" />
+          <Property Name="ml_Main_MenuName" Type="varchar" MaxLength="50" />
+          <Property Name="ml_Main_ActionName" Type="varchar" MaxLength="50" />
+          <Property Name="ml_Main_AccessLevel" Type="int" />
+          <Property Name="ml_Main_IsGeneral" Type="bit" />
+          <Property Name="ml_Sub_ID" Type="int" />
+          <Property Name="ml_Sub_MenuName" Type="varchar" MaxLength="50" />
+          <Property Name="ml_Sub_ActionName" Type="varchar" MaxLength="50" />
+          <Property Name="ml_Sub_AccessLevel" Type="int" Nullable="false" />
+          <Property Name="ml_Sub_IsGeneral" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6005: 目标实体框架版本目前不支持数据类型“sql_variant”；已排除表“DEV_SEWCToolBox.dbo.v_sys_FieldDescription”中的列“Table_Description”。
+警告 6005: 目标实体框架版本目前不支持数据类型“sql_variant”；已排除表“DEV_SEWCToolBox.dbo.v_sys_FieldDescription”中的列“Column_Description”。
+警告 6002: 表/视图“DEV_SEWCToolBox.dbo.v_sys_FieldDescription”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="v_sys_FieldDescription">
+          <Key>
+            <PropertyRef Name="Table_Name" />
+          </Key>
+          <Property Name="Table_Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Column_Name" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DEV_SEWCToolBox.dbo.v_User”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="v_User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+            
+          </Key>
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="User_GID" Type="nvarchar" MaxLength="50" />
+          <Property Name="User_DisplayText" Type="nvarchar" MaxLength="103" />
+          <Property Name="User_Name_EN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="User_Name_CH" Type="nvarchar" MaxLength="200" />
+          <Property Name="User_EmployeeNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="User_Email" Type="nvarchar" MaxLength="500" />
+          <Property Name="Job_ID" Type="int" />
+          <Property Name="Job_Function" Type="nvarchar" MaxLength="100" />
+          <Property Name="Job_IsManager" Type="char" MaxLength="1" />
+          <Property Name="LineManager_ID" Type="int" />
+          <Property Name="LineManager_Name_EN" Type="nvarchar" MaxLength="50" />
+          <Property Name="LineManager_Name_CH" Type="nvarchar" MaxLength="200" />
+          <Property Name="LineManager_GID" Type="nvarchar" MaxLength="50" />
+          <Property Name="LineManager_DisplayText" Type="nvarchar" MaxLength="103" />
+          <Property Name="LineManager_EMAIL" Type="nvarchar" MaxLength="500" />
+          <Property Name="Dept_ID" Type="int" />
+          <Property Name="Dept_ParentID" Type="int" />
+          <Property Name="Dept_IsPrimary" Type="nvarchar" MaxLength="200" />
+          <Property Name="Dept_FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Dept_AbbreviatedName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DEV_SEWCToolBox.dbo.v_UserRole”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="v_UserRole">
+          <Key>
+            <PropertyRef Name="RowNo" />
+            
+            <PropertyRef Name="a_ID" />
+          </Key>
+          <Property Name="RowNo" Type="bigint" Nullable="false" />
+          <Property Name="ur_ID" Type="int" Nullable="false" />
+          <Property Name="ur_e_Dept_ID" Type="int" />
+          <Property Name="e_Dept_AbbreviatedName" Type="nvarchar" MaxLength="20" />
+          <Property Name="User_GID" Type="nvarchar" MaxLength="50" />
+          <Property Name="User_DisplayText" Type="nvarchar" MaxLength="103" />
+          <Property Name="a_ID" Type="int" Nullable="false" />
+          <Property Name="a_Name" Type="varchar" MaxLength="20" />
+          <Property Name="a_Type_R" Type="int" />
+          <Property Name="a_Type_C" Type="int" />
+          <Property Name="a_Type_U" Type="int" />
+          <Property Name="a_Type_D" Type="int" />
+        </EntityType>
+        <Function Name="Delete_Report" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="r_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_Insert_ClickStatisticsBymanual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="day" Type="int" Mode="In" />
+          <Parameter Name="nowdate" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_Insert_ReportClickStatistics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_Rebuild" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_RequestSenseAuthor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="gid" Type="nvarchar" Mode="In" />
+          <Parameter Name="iname" Type="nvarchar" Mode="In" />
+          <Parameter Name="fname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_Sync_ReportLastReloadTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_Update_ClickStatistics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="r_ID" Type="int" Mode="In" />
+          <Parameter Name="User_GID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_Update_Favorite" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="f_TypeID" Type="int" Mode="In" />
+          <Parameter Name="f_ObjectID" Type="int" Mode="In" />
+          <Parameter Name="IsAdd" Type="bit" Mode="In" />
+          <Parameter Name="User_GID" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="SEWC_ToolBoxModelStoreContainer">
+          <EntitySet Name="BI_LU_SCM_REPORT_ACCESS_REMOVED" EntityType="Self.BI_LU_SCM_REPORT_ACCESS_REMOVED" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Access" EntityType="Self.t_Access" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Attachment" EntityType="Self.t_Attachment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Customization" EntityType="Self.t_Customization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Entry" EntityType="Self.t_Entry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Favorite" EntityType="Self.t_Favorite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_LanguageProfile" EntityType="Self.t_LanguageProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_MailTemplate" EntityType="Self.t_MailTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Menu" EntityType="Self.t_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Menu_New" EntityType="Self.t_Menu_New" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_OprationLog" EntityType="Self.t_OprationLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ProcessConnection" EntityType="Self.t_ProcessConnection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ProcessLinkage" EntityType="Self.t_ProcessLinkage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ProcessNode" EntityType="Self.t_ProcessNode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_QuickLink" EntityType="Self.t_QuickLink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Report" EntityType="Self.t_Report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_Report_ClickStatistics" EntityType="Self.t_Report_ClickStatistics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ReportIssue" EntityType="Self.t_ReportIssue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_ReportRole" EntityType="Self.t_ReportRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_sys_TypeDescription" EntityType="Self.t_sys_TypeDescription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="t_UserRole" EntityType="Self.t_UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_MenuList" EntityType="Self.v_MenuList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_MenuList].[ml_RowNum] AS [ml_RowNum], 
+    [v_MenuList].[ml_Main_ID] AS [ml_Main_ID], 
+    [v_MenuList].[ml_Main_e_ID] AS [ml_Main_e_ID], 
+    [v_MenuList].[ml_Main_DeptID] AS [ml_Main_DeptID], 
+    [v_MenuList].[ml_e_ControllerName] AS [ml_e_ControllerName], 
+    [v_MenuList].[ml_Main_MenuName] AS [ml_Main_MenuName], 
+    [v_MenuList].[ml_Main_ActionName] AS [ml_Main_ActionName], 
+    [v_MenuList].[ml_Main_AccessLevel] AS [ml_Main_AccessLevel], 
+    [v_MenuList].[ml_Main_IsGeneral] AS [ml_Main_IsGeneral], 
+    [v_MenuList].[ml_Sub_ID] AS [ml_Sub_ID], 
+    [v_MenuList].[ml_Sub_MenuName] AS [ml_Sub_MenuName], 
+    [v_MenuList].[ml_Sub_ActionName] AS [ml_Sub_ActionName], 
+    [v_MenuList].[ml_Sub_AccessLevel] AS [ml_Sub_AccessLevel], 
+    [v_MenuList].[ml_Sub_IsGeneral] AS [ml_Sub_IsGeneral], 
+    [v_MenuList].[ml_Third_ID] AS [ml_Third_ID], 
+    [v_MenuList].[ml_Third_MenuName] AS [ml_Third_MenuName], 
+    [v_MenuList].[ml_Third_ActionName] AS [ml_Third_ActionName], 
+    [v_MenuList].[ml_Third_AccessLevel] AS [ml_Third_AccessLevel], 
+    [v_MenuList].[ml_Third_IsGeneral] AS [ml_Third_IsGeneral], 
+    [v_MenuList].[ml_Fourth_ID] AS [ml_Fourth_ID], 
+    [v_MenuList].[ml_Fourth_MenuName] AS [ml_Fourth_MenuName], 
+    [v_MenuList].[ml_Fourth_ActionName] AS [ml_Fourth_ActionName], 
+    [v_MenuList].[ml_Fourth_AccessLevel] AS [ml_Fourth_AccessLevel], 
+    [v_MenuList].[ml_Fourth_IsGeneral] AS [ml_Fourth_IsGeneral]
+    FROM [dbo].[v_MenuList] AS [v_MenuList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_ProcessNode" EntityType="Self.v_ProcessNode" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_ProcessNode].[pn_ID] AS [pn_ID], 
+    [v_ProcessNode].[pn_m_DeptID] AS [pn_m_DeptID], 
+    [v_ProcessNode].[pn_m_ID] AS [pn_m_ID], 
+    [v_ProcessNode].[pn_NodeName] AS [pn_NodeName], 
+    [v_ProcessNode].[pn_Owner] AS [pn_Owner], 
+    [v_ProcessNode].[User_Owner] AS [User_Owner], 
+    [v_ProcessNode].[pn_Position_X] AS [pn_Position_X], 
+    [v_ProcessNode].[pn_Position_Y] AS [pn_Position_Y]
+    FROM [dbo].[v_ProcessNode] AS [v_ProcessNode]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Report" EntityType="Self.v_Report" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Report].[r_ID] AS [r_ID], 
+    [v_Report].[Menu_e_ID] AS [Menu_e_ID], 
+    [v_Report].[r_m_DeptID] AS [r_m_DeptID], 
+    [v_Report].[r_m_ID_Category] AS [r_m_ID_Category], 
+    [v_Report].[r_m_ID_SubCategory] AS [r_m_ID_SubCategory], 
+    [v_Report].[Menu_SubCategoryName] AS [Menu_SubCategoryName], 
+    [v_Report].[Menu_SubCategoryActionName] AS [Menu_SubCategoryActionName], 
+    [v_Report].[r_m_ID_Frequency] AS [r_m_ID_Frequency], 
+    [v_Report].[Menu_FrequencyName] AS [Menu_FrequencyName], 
+    [v_Report].[Menu_FrequencyActionName] AS [Menu_FrequencyActionName], 
+    [v_Report].[Menu_CategoryActionName] AS [Menu_CategoryActionName], 
+    [v_Report].[Menu_CategoryName] AS [Menu_CategoryName], 
+    [v_Report].[r_Name] AS [r_Name], 
+    [v_Report].[r_Description] AS [r_Description], 
+    [v_Report].[r_Owner] AS [r_Owner], 
+    [v_Report].[User_Owner] AS [User_Owner], 
+    [v_Report].[User_OwnerEmail] AS [User_OwnerEmail], 
+    [v_Report].[r_AccessOwner] AS [r_AccessOwner], 
+    [v_Report].[User_AccessOwner] AS [User_AccessOwner], 
+    [v_Report].[User_AccessOwnerEmail] AS [User_AccessOwnerEmail], 
+    [v_Report].[r_Admin] AS [r_Admin], 
+    [v_Report].[r_AdminEmail] AS [r_AdminEmail], 
+    [v_Report].[User_CrOwner] AS [User_CrOwner], 
+    [v_Report].[User_CrOwnerEmail] AS [User_CrOwnerEmail], 
+    [v_Report].[r_PicPath] AS [r_PicPath], 
+    [v_Report].[r_Linkage] AS [r_Linkage], 
+    [v_Report].[r_Status] AS [r_Status], 
+    [v_Report].[r_AccessLevel] AS [r_AccessLevel], 
+    [v_Report].[r_Sort] AS [r_Sort], 
+    [v_Report].[CreateUser] AS [CreateUser], 
+    [v_Report].[CreateDate] AS [CreateDate], 
+    [v_Report].[UpdateUser] AS [UpdateUser], 
+    [v_Report].[UpdateDate] AS [UpdateDate], 
+    [v_Report].[r_cs_ClickTimes] AS [r_cs_ClickTimes], 
+    [v_Report].[r_lr_LastReloadTime] AS [r_lr_LastReloadTime]
+    FROM [dbo].[v_Report] AS [v_Report]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_Report_ClickStatistics" EntityType="Self.V_Report_ClickStatistics" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Report_ClickStatistics].[ReportName] AS [ReportName], 
+    [V_Report_ClickStatistics].[ReportId] AS [ReportId], 
+    [V_Report_ClickStatistics].[ClickTimes] AS [ClickTimes], 
+    [V_Report_ClickStatistics].[Year] AS [Year], 
+    [V_Report_ClickStatistics].[Month] AS [Month], 
+    [V_Report_ClickStatistics].[Day] AS [Day], 
+    [V_Report_ClickStatistics].[LastUpdateDate] AS [LastUpdateDate], 
+    [V_Report_ClickStatistics].[YearMonth] AS [YearMonth], 
+    [V_Report_ClickStatistics].[frequencyId] AS [frequencyId], 
+    [V_Report_ClickStatistics].[Frequency] AS [Frequency]
+    FROM [dbo].[V_Report_ClickStatistics] AS [V_Report_ClickStatistics]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_SideMenuList" EntityType="Self.v_SideMenuList" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_SideMenuList].[ml_RowNum] AS [ml_RowNum], 
+    [v_SideMenuList].[ml_Main_ID] AS [ml_Main_ID], 
+    [v_SideMenuList].[ml_Main_e_ID] AS [ml_Main_e_ID], 
+    [v_SideMenuList].[ml_Main_DeptID] AS [ml_Main_DeptID], 
+    [v_SideMenuList].[ml_e_ControllerName] AS [ml_e_ControllerName], 
+    [v_SideMenuList].[ml_Main_MenuName] AS [ml_Main_MenuName], 
+    [v_SideMenuList].[ml_Main_ActionName] AS [ml_Main_ActionName], 
+    [v_SideMenuList].[ml_Main_AccessLevel] AS [ml_Main_AccessLevel], 
+    [v_SideMenuList].[ml_Main_IsGeneral] AS [ml_Main_IsGeneral], 
+    [v_SideMenuList].[ml_Sub_ID] AS [ml_Sub_ID], 
+    [v_SideMenuList].[ml_Sub_MenuName] AS [ml_Sub_MenuName], 
+    [v_SideMenuList].[ml_Sub_ActionName] AS [ml_Sub_ActionName], 
+    [v_SideMenuList].[ml_Sub_AccessLevel] AS [ml_Sub_AccessLevel], 
+    [v_SideMenuList].[ml_Sub_IsGeneral] AS [ml_Sub_IsGeneral]
+    FROM [dbo].[v_SideMenuList] AS [v_SideMenuList]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_sys_FieldDescription" EntityType="Self.v_sys_FieldDescription" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_sys_FieldDescription].[Table_Name] AS [Table_Name], 
+    [v_sys_FieldDescription].[Column_Name] AS [Column_Name]
+    FROM [dbo].[v_sys_FieldDescription] AS [v_sys_FieldDescription]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_User" EntityType="Self.v_User" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_User].[User_ID] AS [User_ID], 
+    [v_User].[User_GID] AS [User_GID], 
+    [v_User].[User_DisplayText] AS [User_DisplayText], 
+    [v_User].[User_Name_EN] AS [User_Name_EN], 
+    [v_User].[User_Name_CH] AS [User_Name_CH], 
+    [v_User].[User_EmployeeNumber] AS [User_EmployeeNumber], 
+    [v_User].[User_Email] AS [User_Email], 
+    [v_User].[Job_ID] AS [Job_ID], 
+    [v_User].[Job_Function] AS [Job_Function], 
+    [v_User].[Job_IsManager] AS [Job_IsManager], 
+    [v_User].[LineManager_ID] AS [LineManager_ID], 
+    [v_User].[LineManager_Name_EN] AS [LineManager_Name_EN], 
+    [v_User].[LineManager_Name_CH] AS [LineManager_Name_CH], 
+    [v_User].[LineManager_GID] AS [LineManager_GID], 
+    [v_User].[LineManager_DisplayText] AS [LineManager_DisplayText], 
+    [v_User].[LineManager_EMAIL] AS [LineManager_EMAIL], 
+    [v_User].[Dept_ID] AS [Dept_ID], 
+    [v_User].[Dept_ParentID] AS [Dept_ParentID], 
+    [v_User].[Dept_IsPrimary] AS [Dept_IsPrimary], 
+    [v_User].[Dept_FullName] AS [Dept_FullName], 
+    [v_User].[Dept_AbbreviatedName] AS [Dept_AbbreviatedName]
+    FROM [dbo].[v_User] AS [v_User]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_UserRole" EntityType="Self.v_UserRole" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_UserRole].[RowNo] AS [RowNo], 
+    [v_UserRole].[ur_ID] AS [ur_ID], 
+    [v_UserRole].[ur_e_Dept_ID] AS [ur_e_Dept_ID], 
+    [v_UserRole].[e_Dept_AbbreviatedName] AS [e_Dept_AbbreviatedName], 
+    [v_UserRole].[User_GID] AS [User_GID], 
+    [v_UserRole].[User_DisplayText] AS [User_DisplayText], 
+    [v_UserRole].[a_ID] AS [a_ID], 
+    [v_UserRole].[a_Name] AS [a_Name], 
+    [v_UserRole].[a_Type_R] AS [a_Type_R], 
+    [v_UserRole].[a_Type_C] AS [a_Type_C], 
+    [v_UserRole].[a_Type_U] AS [a_Type_U], 
+    [v_UserRole].[a_Type_D] AS [a_Type_D]
+    FROM [dbo].[v_UserRole] AS [v_UserRole]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SEWC_ToolBoxModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SEWC_ToolBoxEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="SP_Rebuild" />
+          <EntitySet Name="t_Favorite" EntityType="SEWC_ToolBoxModel.t_Favorite" />
+          <EntitySet Name="t_MailTemplate" EntityType="SEWC_ToolBoxModel.t_MailTemplate" />
+          <EntitySet Name="t_Customization" EntityType="SEWC_ToolBoxModel.t_Customization" />
+          <EntitySet Name="t_UserRole" EntityType="SEWC_ToolBoxModel.t_UserRole" />
+          <EntitySet Name="t_Entry" EntityType="SEWC_ToolBoxModel.t_Entry" />
+          <EntitySet Name="t_QuickLink" EntityType="SEWC_ToolBoxModel.t_QuickLink" />
+          <EntitySet Name="v_UserRole" EntityType="SEWC_ToolBoxModel.v_UserRole" />
+          <EntitySet Name="t_LanguageProfile" EntityType="SEWC_ToolBoxModel.t_LanguageProfile" />
+          <EntitySet Name="t_Access" EntityType="SEWC_ToolBoxModel.t_Access" />
+          <EntitySet Name="v_User" EntityType="SEWC_ToolBoxModel.v_User" />
+          <EntitySet Name="t_ProcessConnection" EntityType="SEWC_ToolBoxModel.t_ProcessConnection" />
+          <EntitySet Name="t_Attachment" EntityType="SEWC_ToolBoxModel.t_Attachment" />
+          <EntitySet Name="t_ProcessLinkage" EntityType="SEWC_ToolBoxModel.t_ProcessLinkage" />
+          <EntitySet Name="t_ProcessNode" EntityType="SEWC_ToolBoxModel.t_ProcessNode" />
+          <EntitySet Name="v_ProcessNode" EntityType="SEWC_ToolBoxModel.v_ProcessNode" />
+          <EntitySet Name="t_Report" EntityType="SEWC_ToolBoxModel.t_Report" />
+          <EntitySet Name="t_sys_TypeDescription" EntityType="SEWC_ToolBoxModel.t_sys_TypeDescription" />
+          <EntitySet Name="t_Menu" EntityType="SEWC_ToolBoxModel.t_Menu" />
+          <EntitySet Name="v_sys_FieldDescription" EntityType="SEWC_ToolBoxModel.v_sys_FieldDescription" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SEWC_ToolBoxModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SEWC_ToolBoxModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="V_Report_ClickStatistics" EntityType="SEWC_ToolBoxModel.V_Report_ClickStatistics" />
+          <EntitySet Name="t_ReportRole" EntityType="SEWC_ToolBoxModel.t_ReportRole" />
+          <EntitySet Name="t_Menu_New" EntityType="SEWC_ToolBoxModel.t_Menu_New" />
+          <EntitySet Name="v_MenuList" EntityType="SEWC_ToolBoxModel.v_MenuList" />
+          <EntitySet Name="v_SideMenuList" EntityType="SEWC_ToolBoxModel.v_SideMenuList" />
+          <EntitySet Name="v_Report" EntityType="SEWC_ToolBoxModel.v_Report" />
+          <FunctionImport Name="SP_RequestSenseAuthor">
+            <Parameter Name="gid" Mode="In" Type="String" />
+            <Parameter Name="iname" Mode="In" Type="String" />
+            <Parameter Name="fname" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="t_OprationLog" EntityType="SEWC_ToolBoxModel.t_OprationLog" />
+          <EntitySet Name="t_Report_ClickStatistics" EntityType="SEWC_ToolBoxModel.t_Report_ClickStatistics" />
+          <FunctionImport Name="Delete_Report">
+          <Parameter Name="r_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Insert_ClickStatisticsBymanual">
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="day" Mode="In" Type="Int32" />
+            <Parameter Name="nowdate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Insert_ReportClickStatistics" />
+          <FunctionImport Name="SP_Update_ClickStatistics">
+            <Parameter Name="r_ID" Mode="In" Type="Int32" />
+            <Parameter Name="User_GID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Update_Favorite">
+            <Parameter Name="f_TypeID" Mode="In" Type="Int32" />
+            <Parameter Name="f_ObjectID" Mode="In" Type="Int32" />
+            <Parameter Name="IsAdd" Mode="In" Type="Boolean" />
+            <Parameter Name="User_GID" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="BI_LU_SCM_REPORT_ACCESS_REMOVED" EntityType="SEWC_ToolBoxModel.BI_LU_SCM_REPORT_ACCESS_REMOVED" />
+          <EntitySet Name="t_ReportIssue" EntityType="SEWC_ToolBoxModel.t_ReportIssue" />
+          </EntityContainer>
+        <EntityType Name="t_Favorite">
+          <Key>
+            <PropertyRef Name="f_ID" />
+          </Key>
+          <Property Name="f_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="f_TypeID" Nullable="false" Type="Int32" />
+          <Property Name="f_ObjectID" Nullable="false" Type="Int32" />
+          <Property Name="f_GID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="f_AddDate" Precision="3" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="t_MailTemplate">
+          <Key>
+            <PropertyRef Name="t_mt_ID" />
+          </Key>
+          <Property Name="t_mt_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="t_mt_Name" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="t_mt_Title" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="t_mt_Content" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+        </EntityType>
+        <EntityType Name="t_Customization">
+          <Key>
+            <PropertyRef Name="c_ID" />
+          </Key>
+          <Property Name="c_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="c_GUID" MaxLength="36" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="c_m_DeptID" Type="Int32" />
+          <Property Name="c_Name" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="c_Category" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="c_Description" MaxLength="2000" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="c_PicPath" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="c_Linkage" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="c_Sort" Type="Int32" />
+          <Property Name="c_Owner" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="t_UserRole">
+          <Key>
+            <PropertyRef Name="ur_ID" />
+          </Key>
+          <Property Name="ur_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="ur_e_Dept_ID" Type="Int32" />
+          <Property Name="ur_User_GID" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ur_a_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="t_Entry">
+          <Key>
+            <PropertyRef Name="e_ID" />
+          </Key>
+          <Property Name="e_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="e_Dept_ID" Type="Int32" />
+          <Property Name="e_Dept_FullName" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="e_Dept_AbbreviatedName" MaxLength="20" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="e_ControllerName" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="e_Enabled" Type="Boolean" />
+          <Property Name="e_AccessLevel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="t_QuickLink">
+          <Key>
+            <PropertyRef Name="ql_ID" />
+          </Key>
+          <Property Name="ql_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="ql_GUID" MaxLength="36" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ql_m_DeptID" Type="Int32" />
+          <Property Name="ql_m_ID" Type="Int32" />
+          <Property Name="ql_Name" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="ql_Description" MaxLength="2000" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="ql_PicPath" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="ql_Linkage" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="ql_Status" Type="Int32" />
+          <Property Name="ql_AccessLevel" Type="Int32" />
+          <Property Name="ql_Sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_UserRole">
+          <Key>
+            <PropertyRef Name="a_ID" />
+            <PropertyRef Name="RowNo" />
+          </Key>
+          <Property Name="RowNo" Nullable="false" Type="Int64" />
+          <Property Name="ur_ID" Nullable="false" Type="Int32" />
+          <Property Name="ur_e_Dept_ID" Type="Int32" />
+          <Property Name="e_Dept_AbbreviatedName" MaxLength="20" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="User_GID" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="User_DisplayText" MaxLength="103" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="a_ID" Nullable="false" Type="Int32" />
+          <Property Name="a_Name" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="a_Type_R" Type="Int32" />
+          <Property Name="a_Type_C" Type="Int32" />
+          <Property Name="a_Type_U" Type="Int32" />
+          <Property Name="a_Type_D" Type="Int32" />
+        </EntityType>
+        <EntityType Name="t_LanguageProfile">
+          <Key>
+            <PropertyRef Name="lp_u_GID" />
+          </Key>
+          <Property Name="lp_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="lp_u_GID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="lp_LanguageType" Type="Int32" />
+        </EntityType>
+        <EntityType Name="t_Access">
+          <Key>
+            <PropertyRef Name="a_ID" />
+          </Key>
+          <Property Name="a_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="a_Name" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="a_Type_R" Type="Int32" />
+          <Property Name="a_Type_C" Type="Int32" />
+          <Property Name="a_Type_U" Type="Int32" />
+          <Property Name="a_Type_D" Type="Int32" />
+          <Property Name="a_Sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_User">
+          <Key>
+            <PropertyRef Name="User_ID" />
+          </Key>
+          <Property Name="User_ID" Nullable="false" Type="Int32" />
+          <Property Name="User_GID" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="User_DisplayText" MaxLength="103" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="User_Name_EN" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="User_Name_CH" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="User_EmployeeNumber" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="User_Email" MaxLength="500" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Job_ID" Type="Int32" />
+          <Property Name="Job_Function" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Job_IsManager" MaxLength="1" FixedLength="true" Unicode="false" Type="String" />
+          <Property Name="LineManager_ID" Type="Int32" />
+          <Property Name="LineManager_Name_EN" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="LineManager_Name_CH" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="LineManager_GID" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="LineManager_DisplayText" MaxLength="103" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="LineManager_EMAIL" MaxLength="500" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Dept_ID" Type="Int32" />
+          <Property Name="Dept_ParentID" Type="Int32" />
+          <Property Name="Dept_IsPrimary" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Dept_FullName" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Dept_AbbreviatedName" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+        </EntityType>
+        <EntityType Name="t_ProcessConnection">
+          <Key>
+            <PropertyRef Name="pc_ID" />
+          </Key>
+          <Property Name="pc_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="pc_m_DeptID" Type="Int32" />
+          <Property Name="pc_m_ID" Type="Int32" />
+          <Property Name="pc_Node_ID" Type="Int32" />
+          <Property Name="pc_NextNode_ID" Type="Int32" />
+          <Property Name="pc_ConnectionType" Type="Int32" />
+          <Property Name="pc_ConnectionLabel" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+        </EntityType>
+        <EntityType Name="t_Attachment">
+          <Key>
+            <PropertyRef Name="a_ID" />
+          </Key>
+          <Property Name="a_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="a_Type" Type="Int32" />
+          <Property Name="a_FileName" MaxLength="100" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="a_DownloadPath" MaxLength="500" FixedLength="false" Unicode="true" Type="String" />
+        </EntityType>
+        <EntityType Name="t_ProcessLinkage">
+          <Key>
+            <PropertyRef Name="pl_ID" />
+          </Key>
+          <Property Name="pl_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="pl_pn_ID" Type="Int32" />
+          <Property Name="pl_Type" Type="Int32" />
+          <Property Name="pl_Name" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="pl_Linkage" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="pl_Sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="t_ProcessNode">
+          <Key>
+            <PropertyRef Name="pn_ID" />
+          </Key>
+          <Property Name="pn_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="pn_m_DeptID" Type="Int32" />
+          <Property Name="pn_m_ID" Type="Int32" />
+          <Property Name="pn_NodeName" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="pn_Owner" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="pn_Position_X" Type="Int32" />
+          <Property Name="pn_Position_Y" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_ProcessNode">
+          <Key>
+            <PropertyRef Name="pn_ID" />
+          </Key>
+          <Property Name="pn_ID" Nullable="false" Type="Int32" />
+          <Property Name="pn_m_DeptID" Type="Int32" />
+          <Property Name="pn_m_ID" Type="Int32" />
+          <Property Name="pn_NodeName" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="pn_Owner" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="User_Owner" MaxLength="102" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="pn_Position_X" Type="Int32" />
+          <Property Name="pn_Position_Y" Type="Int32" />
+        </EntityType>
+        <EntityType Name="t_Report">
+          <Key>
+            <PropertyRef Name="r_ID" />
+          </Key>
+          <Property Name="r_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="r_GUID" MaxLength="36" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="r_m_DeptID" Type="Int32" />
+          <Property Name="r_m_ID_Category" Type="Int32" />
+          <Property Name="r_m_ID_Frequency" Type="Int32" />
+          <Property Name="r_Name" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_Description" MaxLength="2000" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_Owner" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="r_AccessOwner" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="r_PicPath" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_Linkage" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_Status" Type="Int32" />
+          <Property Name="r_AccessLevel" Type="Int32" />
+          <Property Name="r_Sort" Type="Int32" />
+          <Property Name="r_Admin" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="r_m_ID_SubCategory" Type="Int32" />
+          <Property Name="r_CROwner" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="CreateUser" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="CreateDate" Precision="3" Type="DateTime" />
+          <Property Name="UpdateDate" Precision="3" Type="DateTime" />
+          <Property Name="UpdateUser" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_APPIDS" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="t_sys_TypeDescription">
+          <Key>
+            <PropertyRef Name="td_ID" />
+          </Key>
+          <Property Name="td_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="td_TableName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="td_ColumnName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="td_TypeID" Type="Int32" />
+          <Property Name="td_TypeDescription" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+        </EntityType>
+        <EntityType Name="t_Menu">
+          <Key>
+            <PropertyRef Name="m_ID" />
+          </Key>
+          <Property Name="m_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="m_ParentID" Nullable="false" Type="Int32" />
+          <Property Name="m_e_ID" Type="Int32" />
+          <Property Name="m_DeptID" Nullable="false" Type="Int32" />
+          <Property Name="m_MenuName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="m_ActionName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="m_AccessLevel" Type="Int32" />
+          <Property Name="m_IsGeneral" Type="Boolean" />
+          <Property Name="m_Sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_sys_FieldDescription">
+          <Key>
+            <PropertyRef Name="Table_Name" />
+          </Key>
+          <Property Name="Table_Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Column_Name" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="V_Report_ClickStatistics">
+          <Key>
+            <PropertyRef Name="ReportId" />
+          </Key>
+          <Property Name="ReportName" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="ReportId" Nullable="false" Type="Int32" />
+          <Property Name="ClickTimes" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Month" Type="Int32" />
+          <Property Name="Day" Type="Int32" />
+          <Property Name="LastUpdateDate" Precision="3" Type="DateTime" />
+          <Property Name="YearMonth" MaxLength="7" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="frequencyId" Type="Int32" />
+          <Property Name="Frequency" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="t_ReportRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Nullable="false" Type="Int32" />
+          <Property Name="Role" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="GID" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Email" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Enabled" Nullable="false" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="t_Menu_New">
+          <Key>
+            <PropertyRef Name="m_ID" />
+          </Key>
+          <Property Name="m_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="m_ParentID" Nullable="false" Type="Int32" />
+          <Property Name="m_e_ID" Type="Int32" />
+          <Property Name="m_DeptID" Nullable="false" Type="Int32" />
+          <Property Name="m_MenuName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="m_ActionName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="m_AccessLevel" Type="Int32" />
+          <Property Name="m_IsGeneral" Type="Boolean" />
+          <Property Name="m_Sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_MenuList">
+          <Key>
+            <PropertyRef Name="ml_RowNum" />
+          </Key>
+          <Property Name="ml_RowNum" Nullable="false" Type="Int64" />
+          <Property Name="ml_Main_ID" Nullable="false" Type="Int32" />
+          <Property Name="ml_Main_e_ID" Type="Int32" />
+          <Property Name="ml_Main_DeptID" Nullable="false" Type="Int32" />
+          <Property Name="ml_e_ControllerName" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Main_MenuName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Main_ActionName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Main_AccessLevel" Type="Int32" />
+          <Property Name="ml_Main_IsGeneral" Type="Boolean" />
+          <Property Name="ml_Sub_ID" Type="Int32" />
+          <Property Name="ml_Sub_MenuName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Sub_ActionName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Sub_AccessLevel" Nullable="false" Type="Int32" />
+          <Property Name="ml_Sub_IsGeneral" Nullable="false" Type="Boolean" />
+          <Property Name="ml_Third_ID" Type="Int32" />
+          <Property Name="ml_Third_MenuName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Third_ActionName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Third_AccessLevel" Nullable="false" Type="Int32" />
+          <Property Name="ml_Third_IsGeneral" Nullable="false" Type="Boolean" />
+          <Property Name="ml_Fourth_ID" Type="Int32" />
+          <Property Name="ml_Fourth_MenuName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Fourth_ActionName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Fourth_AccessLevel" Nullable="false" Type="Int32" />
+          <Property Name="ml_Fourth_IsGeneral" Nullable="false" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="v_SideMenuList">
+          <Key>
+            <PropertyRef Name="ml_RowNum" />
+          </Key>
+          <Property Name="ml_RowNum" Nullable="false" Type="Int64" />
+          <Property Name="ml_Main_ID" Nullable="false" Type="Int32" />
+          <Property Name="ml_Main_e_ID" Type="Int32" />
+          <Property Name="ml_Main_DeptID" Nullable="false" Type="Int32" />
+          <Property Name="ml_e_ControllerName" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Main_MenuName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Main_ActionName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Main_AccessLevel" Type="Int32" />
+          <Property Name="ml_Main_IsGeneral" Type="Boolean" />
+          <Property Name="ml_Sub_ID" Type="Int32" />
+          <Property Name="ml_Sub_MenuName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Sub_ActionName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="ml_Sub_AccessLevel" Nullable="false" Type="Int32" />
+          <Property Name="ml_Sub_IsGeneral" Nullable="false" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="v_Report">
+          <Key>
+            <PropertyRef Name="r_ID" />
+          </Key>
+          <Property Name="r_ID" Nullable="false" Type="Int32" />
+          <Property Name="Menu_e_ID" Type="Int32" />
+          <Property Name="r_m_DeptID" Type="Int32" />
+          <Property Name="r_m_ID_Category" Type="Int32" />
+          <Property Name="r_m_ID_SubCategory" Type="Int32" />
+          <Property Name="Menu_SubCategoryName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Menu_SubCategoryActionName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="r_m_ID_Frequency" Type="Int32" />
+          <Property Name="Menu_FrequencyName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Menu_FrequencyActionName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Menu_CategoryActionName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Menu_CategoryName" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="r_Name" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_Description" MaxLength="2000" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_Owner" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="User_Owner" MaxLength="102" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="User_OwnerEmail" MaxLength="500" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_AccessOwner" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="User_AccessOwner" MaxLength="102" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="User_AccessOwnerEmail" MaxLength="500" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_Admin" MaxLength="102" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_AdminEmail" MaxLength="500" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="User_CrOwner" MaxLength="102" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="User_CrOwnerEmail" MaxLength="500" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_PicPath" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_Linkage" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="r_Status" Type="Int32" />
+          <Property Name="r_AccessLevel" Type="Int32" />
+          <Property Name="r_Sort" Type="Int32" />
+          <Property Name="r_cs_ClickTimes" Nullable="false" Type="Int32" />
+          <Property Name="r_lr_LastReloadTime" Precision="3" Type="DateTime" />
+          <Property Name="CreateUser" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="CreateDate" Precision="3" Type="DateTime" />
+          <Property Name="UpdateUser" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="UpdateDate" Precision="3" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="t_OprationLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="Type" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Text" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="CreateUser" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="CreateDate" Nullable="false" Precision="3" Type="DateTime" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="t_Report_ClickStatistics">
+          <Key>
+            <PropertyRef Name="r_cs_ID" />
+          </Key>
+          <Property Name="r_cs_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="r_cs_r_ID" Nullable="false" Type="Int32" />
+          <Property Name="r_cs_ClickTimes" Nullable="false" Type="Int32" />
+          <Property Name="r_cs_ForYear" Nullable="false" Type="Int32" />
+          <Property Name="r_cs_ForMonth" Nullable="false" Type="Int32" />
+          <Property Name="r_cs_ForDay" Type="Int32" />
+          <Property Name="r_cs_User_GID" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="r_cs_LastUpdateDate" Nullable="false" Precision="3" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="BI_LU_SCM_REPORT_ACCESS_REMOVED">
+          <Key>
+            <PropertyRef Name="USER_GID" />
+            <PropertyRef Name="REMOVE_MONTH" />
+            <PropertyRef Name="REPORT_LINK" />
+          </Key>
+          <Property Name="REPORT_NAME_IN_TOOLBOX" MaxLength="100" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="USER_GID" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="USER_NAME" MaxLength="40" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="USER_EMAIL" MaxLength="40" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="USER_SOM_ORG_CODE" MaxLength="40" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="USER_DEPT" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="USER_PMP_MANAGER" MaxLength="40" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="REMOVE_MONTH" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="REPORT_LINK" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="RECORD_STATUS" MaxLength="10" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="APPIDS" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="t_ReportIssue">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="r_Id" Type="Int32" Nullable="false" />
+          <Property Name="Issues" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Issusue_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Issue_image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Createtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReportTitle" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="AdminOwner" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="AdminOwnerName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="AnswerReason" Type="String" MaxLength="2560" FixedLength="false" Unicode="false" />
+          <Property Name="AnswerDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HandleUser" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="HandleUserName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="HandleTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="Int16" Nullable="false" />
+          <Property Name="Groups" Type="Int16" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SEWC_ToolBoxModelStoreContainer" CdmEntityContainer="SEWC_ToolBoxEntities">
+          <EntitySetMapping Name="t_Favorite">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_Favorite">
+              <MappingFragment StoreEntitySet="t_Favorite">
+                <ScalarProperty Name="f_AddDate" ColumnName="f_AddDate" />
+                <ScalarProperty Name="f_GID" ColumnName="f_GID" />
+                <ScalarProperty Name="f_ObjectID" ColumnName="f_ObjectID" />
+                <ScalarProperty Name="f_TypeID" ColumnName="f_TypeID" />
+                <ScalarProperty Name="f_ID" ColumnName="f_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_MailTemplate">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_MailTemplate">
+              <MappingFragment StoreEntitySet="t_MailTemplate">
+                <ScalarProperty Name="t_mt_Content" ColumnName="t_mt_Content" />
+                <ScalarProperty Name="t_mt_Title" ColumnName="t_mt_Title" />
+                <ScalarProperty Name="t_mt_Name" ColumnName="t_mt_Name" />
+                <ScalarProperty Name="t_mt_ID" ColumnName="t_mt_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Customization">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_Customization">
+              <MappingFragment StoreEntitySet="t_Customization">
+                <ScalarProperty Name="c_Owner" ColumnName="c_Owner" />
+                <ScalarProperty Name="c_Sort" ColumnName="c_Sort" />
+                <ScalarProperty Name="c_Linkage" ColumnName="c_Linkage" />
+                <ScalarProperty Name="c_PicPath" ColumnName="c_PicPath" />
+                <ScalarProperty Name="c_Description" ColumnName="c_Description" />
+                <ScalarProperty Name="c_Category" ColumnName="c_Category" />
+                <ScalarProperty Name="c_Name" ColumnName="c_Name" />
+                <ScalarProperty Name="c_m_DeptID" ColumnName="c_m_DeptID" />
+                <ScalarProperty Name="c_GUID" ColumnName="c_GUID" />
+                <ScalarProperty Name="c_ID" ColumnName="c_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_UserRole">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_UserRole">
+              <MappingFragment StoreEntitySet="t_UserRole">
+                <ScalarProperty Name="ur_a_ID" ColumnName="ur_a_ID" />
+                <ScalarProperty Name="ur_User_GID" ColumnName="ur_User_GID" />
+                <ScalarProperty Name="ur_e_Dept_ID" ColumnName="ur_e_Dept_ID" />
+                <ScalarProperty Name="ur_ID" ColumnName="ur_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Entry">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_Entry">
+              <MappingFragment StoreEntitySet="t_Entry">
+                <ScalarProperty Name="e_AccessLevel" ColumnName="e_AccessLevel" />
+                <ScalarProperty Name="e_Enabled" ColumnName="e_Enabled" />
+                <ScalarProperty Name="e_ControllerName" ColumnName="e_ControllerName" />
+                <ScalarProperty Name="e_Dept_AbbreviatedName" ColumnName="e_Dept_AbbreviatedName" />
+                <ScalarProperty Name="e_Dept_FullName" ColumnName="e_Dept_FullName" />
+                <ScalarProperty Name="e_Dept_ID" ColumnName="e_Dept_ID" />
+                <ScalarProperty Name="e_ID" ColumnName="e_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_QuickLink">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_QuickLink">
+              <MappingFragment StoreEntitySet="t_QuickLink">
+                <ScalarProperty Name="ql_Sort" ColumnName="ql_Sort" />
+                <ScalarProperty Name="ql_AccessLevel" ColumnName="ql_AccessLevel" />
+                <ScalarProperty Name="ql_Status" ColumnName="ql_Status" />
+                <ScalarProperty Name="ql_Linkage" ColumnName="ql_Linkage" />
+                <ScalarProperty Name="ql_PicPath" ColumnName="ql_PicPath" />
+                <ScalarProperty Name="ql_Description" ColumnName="ql_Description" />
+                <ScalarProperty Name="ql_Name" ColumnName="ql_Name" />
+                <ScalarProperty Name="ql_m_ID" ColumnName="ql_m_ID" />
+                <ScalarProperty Name="ql_m_DeptID" ColumnName="ql_m_DeptID" />
+                <ScalarProperty Name="ql_GUID" ColumnName="ql_GUID" />
+                <ScalarProperty Name="ql_ID" ColumnName="ql_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_UserRole">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.v_UserRole">
+              <MappingFragment StoreEntitySet="v_UserRole">
+                <ScalarProperty Name="a_Type_D" ColumnName="a_Type_D" />
+                <ScalarProperty Name="a_Type_U" ColumnName="a_Type_U" />
+                <ScalarProperty Name="a_Type_C" ColumnName="a_Type_C" />
+                <ScalarProperty Name="a_Type_R" ColumnName="a_Type_R" />
+                <ScalarProperty Name="a_Name" ColumnName="a_Name" />
+                <ScalarProperty Name="a_ID" ColumnName="a_ID" />
+                <ScalarProperty Name="User_DisplayText" ColumnName="User_DisplayText" />
+                <ScalarProperty Name="User_GID" ColumnName="User_GID" />
+                <ScalarProperty Name="e_Dept_AbbreviatedName" ColumnName="e_Dept_AbbreviatedName" />
+                <ScalarProperty Name="ur_e_Dept_ID" ColumnName="ur_e_Dept_ID" />
+                <ScalarProperty Name="ur_ID" ColumnName="ur_ID" />
+                <ScalarProperty Name="RowNo" ColumnName="RowNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_LanguageProfile">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_LanguageProfile">
+              <MappingFragment StoreEntitySet="t_LanguageProfile">
+                <ScalarProperty Name="lp_LanguageType" ColumnName="lp_LanguageType" />
+                <ScalarProperty Name="lp_u_GID" ColumnName="lp_u_GID" />
+                <ScalarProperty Name="lp_ID" ColumnName="lp_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Access">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_Access">
+              <MappingFragment StoreEntitySet="t_Access">
+                <ScalarProperty Name="a_Sort" ColumnName="a_Sort" />
+                <ScalarProperty Name="a_Type_D" ColumnName="a_Type_D" />
+                <ScalarProperty Name="a_Type_U" ColumnName="a_Type_U" />
+                <ScalarProperty Name="a_Type_C" ColumnName="a_Type_C" />
+                <ScalarProperty Name="a_Type_R" ColumnName="a_Type_R" />
+                <ScalarProperty Name="a_Name" ColumnName="a_Name" />
+                <ScalarProperty Name="a_ID" ColumnName="a_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_User">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.v_User">
+              <MappingFragment StoreEntitySet="v_User">
+                <ScalarProperty Name="Dept_AbbreviatedName" ColumnName="Dept_AbbreviatedName" />
+                <ScalarProperty Name="Dept_FullName" ColumnName="Dept_FullName" />
+                <ScalarProperty Name="Dept_IsPrimary" ColumnName="Dept_IsPrimary" />
+                <ScalarProperty Name="Dept_ParentID" ColumnName="Dept_ParentID" />
+                <ScalarProperty Name="Dept_ID" ColumnName="Dept_ID" />
+                <ScalarProperty Name="LineManager_EMAIL" ColumnName="LineManager_EMAIL" />
+                <ScalarProperty Name="LineManager_DisplayText" ColumnName="LineManager_DisplayText" />
+                <ScalarProperty Name="LineManager_GID" ColumnName="LineManager_GID" />
+                <ScalarProperty Name="LineManager_Name_CH" ColumnName="LineManager_Name_CH" />
+                <ScalarProperty Name="LineManager_Name_EN" ColumnName="LineManager_Name_EN" />
+                <ScalarProperty Name="LineManager_ID" ColumnName="LineManager_ID" />
+                <ScalarProperty Name="Job_IsManager" ColumnName="Job_IsManager" />
+                <ScalarProperty Name="Job_Function" ColumnName="Job_Function" />
+                <ScalarProperty Name="Job_ID" ColumnName="Job_ID" />
+                <ScalarProperty Name="User_Email" ColumnName="User_Email" />
+                <ScalarProperty Name="User_EmployeeNumber" ColumnName="User_EmployeeNumber" />
+                <ScalarProperty Name="User_Name_CH" ColumnName="User_Name_CH" />
+                <ScalarProperty Name="User_Name_EN" ColumnName="User_Name_EN" />
+                <ScalarProperty Name="User_DisplayText" ColumnName="User_DisplayText" />
+                <ScalarProperty Name="User_GID" ColumnName="User_GID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ProcessConnection">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_ProcessConnection">
+              <MappingFragment StoreEntitySet="t_ProcessConnection">
+                <ScalarProperty Name="pc_ConnectionLabel" ColumnName="pc_ConnectionLabel" />
+                <ScalarProperty Name="pc_ConnectionType" ColumnName="pc_ConnectionType" />
+                <ScalarProperty Name="pc_NextNode_ID" ColumnName="pc_NextNode_ID" />
+                <ScalarProperty Name="pc_Node_ID" ColumnName="pc_Node_ID" />
+                <ScalarProperty Name="pc_m_ID" ColumnName="pc_m_ID" />
+                <ScalarProperty Name="pc_m_DeptID" ColumnName="pc_m_DeptID" />
+                <ScalarProperty Name="pc_ID" ColumnName="pc_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Attachment">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_Attachment">
+              <MappingFragment StoreEntitySet="t_Attachment">
+                <ScalarProperty Name="a_DownloadPath" ColumnName="a_DownloadPath" />
+                <ScalarProperty Name="a_FileName" ColumnName="a_FileName" />
+                <ScalarProperty Name="a_Type" ColumnName="a_Type" />
+                <ScalarProperty Name="a_ID" ColumnName="a_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ProcessLinkage">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_ProcessLinkage">
+              <MappingFragment StoreEntitySet="t_ProcessLinkage">
+                <ScalarProperty Name="pl_Sort" ColumnName="pl_Sort" />
+                <ScalarProperty Name="pl_Linkage" ColumnName="pl_Linkage" />
+                <ScalarProperty Name="pl_Name" ColumnName="pl_Name" />
+                <ScalarProperty Name="pl_Type" ColumnName="pl_Type" />
+                <ScalarProperty Name="pl_pn_ID" ColumnName="pl_pn_ID" />
+                <ScalarProperty Name="pl_ID" ColumnName="pl_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ProcessNode">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_ProcessNode">
+              <MappingFragment StoreEntitySet="t_ProcessNode">
+                <ScalarProperty Name="pn_Position_Y" ColumnName="pn_Position_Y" />
+                <ScalarProperty Name="pn_Position_X" ColumnName="pn_Position_X" />
+                <ScalarProperty Name="pn_Owner" ColumnName="pn_Owner" />
+                <ScalarProperty Name="pn_NodeName" ColumnName="pn_NodeName" />
+                <ScalarProperty Name="pn_m_ID" ColumnName="pn_m_ID" />
+                <ScalarProperty Name="pn_m_DeptID" ColumnName="pn_m_DeptID" />
+                <ScalarProperty Name="pn_ID" ColumnName="pn_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_ProcessNode">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.v_ProcessNode">
+              <MappingFragment StoreEntitySet="v_ProcessNode">
+                <ScalarProperty Name="pn_Position_Y" ColumnName="pn_Position_Y" />
+                <ScalarProperty Name="pn_Position_X" ColumnName="pn_Position_X" />
+                <ScalarProperty Name="User_Owner" ColumnName="User_Owner" />
+                <ScalarProperty Name="pn_Owner" ColumnName="pn_Owner" />
+                <ScalarProperty Name="pn_NodeName" ColumnName="pn_NodeName" />
+                <ScalarProperty Name="pn_m_ID" ColumnName="pn_m_ID" />
+                <ScalarProperty Name="pn_m_DeptID" ColumnName="pn_m_DeptID" />
+                <ScalarProperty Name="pn_ID" ColumnName="pn_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Report">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_Report">
+              <MappingFragment StoreEntitySet="t_Report">
+                <ScalarProperty Name="r_APPIDS" ColumnName="r_APPIDS" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="r_CROwner" ColumnName="r_CROwner" />
+                <ScalarProperty Name="r_m_ID_SubCategory" ColumnName="r_m_ID_SubCategory" />
+                <ScalarProperty Name="r_Admin" ColumnName="r_Admin" />
+                <ScalarProperty Name="r_Sort" ColumnName="r_Sort" />
+                <ScalarProperty Name="r_AccessLevel" ColumnName="r_AccessLevel" />
+                <ScalarProperty Name="r_Status" ColumnName="r_Status" />
+                <ScalarProperty Name="r_Linkage" ColumnName="r_Linkage" />
+                <ScalarProperty Name="r_PicPath" ColumnName="r_PicPath" />
+                <ScalarProperty Name="r_AccessOwner" ColumnName="r_AccessOwner" />
+                <ScalarProperty Name="r_Owner" ColumnName="r_Owner" />
+                <ScalarProperty Name="r_Description" ColumnName="r_Description" />
+                <ScalarProperty Name="r_Name" ColumnName="r_Name" />
+                <ScalarProperty Name="r_m_ID_Frequency" ColumnName="r_m_ID_Frequency" />
+                <ScalarProperty Name="r_m_ID_Category" ColumnName="r_m_ID_Category" />
+                <ScalarProperty Name="r_m_DeptID" ColumnName="r_m_DeptID" />
+                <ScalarProperty Name="r_GUID" ColumnName="r_GUID" />
+                <ScalarProperty Name="r_ID" ColumnName="r_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_sys_TypeDescription">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_sys_TypeDescription">
+              <MappingFragment StoreEntitySet="t_sys_TypeDescription">
+                <ScalarProperty Name="td_TypeDescription" ColumnName="td_TypeDescription" />
+                <ScalarProperty Name="td_TypeID" ColumnName="td_TypeID" />
+                <ScalarProperty Name="td_ColumnName" ColumnName="td_ColumnName" />
+                <ScalarProperty Name="td_TableName" ColumnName="td_TableName" />
+                <ScalarProperty Name="td_ID" ColumnName="td_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Menu">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_Menu">
+              <MappingFragment StoreEntitySet="t_Menu">
+                <ScalarProperty Name="m_Sort" ColumnName="m_Sort" />
+                <ScalarProperty Name="m_IsGeneral" ColumnName="m_IsGeneral" />
+                <ScalarProperty Name="m_AccessLevel" ColumnName="m_AccessLevel" />
+                <ScalarProperty Name="m_ActionName" ColumnName="m_ActionName" />
+                <ScalarProperty Name="m_MenuName" ColumnName="m_MenuName" />
+                <ScalarProperty Name="m_DeptID" ColumnName="m_DeptID" />
+                <ScalarProperty Name="m_e_ID" ColumnName="m_e_ID" />
+                <ScalarProperty Name="m_ParentID" ColumnName="m_ParentID" />
+                <ScalarProperty Name="m_ID" ColumnName="m_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_sys_FieldDescription">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.v_sys_FieldDescription">
+              <MappingFragment StoreEntitySet="v_sys_FieldDescription">
+                <ScalarProperty Name="Column_Name" ColumnName="Column_Name" />
+                <ScalarProperty Name="Table_Name" ColumnName="Table_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Report_ClickStatistics">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.V_Report_ClickStatistics">
+              <MappingFragment StoreEntitySet="V_Report_ClickStatistics">
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+                <ScalarProperty Name="frequencyId" ColumnName="frequencyId" />
+                <ScalarProperty Name="YearMonth" ColumnName="YearMonth" />
+                <ScalarProperty Name="LastUpdateDate" ColumnName="LastUpdateDate" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="ClickTimes" ColumnName="ClickTimes" />
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ReportRole">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_ReportRole">
+              <MappingFragment StoreEntitySet="t_ReportRole">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="GID" ColumnName="GID" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Menu_New">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_Menu_New">
+              <MappingFragment StoreEntitySet="t_Menu_New">
+                <ScalarProperty Name="m_Sort" ColumnName="m_Sort" />
+                <ScalarProperty Name="m_IsGeneral" ColumnName="m_IsGeneral" />
+                <ScalarProperty Name="m_AccessLevel" ColumnName="m_AccessLevel" />
+                <ScalarProperty Name="m_ActionName" ColumnName="m_ActionName" />
+                <ScalarProperty Name="m_MenuName" ColumnName="m_MenuName" />
+                <ScalarProperty Name="m_DeptID" ColumnName="m_DeptID" />
+                <ScalarProperty Name="m_e_ID" ColumnName="m_e_ID" />
+                <ScalarProperty Name="m_ParentID" ColumnName="m_ParentID" />
+                <ScalarProperty Name="m_ID" ColumnName="m_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_MenuList">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.v_MenuList">
+              <MappingFragment StoreEntitySet="v_MenuList">
+                <ScalarProperty Name="ml_Fourth_IsGeneral" ColumnName="ml_Fourth_IsGeneral" />
+                <ScalarProperty Name="ml_Fourth_AccessLevel" ColumnName="ml_Fourth_AccessLevel" />
+                <ScalarProperty Name="ml_Fourth_ActionName" ColumnName="ml_Fourth_ActionName" />
+                <ScalarProperty Name="ml_Fourth_MenuName" ColumnName="ml_Fourth_MenuName" />
+                <ScalarProperty Name="ml_Fourth_ID" ColumnName="ml_Fourth_ID" />
+                <ScalarProperty Name="ml_Third_IsGeneral" ColumnName="ml_Third_IsGeneral" />
+                <ScalarProperty Name="ml_Third_AccessLevel" ColumnName="ml_Third_AccessLevel" />
+                <ScalarProperty Name="ml_Third_ActionName" ColumnName="ml_Third_ActionName" />
+                <ScalarProperty Name="ml_Third_MenuName" ColumnName="ml_Third_MenuName" />
+                <ScalarProperty Name="ml_Third_ID" ColumnName="ml_Third_ID" />
+                <ScalarProperty Name="ml_Sub_IsGeneral" ColumnName="ml_Sub_IsGeneral" />
+                <ScalarProperty Name="ml_Sub_AccessLevel" ColumnName="ml_Sub_AccessLevel" />
+                <ScalarProperty Name="ml_Sub_ActionName" ColumnName="ml_Sub_ActionName" />
+                <ScalarProperty Name="ml_Sub_MenuName" ColumnName="ml_Sub_MenuName" />
+                <ScalarProperty Name="ml_Sub_ID" ColumnName="ml_Sub_ID" />
+                <ScalarProperty Name="ml_Main_IsGeneral" ColumnName="ml_Main_IsGeneral" />
+                <ScalarProperty Name="ml_Main_AccessLevel" ColumnName="ml_Main_AccessLevel" />
+                <ScalarProperty Name="ml_Main_ActionName" ColumnName="ml_Main_ActionName" />
+                <ScalarProperty Name="ml_Main_MenuName" ColumnName="ml_Main_MenuName" />
+                <ScalarProperty Name="ml_e_ControllerName" ColumnName="ml_e_ControllerName" />
+                <ScalarProperty Name="ml_Main_DeptID" ColumnName="ml_Main_DeptID" />
+                <ScalarProperty Name="ml_Main_e_ID" ColumnName="ml_Main_e_ID" />
+                <ScalarProperty Name="ml_Main_ID" ColumnName="ml_Main_ID" />
+                <ScalarProperty Name="ml_RowNum" ColumnName="ml_RowNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_SideMenuList">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.v_SideMenuList">
+              <MappingFragment StoreEntitySet="v_SideMenuList">
+                <ScalarProperty Name="ml_Sub_IsGeneral" ColumnName="ml_Sub_IsGeneral" />
+                <ScalarProperty Name="ml_Sub_AccessLevel" ColumnName="ml_Sub_AccessLevel" />
+                <ScalarProperty Name="ml_Sub_ActionName" ColumnName="ml_Sub_ActionName" />
+                <ScalarProperty Name="ml_Sub_MenuName" ColumnName="ml_Sub_MenuName" />
+                <ScalarProperty Name="ml_Sub_ID" ColumnName="ml_Sub_ID" />
+                <ScalarProperty Name="ml_Main_IsGeneral" ColumnName="ml_Main_IsGeneral" />
+                <ScalarProperty Name="ml_Main_AccessLevel" ColumnName="ml_Main_AccessLevel" />
+                <ScalarProperty Name="ml_Main_ActionName" ColumnName="ml_Main_ActionName" />
+                <ScalarProperty Name="ml_Main_MenuName" ColumnName="ml_Main_MenuName" />
+                <ScalarProperty Name="ml_e_ControllerName" ColumnName="ml_e_ControllerName" />
+                <ScalarProperty Name="ml_Main_DeptID" ColumnName="ml_Main_DeptID" />
+                <ScalarProperty Name="ml_Main_e_ID" ColumnName="ml_Main_e_ID" />
+                <ScalarProperty Name="ml_Main_ID" ColumnName="ml_Main_ID" />
+                <ScalarProperty Name="ml_RowNum" ColumnName="ml_RowNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Report">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.v_Report">
+              <MappingFragment StoreEntitySet="v_Report">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="r_lr_LastReloadTime" ColumnName="r_lr_LastReloadTime" />
+                <ScalarProperty Name="r_cs_ClickTimes" ColumnName="r_cs_ClickTimes" />
+                <ScalarProperty Name="r_Sort" ColumnName="r_Sort" />
+                <ScalarProperty Name="r_AccessLevel" ColumnName="r_AccessLevel" />
+                <ScalarProperty Name="r_Status" ColumnName="r_Status" />
+                <ScalarProperty Name="r_Linkage" ColumnName="r_Linkage" />
+                <ScalarProperty Name="r_PicPath" ColumnName="r_PicPath" />
+                <ScalarProperty Name="User_CrOwnerEmail" ColumnName="User_CrOwnerEmail" />
+                <ScalarProperty Name="User_CrOwner" ColumnName="User_CrOwner" />
+                <ScalarProperty Name="r_AdminEmail" ColumnName="r_AdminEmail" />
+                <ScalarProperty Name="r_Admin" ColumnName="r_Admin" />
+                <ScalarProperty Name="User_AccessOwnerEmail" ColumnName="User_AccessOwnerEmail" />
+                <ScalarProperty Name="User_AccessOwner" ColumnName="User_AccessOwner" />
+                <ScalarProperty Name="r_AccessOwner" ColumnName="r_AccessOwner" />
+                <ScalarProperty Name="User_OwnerEmail" ColumnName="User_OwnerEmail" />
+                <ScalarProperty Name="User_Owner" ColumnName="User_Owner" />
+                <ScalarProperty Name="r_Owner" ColumnName="r_Owner" />
+                <ScalarProperty Name="r_Description" ColumnName="r_Description" />
+                <ScalarProperty Name="r_Name" ColumnName="r_Name" />
+                <ScalarProperty Name="Menu_CategoryName" ColumnName="Menu_CategoryName" />
+                <ScalarProperty Name="Menu_CategoryActionName" ColumnName="Menu_CategoryActionName" />
+                <ScalarProperty Name="Menu_FrequencyActionName" ColumnName="Menu_FrequencyActionName" />
+                <ScalarProperty Name="Menu_FrequencyName" ColumnName="Menu_FrequencyName" />
+                <ScalarProperty Name="r_m_ID_Frequency" ColumnName="r_m_ID_Frequency" />
+                <ScalarProperty Name="Menu_SubCategoryActionName" ColumnName="Menu_SubCategoryActionName" />
+                <ScalarProperty Name="Menu_SubCategoryName" ColumnName="Menu_SubCategoryName" />
+                <ScalarProperty Name="r_m_ID_SubCategory" ColumnName="r_m_ID_SubCategory" />
+                <ScalarProperty Name="r_m_ID_Category" ColumnName="r_m_ID_Category" />
+                <ScalarProperty Name="r_m_DeptID" ColumnName="r_m_DeptID" />
+                <ScalarProperty Name="Menu_e_ID" ColumnName="Menu_e_ID" />
+                <ScalarProperty Name="r_ID" ColumnName="r_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_RequestSenseAuthor" FunctionName="SEWC_ToolBoxModel.Store.SP_RequestSenseAuthor" />
+          <EntitySetMapping Name="t_OprationLog">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_OprationLog">
+              <MappingFragment StoreEntitySet="t_OprationLog">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Report_ClickStatistics">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_Report_ClickStatistics">
+              <MappingFragment StoreEntitySet="t_Report_ClickStatistics">
+                <ScalarProperty Name="r_cs_LastUpdateDate" ColumnName="r_cs_LastUpdateDate" />
+                <ScalarProperty Name="r_cs_User_GID" ColumnName="r_cs_User_GID" />
+                <ScalarProperty Name="r_cs_ForDay" ColumnName="r_cs_ForDay" />
+                <ScalarProperty Name="r_cs_ForMonth" ColumnName="r_cs_ForMonth" />
+                <ScalarProperty Name="r_cs_ForYear" ColumnName="r_cs_ForYear" />
+                <ScalarProperty Name="r_cs_ClickTimes" ColumnName="r_cs_ClickTimes" />
+                <ScalarProperty Name="r_cs_r_ID" ColumnName="r_cs_r_ID" />
+                <ScalarProperty Name="r_cs_ID" ColumnName="r_cs_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Delete_Report" FunctionName="SEWC_ToolBoxModel.Store.Delete_Report" />
+          <FunctionImportMapping FunctionImportName="SP_Insert_ClickStatisticsBymanual" FunctionName="SEWC_ToolBoxModel.Store.SP_Insert_ClickStatisticsBymanual" />
+          <FunctionImportMapping FunctionImportName="SP_Insert_ReportClickStatistics" FunctionName="SEWC_ToolBoxModel.Store.SP_Insert_ReportClickStatistics" />
+          <FunctionImportMapping FunctionImportName="SP_Update_ClickStatistics" FunctionName="SEWC_ToolBoxModel.Store.SP_Update_ClickStatistics" />
+          <FunctionImportMapping FunctionImportName="SP_Update_Favorite" FunctionName="SEWC_ToolBoxModel.Store.SP_Update_Favorite" />
+          <EntitySetMapping Name="BI_LU_SCM_REPORT_ACCESS_REMOVED">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.BI_LU_SCM_REPORT_ACCESS_REMOVED">
+              <MappingFragment StoreEntitySet="BI_LU_SCM_REPORT_ACCESS_REMOVED">
+                <ScalarProperty Name="APPIDS" ColumnName="APPIDS" />
+                <ScalarProperty Name="RECORD_STATUS" ColumnName="RECORD_STATUS" />
+                <ScalarProperty Name="REPORT_LINK" ColumnName="REPORT_LINK" />
+                <ScalarProperty Name="REMOVE_MONTH" ColumnName="REMOVE_MONTH" />
+                <ScalarProperty Name="USER_PMP_MANAGER" ColumnName="USER_PMP_MANAGER" />
+                <ScalarProperty Name="USER_DEPT" ColumnName="USER_DEPT" />
+                <ScalarProperty Name="USER_SOM_ORG_CODE" ColumnName="USER_SOM_ORG_CODE" />
+                <ScalarProperty Name="USER_EMAIL" ColumnName="USER_EMAIL" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="USER_GID" ColumnName="USER_GID" />
+                <ScalarProperty Name="REPORT_NAME_IN_TOOLBOX" ColumnName="REPORT_NAME_IN_TOOLBOX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_ReportIssue">
+            <EntityTypeMapping TypeName="SEWC_ToolBoxModel.t_ReportIssue">
+              <MappingFragment StoreEntitySet="t_ReportIssue">
+                <ScalarProperty Name="Groups" ColumnName="Groups" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="CreateUserName" ColumnName="CreateUserName" />
+                <ScalarProperty Name="HandleTime" ColumnName="HandleTime" />
+                <ScalarProperty Name="HandleUserName" ColumnName="HandleUserName" />
+                <ScalarProperty Name="HandleUser" ColumnName="HandleUser" />
+                <ScalarProperty Name="AnswerDetail" ColumnName="AnswerDetail" />
+                <ScalarProperty Name="AnswerReason" ColumnName="AnswerReason" />
+                <ScalarProperty Name="AdminOwnerName" ColumnName="AdminOwnerName" />
+                <ScalarProperty Name="AdminOwner" ColumnName="AdminOwner" />
+                <ScalarProperty Name="ReportTitle" ColumnName="ReportTitle" />
+                <ScalarProperty Name="Createtime" ColumnName="Createtime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="Issue_image" ColumnName="Issue_image" />
+                <ScalarProperty Name="Issusue_title" ColumnName="Issusue_title" />
+                <ScalarProperty Name="Issues" ColumnName="Issues" />
+                <ScalarProperty Name="r_Id" ColumnName="r_Id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

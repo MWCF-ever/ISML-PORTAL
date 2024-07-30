@@ -1,0 +1,1312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="txt_404NotFound_plus" xml:space="preserve">
+    <value>The resource you requested could not be found. Please contact the system administrator.</value>
+  </data>
+	<data name="txt_ActionName" xml:space="preserve">
+    <value>Action Name</value>
+  </data>
+	<data name="txt_BackToHome" xml:space="preserve">
+    <value>Go back to Home Page</value>
+  </data>
+	<data name="txt_Chinese" xml:space="preserve">
+    <value>Chinese</value>
+  </data>
+	<data name="txt_ChineseName" xml:space="preserve">
+    <value>Chinese Name</value>
+  </data>
+	<data name="txt_CompanyName" xml:space="preserve">
+    <value>Siemens Industrial Automation Products Ltd., Chengdu</value>
+  </data>
+	<data name="txt_ControllerName" xml:space="preserve">
+    <value>Controller Name</value>
+  </data>
+	<data name="txt_Department" xml:space="preserve">
+    <value>Department</value>
+  </data>
+	<data name="txt_Document" xml:space="preserve">
+    <value>Documentation</value>
+  </data>
+	<data name="txt_EmployeeNumber" xml:space="preserve">
+    <value>Employee No.</value>
+  </data>
+	<data name="txt_English" xml:space="preserve">
+    <value>English</value>
+  </data>
+	<data name="txt_EnglishName" xml:space="preserve">
+    <value>English Name</value>
+  </data>
+	<data name="txt_Enter" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+	<data name="txt_ExceptionMessage" xml:space="preserve">
+    <value>Exception Message</value>
+  </data>
+	<data name="txt_Expand_SideBar" xml:space="preserve">
+    <value>Expand sidebar (Hot key Ctrl + Right Arrow)</value>
+  </data>
+	<data name="txt_HomePage" xml:space="preserve">
+    <value>Home Page</value>
+  </data>
+	<data name="txt_Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+	<data name="txt_Information_plus" xml:space="preserve">
+    <value>Customizable notification inside of each department</value>
+  </data>
+	<data name="txt_JobTitle" xml:space="preserve">
+    <value>Job Title</value>
+  </data>
+	<data name="txt_LearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+	<data name="txt_LineManager" xml:space="preserve">
+    <value>Line Manager</value>
+  </data>
+	<data name="txt_Link" xml:space="preserve">
+    <value>Quick Links</value>
+  </data>
+	<data name="txt_Link_plus" xml:space="preserve">
+    <value>Standard and customized quick links to other specific data files and website system</value>
+  </data>
+	<data name="txt_PersonalInformation" xml:space="preserve">
+    <value>Personal Information</value>
+  </data>
+	<data name="txt_PersonalInformation_plus" xml:space="preserve">
+    <value>You can review your personal information here</value>
+  </data>
+	<data name="txt_Report" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_PerformanceMeasurement_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_PerformanceMeasurement_OrderIntake_TurnOver" xml:space="preserve">
+    <value>Order Intake/TurnOver</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_UpdateFrequency_Daily" xml:space="preserve">
+    <value>Daily</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_UpdateFrequency_Monthly" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_UpdateFrequency_Quarterly" xml:space="preserve">
+    <value>Quarterly</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_UpdateFrequency_Weekly" xml:space="preserve">
+    <value>Weekly</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_UpdateFrequency_Yearly" xml:space="preserve">
+    <value>Yearly</value>
+  </data>
+	<data name="txt_Report_plus" xml:space="preserve">
+    <value>Serve the re-classification and access for significant reports of each department</value>
+  </data>
+	<data name="txt_SCM_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+	<data name="txt_SCM_Home_MyToolBox" xml:space="preserve">
+    <value>My ToolBox</value>
+  </data>
+	<data name="txt_SCM_Home_SCMToolBox" xml:space="preserve">
+    <value>SCM ToolBox</value>
+  </data>
+	<data name="txt_Organization" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+	<data name="txt_SCM_Process" xml:space="preserve">
+    <value>Business Overview</value>
+  </data>
+	<data name="txt_SCM_Process_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+	<data name="txt_SCM_Process_Make" xml:space="preserve">
+    <value>Make</value>
+  </data>
+	<data name="txt_SCM_Process_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+	<data name="txt_SCM_Process_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+	<data name="txt_SCM_QuickLink" xml:space="preserve">
+    <value>Quick Link</value>
+  </data>
+	<data name="txt_SCM_Reporting" xml:space="preserve">
+    <value>Business Transparency</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_PerformanceMeasurement" xml:space="preserve">
+    <value>Performance Measurement</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_UpdateFrequency" xml:space="preserve">
+    <value>Update Frequency</value>
+  </data>
+	<data name="txt_Collapse_SideBar" xml:space="preserve">
+    <value>Collapse sidebar (Hot key Ctrl + Left Arrow)</value>
+  </data>
+	<data name="txt_SupportDial" xml:space="preserve">
+    <value>+86 (28) 86197289</value>
+  </data>
+	<data name="txt_SupportedBy" xml:space="preserve">
+    <value>Technical support by GS IT DF FA SEWC PLM - Li Li</value>
+  </data>
+	<data name="txt_ToChinese" xml:space="preserve">
+    <value>中文</value>
+  </data>
+	<data name="txt_ToEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+	<data name="txt_Tool" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+	<data name="txt_Tool_plus" xml:space="preserve">
+    <value>Assistant and improve your daily work with useful and efficient tools</value>
+  </data>
+	<data name="txt_UnexpectedError" xml:space="preserve">
+    <value>Unexpected Error</value>
+  </data>
+	<data name="txt_UnexpectedError_plus" xml:space="preserve">
+    <value>An unexpected error has occurred. Please contact the system administrator.</value>
+  </data>
+	<data name="txt_UserNotFound_Prefix" xml:space="preserve">
+    <value>No user found for GID </value>
+  </data>
+	<data name="txt_UserNotFound_Suffix" xml:space="preserve">
+    <value />
+  </data>
+	<data name="txt_Welcome" xml:space="preserve">
+    <value>Welcome to SEWC ToolBox</value>
+  </data>
+	<data name="txt_Welcome_plus" xml:space="preserve">
+    <value>This service site is for providing the Reports, Tools, Links and related information supporting your daily work</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_PerformanceMeasurement_BackOrders" xml:space="preserve">
+    <value>Back Orders</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_PerformanceMeasurement_Capacity" xml:space="preserve">
+    <value>Capacity</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_PerformanceMeasurement_FinancialKPIs" xml:space="preserve">
+    <value>Financial KPIs</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_PerformanceMeasurement_Inventory" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_PerformanceMeasurement_MaterialFlow" xml:space="preserve">
+    <value>Material Flow</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_PerformanceMeasurement_ProductionControl" xml:space="preserve">
+    <value>Production Control</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_PerformanceMeasurement_POManagement" xml:space="preserve">
+    <value>PO Management</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_PerformanceMeasurement_SupplierManagement" xml:space="preserve">
+    <value>Supplier Management</value>
+  </data>
+	<data name="txt_Owner" xml:space="preserve">
+    <value>Data Owner</value>
+  </data>
+	<data name="txt_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+	<data name="txt_SendEmailToOwner" xml:space="preserve">
+    <value>Send email to this owner</value>
+  </data>
+	<data name="txt_CollapseAll" xml:space="preserve">
+    <value>Collapse All (Hot key Ctrl + Up Arrow)</value>
+  </data>
+	<data name="txt_ExpandAll" xml:space="preserve">
+    <value>Expand All (Hot key Ctrl + Down Arrow)</value>
+  </data>
+	<data name="txt_ClickStatistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+	<data name="txt_AddToFavorites" xml:space="preserve">
+    <value>Add to favorites</value>
+  </data>
+	<data name="txt_RemoveFromFavorites" xml:space="preserve">
+    <value>Remove from favorites</value>
+  </data>
+	<data name="txt_AddFavorite_Successed" xml:space="preserve">
+    <value>Added to favorites</value>
+  </data>
+	<data name="txt_RemoveFavorite_Successed" xml:space="preserve">
+    <value>Removed from favorites</value>
+  </data>
+	<data name="txt_AddToFavorites_Failed" xml:space="preserve">
+    <value>Failed to add to favorites, Please contact system administrator</value>
+  </data>
+	<data name="txt_RemoveFromFavorites_Failed" xml:space="preserve">
+    <value>Failed to remove from favorites, Please contact system administrator</value>
+  </data>
+	<data name="txt_Visit" xml:space="preserve">
+    <value>Visit</value>
+  </data>
+	<data name="txt_AddReport" xml:space="preserve">
+    <value>Add a new report</value>
+  </data>
+	<data name="txt_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+	<data name="txt_Description_plus" xml:space="preserve">
+    <value>Please input description for this report</value>
+  </data>
+	<data name="txt_ReportName" xml:space="preserve">
+    <value>Report Name</value>
+  </data>
+	<data name="txt_ReportName_Plus" xml:space="preserve">
+    <value>Please input a new report name</value>
+  </data>
+	<data name="txt_Owner_Desc" xml:space="preserve">
+    <value>Username, employee number, GID, job title, or email address</value>
+  </data>
+	<data name="txt_Owner_Plus" xml:space="preserve">
+    <value>Please input keyword to begin searching</value>
+  </data>
+	<data name="txt_Photo" xml:space="preserve">
+    <value>Report Photo</value>
+  </data>
+	<data name="txt_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+	<data name="txt_Status_Enabled" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+	<data name="txt_Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+	<data name="txt_Linkage" xml:space="preserve">
+    <value>Linkage</value>
+  </data>
+	<data name="txt_Linkage_plus" xml:space="preserve">
+    <value>Please input the address</value>
+  </data>
+	<data name="txt_Status_Disabled" xml:space="preserve">
+    <value>No</value>
+  </data>
+	<data name="txt_Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+	<data name="txt_Frequency" xml:space="preserve">
+    <value>Frequency</value>
+  </data>
+	<data name="txt_Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+	<data name="txt_Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+	<data name="txt_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+	<data name="txt_UserNotFound" xml:space="preserve">
+    <value>User not found</value>
+  </data>
+	<data name="txt_Uploaded" xml:space="preserve">
+    <value>Successfully uploaded</value>
+  </data>
+	<data name="txt_Creation_Failed" xml:space="preserve">
+    <value>Creation failed, Please contact system administrator</value>
+  </data>
+	<data name="txt_Creation_Successed" xml:space="preserve">
+    <value>Successfully created</value>
+  </data>
+	<data name="txt_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+	<data name="txt_Deletion_Failed" xml:space="preserve">
+    <value>Deletion failed, Please contact system administrator</value>
+  </data>
+	<data name="txt_Deletion_Successed" xml:space="preserve">
+    <value>Successfully deleted</value>
+  </data>
+	<data name="txt_Modification_Failed" xml:space="preserve">
+    <value>Modification failed, Please contact system administrator</value>
+  </data>
+	<data name="txt_Modification_Successed" xml:space="preserve">
+    <value>Successfully modified</value>
+  </data>
+	<data name="txt_LastReloadTime" xml:space="preserve">
+    <value>Last reload time</value>
+  </data>
+	<data name="txt_SCM_QuickLink_Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+	<data name="txt_SCM_QuickLink_Projects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+	<data name="txt_SCM_QuickLink_Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+	<data name="txt_SCM_QuickLink_Trainings" xml:space="preserve">
+    <value>Trainings</value>
+  </data>
+	<data name="txt_GetAccess" xml:space="preserve">
+    <value>Get access</value>
+  </data>
+	<data name="txt_AccessOwner" xml:space="preserve">
+    <value>Access Owner</value>
+  </data>
+	<data name="txt_AddQuickLink_Tools" xml:space="preserve">
+    <value>Add a new tool</value>
+  </data>
+	<data name="txt_AddQuickLink_Links" xml:space="preserve">
+    <value>Add a new link</value>
+  </data>
+	<data name="txt_AddQuickLink_Trainings" xml:space="preserve">
+    <value>Add a new training</value>
+  </data>
+	<data name="txt_AddQuickLink_Projects" xml:space="preserve">
+    <value>Add a new project</value>
+  </data>
+	<data name="txt_QuickLinkName" xml:space="preserve">
+    <value>Quick Link Name</value>
+  </data>
+	<data name="txt_QuickLinkName_plus" xml:space="preserve">
+    <value>Please input a new quick link name</value>
+  </data>
+	<data name="txt_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+	<data name="txt_EmailSent" xml:space="preserve">
+    <value>Email has been sent</value>
+  </data>
+	<data name="txt_SelectAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+	<data name="txt_UnselectAll" xml:space="preserve">
+    <value>Unselect All</value>
+  </data>
+	<data name="txt_AddCustomization" xml:space="preserve">
+    <value>Add a customization item</value>
+  </data>
+	<data name="txt_SCM_Home_MyToolBox_Customization" xml:space="preserve">
+    <value>Customization</value>
+  </data>
+	<data name="txt_SCM_Home_MyToolBox_QuickLink" xml:space="preserve">
+    <value>Quick Link</value>
+  </data>
+	<data name="txt_SCM_Home_MyToolBox_Reporting" xml:space="preserve">
+    <value>Reporting</value>
+  </data>
+	<data name="txt_Customization_Description" xml:space="preserve">
+    <value>You can add customized items here</value>
+  </data>
+	<data name="txt_FavoriteQuickLink_Description" xml:space="preserve">
+    <value>You can have a quick access to your favorite quick links here</value>
+  </data>
+	<data name="txt_FavoriteReporting_Description" xml:space="preserve">
+    <value>You can have a quick access to your favorite reports here</value>
+  </data>
+	<data name="txt_FavoriteReporting_NoData_Description" xml:space="preserve">
+    <value>You have not added any report into your Favorite</value>
+  </data>
+	<data name="txt_QuickLink_Description" xml:space="preserve">
+    <value>You can review the information of quick links and visit them directly</value>
+  </data>
+	<data name="txt_QuickLink_NoData_Description" xml:space="preserve">
+    <value>No quick links found for this specific conditions</value>
+  </data>
+	<data name="txt_Reporting_Description" xml:space="preserve">
+    <value>You can review the information of reports and visit them directly</value>
+  </data>
+	<data name="txt_Reporting_MultipleAccess_Description" xml:space="preserve">
+    <value>Please select reports you need to apply for access, then submit the request</value>
+  </data>
+	<data name="txt_Reporting_NoData_Description" xml:space="preserve">
+    <value>No reports found for this specific conditions</value>
+  </data>
+	<data name="txt_Customization_NoData_Description" xml:space="preserve">
+    <value>You have not created any customized item.  Click to create if necessary</value>
+  </data>
+	<data name="txt_FavoriteQuickLink_NoData_Description" xml:space="preserve">
+    <value>You have not added any quick link into your Favorite</value>
+  </data>
+	<data name="txt_ReportCategory_PerformanceMeasurement" xml:space="preserve">
+    <value>Performance Measurement Category</value>
+  </data>
+	<data name="txt_ReportCategory_UpdateFrequency" xml:space="preserve">
+    <value>Update Frequency Category</value>
+  </data>
+	<data name="txt_CustomizationCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+	<data name="txt_CustomizationCategory_plus" xml:space="preserve">
+    <value>Please input a new customized category</value>
+  </data>
+	<data name="txt_CustomizationName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+	<data name="txt_CustomizationName_plus" xml:space="preserve">
+    <value>Please input a new customization name</value>
+  </data>
+	<data name="txt_Input" xml:space="preserve">
+    <value>Input</value>
+  </data>
+	<data name="txt_Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+	<data name="txt_CustomizationCategory_NoData" xml:space="preserve">
+    <value>No existed category found, Please input a new one</value>
+  </data>
+	<data name="txt_Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+	<data name="txt_SCM_Reporting_Plan_PerformanceMeasurement_MaterialControl" xml:space="preserve">
+    <value>Material Control</value>
+  </data>
+	<data name="txt_SCM_Workflow" xml:space="preserve">
+    <value>SCM Workflow Diagram</value>
+  </data>
+	<data name="txt_Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+	<data name="txt_Disabled_plus" xml:space="preserve">
+    <value>Disabled object is invisible to users. It is still visible to you because you own this object or have a superior authority</value>
+  </data>
+	<data name="txt_Sort" xml:space="preserve">
+    <value>Sort Number</value>
+  </data>
+	<data name="txt_Sort_plus" xml:space="preserve">
+    <value>Please input a positive integer as the sort number</value>
+  </data>
+	<data name="txt_Management" xml:space="preserve">
+    <value>Management</value>
+  </data>
+	<data name="txt_Management_UserRole" xml:space="preserve">
+    <value>User Role</value>
+  </data>
+	<data name="txt_Management_MenuManagement" xml:space="preserve">
+    <value>Menu Management</value>
+  </data>
+	<data name="txt_CheckChangeSelection" xml:space="preserve">
+    <value>Click to select or cancel</value>
+  </data>
+	<data name="txt_Management_UserRole_NoData_Description" xml:space="preserve">
+    <value>No user role for now</value>
+  </data>
+	<data name="txt_Management_UserRole_Description" xml:space="preserve">
+    <value>You can review the user roles below</value>
+  </data>
+	<data name="txt_AddUserRole" xml:space="preserve">
+    <value>Add user role</value>
+  </data>
+	<data name="btn_userRole_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+	<data name="txt_Operation" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+	<data name="txt_RN" xml:space="preserve">
+    <value>RN</value>
+  </data>
+	<data name="txt_UserName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+	<data name="txt_UserRole" xml:space="preserve">
+    <value>Role</value>
+  </data>
+	<data name="txt_UserRole_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+	<data name="txt_UserRole_View" xml:space="preserve">
+    <value>View Authorization</value>
+  </data>
+	<data name="txt_Implementing" xml:space="preserve">
+    <value>Under implementation, Coming soon...</value>
+  </data>
+	<data name="txt_PersonalRole" xml:space="preserve">
+    <value>User Role</value>
+  </data>
+	<data name="txt_PersonalRole_plus" xml:space="preserve">
+    <value>You can review all your user roles here</value>
+  </data>
+	<data name="txt_AllDepts" xml:space="preserve">
+    <value>All departments</value>
+  </data>
+	<data name="txt_RestOfDepts" xml:space="preserve">
+    <value>Rest of departments</value>
+  </data>
+	<data name="txt_Dept" xml:space="preserve">
+    <value>Dept</value>
+  </data>
+	<data name="txt_UserRole_ContentAdmin" xml:space="preserve">
+    <value>Content Admin</value>
+  </data>
+	<data name="txt_UserRole_ContentAdmin_Description" xml:space="preserve">
+    <value>Contains All Read Only，and create &amp; edit &amp; delete authorities for all contents</value>
+  </data>
+	<data name="txt_UserRole_ContentEditor" xml:space="preserve">
+    <value>Content Editor</value>
+  </data>
+	<data name="txt_UserRole_ContentEditor_Description" xml:space="preserve">
+    <value>Contains Public Read Only，and edit authority for owned contents</value>
+  </data>
+	<data name="txt_UserRole_ContentOwner" xml:space="preserve">
+    <value>Content Owner</value>
+  </data>
+	<data name="txt_UserRole_ContentOwner_Description" xml:space="preserve">
+    <value>Contains Public Read Only，and edit &amp; delete authorities for owned contents</value>
+  </data>
+	<data name="txt_UserRole_ElementAdmin" xml:space="preserve">
+    <value>Element Admin</value>
+  </data>
+	<data name="txt_UserRole_ElementAdmin_Description" xml:space="preserve">
+    <value>Contains All Read Only，and create &amp; edit &amp; delete authorities for all elements</value>
+  </data>
+	<data name="txt_UserRole_ReadOnly_All" xml:space="preserve">
+    <value>All Read Only</value>
+  </data>
+	<data name="txt_UserRole_ReadOnly_All_Description" xml:space="preserve">
+    <value>Read only for all contents</value>
+  </data>
+	<data name="txt_UserRole_ReadOnly_Own" xml:space="preserve">
+    <value>Owned Read Only</value>
+  </data>
+	<data name="txt_UserRole_ReadOnly_Own_Description" xml:space="preserve">
+    <value>Read only for owned contents</value>
+  </data>
+	<data name="txt_UserRole_ReadOnly_Public" xml:space="preserve">
+    <value>Public Read Only</value>
+  </data>
+	<data name="txt_UserRole_ReadOnly_Public_Description" xml:space="preserve">
+    <value>Read only for public and owned contents</value>
+  </data>
+	<data name="txt_UserRole_SuperAdmin" xml:space="preserve">
+    <value>Super Admin</value>
+  </data>
+	<data name="txt_UserRole_SuperAdmin_Description" xml:space="preserve">
+    <value>Full access for all elements</value>
+  </data>
+	<data name="txt_EntryDescription" xml:space="preserve">
+    <value>Customized description</value>
+  </data>
+	<data name="txt_User" xml:space="preserve">
+    <value>User</value>
+  </data>
+	<data name="txt_Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+	<data name="txt_AccessType" xml:space="preserve">
+    <value>Access Type</value>
+  </data>
+	<data name="txt_AccessType_C" xml:space="preserve">
+    <value>Create</value>
+  </data>
+	<data name="txt_AccessType_C0" xml:space="preserve">
+    <value>Can not create any content or element</value>
+  </data>
+	<data name="txt_AccessType_C1" xml:space="preserve">
+    <value>Can create content in specific department</value>
+  </data>
+	<data name="txt_AccessType_C2" xml:space="preserve">
+    <value>Can create content or element in specific department</value>
+  </data>
+	<data name="txt_AccessType_C99" xml:space="preserve">
+    <value>Can create content or element in all department</value>
+  </data>
+	<data name="txt_AccessType_D" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+	<data name="txt_AccessType_D0" xml:space="preserve">
+    <value>Can not delete any content or element</value>
+  </data>
+	<data name="txt_AccessType_D1" xml:space="preserve">
+    <value>Can only delete owned content</value>
+  </data>
+	<data name="txt_AccessType_D2" xml:space="preserve">
+    <value>Can only delete content in specific department</value>
+  </data>
+	<data name="txt_AccessType_D3" xml:space="preserve">
+    <value>Can only delete content or element in specific department</value>
+  </data>
+	<data name="txt_AccessType_D99" xml:space="preserve">
+    <value>Can delete content or element in all department</value>
+  </data>
+	<data name="txt_AccessType_R" xml:space="preserve">
+    <value>Read</value>
+  </data>
+	<data name="txt_AccessType_R0" xml:space="preserve">
+    <value>Only public elements and owned contents in specific department are visible</value>
+  </data>
+	<data name="txt_AccessType_R1" xml:space="preserve">
+    <value>Only public elements, public contents and owned contents in specific department are visible</value>
+  </data>
+	<data name="txt_AccessType_R2" xml:space="preserve">
+    <value>All elements and all contents in specific department are visible</value>
+  </data>
+	<data name="txt_AccessType_R99" xml:space="preserve">
+    <value>All elements and contents are visible</value>
+  </data>
+	<data name="txt_AccessType_U" xml:space="preserve">
+    <value>Update</value>
+  </data>
+	<data name="txt_AccessType_U0" xml:space="preserve">
+    <value>Can not update any content or element</value>
+  </data>
+	<data name="txt_AccessType_U1" xml:space="preserve">
+    <value>Can only update owned content</value>
+  </data>
+	<data name="txt_AccessType_U2" xml:space="preserve">
+    <value>Can only update content in specific department</value>
+  </data>
+	<data name="txt_AccessType_U3" xml:space="preserve">
+    <value>Can only update content or element in specific department</value>
+  </data>
+	<data name="txt_AccessType_U99" xml:space="preserve">
+    <value>Can update content or element in all department</value>
+  </data>
+	<data name="txt_UserRole_Existed" xml:space="preserve">
+    <value>This user already has a user role in this department</value>
+  </data>
+	<data name="txt_UserRole_Authorities" xml:space="preserve">
+    <value>Authorities of this user role</value>
+  </data>
+	<data name="txt_Process_Description" xml:space="preserve">
+    <value>Select a node to view related attachments</value>
+  </data>
+	<data name="txt_Process_NoData_Description" xml:space="preserve">
+    <value>No data found for this process</value>
+  </data>
+	<data name="txt_FileName" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+	<data name="txt_ProcessLinkage_NoDocument" xml:space="preserve">
+    <value>No documents found for selected node</value>
+  </data>
+	<data name="txt_ProcessLinkage_RelatedDocument" xml:space="preserve">
+    <value>Document List</value>
+  </data>
+	<data name="txt_SCM_Process_Overview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+	<data name="txt_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+	<data name="txt_InputKeywords" xml:space="preserve">
+    <value>Please input key words</value>
+  </data>
+	<data name="txt_YourKeywords" xml:space="preserve">
+    <value>Your searching key words:</value>
+  </data>
+	<data name="txt_ProcessLinkage_NoReport" xml:space="preserve">
+    <value>No reports found for selected node</value>
+  </data>
+	<data name="txt_ProcessLinkage_NoTool" xml:space="preserve">
+    <value>No tools found for selected node</value>
+  </data>
+	<data name="txt_ProcessLinkage_RelatedReport" xml:space="preserve">
+    <value>Report List</value>
+  </data>
+	<data name="txt_ProcessLinkage_RelatedTool" xml:space="preserve">
+    <value>Tool List</value>
+  </data>
+	<data name="txt_ToolName" xml:space="preserve">
+    <value>Tool Name</value>
+  </data>
+	<data name="txt_ProcessLinkage_AddDocument" xml:space="preserve">
+    <value>Add document linkage</value>
+  </data>
+	<data name="txt_ProcessLinkage_AddReport" xml:space="preserve">
+    <value>Add report linkage</value>
+  </data>
+	<data name="txt_ProcessLinkage_AddTool" xml:space="preserve">
+    <value>Add tool linkage</value>
+  </data>
+	<data name="txt_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+	<data name="txt_Name_plus" xml:space="preserve">
+    <value>Please input a new name</value>
+  </data>
+	<data name="txt_Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+	<data name="txt_Sub_Category" xml:space="preserve">
+    <value>SubCategory</value>
+  </data>
+	<data name="txt_SCM_RePorting_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+	<data name="txt_SCM_RePorting_Finance" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+	<data name="txt_SCM_RePorting_Make" xml:space="preserve">
+    <value>Make</value>
+  </data>
+	<data name="txt_SCM_RePorting_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+	<data name="txt_SCM_RePorting_Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+	<data name="txt_SCM_RePorting_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+	<data name="txt_SCM_Reporting_FGPlanning" xml:space="preserve">
+    <value>FG Planning</value>
+  </data>
+	<data name="txt_SCM_RePorting_ProductionControl" xml:space="preserve">
+    <value>Production Control</value>
+  </data>
+	<data name="txt_BusinessProcessManagement" xml:space="preserve">
+    <value>Business Process Management</value>
+  </data>
+	<data name="txt_SCM_MyToolBox" xml:space="preserve">
+    <value>MyToolBox</value>
+  </data>
+	<data name="txt_SCM_BusinessOverView" xml:space="preserve">
+    <value>Business OverView</value>
+  </data>
+	<data name="txt_CrOwner" xml:space="preserve">
+    <value>Cr Owner</value>
+  </data>
+	<data name="txt_Status_Maintaining" xml:space="preserve">
+    <value>Maintaining</value>
+  </data>
+	<data name="txt_QM_BusinessOverView" xml:space="preserve">
+    <value>Business OverView</value>
+  </data>
+	<data name="txt_QM_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+	<data name="txt_QM_QuickLink" xml:space="preserve">
+    <value>QuickLink</value>
+  </data>
+	<data name="txt_QM_Reporting" xml:space="preserve">
+    <value>Reporting</value>
+  </data>
+	<data name="txt_SEWC_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+	<data name="txt_SEWC_Home_MyToolBox" xml:space="preserve">
+    <value>My ToolBox</value>
+  </data>
+	<data name="txt_SEWC_Home_MyToolBox_Customization" xml:space="preserve">
+    <value>Customization</value>
+  </data>
+	<data name="txt_SEWC_Home_MyToolBox_QuickLink" xml:space="preserve">
+    <value>Quick Link</value>
+  </data>
+	<data name="txt_SEWC_Home_MyToolBox_Reporting" xml:space="preserve">
+    <value>Reporting</value>
+  </data>
+	<data name="txt_SEWC_Home_SCMToolBox" xml:space="preserve">
+    <value>SCM ToolBox</value>
+  </data>
+	<data name="txt_SEWC_MyToolBox" xml:space="preserve">
+    <value>MyToolBox</value>
+  </data>
+	<data name="txt_SEWC_Process" xml:space="preserve">
+    <value>Business Overview</value>
+  </data>
+	<data name="txt_SEWC_Process_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+	<data name="txt_SEWC_Process_Make" xml:space="preserve">
+    <value>Make</value>
+  </data>
+	<data name="txt_SEWC_Process_Overview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+	<data name="txt_SEWC_Process_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+	<data name="txt_SEWC_Process_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+	<data name="txt_SEWC_QuickLink" xml:space="preserve">
+    <value>Quick Link</value>
+  </data>
+	<data name="txt_SEWC_QuickLink_Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+	<data name="txt_SEWC_QuickLink_Projects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+	<data name="txt_SEWC_QuickLink_Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+	<data name="txt_SEWC_QuickLink_Trainings" xml:space="preserve">
+    <value>Trainings</value>
+  </data>
+	<data name="txt_SEWC_Reporting" xml:space="preserve">
+    <value>Business Transparency</value>
+  </data>
+	<data name="txt_SEWC_RePorting_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+	<data name="txt_SEWC_Reporting_FGPlanning" xml:space="preserve">
+    <value>FG Planning</value>
+  </data>
+	<data name="txt_SEWC_RePorting_Finance" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+	<data name="txt_SEWC_RePorting_Make" xml:space="preserve">
+    <value>Make</value>
+  </data>
+	<data name="txt_SEWC_RePorting_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_PerformanceMeasurement" xml:space="preserve">
+    <value>Performance Measurement</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_PerformanceMeasurement_BackOrders" xml:space="preserve">
+    <value>Back Orders</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_PerformanceMeasurement_Capacity" xml:space="preserve">
+    <value>Capacity</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_PerformanceMeasurement_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_PerformanceMeasurement_FinancialKPIs" xml:space="preserve">
+    <value>Financial KPIs</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_PerformanceMeasurement_Inventory" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_PerformanceMeasurement_MaterialControl" xml:space="preserve">
+    <value>Material Control</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_PerformanceMeasurement_MaterialFlow" xml:space="preserve">
+    <value>Material Flow</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_PerformanceMeasurement_OrderIntake_TurnOver" xml:space="preserve">
+    <value>Order Intake/TurnOver</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_PerformanceMeasurement_POManagement" xml:space="preserve">
+    <value>PO Management</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_PerformanceMeasurement_ProductionControl" xml:space="preserve">
+    <value>Production Control</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_PerformanceMeasurement_SupplierManagement" xml:space="preserve">
+    <value>Supplier Management</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_UpdateFrequency" xml:space="preserve">
+    <value>Update Frequency</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_UpdateFrequency_Daily" xml:space="preserve">
+    <value>Daily</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_UpdateFrequency_Monthly" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_UpdateFrequency_Quarterly" xml:space="preserve">
+    <value>Quarterly</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_UpdateFrequency_Weekly" xml:space="preserve">
+    <value>Weekly</value>
+  </data>
+	<data name="txt_SEWC_Reporting_Plan_UpdateFrequency_Yearly" xml:space="preserve">
+    <value>Yearly</value>
+  </data>
+	<data name="txt_SEWC_RePorting_ProductionControl" xml:space="preserve">
+    <value>Production Control</value>
+  </data>
+	<data name="txt_SEWC_RePorting_Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+	<data name="txt_SEWC_RePorting_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+	<data name="txt_SEWC_Workflow" xml:space="preserve">
+    <value>SCM Workflow Diagram</value>
+  </data>
+	<data name="txt_SEWC_BusinessOverView" xml:space="preserve">
+    <value>Business OverView</value>
+  </data>
+	<data name="txt_FavoriteFiles_Description" xml:space="preserve">
+    <value>You can have a quick access to your favorite Documents  links here</value>
+  </data>
+	<data name="Files" xml:space="preserve">
+    <value>Process Document</value>
+  </data>
+	<data name="txt_appIds" xml:space="preserve">
+    <value>Old report ID</value>
+  </data>
+	<data name="txt_BusyNetwork" xml:space="preserve">
+    <value>Busy network</value>
+  </data>
+	<data name="txt_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+	<data name="txt_CreateUser" xml:space="preserve">
+    <value>Create User</value>
+  </data>
+	<data name="txt_Exception" xml:space="preserve">
+    <value>Exception</value>
+  </data>
+	<data name="txt_Failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+	<data name="txt_HandleIssue" xml:space="preserve">
+    <value>Handle issue</value>
+  </data>
+	<data name="txt_HandleTime" xml:space="preserve">
+    <value>Handle time</value>
+  </data>
+	<data name="txt_HandleUser" xml:space="preserve">
+    <value>Handle user</value>
+  </data>
+	<data name="txt_Issue" xml:space="preserve">
+    <value>Issue</value>
+  </data>
+	<data name="txt_IssueActionFaild" xml:space="preserve">
+    <value>Activation failed</value>
+  </data>
+	<data name="txt_IssueActionFaild_C1" xml:space="preserve">
+    <value>The problem has been cancelled and cannot be reactivated</value>
+  </data>
+	<data name="txt_IssueActionSuccess" xml:space="preserve">
+    <value>Activation successful</value>
+  </data>
+	<data name="txt_IssueActiveConfirm" xml:space="preserve">
+    <value>Are you sure you want to activate?</value>
+  </data>
+	<data name="txt_IssueBtnAction" xml:space="preserve">
+    <value>Activation</value>
+  </data>
+	<data name="txt_IssueBtnHandle" xml:space="preserve">
+    <value>Handle</value>
+  </data>
+	<data name="txt_IssueBtnRevoke" xml:space="preserve">
+    <value>Revoke</value>
+  </data>
+	<data name="txt_IssuePending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+	<data name="txt_IssueProcessed" xml:space="preserve">
+    <value>Processed</value>
+  </data>
+	<data name="txt_IssueRevokeConfirm" xml:space="preserve">
+    <value>Are you sure you want to Revoke?</value>
+  </data>
+	<data name="txt_IssueRevokeFaild" xml:space="preserve">
+    <value>Revocation failed</value>
+  </data>
+	<data name="txt_IssueRevokeFaild_C1" xml:space="preserve">
+    <value>The problem has been dealt with and cannot be revoked</value>
+  </data>
+	<data name="txt_IssueRevokeSuccess" xml:space="preserve">
+    <value>Revocation successful</value>
+  </data>
+	<data name="txt_ISSUE_Index" xml:space="preserve">
+    <value>Issue Feedback</value>
+  </data>
+	<data name="txt_Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+	<data name="txt_NoPermission" xml:space="preserve">
+    <value>No permission</value>
+  </data>
+	<data name="txt_PlsSelect" xml:space="preserve">
+    <value>Please select</value>
+  </data>
+	<data name="txt_Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+	<data name="txt_Solution" xml:space="preserve">
+    <value>Solution</value>
+  </data>
+	<data name="txt_Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+	<data name="txt_Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+	<data name="txt_CreateTime" xml:space="preserve">
+    <value>Create time</value>
+  </data>
+	<data name="txt_Detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+	<data name="txt_View" xml:space="preserve">
+    <value>View</value>
+  </data>
+	<data name="txt_IssueSolved" xml:space="preserve">
+    <value>Solved</value>
+  </data>
+	<data name="txt_Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+	<data name="txt_CopyReporkLinkFailed" xml:space="preserve">
+    <value>Copy failed</value>
+  </data>
+	<data name="txt_CopyReporkLinkSucess" xml:space="preserve">
+    <value>The path of local file has been copied, please open it in a new browser window!</value>
+  </data>
+	<data name="txt_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+	<data name="txt_Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+	<data name="txt_Uploaded_Fail" xml:space="preserve">
+    <value>Failed uploaded</value>
+  </data>
+	<data name="txt_SSML_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+	<data name="txt_SSML_Home_MyToolBox" xml:space="preserve">
+    <value>My ToolBox</value>
+  </data>
+	<data name="txt_SSML_Home_MyToolBox_Customization" xml:space="preserve">
+    <value>Customization</value>
+  </data>
+	<data name="txt_SSML_Home_MyToolBox_QuickLink" xml:space="preserve">
+    <value>Quick Link</value>
+  </data>
+	<data name="txt_SSML_Home_MyToolBox_Reporting" xml:space="preserve">
+    <value>Reporting</value>
+  </data>
+	<data name="txt_SSML_Home_SCMToolBox" xml:space="preserve">
+    <value>SCM ToolBox</value>
+  </data>
+	<data name="txt_SSML_MyToolBox" xml:space="preserve">
+    <value>MyToolBox</value>
+  </data>
+	<data name="txt_SSML_Process" xml:space="preserve">
+    <value>Business Overview</value>
+  </data>
+	<data name="txt_SSML_Process_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+	<data name="txt_SSML_Process_Make" xml:space="preserve">
+    <value>Make</value>
+  </data>
+	<data name="txt_SSML_Process_Overview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+	<data name="txt_SSML_Process_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+	<data name="txt_SSML_Process_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+	<data name="txt_SSML_QuickLink" xml:space="preserve">
+    <value>Quick Link</value>
+  </data>
+	<data name="txt_SSML_QuickLink_Links" xml:space="preserve">
+    <value>Links</value>
+  </data>
+	<data name="txt_SSML_QuickLink_Projects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+	<data name="txt_SSML_QuickLink_Tools" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+	<data name="txt_SSML_QuickLink_Trainings" xml:space="preserve">
+    <value>Trainings</value>
+  </data>
+	<data name="txt_SSML_Reporting" xml:space="preserve">
+    <!--<value>Business Transparency</value>-->
+	<value>Reporting</value>
+  </data>
+	<data name="txt_SSML_RePorting_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+	<data name="txt_SSML_Reporting_FGPlanning" xml:space="preserve">
+    <value>FG Planning</value>
+  </data>
+	<data name="txt_SSML_RePorting_Finance" xml:space="preserve">
+    <value>Finance</value>
+  </data>
+	<data name="txt_SSML_RePorting_Make" xml:space="preserve">
+    <value>Make</value>
+  </data>
+	<data name="txt_SSML_RePorting_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_PerformanceMeasurement" xml:space="preserve">
+    <value>Performance Measurement</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_PerformanceMeasurement_BackOrders" xml:space="preserve">
+    <value>Back Orders</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_PerformanceMeasurement_Capacity" xml:space="preserve">
+    <value>Capacity</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_PerformanceMeasurement_Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_PerformanceMeasurement_FinancialKPIs" xml:space="preserve">
+    <value>Financial KPIs</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_PerformanceMeasurement_Inventory" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_PerformanceMeasurement_MaterialControl" xml:space="preserve">
+    <value>Material Control</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_PerformanceMeasurement_MaterialFlow" xml:space="preserve">
+    <value>Material Flow</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_PerformanceMeasurement_OrderIntake_TurnOver" xml:space="preserve">
+    <value>Order Intake/TurnOver</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_PerformanceMeasurement_POManagement" xml:space="preserve">
+    <value>PO Management</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_PerformanceMeasurement_ProductionControl" xml:space="preserve">
+    <value>Production Control</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_PerformanceMeasurement_SupplierManagement" xml:space="preserve">
+    <value>Supplier Management</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_UpdateFrequency" xml:space="preserve">
+    <value>Update Frequency</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_UpdateFrequency_Daily" xml:space="preserve">
+    <value>Daily</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_UpdateFrequency_Monthly" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_UpdateFrequency_Quarterly" xml:space="preserve">
+    <value>Quarterly</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_UpdateFrequency_Weekly" xml:space="preserve">
+    <value>Weekly</value>
+  </data>
+	<data name="txt_SSML_Reporting_Plan_UpdateFrequency_Yearly" xml:space="preserve">
+    <value>Yearly</value>
+  </data>
+	<data name="txt_SSML_RePorting_ProductionControl" xml:space="preserve">
+    <value>Production Control</value>
+  </data>
+	<data name="txt_SSML_RePorting_Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+	<data name="txt_SSML_RePorting_Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+	<data name="txt_SSML_Workflow" xml:space="preserve">
+    <value>SCM Workflow Diagram</value>
+  </data>
+	<data name="txt_SSML_BusinessOverView" xml:space="preserve">
+    <value>Business OverView</value>
+  </data>
+	<data name="txt_Gemba" xml:space="preserve">
+    <value>Gemba</value>
+  </data>
+</root>

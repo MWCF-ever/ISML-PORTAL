@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://intranet.bpm.siemens.net:8088/Services/PortalWebService/SSOService.asmx?wsdl" docRef="http://intranet.bpm.siemens.net:8088/Services/PortalWebService/SSOService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://intranet.bpm.siemens.net:8088/Services/PortalWebService/SSOService.asmx" xmlns:q1="http://tempuri.org/" binding="q1:SSOServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://intranet.bpm.siemens.net:8088/Services/PortalWebService/SSOService.asmx" xmlns:q2="http://tempuri.org/" binding="q2:SSOServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

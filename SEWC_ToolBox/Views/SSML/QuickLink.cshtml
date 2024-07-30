@@ -1,0 +1,196 @@
+﻿@using SEWC_ToolBox.Languages;
+@using System.Text;
+@using SEWC_ToolBox.DAL.SecondModels;
+@using SEWC_ToolBox.DAL.EFs;
+@using System.Configuration;
+
+@{
+    Layout = "~/Views/Shared/_Layout_ToolBox.cshtml";
+    ViewBag.Title = "Quick Link";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+    string PreUrl = ViewBag.PreUrl;
+}
+
+@{
+    StringBuilder HtmlBuilder = new StringBuilder();
+
+    // 获取当前部门权限
+    v_UserRole UserRole_CurrentDept = ViewBag.UserRole_CurrentDept as v_UserRole;
+
+    if (ViewBag.QuickLinkList != null)
+    {
+        List<QuickLinkModel> QuickLinkList = ViewBag.QuickLinkList as List<QuickLinkModel>;
+
+        if (QuickLinkList.Count > 0)
+        {
+            HtmlBuilder.Append("<div class='div_content_op'>");
+
+            HtmlBuilder.Append("<blockquote class='layui-elem-quote layui-quote-nm' style='height: auto;'>");
+
+            HtmlBuilder.Append("<div style='vertical-align: central'>");
+            HtmlBuilder.Append("<h4 style='margin-top:0px; margin-bottom:15px;'>" + Html.Lang("txt_QuickLink_Description") + "</h4>");
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("<div class='layui-btn-container'>");
+
+            // 如果访问者拥有站内内容创建的权限，则显示添加按钮
+            if (UserRole_CurrentDept.a_Type_C >= 1)
+            {
+                HtmlBuilder.Append("<button class='btn btn-primary layui-btn btn_tool' id='btn_addQuickLink' style='margin-left:0px;' title='" + Html.Lang("txt_AddQuickLink_" + (ViewBag.Sub_ActionName as string)) + "' onclick='addQuickLink(" + ViewBag.DeptID + "," + ViewBag.SubID + ");' ><i class='layui-icon'>&#xe61f;</i></button>");
+            }
+
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("</blockquote>");
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("<div class='body-content layui-collapse' style='height: auto;'>");
+
+            for (int i = 0; i < QuickLinkList.Count; i++)
+            {
+                QuickLinkModel curQuickLink = QuickLinkList[i];
+
+                bool IsVisiable = false;
+
+                // 如果用户只有部分内容可见权限
+                if (UserRole_CurrentDept.a_Type_R < 2)
+                {
+                    // 如果是启用状态且为公共元素，则可见
+                    if (curQuickLink.ql_Status == 1 && curQuickLink.ql_AccessLevel == 0)
+                    {
+                        IsVisiable = true;
+                    }
+                }
+                // 如果用户拥有所有内容可见权限，则可见
+                else
+                {
+                    IsVisiable = true;
+                }
+
+                if (IsVisiable)
+                {
+                    HtmlBuilder.Append("<div class='div_quickLink_item'>");
+
+                    if (curQuickLink.ql_PicPath.Equals("N/A"))
+                    {
+                        curQuickLink.ql_PicPath = PreUrl + "/Img/ReportImg/NA.PNG";
+                    }
+                    else
+                    {
+                        curQuickLink.ql_PicPath = PreUrl + curQuickLink.ql_PicPath;
+                    }
+
+                    // 隐藏域数据
+                    HtmlBuilder.Append("<input type='text' name='input_quickLinkID' value='" + curQuickLink.ql_ID + "' style='display:none;' />");
+                    HtmlBuilder.Append("<input type='text' name='input_quickLinkName' value='" + curQuickLink.ql_Name + "' style='display:none;' />");
+
+                    // 快速链接图片预览及工具条
+                    HtmlBuilder.Append("<div class='div_quickLink_ImgView' style='background: url(\"" + @curQuickLink.ql_PicPath + "\") no-repeat center center; background-size: 100% 100%;'>");
+
+                    // 如果是已禁用，显示禁用背景
+                    if (curQuickLink.ql_Status == 0)
+                    {
+                        HtmlBuilder.Append("<div class='div_disabledFrame' >");
+                        HtmlBuilder.Append("<span class='span_disabled' onselectstart='return false;' title='" + Html.Lang("txt_Disabled_plus") + "'>" + Html.Lang("txt_Disabled") + "</span>");
+                    }
+
+                    HtmlBuilder.Append("<div class='div_quickLink_Btn'>");
+
+                    // 判断是否收藏夹的显示
+                    if (string.IsNullOrWhiteSpace(curQuickLink.Favorite_IsAdded))
+                    {
+                        HtmlBuilder.Append("<a class='a_quickLink_Btn' name='a_quickLink_addToFavorites' title='" + Html.Lang("txt_AddToFavorites") + "'><i class='layui-icon' style='font-size: 25px; color: white;'>&#xe600;</i></a>");
+                        HtmlBuilder.Append("<a class='a_quickLink_Btn' name='a_quickLink_removeFromFavorites' title='" + Html.Lang("txt_RemoveFromFavorites") + "' style='display: none;'><i class='layui-icon' style='font-size: 26px; color: white;'>&#xe658;</i></a>");
+                    }
+                    else
+                    {
+                        HtmlBuilder.Append("<a class='a_quickLink_Btn' name='a_quickLink_addToFavorites' title='" + Html.Lang("txt_AddToFavorites") + "' style='display: none;'><i class='layui-icon' style='font-size: 25px; color: white;'>&#xe600;</i></a>");
+                        HtmlBuilder.Append("<a class='a_quickLink_Btn' name='a_quickLink_removeFromFavorites' title='" + Html.Lang("txt_RemoveFromFavorites") + "'><i class='layui-icon' style='font-size: 26px; color: white;'>&#xe658;</i></a>");
+                    }
+
+                    HtmlBuilder.Append("<a class='a_quickLink_Btn' target='_blank' name='a_quickLinkAccess' href='" + curQuickLink.ql_Linkage + "' title='" + Html.Lang("txt_Visit") + "'><i class='layui-icon' style='font-size: 23px; color: white;'>&#xe64c;</i></a>");
+
+                    // 当前用户拥有站内内容编辑权限，则显示编辑按钮
+                    if (UserRole_CurrentDept.a_Type_U >= 2)
+                    {
+                        HtmlBuilder.Append("<a class='a_quickLink_Btn' name='a_quickLink_edit' title='" + Html.Lang("txt_Edit") + "' style='margin-right:5px;'><i class='layui-icon' style='font-size: 29px; color: white;'>&#xe642;</i></a>");
+                    }
+
+                    // 当前用户拥有站内内容删除权限，则显示删除按钮
+                    if (UserRole_CurrentDept.a_Type_D >= 2)
+                    {
+                        HtmlBuilder.Append("<a class='a_quickLink_Btn' name='a_quickLink_delete' title='" + Html.Lang("txt_Delete") + "' onclick='delete_Item(1, " + curQuickLink.ql_ID + ", \"" + curQuickLink.ql_Name + "\");'><i class='layui-icon' style='font-size: 29px; color: white;'>&#xe640;</i></a>");
+                    }
+
+                    // 如果是已禁用，显示禁用背景
+                    if (curQuickLink.ql_Status == 0)
+                    {
+                        HtmlBuilder.Append("</div>");
+                    }
+
+                    HtmlBuilder.Append("</div>");
+                    HtmlBuilder.Append("</div>");
+
+                    // 快速链接详细信息
+                    HtmlBuilder.Append("<a target='_blank' name='a_quickLinkAccess' href='" + curQuickLink.ql_Linkage + "' title='" + Html.Lang("txt_Visit") + " " + curQuickLink.ql_Name + "' style='color:#666;'><h4 class='layui-elip'><b>" + curQuickLink.ql_Name + "</b></h4></a>");
+                    HtmlBuilder.Append("<p class='layui-elip' style='cursor: help' title='" + curQuickLink.ql_Description + "'>" + Html.Lang("txt_Description") + ": " + curQuickLink.ql_Description + "</p>");
+                    HtmlBuilder.Append("<br /><br /></div>");
+                }
+            }
+
+            HtmlBuilder.Append("</div>");
+        }
+        else
+        {
+            HtmlBuilder.Append("<div class='div_content_op'>");
+
+            HtmlBuilder.Append("<blockquote class='layui-elem-quote layui-quote-nm' style='height: auto;'>");
+
+            HtmlBuilder.Append("<div style='vertical-align: central'>");
+            HtmlBuilder.Append("<h4 style='margin-top:0px; margin-bottom:15px;'>" + Html.Lang("txt_QuickLink_NoData_Description") + "</h4>");
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("<div class='layui-btn-container'>");
+
+            // 如果访问者拥有站内内容创建的权限，则显示添加按钮
+            if (UserRole_CurrentDept.a_Type_C >= 1)
+            {
+                HtmlBuilder.Append("<button class='btn btn-primary layui-btn btn_tool' id='btn_addQuickLink' style='margin-left:0px;' title='" + Html.Lang("txt_AddQuickLink_" + (ViewBag.Sub_ActionName as string)) + "' onclick='addQuickLink(" + ViewBag.DeptID + "," + ViewBag.SubID + ");' ><i class='layui-icon'>&#xe61f;</i></button>");
+            }
+
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("</blockquote>");
+            HtmlBuilder.Append("</div>");
+
+            HtmlBuilder.Append("<div class='body-content'><img class='img_contentMsg' src='" + PreUrl + "/Img/no-data-found.jpg'/></div>");
+        }
+    }
+    else
+    {
+        HtmlBuilder.Append("<div class='div_content_op'>");
+
+        HtmlBuilder.Append("<blockquote class='layui-elem-quote layui-quote-nm' style='height: auto;'>");
+
+        HtmlBuilder.Append("<div style='vertical-align: central'>");
+        HtmlBuilder.Append("<h4 style='margin-top:0px; margin-bottom:15px;'>" + Html.Lang("txt_QuickLink_NoData_Description") + "</h4>");
+        HtmlBuilder.Append("</div>");
+
+        HtmlBuilder.Append("<div class='layui-btn-container'>");
+
+        // 如果访问者拥有站内内容创建的权限，则显示添加按钮
+        if (UserRole_CurrentDept.a_Type_C >= 1)
+        {
+            HtmlBuilder.Append("<button class='btn btn-primary layui-btn btn_tool' id='btn_addQuickLink' style='margin-left:0px;' title='" + Html.Lang("txt_AddQuickLink_" + (ViewBag.Sub_ActionName as string)) + "' onclick='addQuickLink(" + ViewBag.DeptID + "," + ViewBag.SubID + ");' ><i class='layui-icon'>&#xe61f;</i></button>");
+        }
+
+        HtmlBuilder.Append("</div>");
+
+        HtmlBuilder.Append("</blockquote>");
+        HtmlBuilder.Append("</div>");
+
+        HtmlBuilder.Append("<div class='body-content'><img class='img_contentMsg' src='" + PreUrl + "/Img/no-data-found.jpg'/></div>");
+    }
+
+    @(new HtmlString(HtmlBuilder.ToString()))
+}

@@ -1,0 +1,107 @@
+﻿@using SEWC_ToolBox.Languages;
+@using System.Text;
+
+@{
+    Layout = "~/Views/Shared/_Layout_Function.cshtml";
+    ViewBag.Title = "Add Customization";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+
+@Scripts.Render("~/Scripts/CustomScripts/ToolBoxFunctional/Customization?v=" + ViewBag.VersionNo)
+
+<div class="container">
+
+    <form class="layui-form layui-form-pane" action="">
+
+        <div class="hidden">
+            <input type="text" id="input_deptID" name="input_deptID" readonly="readonly" value="@ViewBag.DeptID" />
+            <input type="text" id="input_customizationGUID" name="input_customizationGUID" readonly="readonly" value="@ViewBag.QuickLinkGUID" />
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_CustomizationName")</label>
+            <div class="layui-input-block">
+                <input type="text" id="input_customizationName" name="input_customizationName" required lay-verify="required" placeholder="@Html.Lang("txt_CustomizationName_plus")" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">@Html.Lang("txt_Linkage")</label>
+            <div class="layui-input-block">
+                <input type="text" id="input_linkage" name="input_linkage" required lay-verify="required" placeholder="@Html.Lang("txt_Linkage_plus")" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">@Html.Lang("txt_CustomizationCategory")</label>
+            <div class="layui-input-block">
+                @{
+                    StringBuilder CategoryBuilder = new StringBuilder();
+                    List<string> CustomizationCategory_List = ViewBag.CustomizationCategory_List as List<string>;
+
+                    if (CustomizationCategory_List.Count > 0)
+                    {
+                        CategoryBuilder.Append("<input type='radio' name='input_Category_IsSelect' value='true' lay-filter='input_Category_IsSelect' title='" + Html.Lang("txt_Select") + "' checked />");
+                        CategoryBuilder.Append("<input type='radio' name='input_Category_IsSelect' value='false' lay-filter='input_Category_IsSelect' title='" + Html.Lang("txt_Input") + "' />");
+
+                        CategoryBuilder.Append("<div id='div_categorySelection'>");
+
+                        for (int i = 0; i < CustomizationCategory_List.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                CategoryBuilder.Append("<select name='select_Category' lay-verify='required' lay-search>");
+                            }
+
+                            CategoryBuilder.Append("<option value='" + CustomizationCategory_List[i] + "'>" + CustomizationCategory_List[i] + "</option>");
+
+                            if (i == CustomizationCategory_List.Count - 1)
+                            {
+                                CategoryBuilder.Append("</select>");
+                            }
+                        }
+
+                        CategoryBuilder.Append("</div>");
+
+                        CategoryBuilder.Append("<div class='hidden' id='div_categoryInput'>");
+                        CategoryBuilder.Append("<input type='text' id='input_Category' name='input_Category' required placeholder='" + Html.Lang("txt_CustomizationCategory_plus") + "' autocomplete='off' class='layui-input' />");
+                        CategoryBuilder.Append("</div>");
+                    }
+                    else
+                    {
+                        CategoryBuilder.Append("<input type='text' class='hidden' id='input_Category_IsSelect' name='input_Category_IsSelect' value='false'>");
+                        CategoryBuilder.Append("<input type='text' id='input_Category' name='input_Category' required lay-verify='required' placeholder='" + Html.Lang("txt_CustomizationCategory_NoData") + "' autocomplete='off' class='layui-input' />");
+                    }
+
+                @(new HtmlString(CategoryBuilder.ToString()))
+                }
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">@Html.Lang("txt_Sort")</label>
+            <div class="layui-input-block">
+                <input type="text" id="input_sort" name="input_sort" required lay-verify="required|number" placeholder="@Html.Lang("txt_Sort_plus")" autocomplete="off" class="layui-input" />
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">@Html.Lang("txt_Description")</label>
+            <div class="layui-input-block">
+                <textarea id="input_description" name="input_description" placeholder="@Html.Lang("txt_Description_plus")" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">@Html.Lang("txt_Photo")</label>
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn" id="btn_upload" style="margin:10px;">
+                    <i class="layui-icon">&#xe67c;</i>@Html.Lang("txt_Upload")
+                </button>
+                <img id="img_customizationPic" style="display:none; width: 300px; height: 180px; border: 2px solid rgb(230, 230, 230); margin:10px;" />
+                <input class="hidden" type="text" id="input_picPath" name="input_picPath" readonly="readonly" />
+            </div>
+        </div>
+        <div class="layui-footer" style="text-align:center;">
+            <button class="layui-btn" lay-submit lay-filter="formCreate">@Html.Lang("txt_Submit")</button>
+            <button type="reset" class="layui-btn layui-btn-primary" id="btn_reset">@Html.Lang("txt_Reset")</button>
+            <button class="layui-btn layui-btn-primary" id="btn_close" type="button">@Html.Lang("txt_Close")</button>
+        </div>
+
+    </form>
+
+</div>

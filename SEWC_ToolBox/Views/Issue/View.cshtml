@@ -1,0 +1,129 @@
+﻿@using SEWC_ToolBox.DAL.EFs
+@using SEWC_ToolBox.Languages
+
+@model t_ReportIssue
+@{
+    ViewBag.Title = LanguageHelper.InnerLang(HttpContext.Current, "txt_HandleIssue");
+    Layout = "~/Views/Shared/_Layout_ToolBox.cshtml";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="art-wrap">
+            @if (Model != null)
+            {
+                <div class="title">
+                    <h3><b>@Model.ReportTitle</b></h3>
+                </div>
+                <div class="info-wrap">
+                    <div class="infos">
+                        <div>
+                            <span class="">@LanguageHelper.InnerLang(HttpContext.Current, "txt_Admin")：</span>
+                            <span>@Model.AdminOwnerName</span><span>（@Model.AdminOwner）</span>
+                            &nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div>
+                            <span class="">@LanguageHelper.InnerLang(HttpContext.Current, "txt_CreateUser")：</span>
+                            <span>@Model.CreateUserName</span><span>（@Model.CreateUser）</span>
+                        </div>
+                    </div>
+                    <div class="info-time">
+                        <span>@LanguageHelper.InnerLang(HttpContext.Current, "txt_CreateTime")：</span>
+                        @Model.Createtime.ToString("yyyy-MM-dd HH:mm")
+                    </div>
+                </div>
+                <div class="art-body" style="padding-left:10px">
+                    <div class="art-body-item">
+                        <span>@LanguageHelper.InnerLang(HttpContext.Current, "txt_Status")：</span>
+                        <b class="" style="font-weight:bold;">
+                            @if (Model.State == (int)SEWC_ToolBox.DAL.EFs.EnumCollect.IssueState.Solved)
+                            {
+                                <span>@LanguageHelper.InnerLang(HttpContext.Current, "txt_IssueSolved")</span>
+                            }
+                            else if (Model.State == (int)SEWC_ToolBox.DAL.EFs.EnumCollect.IssueState.Panding)
+                            {
+                                <span>@LanguageHelper.InnerLang(HttpContext.Current, "txt_IssuePending")</span>
+                            }
+                        </b>
+                    </div>
+                    <div class="art-body-item">
+                        <span>@LanguageHelper.InnerLang(HttpContext.Current, "txt_Issue")：</span>
+                        <div class="art-body-content">
+                            @Html.Raw(Model.Issues)
+                        </div>
+                    </div>
+                    <div class="art-body-item">
+                        <span>@LanguageHelper.InnerLang(HttpContext.Current, "txt_Reason")：</span>
+                        <div class="art-body-content">
+                            @Html.Raw(Model.AnswerReason)
+                        </div>
+                    </div>
+                    <div class="art-body-item">
+                        <span>@LanguageHelper.InnerLang(HttpContext.Current, "txt_Solution")：</span>
+                        <div class="art-body-content">
+                            @Html.Raw(Model.AnswerDetail)
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div style="margin-top:50px;text-align:center">无效访问</div>
+            }
+        </div>
+    </div>
+</div>
+@*<script>
+    window.cookieStore.getAll().then(function (e) {
+        console.log('getall')
+        console.log(e)
+    })
+</script>*@
+
+<style type="text/css">
+    .body {
+        min-height: 0px;
+    }
+
+    .art-wrap {
+        padding: 15px 20px
+    }
+
+
+    .info-wrap {
+        display: flex;
+        flex-direction: column;
+        background-color: #f7f7fc;
+        border-radius: 5px;
+        padding: 5px 10px;
+    }
+
+    .infos {
+        display: flex;
+        color: #666;
+    }
+
+    .info-time {
+        font-size: 12px;
+        margin-top: 15px;
+        color: #666
+    }
+
+    .art-body {
+    }
+
+    .art-body-item {
+        margin-top: 20px;
+    }
+
+        .art-body-item span {
+            font-size: 14px;
+        }
+
+        .art-body-item .art-body-content {
+            margin-top: 5px;
+            padding: 10px 5px;
+            border: 1px solid #e5e5e5
+        }
+</style>
+

@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_ToolBox.cshtml";
+    ViewBag.Title = "Organization";
+    ViewBag.VersionNo = HttpContext.Current.Application["VersionNo"].ToString();
+}
+
+@Scripts.Render("~/Scripts/CustomScripts/ToolBoxBase/Organization?v=" + ViewBag.VersionNo)
+
+<div class='layui-row'>
+
+    <iframe src="https://intranet.sewc-portal.siemens.com.cn/3i/ee_list.aspx?URL=/upload/images/2018/5/21445495.png&selectedDept=@ViewBag.DeptShortName.Replace("&","%26")" id="iframepage" frameborder="0" scrolling="yes" width="100%"></iframe>
+
+</div>

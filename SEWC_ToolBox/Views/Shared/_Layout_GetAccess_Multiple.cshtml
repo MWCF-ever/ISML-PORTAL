@@ -1,0 +1,165 @@
+﻿@using SEWC_ToolBox.DAL.EFs;
+@using SEWC_ToolBox.Languages;
+@using System.Text;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - SSML ToolBox</title>
+    <link rel="Shortcut Icon" href="~/Img/favicon.png" type="image/x-icon">
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Scripts.Render("~/Scripts/CustomScripts/SCM?v=" + ViewBag.VersionNo)
+    @Scripts.Render("~/Scripts/CustomScripts/ToolBoxFunctional?v=" + ViewBag.VersionNo)
+
+    @Styles.Render("~/ThirdParty/layui/css?v=" + ViewBag.VersionNo)
+    @Styles.Render("~/Styles/General?v=" + ViewBag.VersionNo)
+    @Styles.Render("~/Styles/ToolBox?v=" + ViewBag.VersionNo)
+</head>
+<body style="padding-top:0px;">
+
+    @*侧边栏、子页面*@
+    <div class="body" style="display:inline-block;">
+
+        @if (ViewBag.MenuList_Side != null)
+        {
+            var preURL = AppConfig.PreURL;
+            List<v_MenuList> MenuList_Side = ViewBag.MenuList_Side;
+            MenuList_Side = MenuList_Side.Where(m => m.ml_Sub_ActionName != "Disabled").ToList();
+            StringBuilder HtmlBuilder = new StringBuilder();
+            int? LastSubMenuID = null;
+            int? LastThirdMenuID = null;
+            int? LastFourthMenuID = null;
+            string Sub_ActionName = ViewBag.Sub_ActionName;
+            string Third_ActionName = ViewBag.Third_ActionName;
+            string Fourth_ActionName = ViewBag.Fourth_ActionName;
+
+            HtmlBuilder.Append("<div class='div_sideBar layui-side-scroll' style='width:auto;'>");
+            HtmlBuilder.Append("<ul class='layui-nav layui-nav-tree layui-nav-side' style='top:0px;'>");
+
+            for (int i = 0; i < MenuList_Side.Count; i++)
+            {
+                v_MenuList curMenu = MenuList_Side[i];
+                string Cur_Sub_ActionName = curMenu.ml_Sub_ActionName;
+                string Cur_Third_ActionName = curMenu.ml_Third_ActionName;
+                string Cur_Fourth_ActionName = curMenu.ml_Fourth_ActionName;
+
+                if (curMenu.ml_Third_ID != LastThirdMenuID)
+                {
+                    if (i != 0)
+                    {
+                        if (LastFourthMenuID != null)
+                        {
+                            HtmlBuilder.Append("</dl></li>");
+                        }
+                    }
+
+                    if (curMenu.ml_Fourth_ID != null)
+                    {
+                        HtmlBuilder.Append("<li class='layui-nav-item layui-nav-itemed'>");
+                        HtmlBuilder.Append("<a href='javascript:; '>" + Html.Lang(curMenu.ml_Sub_MenuName + " " + curMenu.ml_Third_MenuName) + "</a>");
+                        HtmlBuilder.Append("<dl class='layui-nav-child'>");
+
+                        if (Cur_Fourth_ActionName.Equals(Fourth_ActionName))
+                        {
+                            HtmlBuilder.Append("<dd class='layui-this'><a name='a_menuSwitch' href='"+ preURL + "/ToolBoxFunctional/Report_GetAccess_Multiple?DeptID=" + ViewBag.DeptID + "&Sub_Action=" + curMenu.ml_Sub_ActionName + "&Third_Action=" + curMenu.ml_Third_ActionName + "&Fourth_Action=" + curMenu.ml_Fourth_ActionName + "'><i class='layui-icon'>&#xe602;</i> " + Html.Lang(Cur_Fourth_ActionName) + "</a></dd>");
+                        }
+                        else
+                        {
+                            HtmlBuilder.Append("<dd><a name='a_menuSwitch' href='" + preURL + "/ToolBoxFunctional/Report_GetAccess_Multiple?DeptID=" + ViewBag.DeptID + "&Sub_Action=" + curMenu.ml_Sub_ActionName + "&Third_Action=" + curMenu.ml_Third_ActionName + "&Fourth_Action=" + curMenu.ml_Fourth_ActionName + "'><i class='layui-icon'>&#xe602;</i> " + Html.Lang(Cur_Fourth_ActionName) + "</a></dd>");
+                        }
+                    }
+                    else
+                    {
+                        if (Cur_Third_ActionName.Equals(Third_ActionName))
+                        {
+                            HtmlBuilder.Append("<li class='layui-nav-item layui-this'><a name='a_menuSwitch' href='" + preURL + "/ToolBoxFunctional/Report_GetAccess_Multiple?DeptID=" + ViewBag.DeptID + "&Sub_Action=" + curMenu.ml_Sub_ActionName + "&Third_Action=" + curMenu.ml_Third_ActionName + "'>" + Html.Lang(Cur_Third_ActionName) + "</a></li>");
+                        }
+                        else
+                        {
+                            HtmlBuilder.Append("<li class='layui-nav-item'><a name='a_menuSwitch' href='" + preURL + "/ToolBoxFunctional/Report_GetAccess_Multiple?DeptID=" + ViewBag.DeptID + "&Sub_Action=" + curMenu.ml_Sub_ActionName + "&Third_Action=" + curMenu.ml_Third_ActionName + "'>" + Html.Lang(Cur_Third_ActionName) + "</a></li>");
+                        }
+                    }
+                }
+                else
+                {
+                    if (Cur_Fourth_ActionName.Equals(Fourth_ActionName))
+                    {
+                        HtmlBuilder.Append("<dd class='layui-this'><a name='a_menuSwitch' href='" + preURL + "/ToolBoxFunctional/Report_GetAccess_Multiple?DeptID=" + ViewBag.DeptID + "&Sub_Action=" + curMenu.ml_Sub_ActionName + "&Third_Action=" + curMenu.ml_Third_ActionName + "&Fourth_Action=" + curMenu.ml_Fourth_ActionName + "'><i class='layui-icon'>&#xe602;</i> " + Html.Lang(Cur_Fourth_ActionName) + "</a></dd>");
+                    }
+                    else
+                    {
+                        HtmlBuilder.Append("<dd><a name='a_menuSwitch' href='" + preURL + "/ToolBoxFunctional/Report_GetAccess_Multiple?DeptID=" + ViewBag.DeptID + "&Sub_Action=" + curMenu.ml_Sub_ActionName + "&Third_Action=" + curMenu.ml_Third_ActionName + "&Fourth_Action=" + curMenu.ml_Fourth_ActionName + "'><i class='layui-icon'>&#xe602;</i> " + Html.Lang(Cur_Fourth_ActionName) + "</a></dd>");
+                    }
+                }
+
+                LastSubMenuID = curMenu.ml_Sub_ID;
+                LastThirdMenuID = curMenu.ml_Third_ID;
+                LastFourthMenuID = curMenu.ml_Fourth_ID;
+            }
+
+            HtmlBuilder.Append("</ul>");
+            HtmlBuilder.Append("</div>");
+
+            @(new HtmlString(HtmlBuilder.ToString()))
+
+            <div class="div_toolContent">
+
+                <div class="div_toolContent_sideBarBtn">
+
+                    <button id="btn_sideBar_collapse" class="layui-btn layui-btn-sm btn-sideBar" title="@Html.Lang("txt_Collapse_SideBar")">
+                        <i class="layui-icon" style="font-size: 50px; margin-right:0px;">&#xe603;</i>
+                    </button>
+                    <button id="btn_sideBar_expand" class="layui-btn layui-btn-sm btn-sideBar" title="@Html.Lang("txt_Expand_SideBar")" style="display:none;">
+                        <i class="layui-icon" style="font-size: 50px; margin-right:0px;">&#xe602;</i>
+                    </button>
+
+                </div>
+
+                <div class="div_toolContent_content">
+
+                    <div style="display:none;">
+                        <input id='input_reportID_list' name='input_reportID_list' type='text' value='@TempData["ReportID_List"]' />
+                    </div>
+
+                    <div class="container" style="margin-top:40px; margin-bottom: 60px;">
+
+                        @RenderBody()
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+        else
+        {
+            <div class="div_toolContent layui-side-scroll" style="margin-left:0px;">
+
+                <div class="div_toolContent_content" style="padding-left:0px;">
+
+                    <div class="container" style="margin-top:60px;">
+
+                        @RenderBody()
+
+                    </div>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+    @Scripts.Render("~/ThirdParty/layui?v=" + ViewBag.VersionNo)
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/Scripts/CustomScripts?v=" + ViewBag.VersionNo)
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
